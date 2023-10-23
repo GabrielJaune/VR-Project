@@ -85,7 +85,23 @@ var APP_DATA = {
       "infoHotspots": []
     }
   ],
+
+  "HotSpots": {
+    "PC_HotSpot": {
+      "scene" : "1-plateau-scurit-sret-2",
+      "coords" : { yaw: 1.05, pitch: 0.101 },
+      "opts" : { perspective: { radius: 1820, extraTransforms: "rotateZ(-0deg)" }},
+    },
+
+    "PC_HotSpot2": {
+      "scene" : "1-plateau-scurit-sret-2",
+      "coords" : { yaw: 0.562, pitch: 0.2 },
+      "opts" : { perspective: { radius: 1820, extraTransforms: "rotateY(-30deg) rotateZ(6.1deg) rotateX(-5deg)" }}
+    }
+  },
+
   "name": "Project Title",
+
   "settings": {
     "mouseViewMode": "drag",
     "autorotateEnabled": true,

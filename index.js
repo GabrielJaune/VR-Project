@@ -122,9 +122,6 @@
   var HotSpots = [] // HotSpot Element
   var HotSpotContent = [] // HotSpot Original HTML
 
-  // Getting Scene We Are Using
-  var scene2 = await GetSceneById("1-plateau-scurit-sret-2")
-  
   // Sanity Function To Store Element & innerHTML
   function NewHotSpot(scene, Element, Info, Extra) {
     const Name = scene.data["name"]
@@ -139,10 +136,22 @@
   }
 
   // Creating HotSpots We Want
-  NewHotSpot( scene2, document.getElementById("PC_HotSpot"), { yaw: 1.05, pitch: 0.101 }, { perspective: { radius: 1820, extraTransforms: "rotateZ(-0deg)" }} )
-  NewHotSpot( scene2, document.getElementById("PC_HotSpot2"), { yaw: 0.562, pitch: 0.2 }, { perspective: { radius: 1820, extraTransforms: "rotateY(-30deg) rotateZ(6.1deg) rotateX(-5deg)" }} )
+  Object.keys(data.HotSpots).forEach(async key => {
+    const CurData = data.HotSpots[key]
+
+    if ( !(CurData.hasOwnProperty("scene") || CurData.hasOwnProperty("coords")) ) { console.warn("Missing Arguments"); return }
+
+    const Scene   = await GetSceneById(CurData["scene"])
+    if (!Scene)   {console.warn(`Scene ${CurData["scene"]} not found`); return}
+
+    const Element = document.getElementById(key)
+    if (!Element) {console.warn(`Element ${key} not found`); return}
+
+    NewHotSpot(Scene, Element, CurData["coords"], CurData.hasOwnProperty("opts") && CurData["opts"] || undefined)
 
 
+  });
+  
   // Checks For A Scene Change
   viewer.addEventListener('sceneChange', () => {
     Object.keys(HotSpots).forEach(key => { // key is the scene area we are checking
