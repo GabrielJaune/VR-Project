@@ -89,7 +89,7 @@ var APP_DATA = {
   "HotSpots": {
     "PC_HotSpot": {
       "scene" : "1-plateau-scurit-sret-2",
-      "coords" : { yaw: 2.15, pitch: 0.101 },
+      "coords" : { yaw: 2.15, pitch: 10.101 },
       "opts" : { perspective: { radius: 1820, extraTransforms: "rotateZ(-0deg)" }},
     },
 
