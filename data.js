@@ -148,8 +148,8 @@ var APP_DATA = {
     },
     "PC_HotSpot3": {
       "scene" : "300",
-      "coords" : { yaw: 0.562, pitch: 0.2 },
-      "opts" : { perspective: { radius: 1820, extraTransforms: "rotateY(-30deg) rotateZ(6.1deg) rotateX(-5deg)" }}
+      "coords" : { yaw: 0.502, pitch: -0.035 },
+      "opts" : { perspective: { radius: 2500, extraTransforms: "rotateY(-5.5deg) rotateZ(-0.6deg) rotateX(-5deg)" }}
     }
   },
 
