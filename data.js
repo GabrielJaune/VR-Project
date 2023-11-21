@@ -43,6 +43,54 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
+      "id": "300",
+      "name": "War Crimes",
+      "levels": [
+        {
+          "tileSize": 256,
+          "size": 256,
+          "fallbackOnly": true
+        },
+        {
+          "tileSize": 512,
+          "size": 512
+        },
+        {
+          "tileSize": 512,
+          "size": 1024
+        },
+        {
+          "tileSize": 512,
+          "size": 2048
+        },
+        {
+          "tileSize": 512,
+          "size": 4096
+        }
+      ],
+      "faceSize": 2992,
+      "initialViewParameters": {
+        "pitch": 0,
+        "yaw": 0,
+        "fov": 1.5707963267948966
+      },
+      "linkHotspots": [],
+      "infoHotspots": [
+        {
+          "yaw": -2.11968206474085,
+          "pitch": -0.20937169923154286,
+          "title": "What?",
+          "text": "Weird...."
+        },
+        {
+          "yaw": 2.538356992017535,
+          "pitch": -0.17492308340941776,
+          "title": "Criminal activity<br>",
+          "text": "Really weird<br>"
+        }
+      ]
+    },
+    {
       "id": "1-plateau-scurit-sret-2",
       "name": "Plateau Sécurité Sûreté (2)",
       "levels": [
@@ -95,6 +143,11 @@ var APP_DATA = {
 
     "PC_HotSpot2": {
       "scene" : "1-plateau-scurit-sret-2",
+      "coords" : { yaw: 0.562, pitch: 0.2 },
+      "opts" : { perspective: { radius: 1820, extraTransforms: "rotateY(-30deg) rotateZ(6.1deg) rotateX(-5deg)" }}
+    },
+    "PC_HotSpot3": {
+      "scene" : "300",
       "coords" : { yaw: 0.562, pitch: 0.2 },
       "opts" : { perspective: { radius: 1820, extraTransforms: "rotateY(-30deg) rotateZ(6.1deg) rotateX(-5deg)" }}
     }
