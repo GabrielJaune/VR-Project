@@ -44,7 +44,7 @@ var APP_DATA = {
     },
     {
       "id": "300",
-      "name": "War Crimes",
+      "name": "Luigi",
       "levels": [
         {
           "tileSize": 256,
@@ -85,8 +85,8 @@ var APP_DATA = {
         {
           "yaw": 2.538356992017535,
           "pitch": -0.17492308340941776,
-          "title": "Criminal activity<br>",
-          "text": "Really weird<br>"
+          "title": "Info<br>",
+          "text": "I forgot my line<br>"
         }
       ]
     },
