@@ -16,12 +16,34 @@
 'use strict';
 
 (async function() {
-  var sceneName = ""
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-  var Marzipano = window.Marzipano;
-  var bowser = window.bowser;
-  var screenfull = window.screenfull;
-  var data = window.APP_DATA;
+  function UpdateView(view, IsPos) {
+    //console.log("view update")
+    if (IsPos) {
+      Howler.orientation(view)
+    } else {
+       Howler.orientation(view._yaw / (Math.PI/180), view._pitch / (Math.PI/180), view._fov / (Math.PI/180))
+    }
+  }
+
+  var sceneName    = ""
+  var CurrentScene = null 
+  // Marzipano
+  var Marzipano      = window.Marzipano;  
+  // Howler JS
+  var Howl           = window.Howl;
+  var Howler         = window.Howler;
+  // Miscs
+  var bowser         = window.bowser;
+  var screenfull     = window.screenfull;
+  var data           = window.APP_DATA;
+
+  // Howler Setup
+  Howler.pos(Math.PI, Math.PI, Math.PI)
+  Howler.orientation(-300, 0, 0)
 
   // Grab elements from DOM.
   var panoElement = document.querySelector('#pano');
@@ -119,20 +141,37 @@
   }
 
   // HotSpots Start
+  var HotSources = [] // Hotspot Cointainer
   var HotSpots = [] // HotSpot Element
   var HotSpotContent = [] // HotSpot Original HTML
 
   // Sanity Function To Store Element & innerHTML
-  function NewHotSpot(scene, Element, Info, Extra) {
+  async function NewHotSpot(scene, Element, Info, Extra) {
     const Name = scene.data["name"]
 
+    if (typeof(HotSources[Name]) != "object") { HotSources[Name] = [] }
     if (typeof(HotSpots[Name]) != "object") { HotSpots[Name] = [] }
     if (typeof(HotSpotContent[Name]) != "object") { HotSpotContent[Name] = [] }
 
     HotSpots[Name].push(Element)
-    HotSpotContent[Name].push(Element.innerHTML)
+    const spothot = scene.scene.hotspotContainer().createHotspot(Element, Info, Extra)
+    HotSources[Name].push(spothot)
+    console.log("creating sound")
 
-    scene.scene.hotspotContainer().createHotspot(Element, Info, Extra)
+    // Howler Initiation
+    var sound = new Howl({
+      src: [Element.firstElementChild.src],
+      autoplay: false,
+      volume: 100
+    })
+
+    // X : R-L  Y: U/D  Z: ?
+    sound.pos(Info.yaw / Math.PI/8 , Info.pitch / Math.PI/8, -1280/4)
+    sound.volume(50)
+    HotSpotContent[Name].push({
+      ["HTML"]: Element.innerHTML,
+      ["Sound"]: sound
+    })
   }
 
   // Creating HotSpots We Want
@@ -148,8 +187,6 @@
     if (!Element) {console.warn(`Element ${key} not found`); return}
 
     NewHotSpot(Scene, Element, CurData["coords"], CurData.hasOwnProperty("opts") && CurData["opts"] || undefined)
-
-
   });
   
   // Checks For A Scene Change
@@ -157,14 +194,14 @@
     Object.keys(HotSpots).forEach(key => { // key is the scene area we are checking
       const IsCurrent = (sceneName == key)
 
-      HotSpots[key].forEach(function(Element, index, array) {
-        // var IFrame = Element.lastElementChild
-        Element.innerHTML = IsCurrent && HotSpotContent[sceneName][index] || "" // NOTE: Didn't Find Other Way To Pause It
+      HotSpots[key].forEach(function(Content, index) {
+        var HotContent = HotSpotContent[sceneName][index]
+        var Element = HotContent["HTML"]
+        var Sound   = HotContent["Sound"]
+        if(IsCurrent) { Sound.play() } else { Sound.stop() }
+        Content.innerHTML = IsCurrent && Element || "" // NOTE: Didn't Find Other Way To Pause It
       })
     });
-    // var innerDoc = content.contentDocument || content.contentWindow.document;
-    // var MediaSource = innerDoc.getElementById('ivplayer');
-    // if(sceneName == scene2.data.name) MediaSource.muted = false; else  MediaSource.muted = true //HotSpot.innerHTML = ScenesOriginal[sceneName]; else HotSpot.innerHTML = ""
   });
 
   // Set up autorotate, if enabled.
@@ -244,6 +281,7 @@
 
   // We Set The SceneName then Switch Scene (to avoid having values not updating on the listener)
   function switchScene(scene) {
+    CurrentScene = scene
     sceneName = scene.data.name
     stopAutorotate();
     scene.view.setParameters(scene.data.initialViewParameters);
@@ -450,5 +488,12 @@
 
   // Display the initial scene.
   switchScene(scenes[0]);
+
+  (function p() {
+    UpdateView(CurrentScene.view)
+      setTimeout(p, 500);
+  })();
+
+
 
 })();
