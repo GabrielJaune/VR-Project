@@ -162,11 +162,18 @@
     var sound = new Howl({
       src: [Element.firstElementChild.src],
       autoplay: false,
-      volume: 100
+      //html5: true,
+      volume: 100,
+      onload: function() {
+        console.load("loaded")
+      },
+      onloaderror: function(a,b) {
+        console.log(a,b)
+      }
     })
 
     // X : R-L  Y: U/D  Z: ?
-    sound.pos(Info.yaw / Math.PI/8 , Info.pitch / Math.PI/8, -1280/4)
+    sound.pos(Info.yaw / Math.PI/8 , Info.pitch / Math.PI/8, 1280/4)
     sound.volume(50)
     HotSpotContent[Name].push({
       ["HTML"]: Element.innerHTML,
@@ -195,9 +202,11 @@
       const IsCurrent = (sceneName == key)
 
       HotSpots[key].forEach(function(Content, index) {
+        if(!HotSpotContent.hasOwnProperty(sceneName)) { console.log("none for" + sceneName); return; }
         var HotContent = HotSpotContent[sceneName][index]
         var Element = HotContent["HTML"]
         var Sound   = HotContent["Sound"]
+        console.log(IsCurrent);
         if(IsCurrent) { Sound.play() } else { Sound.stop() }
         Content.innerHTML = IsCurrent && Element || "" // NOTE: Didn't Find Other Way To Pause It
       })
