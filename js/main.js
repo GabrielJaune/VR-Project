@@ -20,13 +20,7 @@ const Infos = {
 }
 
 var Buttons = {}
-var ClickCooldown = 0
-
-AFRAME.registerComponent("name", {
-    init: function() {
-        console.log("Init Executed on Element")
-    }
-})
+var Selected = undefined
 
 AFRAME.registerComponent("info-panel", {
     init: function() {
@@ -35,7 +29,6 @@ AFRAME.registerComponent("info-panel", {
 
         this.onInsideClick  = this.onInsideClick.bind(this);
         this.onOutsideClick = this.onOutsideClick.bind(this);
-        this.OnBody = this.OnBody.bind(this);
 
         // NOTE: Not Outside Since Loading Stuff
         Buttons= document.querySelectorAll(".menu-button")
@@ -47,37 +40,39 @@ AFRAME.registerComponent("info-panel", {
         this.Title       = document.querySelector("#Info_Title")
         this.Description = document.querySelector("#Info_Description")
 
+        this.Cancel  = document.querySelector("#Info_Cancel")
+        this.Confirm = document.querySelector("#Info_Confirm")
+
+        this.Cancel.addEventListener("click", this.onOutsideClick)
+        this.Confirm.addEventListener("click", this.onEnter)
+
         for (var i = 0; i < Buttons.length; ++i) {
-            console.log(Buttons[i])
             Buttons[i].addEventListener("click", this.onInsideClick)
         }
+    },
 
-        document.body.addEventListener("click", this.OnBody)
+    onEnter: function (evt) {
+        console.log("Enter Clicked")
+        if(!Selected) return;
+        console.log("Found " + Selected.id)
     },
 
     onInsideClick: function (evt) {
-        ClickCooldown = Date.now() + 500
-        var CurrentInfo = Infos[evt.currentTarget.id]
+        Selected = Infos[evt.currentTarget.id]
         this.el.object3D.visible = true
         var obj = [this.OldSize["x"], this.OldSize["y"], this.OldSize["z"]]
         let X, Y, Z;
         [X, Y, Z] = obj
         this.el.object3D.scale.set(X, Y, Z)
-        this.Title.setAttribute('text', 'value', CurrentInfo.title)
-        this.Description.setAttribute('text', 'value', CurrentInfo.info)
+        this.Title.setAttribute('text', 'value', Selected.title)
+        this.Description.setAttribute('text', 'value', Selected.info)
     },
 
     onOutsideClick: function (evt) {
-        if(ClickCooldown > Date.now()) { console.log("Cooldown"); return}
+        console.log("Exit Clicked")
         this.el.object3D.visible = false
         this.el.object3D.scale.set(0, 0, 0)
     },
-
-    OnBody: function(evt) {
-        console.log(evt.target)
-        if (evt.target.id == this.el.id) { return }
-        this.onOutsideClick()
-    }
 })
 
 AFRAME.registerComponent('highlight', {
@@ -116,5 +111,3 @@ AFRAME.registerComponent('highlight', {
     }
   });
   
-
-console.log("Loaded Elemnt yay")
