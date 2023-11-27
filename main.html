@@ -18,37 +18,35 @@
         <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: false; mouseEnabled: false" renderer="sortObjects: true"> </a-entity>
 
         <!-- VR Hand ? -->
-        <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+        <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
         <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
   
         <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #000000; skyColor: #595959;"></a-entity>
         
      <a-assets>
-        <img id="img_1" src="https://cdn.aframe.io/examples/ui/kazetachinuPoster.jpg" crossorigin="anonymous"/>
+        <img id="img_1" src="https://cdn.aframe.io/examples/ui/kazetachinuPoster.jpg"/>
 
-        <img id="img_2" src="https://cdn.aframe.io/examples/ui/ponyoPoster.jpg" crossorigin="anonymous"/>
+        <img id="img_2" src="https://cdn.aframe.io/examples/ui/ponyoPoster.jpg"/>
 
-        <img id="img_3" src="https://cdn.aframe.io/examples/ui/karigurashiPoster.jpg" crossorigin="anonymous"/>
+        <img id="img_3" src="https://cdn.aframe.io/examples/ui/karigurashiPoster.jpg"/>
 
         <a-mixin id="main" geometry="primitive: plane; width: 0.5783552; height: 0.8192"
         material="color: white; shader: flat"
-        animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+        animation__scale="property: scale; to: 1.5 1.5 1.5; dur: 200; startEvents: mouseenter"
         animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
-       ></a-mixin>
+       />
        
        <a-mixin
         id="poster" geometry="primitive: plane; width: 0.544768; height: 0.786432"
         material="color: white; shader: flat"
         material="shader: flat"
-        position="0 0 0.005"
-       ></a-mixin>
+        position="0 0 0.005" />
 
        <a-mixin
         id="movieImage"
         geometry="primitive: plane; width: 1.5; height: 0.81"
         material="src: #ponyo; shader: flat; transparent: true"
-        position="0 0.495 0.002"
-       ></a-mixin>
+        position="0 0.495 0.002" />
     </a-assets>
 
         <a-entity id="ui" position="0 1.6 -2.5">
@@ -68,8 +66,8 @@
         </a-entity>
 
         <a-entity id="infoPanel" position="0 0 0.5" info-panel visible="false"
-        
           geometry="primitive: plane; width: 1.5; height: 1"
+
           material="color: #333333; shader: flat; transparent: false" class="raycastable">
           <a-entity id="Info_Title" position="-0.68 0.25 0"
             text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum"></a-entity>
@@ -78,7 +76,7 @@
         </a-entity>
       </a-entity>
     </a-entity>
-    
+
     </a-scene>
   </body>
 </html>
