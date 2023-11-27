@@ -1,0 +1,84 @@
+<html>
+  <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <!-- Modules Requiring -->
+        <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+       <!-- I love supermedium -->
+       <script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
+       <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+       <!-- Main Scripts -->
+       <script src="./js/main.js"></script>
+  </head>
+
+  <body>
+    <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
+        
+        <!-- Locks Mouse & Touch -->
+        <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: false; mouseEnabled: false" renderer="sortObjects: true"> </a-entity>
+
+        <!-- VR Hand ? -->
+        <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+        <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+  
+        <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #000000; skyColor: #595959;"></a-entity>
+        
+     <a-assets>
+        <img id="img_1" src="https://cdn.aframe.io/examples/ui/kazetachinuPoster.jpg" crossorigin="anonymous"/>
+
+        <img id="img_2" src="https://cdn.aframe.io/examples/ui/ponyoPoster.jpg" crossorigin="anonymous"/>
+
+        <img id="img_3" src="https://cdn.aframe.io/examples/ui/karigurashiPoster.jpg" crossorigin="anonymous"/>
+
+        <a-mixin id="main" geometry="primitive: plane; width: 0.5783552; height: 0.8192"
+        material="color: white; shader: flat"
+        animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+        animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+       ></a-mixin>
+       
+       <a-mixin
+        id="poster" geometry="primitive: plane; width: 0.544768; height: 0.786432"
+        material="color: white; shader: flat"
+        material="shader: flat"
+        position="0 0 0.005"
+       ></a-mixin>
+
+       <a-mixin
+        id="movieImage"
+        geometry="primitive: plane; width: 1.5; height: 0.81"
+        material="src: #ponyo; shader: flat; transparent: true"
+        position="0 0.495 0.002"
+       ></a-mixin>
+    </a-assets>
+
+        <a-entity id="ui" position="0 1.6 -2.5">
+            <!-- Poster menu -->
+            <a-entity id="menu" highlight>
+              <a-entity id="1" position="-0.8 0 0" mixin="main" class="raycastable menu-button">
+                <a-entity material="src: #img_1" mixin="poster"></a-entity>
+              </a-entity>
+    
+              <a-entity id="2" position="0 0 0" mixin="main" class="raycastable menu-button">
+                <a-entity material="src: #img_2" mixin="poster"></a-entity>
+              </a-entity>
+    
+              <a-entity id="3" position="0.8 0 0" mixin="main" class="raycastable menu-button">
+                <a-entity material="src: #img_3" mixin="poster"></a-entity>
+              </a-entity>
+        </a-entity>
+
+        <a-entity id="infoPanel" position="0 0 0.5" info-panel visible="false"
+        
+          geometry="primitive: plane; width: 1.5; height: 1"
+          material="color: #333333; shader: flat; transparent: false" class="raycastable">
+          <a-entity id="Info_Title" position="-0.68 0.25 0"
+            text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum"></a-entity>
+          <a-entity id="Info_Description" position="-0.68 0.15 0"
+            text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+    
+    </a-scene>
+  </body>
+</html>
