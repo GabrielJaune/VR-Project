@@ -6,7 +6,7 @@
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
        <!-- I love supermedium -->
        <script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
-       <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@master/dist/aframe-particle-system-component.min.js"></script>
        <!-- Main Scripts -->
        <script src="./js/main.js"></script>
   </head>
@@ -15,7 +15,7 @@
     <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
         
         <!-- Locks Mouse & Touch -->
-        <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: false; mouseEnabled: false" renderer="sortObjects: true"> </a-entity>
+        <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: true; mouseEnabled: true" renderer="sortObjects: true"> </a-entity>
 
         <!-- VR Hand ? -->
         <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
@@ -24,6 +24,8 @@
         <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #000000; skyColor: #595959;"></a-entity>
         
      <a-assets>
+        <video id="CART_SECRET" loop="true" src="/resources/videos/cart.mp4"></video>
+
         <img id="img_1" src="https://cdn.aframe.io/examples/ui/kazetachinuPoster.jpg"/>
 
         <img id="img_2" src="https://cdn.aframe.io/examples/ui/ponyoPoster.jpg"/>
@@ -34,6 +36,9 @@
         material="color: white; shader: flat"
         animation__scale="property: scale; to: 1.5 1.5 1.5; dur: 200; startEvents: mouseenter"
         animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+
+        animation__position="property: rotation; to: 10 0 0; dur: 200; startEvents: mouseenter"
+        animation__position__reverse="property: rotation; to: 0 0 0 dur: 10; startEvents: mouseleave"
        />
        
        <a-mixin
@@ -63,6 +68,8 @@
               <a-entity id="3" position="0.8 0 0" mixin="main" class="raycastable menu-button">
                 <a-entity material="src: #img_3" mixin="poster"></a-entity>
               </a-entity>
+
+              <a-video src="#CART_SECRET" toggleclick position="2 0 -.5" visible="false" class="raycastable"></a-video>
         </a-entity>
 
         <a-entity id="infoPanel" position="0 0 0.5" info-panel visible="false"
@@ -73,13 +80,32 @@
             text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json;  color: white; value: Lorem ipsum"></a-entity>
           <a-entity id="Info_Description" position="-0.68 0.15 0" text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></a-entity>
           
-          <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 0"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"> </a-entity>
-          <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 0" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: CANCEL; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"> </a-entity>
+          <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"> </a-entity>
+          <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 .01" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: CANCEL; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"> </a-entity>
 
         </a-entity>
 
       </a-entity>
     </a-entity>
+
+    <!-- BEHIND YOU !! -->
+
+    <a-entity anchor="center" scale=".5 .5 .01" position="0 2.4 -2.05" rotation="0 0 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false">
+      <a-text value="Testing Place" width="7" anchor="center" align="center" class="raycastable" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100"  ></a-text>
+    </a-entity>
+
+    <a-entity test anchor="center" scale=".5 .5 .01" position="0 1.5 1.5" rotation="0 180 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" sound="src: ./resources/sounds/explosion.mp3; on: click; poolSize: 100" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
+      <a-text value="Behind you" anchor="center" align="center"  ></a-text>
+    </a-entity>
+
+    <a-entity anchor="center" scale=".5 .5 .01" position="1.5 1.5 0" rotation="0 -90 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
+      <a-text value="Wrong Side" anchor="center" align="center"  ></a-text>
+    </a-entity>
+
+    <a-entity anchor="center" scale=".5 .5 .01" position="-1.5 1.5 0" rotation="0 90 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
+      <a-text value="Wrong Side" anchor="center" align="center"  ></a-text>
+    </a-entity>
+
 
     </a-scene>
   </body>

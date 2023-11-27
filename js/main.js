@@ -19,6 +19,10 @@ const Infos = {
     }
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 var Buttons = {}
 var Selected = undefined
 
@@ -55,6 +59,7 @@ AFRAME.registerComponent("info-panel", {
         console.log("Enter Clicked")
         if(!Selected) return;
         console.log("Found " + Selected.id)
+        window.location.href = Selected.redirect
     },
 
     onInsideClick: function (evt) {
@@ -76,38 +81,70 @@ AFRAME.registerComponent("info-panel", {
 })
 
 AFRAME.registerComponent('highlight', {
-    init: function () {
-      var buttonEls = this.buttonEls = this.el.querySelectorAll('.menu-button');
-      this.onMouseEnter = this.onMouseEnter.bind(this);
-      this.onMouseLeave = this.onMouseLeave.bind(this);
-      this.reset = this.reset.bind(this);
-      for (var i = 0; i < buttonEls.length; ++i) {
-        buttonEls[i].addEventListener('mouseenter', this.onMouseEnter);
-        buttonEls[i].addEventListener('mouseleave', this.onMouseLeave);
-      }
-    },
-  
-    onMouseEnter: function (evt) {
-      var buttonEls = this.buttonEls;
-      evt.target.setAttribute('material', 'color', '#046de7');
-      for (var i = 0; i < buttonEls.length; ++i) {
-        if (evt.target === buttonEls[i]) { continue; }
-        buttonEls[i].setAttribute('material', 'color', 'white');
-      }
-    },
-  
-    onMouseLeave: function (evt) {
-      if (this.el.is('clicked')) { return; }
-      evt.target.setAttribute('material', 'color', 'white');
-    },
-  
-    reset: function () {
-      var buttonEls = this.buttonEls;
-      for (var i = 0; i < buttonEls.length; ++i) {
-        this.el.removeState('clicked');
-        buttonEls[i].play();
-        buttonEls[i].emit('mouseleave');
-      }
+  init: function () {
+    var buttonEls = this.buttonEls = this.el.querySelectorAll('.menu-button');
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.reset = this.reset.bind(this);
+    for (var i = 0; i < buttonEls.length; ++i) {
+      buttonEls[i].addEventListener('mouseenter', this.onMouseEnter);
+      buttonEls[i].addEventListener('mouseleave', this.onMouseLeave);
     }
-  });
-  
+  },
+
+  onMouseEnter: function (evt) {
+    var buttonEls = this.buttonEls;
+    evt.target.setAttribute('material', 'color', '#046de7');
+    for (var i = 0; i < buttonEls.length; ++i) {
+      if (evt.target === buttonEls[i]) { continue; }
+      buttonEls[i].setAttribute('material', 'color', 'white');
+    }
+  },
+
+  onMouseLeave: function (evt) {
+    if (this.el.is('clicked')) { return; }
+    evt.target.setAttribute('material', 'color', 'white');
+  },
+
+  reset: function () {
+    var buttonEls = this.buttonEls;
+    for (var i = 0; i < buttonEls.length; ++i) {
+      this.el.removeState('clicked');
+      buttonEls[i].play();
+      buttonEls[i].emit('mouseleave');
+    }
+  }
+});
+
+
+AFRAME.registerComponent('test', {
+  init: function () {
+    this.onClick = this.onClick.bind(this)
+    this.el.addEventListener("click", this.onClick)
+  },
+
+  onClick: async function() {
+    this.el.setAttribute("particle-system", "enabled", "false")
+    this.el.setAttribute("particle-system", "enabled", "true")
+    // await sleep(1000)
+    // this.el.setAttribute("particle-system", "enabled", "false")
+  }
+});
+
+AFRAME.registerComponent('toggleclick', {
+  init: function () {
+    this.onClick = this.onClick.bind(this)
+    this.el.addEventListener("click", this.onClick)
+  },
+
+  onClick: async function() {
+    let ok = document.querySelector(this.el.getAttribute("src"))
+    this.el.object3D.visible = !this.el.object3D.visible
+    if (this.el.object3D.visible) {
+      ok.play()
+    } else {
+      ok.pause()
+      ok.currentTime = 0
+    }
+  }
+});
