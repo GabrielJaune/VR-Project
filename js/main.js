@@ -5,17 +5,17 @@ const Infos = {
     1: {
         title: "Bac Pro MELEC",
         info: `Le Baccalauréat Professionnel MELEC intervient dans les secteurs du batiment (residentiel, tertiaire, industriel), de l'industrie, de l'agriculture, des services et des infrastructures.\nConsidérant les enjeux de la transition énergétique et l'évolution des techniques et des technologies,\nce métier est en pleine mutation.`,
-        redirect: "/main.html"
+        redirect: "main.html"
     },
     2: {
         title: "Bac Pro SN (Systeme Numerique)",
         info: "Le baccalaureat professionnel SN a pour ambition de former les futurs professionnels de l’informatique.",
-        redirect: "/main.html"
+        redirect: "main.html"
     },
     3: {
         title: "BTS Electrotechnique",
         info: "Le BTS electrotechnique se prepare en deux ans après un bac STI2D de preference. C'est un diplôme de niveau bac +2 qui se prepare en formation initiale mais aussi en alternance.",
-        redirect: "/main.html"
+        redirect: "main.html"
     }
 }
 
@@ -28,7 +28,7 @@ var Selected = undefined
 
 var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
 
-console.log("LANG IS " + userLang)
+console.log("LANG => " + userLang)
 
 AFRAME.registerComponent("info-panel", {
     init: function() {
