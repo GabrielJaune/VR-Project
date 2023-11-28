@@ -3,18 +3,18 @@
 
 const Infos = {
     1: {
-        title: "Test 1",
-        info: "This Is An Info Text",
+        title: "Bac Pro MELEC",
+        info: `Le Baccalauréat Professionnel MELEC intervient dans les secteurs du batiment (residentiel, tertiaire, industriel), de l'industrie, de l'agriculture, des services et des infrastructures.\nConsidérant les enjeux de la transition énergétique et l'évolution des techniques et des technologies,\nce métier est en pleine mutation.`,
         redirect: "/main.html"
     },
     2: {
-        title: "Test 2",
-        info: "This Is Another Info Text",
+        title: "Bac Pro SN (Systeme Numerique)",
+        info: "Le baccalaureat professionnel SN a pour ambition de former les futurs professionnels de l’informatique.",
         redirect: "/main.html"
     },
     3: {
-        title: "Test 3",
-        info: "This Is The Last Info Text",
+        title: "BTS Electrotechnique",
+        info: "Le BTS electrotechnique se prepare en deux ans après un bac STI2D de preference. C'est un diplôme de niveau bac +2 qui se prepare en formation initiale mais aussi en alternance.",
         redirect: "/main.html"
     }
 }
@@ -25,6 +25,10 @@ function sleep(ms) {
 
 var Buttons = {}
 var Selected = undefined
+
+var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
+
+console.log("LANG IS " + userLang)
 
 AFRAME.registerComponent("info-panel", {
     init: function() {
@@ -146,5 +150,22 @@ AFRAME.registerComponent('toggleclick', {
       ok.pause()
       ok.currentTime = 0
     }
+  }
+});
+
+
+AFRAME.registerComponent('moai', {
+  init: function () {
+    this.onClick = this.onClick.bind(this)
+    this.moai = document.querySelector("#moai_entity")
+
+    this.el.addEventListener("click", this.onClick)
+  },
+
+  onClick: async function() {
+    console.log("clickd")
+    this.moai.object3D.visible = true
+    await sleep(1000)
+    this.moai.object3D.visible = false
   }
 });

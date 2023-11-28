@@ -12,8 +12,10 @@
   </head>
 
   <body>
-    <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
+    <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable" fog="far: 150">
         
+      <a-entity position="0 2.25 -15" particle-system="preset: rain"></a-entity>
+
         <!-- Locks Mouse & Touch -->
         <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: true; mouseEnabled: true" renderer="sortObjects: true"> </a-entity>
 
@@ -21,16 +23,21 @@
         <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
         <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
   
-        <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #000000; skyColor: #595959;"></a-entity>
+        <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #ffffff; skyColor: #595959;"></a-entity>
         
      <a-assets>
-        <video id="CART_SECRET" loop="true" preload src="./resources/videos/cart.mp4"></video>
+      <video id="CART_SECRET" loop="true" preload src="./resources/videos/cart.mp4"></video>
 
-        <img id="img_1" src="https://cdn.aframe.io/examples/ui/kazetachinuPoster.jpg"/>
+      <a-asset-item id="background" src="/resources/images/fond.obj"></a-asset-item>
+      <a-asset-item id="background-texture" src="/resources/images/fond.mtl"></a-asset-item>
+      
+        <img id="moai" src="./resources/images/moai.png"/>
 
-        <img id="img_2" src="https://cdn.aframe.io/examples/ui/ponyoPoster.jpg"/>
+        <img id="img_1" src="/resources/images/MELEC.jpg"/>
 
-        <img id="img_3" src="https://cdn.aframe.io/examples/ui/karigurashiPoster.jpg"/>
+        <img id="img_2" src="/resources/images/SN.jpg"/>
+
+        <img id="img_3" src="/resources/images/BTS.jpg"/>
 
         <a-mixin id="main" geometry="primitive: plane; width: 0.5783552; height: 0.8192"
         material="color: white; shader: flat"
@@ -88,24 +95,32 @@
       </a-entity>
     </a-entity>
 
-    <!-- BEHIND YOU !! -->
-
-    <a-entity anchor="center" scale=".5 .5 .01" position="0 2.4 -2.05" rotation="0 0 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false">
-      <a-text value="Testing Place" width="7" anchor="center" align="center" class="raycastable" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100"  ></a-text>
+    <!-- Markiplier -->
+    
+    <a-entity test anchor="center" scale=".5 .5 .01" position="0 2.4 -2.05" rotation="0 0 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
+      <a-text value="LYCEE LOUIS DE CORMONTAIGNE" width="7" anchor="center" align="center" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100" class="raycastable" ></a-text>
     </a-entity>
 
-    <a-entity test anchor="center" scale=".5 .5 .01" position="0 1.5 1.5" rotation="0 180 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" sound="src: ./resources/sounds/explosion.mp3; on: click; poolSize: 100" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
-      <a-text value="Behind you" anchor="center" align="center"  ></a-text>
+    <a-entity moai anchor="center" scale=".5 .5 .01" position="0 1.5 1.5" rotation="0 180 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" sound="src: ./resources/sounds/explosion.mp3; on: click; poolSize: 100" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
+      <a-text value="Behind you" anchor="center" align="center" class="Behind_Bad" ></a-text>
+    </a-entity>
+
+    <a-entity id="moai_entity" scale="1.5 1 1" position="0 1.5 .5" rotation="0 180 0" visible="false">
+      <a-entity material="src: #moai; alphaTest: 1" mixin="poster"></a-entity>
     </a-entity>
 
     <a-entity anchor="center" scale=".5 .5 .01" position="1.5 1.5 0" rotation="0 -90 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
-      <a-text value="Wrong Side" anchor="center" align="center"  ></a-text>
+      <a-text value="Wrong Side" anchor="center" align="center" class="Side_Bad" ></a-text>
     </a-entity>
 
     <a-entity anchor="center" scale=".5 .5 .01" position="-1.5 1.5 0" rotation="0 90 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
-      <a-text value="Wrong Side" anchor="center" align="center"  ></a-text>
+      <a-text value="Wrong Side" anchor="center" align="center" class="Side_Bad" ></a-text>
     </a-entity>
 
+    <!-- Background -->
+    <a-entity anchor="center" position="-3 14 -53" rotation="90 0 0" scale="100 20 100" color="#333333">
+      <a-entity obj-model="obj: #background" modify-materials position="0 0 0"></a-entity>
+    </a-entity>
 
     </a-scene>
   </body>

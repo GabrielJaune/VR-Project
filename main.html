@@ -14,13 +14,12 @@
   <body>
     <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
 
-                <!-- VR Hand ? -->
-                <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-                <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
-          
-                <a-entity environment="preset: egypt; ground: canyon; grid: crosses;"></a-entity>
-
-                
+      <a-sky src="/resources/sky/IMG_20231124_161105_00_007_PureShot.jpg" rotation="0 -130 0"></a-sky>
+      <!-- VR Hand ? -->
+      <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+      
+      <a-text font="kelsonsans" value="Ateliers des MELEC" width="6" position="0 0 -3" rotation="0 0 0"></a-text>
     </a-scene>
   </body>
 
