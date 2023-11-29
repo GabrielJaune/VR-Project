@@ -1,6 +1,6 @@
 <html>
   <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <!-- Modules Requiring -->
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
@@ -23,41 +23,37 @@
         <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
         <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
   
-        <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #ffffff; skyColor: #595959;"></a-entity>
+        <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #4d4d4d; skyColor: #acebff;"></a-entity>
         
      <a-assets>
       <video id="CART_SECRET" loop="true" preload src="./resources/videos/cart.mp4"></video>
 
       <a-asset-item id="background" src="./resources/images/fond.obj"></a-asset-item>
       
-        <img id="moai" src="./resources/images/moai.png"/>
+      <img id="moai" src="./resources/images/moai.png"/>
 
-        <img id="img_1" src="./resources/images/MELEC.jpg"/>
+      <img id="img_1" src="./resources/images/MELEC.jpg"/>
 
-        <img id="img_2" src="./resources/images/SN.jpg"/>
+      <img id="img_2" src="./resources/images/SN.jpg"/>
 
-        <img id="img_3" src="./resources/images/BTS.jpg"/>
+      <img id="img_3" src="./resources/images/BTS.jpg"/>
 
-        <a-mixin id="main" geometry="primitive: plane; width: 0.5783552; height: 0.8192"
+      <a-mixin id="main" geometry="primitive: plane; width: 0.5783552; height: 0.8192"
         material="color: white; shader: flat"
         animation__scale="property: scale; to: 1.5 1.5 1.5; dur: 200; startEvents: mouseenter"
         animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
 
         animation__position="property: rotation; to: 10 0 0; dur: 200; startEvents: mouseenter"
         animation__position__reverse="property: rotation; to: 0 0 0 dur: 10; startEvents: mouseleave"
-       />
+      />
 
-       <a-mixin
-        id="poster" geometry="primitive: plane; width: 0.544768; height: 0.786432"
-        material="color: white; shader: flat"
-        material="shader: flat"
-        position="0 0 0.005" />
+       <a-mixin id="poster" position="0 0 0.005"
+       geometry="primitive: plane; width: 0.544768; height: 0.786432"
+       material="color: white; shader: flat" />
 
-       <a-mixin
-        id="movieImage"
-        geometry="primitive: plane; width: 1.5; height: 0.81"
-        material="src: #ponyo; shader: flat; transparent: true"
-        position="0 0.495 0.002" />
+       <a-mixin id="movieImage" position="0 0.495 0.002"
+       geometry="primitive: plane; width: 1.5; height: 0.81"
+       material="src: #ponyo; shader: flat; transparent: true" />
     </a-assets>
 
         <a-entity id="ui" position="0 1.6 -2.5">
@@ -96,8 +92,8 @@
 
     <!-- Markiplier -->
     
-    <a-entity test anchor="center" scale=".5 .5 .01" position="0 2.4 -2.05" rotation="0 0 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
-      <a-text value="LYCEE LOUIS DE CORMONTAIGNE" width="7" anchor="center" align="center" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100" class="raycastable" ></a-text>
+    <a-entity test anchor="center" scale=".5 .5 .01" position="0 2.4 -2.05" rotation="0 0 0" geometry="primitive: plane; width: 4.5; height: .5" material="color: #333333; shader: shadow; transparent: false" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100" class="raycastable">
+      <a-text value="LYCEE LOUIS DE CORMONTAIGNE" width="7" height="1" anchor="center" align="center" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" ></a-text>
     </a-entity>
 
     <a-entity moai anchor="center" scale=".5 .5 .01" position="0 1.5 1.5" rotation="0 180 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" sound="src: ./resources/sounds/explosion.mp3; on: click; poolSize: 100" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">

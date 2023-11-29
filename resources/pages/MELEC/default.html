@@ -1,0 +1,8 @@
+<a-sky src="./resources/sky/IMG_20231124_161105_00_007_PureShot (2).png" rotation="0 -130 0"></a-sky>
+
+<a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+<a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+
+<a-entity scene-changer scene-name="test" anchor="center" scale=".5 .5 .01" position="11 0 9" rotation="0 -132 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
+    <a-text value="This Way" width="30" anchor="center" align="center" class="Behind_Bad" ></a-text>
+</a-entity>
