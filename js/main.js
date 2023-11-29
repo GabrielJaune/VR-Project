@@ -27,6 +27,10 @@ let PathName = location.pathname.split("/")
 PathName = PathName[PathName.length - 1].split(".")[0]
 
 function SwitchArea(Name) {
+  console.log($("#transition")[0].radius)
+  $("#transition").animate({
+    radius: "5"
+  }, 1000)
   console.log("Changing To Area => " + Name)
   $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".html"
 
