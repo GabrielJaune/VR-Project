@@ -34,7 +34,7 @@ async function UpdateNavigator() {
 
   fields.each(function() {
 
-    angle = (this.getAttribute("cam-angle") || 0) * (180 / Math.PI)
+    angle = (this.getAttribute("cam-angle") || 0) / (180 / Math.PI)
     console.log(angle)
     let x = ( radius ) * Math.cos(angle);
     let y = ( radius ) * Math.sin(angle);

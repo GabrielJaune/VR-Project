@@ -1,13 +1,9 @@
 <a-sky src="./resources/sky/SN/SN-Pano-1.jpg" rotation="0 60 0"></a-sky>
 
-<a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-<a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
-
-
 <a-plane position="-1.5 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
 
 <a-plane position="7 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
 
-<a-entity scene-changer scene-name="second" cam-angle="-90" anchor="center" scale=".5 .5 .01" position="-4 1 20" rotation="0 180 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable field">
+<a-entity scene-changer scene-name="second" cam-angle="90" anchor="center" scale=".5 .5 .01" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable field">
     <a-text value="/\" width="40" anchor="center" align="center" class="Behind_Bad" ></a-text>
 </a-entity>

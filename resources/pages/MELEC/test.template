@@ -1,8 +1,0 @@
-<a-sky src="./resources/sky/IMG_20231124_161235_00_009_PureShot.jpg" rotation="0 -130 0"></a-sky>
-
-<a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-<a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
-
-<a-entity scene-changer anchor="center" scale=".5 .5 .01" position="-21 0 12" rotation="0 118 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
-    <a-text value="Go Back" width="40" anchor="center" align="center" class="Behind_Bad" ></a-text>
-</a-entity>
