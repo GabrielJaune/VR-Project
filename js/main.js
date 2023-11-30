@@ -32,7 +32,7 @@ function SwitchArea(Name) {
   //   radius: "5"
   // }, 1000)
   console.log("Changing To Area => " + Name)
-  $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".html"
+  $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".template"
 
 }
 
