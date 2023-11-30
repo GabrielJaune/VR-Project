@@ -24,7 +24,7 @@ function sleep(ms) {
 }
 
 let PathName = location.pathname.split("/")
-PathName = PathName[PathName.length - 1].split(".")[0]
+PathName = PathName[PathName.length - 1].split(".")[0].toUpperCase()
 
 function SwitchArea(Name) {
   // console.log($("#transition")[0].radius)
