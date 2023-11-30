@@ -7,6 +7,10 @@
 <a-ring id="transition" position="0 -2 0" wireframe="true" opacity="0.25" id="my_gun" color="red" radius-inner="1" radius-outer="2.5" rotation="-90 0 0"> </a-ring>
 <!-- </a-entity> -->
 
+<a-plane position="-1.5 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
+
+<a-plane position="7 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
+
 <a-entity scene-changer scene-name="second" anchor="center" scale=".5 .5 .01" position="-4 1 20" rotation="0 180 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
     <a-text value="This Way" width="40" anchor="center" align="center" class="Behind_Bad" ></a-text>
 </a-entity>
