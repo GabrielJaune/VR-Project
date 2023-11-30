@@ -1,6 +1,5 @@
 <html>
   <head>
-    <meta http-equiv="cache-control">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <!-- Modules Requiring -->
@@ -16,12 +15,14 @@
   <body>
     <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
 
+      <script id="NA" type="text/html"></script>
+
       <a-entity id="cur_camera" camera="active: true" position="0 0 0" look-controls>
         <a-sphere id="transition" position="0 0 -5" id="my_gun" color="#000" radius="0">
         </a-sphere>
         </a-entity>
 
-      <a-entity id="MainScene" scene-init template="src: ./resources/pages/main/default.html;" />
+      <a-entity id="MainScene" scene-init template="src: #NA" />
       
     </a-scene>
   </body>
