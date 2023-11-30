@@ -1,6 +1,16 @@
 // NOTE:
 // init = start function
 
+var balls = "ok"
+var Buttons = {}
+this.Langs = {}
+var Langs = this.Langs
+var Selected = undefined
+
+var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
+
+console.log("LANG => " + userLang)
+
 const Infos = {
     1: {
         title: "Bac Pro MELEC",
@@ -23,6 +33,15 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function LoadLang(Language) {
+  // console.log("Loading " + Language + ".json")
+  // $.ajax("./languages/" + Language + ".json").done(function(data){
+  //   Langs[Language] = i18n.create(data)
+  // }).fail(function() {
+  //   alert("Failed To Load " + Language + ".json")
+  // })
+}
+
 async function UpdateNavigator() {
   await sleep(500)
   console.log("navigation update")
@@ -42,35 +61,37 @@ async function UpdateNavigator() {
     this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": y})
     this.object3D.lookAt(container[0].getAttribute("position"))
     step += 1
-      // var x = Math.round(radius * Math.cos(angle) - this.getAttribute("geometry").width/2);
-      // var z = Math.round(radius * Math.sin(angle) - this.getAttribute("geometry").height/2);
-      // console.log(x, z)
-
-      // this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": z})
-      // this.object3D.lookAt(container[0].getAttribute("position"))
-      // angle += step;
   });
 }
 
 let PathName = location.pathname.split("/")
 PathName = PathName[PathName.length - 1].split(".")[0].toUpperCase()
 
-function SwitchArea(Name) {
-  // console.log($("#transition")[0].radius)
-  // $("#transition").animate({
-  //   radius: "5"
-  // }, 1000)
+async function SwitchArea(Name) {
+  let pos = {x: 1, y: 1, z: 1}
+
+  let ok = document.querySelectorAll(".field")
+  ok.forEach(function(val) {
+    $(val).remove()
+  })
   console.log("Changing To Area => " + Name)
+  var Sky = $("#sky")
+
+  if(Sky[0]) {
+    console.log("Sky")
+    Sky[0].emit("start_trans")
+    pos = Sky[0].getAttribute("animation__1").to
+    console.log(pos)
+    await sleep(500)
+  }
+
   $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".template"
   UpdateNavigator()
+
+  if(!$("#sky")[0]) return;
+  await sleep(100)
+  $("#sky")[0].emit("end_trans")
 }
-
-var Buttons = {}
-var Selected = undefined
-
-var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
-
-console.log("LANG => " + userLang)
 
 AFRAME.registerComponent("info-panel", {
     init: function() {
@@ -234,3 +255,5 @@ AFRAME.registerComponent('scene-init', {
     SwitchArea(this.SceneName)
   }
 })
+
+LoadLang(userLang)
