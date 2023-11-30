@@ -3,10 +3,6 @@
 <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
 <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
 
-<!-- <a-entity id="cur_camera" camera="active: true" position="0 0 0" look-controls> -->
-<a-ring id="transition" position="0 -2 0" wireframe="true" opacity="0.25" id="my_gun" color="red" radius-inner="1" radius-outer="2.5" rotation="-90 0 0"> </a-ring>
-<!-- </a-entity> -->
-
-<a-entity scene-changer anchor="center" scale=".5 .5 .01" position="43 1 -19" rotation="0 -63 0" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
-    <a-text value="This Way" width="60" anchor="center" align="center" class="Behind_Bad" ></a-text>
+<a-entity scene-changer cam-angle="50" anchor="center" scale=".5 .5 .01" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable field">
+    <a-text value="/\" width="40" anchor="center" align="center" class="Behind_Bad" ></a-text>
 </a-entity>

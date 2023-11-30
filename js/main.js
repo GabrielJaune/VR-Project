@@ -23,6 +23,35 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+async function UpdateNavigator() {
+  await sleep(500)
+  console.log("navigation update")
+  var fields = $('.field'), container = $('#navigation'),
+      width = container[0].getAttribute("material").width, height = container[0].getAttribute("material").height,
+      angle = 0, step = 0;
+
+      var radius = container[0].getAttribute("radius-outer")
+
+  fields.each(function() {
+
+    angle = (this.getAttribute("cam-angle") || 0) * (180 / Math.PI)
+    console.log(angle)
+    let x = ( radius ) * Math.cos(angle);
+    let y = ( radius ) * Math.sin(angle);
+    console.log(x, y)
+    this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": y})
+    this.object3D.lookAt(container[0].getAttribute("position"))
+    step += 1
+      // var x = Math.round(radius * Math.cos(angle) - this.getAttribute("geometry").width/2);
+      // var z = Math.round(radius * Math.sin(angle) - this.getAttribute("geometry").height/2);
+      // console.log(x, z)
+
+      // this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": z})
+      // this.object3D.lookAt(container[0].getAttribute("position"))
+      // angle += step;
+  });
+}
+
 let PathName = location.pathname.split("/")
 PathName = PathName[PathName.length - 1].split(".")[0].toUpperCase()
 
@@ -33,7 +62,7 @@ function SwitchArea(Name) {
   // }, 1000)
   console.log("Changing To Area => " + Name)
   $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".template"
-
+  UpdateNavigator()
 }
 
 var Buttons = {}
