@@ -18,7 +18,7 @@ const Infos = {
         redirect: "melec.html"
     },
     2: {
-        title: "Bac Pro SN (Systeme Numerique)",
+        title: "Bac Pro CIEL",
         info: "Le baccalaureat professionnel SN a pour ambition de former les futurs professionnels de l’informatique.",
         redirect: "sn.html"
     },

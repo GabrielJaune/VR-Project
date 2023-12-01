@@ -16,9 +16,11 @@
     <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
 
       <!-- VR -->
-      <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-      <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
-
+      <a-entity id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+      <a-entity id="leftHand" hand-tracking-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightHand" hand-tracking-controls="hand: right" raycaster="objects: .raycastable"></a-entity>
+      
       <!-- Navigation -->
       <a-ring id="navigation" position="0 -2 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2.5" rotation="-90 0 0"> </a-ring>
       <script id="NA" type="text/html"></script>
