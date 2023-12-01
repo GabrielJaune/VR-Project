@@ -12,21 +12,26 @@ var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")
 console.log("LANG => " + userLang)
 
 const Infos = {
-    1: {
-        title: "Bac Pro MELEC",
-        info: `Le Baccalauréat Professionnel MELEC intervient dans les secteurs du batiment (residentiel, tertiaire, industriel), de l'industrie, de l'agriculture, des services et des infrastructures.\nConsidérant les enjeux de la transition énergétique et l'évolution des techniques et des technologies,\nce métier est en pleine mutation.`,
-        redirect: "melec.html"
-    },
-    2: {
-        title: "Bac Pro CIEL",
-        info: "Le baccalaureat professionnel SN a pour ambition de former les futurs professionnels de l’informatique.",
-        redirect: "sn.html"
-    },
-    3: {
-        title: "BTS Electrotechnique",
-        info: "Le BTS electrotechnique se prepare en deux ans après un bac STI2D de preference. C'est un diplôme de niveau bac +2 qui se prepare en formation initiale mais aussi en alternance.",
-        redirect: "index.html"
-    }
+  1: {
+    title: "Bac Pro MELEC",
+    info: `Le Baccalauréat Professionnel MELEC intervient dans les secteurs du batiment (residentiel, tertiaire, industriel), de l'industrie, de l'agriculture, des services et des infrastructures.\nConsidérant les enjeux de la transition énergétique et l'évolution des techniques et des technologies,\nce métier est en pleine mutation.`,
+    redirect: "melec.html"
+  },
+  2: {
+    title: "Bac Pro CIEL",
+    info: "Le baccalaureat professionnel SN a pour ambition de former les futurs professionnels de l’informatique.",
+    redirect: "sn.html"
+  },
+  3: {
+    title: "BTS Electrotechnique",
+    info: "Le BTS electrotechnique se prepare en deux ans après un bac STI2D de preference. C'est un diplôme de niveau bac +2 qui se prepare en formation initiale mais aussi en alternance.",
+    redirect: "index.html"
+  },
+  4: {
+    title: "CPGE",
+    info: "Description CPGE.",
+    redirect: "index.html"
+  }
 }
 
 function sleep(ms) {

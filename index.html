@@ -37,15 +37,17 @@
       
       <img id="moai" src="./resources/images/moai.png"/>
 
-      <img id="img_1" src="./resources/images/MELEC.jpg"/>
+      <img id="img_1" src="./resources/images/MELEC.png"/>
 
-      <img id="img_2" src="./resources/images/SN.jpg"/>
+      <img id="img_2" src="./resources/images/SN.png"/>
 
-      <img id="img_3" src="./resources/images/BTS.jpg"/>
+      <img id="img_3" src="./resources/images/BTS.png"/>
+
+      <img id="img_4" src="./resources/images/CPGE.png"/>
 
       <a-mixin id="main" geometry="primitive: plane; width: 0.5783552; height: 0.8192"
-        material="color: white; shader: flat"
-        animation__scale="property: scale; to: 1.5 1.5 1.5; dur: 200; startEvents: mouseenter"
+        material="color: white; shader: shadow"
+        animation__scale="property: scale; to: 1.3 1.3 1.3; dur: 200; startEvents: mouseenter"
         animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
 
         animation__position="property: rotation; to: 10 0 0; dur: 200; startEvents: mouseenter"
@@ -53,7 +55,7 @@
       />
 
        <a-mixin id="poster" position="0 0 0.005"
-       geometry="primitive: plane; width: 0.544768; height: 0.786432"
+       geometry="primitive: plane; width: 0.7; height: 1.4"
        material="color: white; shader: flat" />
 
        <a-mixin id="movieImage" position="0 0.495 0.002"
@@ -64,22 +66,26 @@
         <a-entity id="ui" position="0 1.6 -2.5">
             <!-- Poster menu -->
             <a-entity id="menu" highlight>
-              <a-entity id="1" position="-0.8 0 0" mixin="main" class="raycastable menu-button">
-                <a-entity material="src: #img_1" mixin="poster"></a-entity>
+              <a-entity id="1" position="-1.2 0 0" mixin="main" class="raycastable menu-button">
+                <a-entity material="src: #img_1; alphaTest: 1" mixin="poster"></a-entity>
               </a-entity>
     
-              <a-entity id="2" position="0 0 0" mixin="main" class="raycastable menu-button">
-                <a-entity material="src: #img_2" mixin="poster"></a-entity>
+              <a-entity id="2" position="-0.4 0 0" mixin="main" class="raycastable menu-button">
+                <a-entity material="src: #img_2; alphaTest: 1" mixin="poster"></a-entity>
               </a-entity>
     
-              <a-entity id="3" position="0.8 0 0" mixin="main" class="raycastable menu-button">
-                <a-entity material="src: #img_3" mixin="poster"></a-entity>
+              <a-entity id="3" position="0.4 0 0" mixin="main" class="raycastable menu-button">
+                <a-entity material="src: #img_3; alphaTest: 1" mixin="poster"></a-entity>
               </a-entity>
 
-              <a-video src="#CART_SECRET" toggleclick position="2 0 -.5" visible="false" class="raycastable"></a-video>
+              <a-entity id="4" position="1.2 0 0" mixin="main" class="raycastable menu-button">
+                <a-entity material="src: #img_4; alphaTest: 1" mixin="poster"></a-entity>
+              </a-entity>
+
+              <a-video src="#CART_SECRET" toggleclick position="2.8 0 -.5" visible="false" class="raycastable"></a-video>
         </a-entity>
 
-        <a-entity id="infoPanel" position="0 0 0.5" info-panel visible="false"
+        <a-entity id="infoPanel" position="0 0 1" info-panel visible="false"
           geometry="primitive: plane; width: 1.5; height: 1"
 
           material="color: #333333; shader: flat; transparent: false" class="raycastable">
