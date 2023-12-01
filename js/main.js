@@ -88,7 +88,7 @@ async function SwitchArea(Name) {
     await sleep(500)
   }
 
-  $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".template"
+  $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".html"
   UpdateNavigator()
   await sleep(100)
   $("#cur_camera")[0].emit("end_trans")
