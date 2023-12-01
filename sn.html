@@ -15,16 +15,22 @@
   <body>
     <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
 
+      <a-assets>
+        <a-asset-item id="frise" src="./resources/objects/frises/Cormont-CIEL.obj"></a-asset-item>
+      </a-assets>
+
       <!-- VR -->
       <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
       <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
 
       <!-- Navigation -->
-      <a-ring id="navigation" position="0 -2 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2.5" rotation="-90 0 0"> </a-ring>
+      <a-entity obj-model="obj: #frise" position="-4.53 -2.3 2.5" scale="10 1 10" modify-materials></a-entity>
+      <a-ring id="navigation" position="0 -2 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2" rotation="-90 0 0" visible="false"> </a-ring>
+      
       <script id="NA" type="text/html"></script>
-      <a-entity id="cur_camera" camera="active: true" position="0 0 0" look-controls>
-        <a-sphere id="transition" position="0 0 -5" id="my_gun" color="#000" radius="0" />
-      </a-entity>
+      <a-entity id="cur_camera" camera="active: true" position="0 0 0" look-controls 
+      animation__1= "property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans"
+      animation__2= "property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans">> </a-entity>
       <a-entity id="MainScene" scene-init template="src: #NA" />
       
     </a-scene>

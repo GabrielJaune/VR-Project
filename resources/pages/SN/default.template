@@ -1,11 +1,6 @@
-<a-sky id="sky" src="./resources/sky/SN/SN-Pano-1.jpg" rotation="0 60 0"
- animation__1= "property: geometry.thetaLength; to: 600; dur: 500; easing: linear; startEvents: start_trans"
- animation__2= "property: geometry.thetaLength; from: 500; to: 180; dur: 500; easing: linear; startEvents: end_trans">
-</a-sky>
+<a-sky id="sky" src="./resources/sky/SN/SN-Pano-1.jpg" rotation="0 60 0"> </a-sky>
 
 <a-plane position="-1.5 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
 <a-plane position="7 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
 
-<a-entity scene-changer scene-name="second" opacity="0" cam-angle="90" anchor="center" scale=".5 .5 .01" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable field">
-    <a-text value="/\" opacity="0.7" width="40" anchor="center" align="center"></a-text>
-</a-entity>
+<a-entity scene-changer scene-name="second" cam-angle="90" scale="10 5 15" obj-model="obj: ./resources/objects/frises/Arrow.obj" modify-materials class="raycastable field"></a-entity>

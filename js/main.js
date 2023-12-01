@@ -43,7 +43,7 @@ function LoadLang(Language) {
 }
 
 async function UpdateNavigator() {
-  await sleep(500)
+  await sleep(200)
   console.log("navigation update")
   var fields = $('.field'), container = $('#navigation'),
       width = container[0].getAttribute("material").width, height = container[0].getAttribute("material").height,
@@ -79,18 +79,14 @@ async function SwitchArea(Name) {
 
   if(Sky[0]) {
     console.log("Sky")
-    Sky[0].emit("start_trans")
-    pos = Sky[0].getAttribute("animation__1").to
-    console.log(pos)
+    $("#cur_camera")[0].emit("start_trans")
     await sleep(500)
   }
 
   $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".template"
   UpdateNavigator()
-
-  if(!$("#sky")[0]) return;
   await sleep(100)
-  $("#sky")[0].emit("end_trans")
+  $("#cur_camera")[0].emit("end_trans")
 }
 
 AFRAME.registerComponent("info-panel", {
