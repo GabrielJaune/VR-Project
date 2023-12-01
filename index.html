@@ -20,9 +20,11 @@
         <!-- Locks Mouse & Touch -->
         <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: true; mouseEnabled: true" renderer="sortObjects: true"> </a-entity>
 
-        <!-- VR Hand ? -->
-        <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-        <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+      <!-- VR -->
+      <a-entity id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+      <a-entity id="leftHand" hand-tracking-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightHand" hand-tracking-controls="hand: right" raycaster="objects: .raycastable"></a-entity>
   
         <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #4d4d4d; skyColor: #acebff;"></a-entity>
         

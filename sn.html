@@ -20,8 +20,10 @@
       </a-assets>
 
       <!-- VR -->
-      <a-entity id="leftHand"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-      <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+      <a-entity id="leftController"  laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+      <a-entity id="leftHand" hand-tracking-controls="hand: left"></a-entity>
+      <a-entity id="rightHand" hand-tracking-controls="hand: right"></a-entity>
 
       <!-- Navigation -->
       <a-entity obj-model="obj: #frise" position="-4.53 -2.3 2.5" scale="10 1 10" modify-materials></a-entity>
