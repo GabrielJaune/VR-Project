@@ -48,23 +48,28 @@ function LoadLang(Language) {
 }
 
 async function UpdateNavigator() {
-  await sleep(200)
   console.log("navigation update")
-  var fields = $('.field'), container = $('#navigation'),
-      width = container[0].getAttribute("material").width, height = container[0].getAttribute("material").height,
-      angle = 0, step = 0;
+  
+  var fields = $('.field'), container = $('#navigation')
 
-      var radius = container[0].getAttribute("radius-outer")
+  do {
+    fields = $('.field')
+    container = $('#navigation')    
+    await sleep(100)
+  } while (!fields[0] || !container[0])
+
+  // var material = container[0].getAttribute("material")
+  // var width = material.width, height = material.height
+  var angle = 0, step = 0, radius = container[0].getAttribute("radius-outer")
 
   fields.each(function() {
-
     angle = (this.getAttribute("cam-angle") || 0) / (180 / Math.PI)
-    console.log(angle)
-    let x = ( radius ) * Math.cos(angle);
-    let y = ( radius ) * Math.sin(angle);
-    console.log(x, y)
-    this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": y})
+    let x = ( radius ) * Math.cos(angle), z = ( radius ) * Math.sin(angle);
+
+    this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": z})
+
     this.object3D.lookAt(container[0].getAttribute("position"))
+    this.setAttribute("visible", "true")
     step += 1
   });
 }
@@ -82,15 +87,12 @@ async function SwitchArea(Name) {
   console.log("Changing To Area => " + Name)
   var Sky = $("#sky")
 
-  if(Sky[0]) {
-    console.log("Sky")
-    $("#cur_camera")[0].emit("start_trans")
-    await sleep(500)
-  }
+  $("#cur_camera")[0].emit("start_trans")
+  await sleep(500)
 
   $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".html"
-  UpdateNavigator()
   await sleep(100)
+  await UpdateNavigator()
   $("#cur_camera")[0].emit("end_trans")
 }
 
