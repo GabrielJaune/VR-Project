@@ -5,4 +5,6 @@
 
 <a-entity scene-changer scene-name="second" cam-angle="90" scale="10 5 15" obj-model="obj: ./resources/objects/frises/Arrow.obj" modify-materials class="raycastable field" visible="false"></a-entity>
 
-<a-entity infospot="This Is A Test Info" position="-11 0 10" rotation="90 0 0" scale="5 5 5" obj-model="obj: ./resources/objects/info.obj" modify-materials class="raycastable"></a-entity>
+<a-entity infospot="This Is A Test Info" position="-11 0 10" rotation="90 0 0" scale="5 5 5" obj-model="obj: ./resources/objects/info.obj" modify-materials class="raycastable"
+animation__1= "property: rotation; to: 90 0 200 ; dur: 500; easing: linear; startEvents: start_trans"
+animation__2= "property: rotation; to: 90 0 000 ; dur: 500; easing: linear; startEvents: end_trans"></a-entity>

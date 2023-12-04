@@ -262,12 +262,16 @@ AFRAME.registerComponent('infospot', {
   init: async function() {
     this.onClick   = this.onClick.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
+
+    this.OldRotation = this.el.rotation
 
     this.InfoPanel = document.querySelector("#infoPanel")
     this.InfoDes   = this.InfoPanel.querySelector("#Info_Description")
     this.Info      = this.el.getAttribute("infospot") || "No Info Provided"
 
     this.el.addEventListener('mouseenter', this.onMouseEnter);
+    this.el.addEventListener('mouseleave', this.onMouseLeave)
     this.el.addEventListener("click", this.onClick)
   },
 
@@ -278,8 +282,14 @@ AFRAME.registerComponent('infospot', {
     this.InfoDes.setAttribute('text', 'value', this.Info)
   },
 
-  onMouseEnter: async function() {
+  onMouseLeave: async function() {
+    this.el.emit("start_trans")
     console.log("enter")
+  },
+
+  onMouseEnter: async function() {
+    this.el.emit("end_trans")
+    console.log("leave")
   }
 })
 
