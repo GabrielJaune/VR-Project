@@ -57,9 +57,8 @@ async function UpdateNavigator() {
     container = $('#navigation')    
     await sleep(100)
   } while (!fields[0] || !container[0])
+  await sleep(100)
 
-  // var material = container[0].getAttribute("material")
-  // var width = material.width, height = material.height
   var angle = 0, step = 0, radius = container[0].getAttribute("radius-outer")
 
   fields.each(function() {
