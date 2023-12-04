@@ -258,4 +258,42 @@ AFRAME.registerComponent('scene-init', {
   }
 })
 
+AFRAME.registerComponent('infospot', {
+  init: async function() {
+    this.onClick   = this.onClick.bind(this)
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+
+    this.InfoPanel = document.querySelector("#infoPanel")
+    this.InfoDes   = this.InfoPanel.querySelector("#Info_Description")
+    this.Info      = this.el.getAttribute("infospot") || "No Info Provided"
+
+    this.el.addEventListener('mouseenter', this.onMouseEnter);
+    this.el.addEventListener("click", this.onClick)
+  },
+
+  onClick: async function() {
+    console.log("clicked Info => ", this.Info)
+    this.InfoPanel.setAttribute("position", "0 0 -1.5")
+    this.InfoPanel.setAttribute("visible", "true")
+    this.InfoDes.setAttribute('text', 'value', this.Info)
+  },
+
+  onMouseEnter: async function() {
+    console.log("enter")
+  }
+})
+
+AFRAME.registerComponent('spotinfo', {
+  init: async function() {
+    this.onClick   = this.onClick.bind(this)
+
+    this.el.addEventListener("click", this.onClick)
+  },
+
+  onClick: async function() {
+    this.el.setAttribute("visible", "false")
+    this.el.setAttribute("position", "0 0 20")
+  }
+})
+
 LoadLang(userLang)
