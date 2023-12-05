@@ -60,7 +60,7 @@
 
         <a-entity id="ui" position="0 1.6 -2.5">
             <!-- Poster menu -->
-            <a-entity id="menu" highlight>
+            <a-entity id="menu">
               <a-entity id="1" position="-1.2 0 0" mixin="main" class="raycastable menu-button">
                 <a-entity material="src: #img_1; alphaTest: 1" mixin="poster"></a-entity>
               </a-entity>
@@ -82,11 +82,10 @@
 
         <a-entity id="infoPanel" position="0 0 1" info-panel visible="false"
           geometry="primitive: plane; width: 1.5; height: 1"
-
           material="color: #333333; shader: flat; transparent: false" class="raycastable">
           <a-entity id="Info_Title" position="-0.68 0.25 0"
             text="shader: msdf; anchor: left; width: 2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json;  color: white; value: Lorem ipsum"></a-entity>
-          <a-entity id="Info_Description" position="-.7 0.1 .3" text="baseline: top; shader: msdf; anchor: left; width: 1.2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
+          <a-entity id="Info_Description" position="-.7 0.1 0" text="baseline: top; shader: msdf; anchor: left; width: 1.2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
 
           <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTRER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black"> </a-entity>
           <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 .01" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: ANNULER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt;  color: black"> </a-entity>
@@ -104,11 +103,11 @@
       <a-text value="METZ" width="6" height="1" anchor="center" align="center" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" ></a-text>
     </a-entity>
 
-    <a-entity moai anchor="center" scale=".5 .5 .01" position="0 1.5 1.5" rotation="0 180 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" sound="src: ./resources/sounds/explosion.mp3; on: click; poolSize: 100" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
+    <a-entity moai anchor="center" scale=".5 .5 .01" position="0 1.5 1.5" rotation="0 180 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" sound="src: ./resources/sounds/waa.mp3; on: click; poolSize: 100" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
       <a-text value="Behind you" anchor="center" align="center"></a-text>
     </a-entity>
 
-    <a-entity id="moai_entity" scale="1.5 1 1" position="0 1.5 .5" rotation="0 180 0" visible="false">
+    <a-entity id="moai_entity" scale="3 1 1" position="0 1.5 .5" rotation="0 180 0" visible="false">
       <a-entity material="src: #moai; alphaTest: 1" mixin="poster"></a-entity>
     </a-entity>
 
