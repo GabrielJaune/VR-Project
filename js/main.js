@@ -27,7 +27,7 @@ const Infos = {
   4: {
     title: "CPGE",
     info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques",
-    redirect: "index.html"
+    redirect: "cpge.html"
   }
 }
 
