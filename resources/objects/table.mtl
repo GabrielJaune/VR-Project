@@ -1,0 +1,22 @@
+# Blender 4.0.1 MTL File: 'None'
+# www.blender.org
+
+newmtl black_st
+Ns 70.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.630000 0.630000 0.630000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Downloads/cadnav.com_model/Models_G0402A298/metalbla.jpg
+
+newmtl standart_metal
+Ns 39.999996
+Ka 1.000000 1.000000 1.000000
+Ks 0.630000 0.630000 0.630000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Downloads/cadnav.com_model/Models_G0402A298/metal-s6.jpg
