@@ -11,7 +11,7 @@ console.log("LANG => " + userLang)
 const Infos = {
   1: {
     title: "Bac Pro MELEC",
-    info: `La clef pour allumer ton avenir!\nUn bac pro plein d'energie!\n`,
+    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes\n`,
     redirect: "melec.html"
   },
   2: {
@@ -21,12 +21,12 @@ const Infos = {
   },
   3: {
     title: "BTS Electrotechnique",
-    info: "Le BTS electrotechnique se prepare en deux ans après un bac STI2D de preference. C'est un diplôme de niveau bac +2 qui se prepare en formation initiale mais aussi en alternance.",
+    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
     redirect: "index.html"
   },
   4: {
     title: "CPGE",
-    info: "Description CPGE.",
+    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques",
     redirect: "index.html"
   }
 }
@@ -294,12 +294,53 @@ AFRAME.registerComponent('spotinfo', {
   init: async function() {
     this.onClick   = this.onClick.bind(this)
 
+    this.el.setAttribute("visible", "false")
+    this.el.setAttribute("position", "0 0 20")
     this.el.addEventListener("click", this.onClick)
   },
 
   onClick: async function() {
     this.el.setAttribute("visible", "false")
     this.el.setAttribute("position", "0 0 20")
+  }
+})
+
+// FIX 3D MODEL \\
+
+function updateMaterial(Material, Side) {
+  Material.side = Side
+  Material.needsUpdate = true
+}
+
+function updateMaterialSide(material, side) {
+  if (!material) return;
+
+  if (material instanceof window.THREE.Material) {
+    updateMaterial(material, side)
+  } else if (material instanceof window.THREE.MultiMaterial) {
+    material.materials.forEach(function(childMaterial) {
+      updateMaterial(childMaterial, side);
+    });
+  }
+}
+
+function traverse(node) {
+  node.children.forEach(function(child) {
+    if (child.children) {
+      traverse(child);
+    }
+
+    updateMaterial(child['material'], window.THREE.DoubleSide);
+  });
+}
+
+AFRAME.registerComponent('modelfix', {
+  init: function() {
+    this.el.addEventListener('model-loaded', function(evt) {
+      var model = evt.detail.model;
+
+    traverse(model);
+  });
   }
 })
 
