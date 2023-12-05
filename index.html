@@ -85,12 +85,11 @@
 
           material="color: #333333; shader: flat; transparent: false" class="raycastable">
           <a-entity id="Info_Title" position="-0.68 0.25 0"
-            text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json;  color: white; value: Lorem ipsum"></a-entity>
-          <a-entity id="Info_Description" position="-0.68 0.15 0" text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></a-entity>
+            text="shader: msdf; anchor: left; width: 2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json;  color: white; value: Lorem ipsum"></a-entity>
+          <a-entity id="Info_Description" position="-.7 0.1 .3" text="baseline: top; shader: msdf; anchor: left; width: 1.2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
 
-          <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTRER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"> </a-entity>
-          <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 .01" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: ANNULER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"> </a-entity>
-
+          <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTRER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black"> </a-entity>
+          <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 .01" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: ANNULER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt;  color: black"> </a-entity>
         </a-entity>
 
       </a-entity>
@@ -98,12 +97,15 @@
 
     <!-- Markiplier -->
     
+    <a-entity anchor="center" scale=".5 .5 .01" position="0 2.6 -2.05" rotation="0 0 0" geometry="primitive: plane; width: 4.5; height: .5" material="color: #333333; shader: shadow; transparent: false" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100">
+      <a-text value="LYCEE LOUIS DE CORMONTAIGNE" width="7" height="1" anchor="center" align="center" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt" ></a-text>
+    </a-entity>
     <a-entity test anchor="center" scale=".5 .5 .01" position="0 2.4 -2.05" rotation="0 0 0" geometry="primitive: plane; width: 4.5; height: .5" material="color: #333333; shader: shadow; transparent: false" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100" class="raycastable">
-      <a-text value="LYCEE LOUIS DE CORMONTAIGNE" width="7" height="1" anchor="center" align="center" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" ></a-text>
+      <a-text value="METZ" width="6" height="1" anchor="center" align="center" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" ></a-text>
     </a-entity>
 
     <a-entity moai anchor="center" scale=".5 .5 .01" position="0 1.5 1.5" rotation="0 180 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false" sound="src: ./resources/sounds/explosion.mp3; on: click; poolSize: 100" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: shadow; transparent: false" class="raycastable">
-      <a-text value="Behind you" anchor="center" align="center" class="Behind_Bad" ></a-text>
+      <a-text value="Behind you" anchor="center" align="center"></a-text>
     </a-entity>
 
     <a-entity id="moai_entity" scale="1.5 1 1" position="0 1.5 .5" rotation="0 180 0" visible="false">

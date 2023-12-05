@@ -1,11 +1,8 @@
 // NOTE:
 // init = start function
 
-var balls = "ok"
-var Buttons = {}
-this.Langs = {}
-var Langs = this.Langs
 var Selected = undefined
+var Buttons = {}, Langs = {}
 
 var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
 
@@ -14,12 +11,12 @@ console.log("LANG => " + userLang)
 const Infos = {
   1: {
     title: "Bac Pro MELEC",
-    info: `Le Baccalauréat Professionnel MELEC intervient dans les secteurs du batiment (residentiel, tertiaire, industriel), de l'industrie, de l'agriculture, des services et des infrastructures.\nConsidérant les enjeux de la transition énergétique et l'évolution des techniques et des technologies,\nce métier est en pleine mutation.`,
+    info: `La clef pour allumer ton avenir!\nUn bac pro plein d'energie!\n`,
     redirect: "melec.html"
   },
   2: {
     title: "Bac Pro CIEL",
-    info: "Le baccalaureat professionnel SN a pour ambition de former les futurs professionnels de l’informatique.",
+    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
     redirect: "sn.html"
   },
   3: {
@@ -306,4 +303,4 @@ AFRAME.registerComponent('spotinfo', {
   }
 })
 
-LoadLang(userLang)
+// LoadLang(userLang)
