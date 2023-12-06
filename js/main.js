@@ -1,6 +1,7 @@
 // NOTE:
 // init = start function
 
+let IsVR = false
 var Selected = undefined
 var Buttons = {}, Langs = {}
 
@@ -74,14 +75,9 @@ let PathName = location.pathname.split("/")
 PathName = PathName[PathName.length - 1].split(".")[0].toUpperCase()
 
 async function SwitchArea(Name) {
-  let pos = {x: 1, y: 1, z: 1}
-
   let ok = document.querySelectorAll(".field")
-  ok.forEach(function(val) {
-    $(val).remove()
-  })
+  ok.forEach(function(val) { $(val).remove() })
   console.log("Changing To Area => " + Name)
-  var Sky = $("#sky")
 
   $("#cur_camera")[0].emit("start_trans")
   await sleep(500)
@@ -90,6 +86,21 @@ async function SwitchArea(Name) {
   await sleep(100)
   await UpdateNavigator()
   $("#cur_camera")[0].emit("end_trans")
+}
+
+function OnVRChange() {
+  switch(IsVR) {
+    case true:
+
+      break;
+    case false:
+      console.log("base false")
+      document.querySelector("#leftController").setAttribute("position", "0 -.25 0")
+      document.querySelector("#leftController").setAttribute("rotation", "20 0 0")
+      break;
+    default:
+      alert("Unknown IsVR Value")
+  }
 }
 
 AFRAME.registerComponent("info-panel", {
@@ -227,6 +238,9 @@ AFRAME.registerComponent('moai', {
   onClick: async function() {
     console.log("clickd")
     this.moai.object3D.visible = true
+    this.moai.emit("in")
+    await sleep(1000)
+    this.moai.emit("out")
     await sleep(1000)
     this.moai.object3D.visible = false
   }
@@ -252,6 +266,18 @@ AFRAME.registerComponent('scene-init', {
     this.SceneName = this.el.getAttribute("scene-name") || "default"
 
     SwitchArea(this.SceneName)
+  }
+})
+
+AFRAME.registerComponent('redirect', {
+  init: function() {
+    this.onClick   = this.onClick.bind(this)
+    this.redirect  = this.el.getAttribute("redirect") || "index.html"
+
+    this.el.addEventListener('click', this.onClick)
+  },
+  onClick: async function() {
+    window.location.href = this.redirect
   }
 })
 
@@ -338,10 +364,28 @@ AFRAME.registerComponent('modelfix', {
   init: function() {
     this.el.addEventListener('model-loaded', function(evt) {
       var model = evt.detail.model;
-
-    traverse(model);
+      traverse(model);
   });
   }
 })
 
-// LoadLang(userLang)
+var scene = document.querySelector("a-scene")
+console.log(scene)
+
+if(scene) {
+  scene.addEventListener("enter-vr", function() {
+    IsVR = true
+    OnVRChange()
+  })
+
+  scene.addEventListener("exit-vr", function() {
+    IsVR = false
+    OnVRChange()
+  })
+
+  scene.addEventListener("loaded", function() {
+    OnVRChange()
+  })
+
+  OnVRChange()
+}

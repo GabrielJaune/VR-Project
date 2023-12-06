@@ -23,7 +23,7 @@
       <!-- VR -->
       <a-entity id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
       <a-entity id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
-      <a-entity id="leftHand" hand-tracking-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="leftHand" hand-tracking-controls="hand: left; handModelStyle: highPoly" raycaster="objects: .raycastable"></a-entity>
       <a-entity id="rightHand" hand-tracking-controls="hand: right" raycaster="objects: .raycastable"></a-entity>
   
       <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #4d4d4d; skyColor: #acebff;"></a-entity>
@@ -107,7 +107,9 @@
       <a-text value="Behind you" anchor="center" align="center"></a-text>
     </a-entity>
 
-    <a-entity id="moai_entity" scale="3 1 1" position="0 1.5 .5" rotation="0 180 0" visible="false">
+    <a-entity id="moai_entity" scale="3 1 1" position="0 1.5 .5" rotation="0 180 0" visible="false"
+    animation__1="property: position; from: 0 1.5 100; to: 0 1.5 .5 ; dur: 100; easing: linear; startEvents: in"
+    animation__2="property: position; from: 0 1.5 .5; to: 0 1.5 100 ; dur: 500; easing: linear; startEvents: out">
       <a-entity material="src: #moai; alphaTest: 1" mixin="poster"></a-entity>
     </a-entity>
 
