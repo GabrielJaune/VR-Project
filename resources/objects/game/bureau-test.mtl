@@ -1,0 +1,196 @@
+# Blender 4.0.1 MTL File: 'None'
+# www.blender.org
+
+newmtl 10107_Computer_Printer_v1
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /Users/matthieu/Downloads/Computer_Printer_v3_L3.123cc81eeebb-4d57-4bf4-ac6e-1816040d11b9/10107_Computer Printer_v1_Diffuse.jpg
+
+newmtl Aluminium
+Ns 729.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.233016 0.233016 0.233016
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Carpet
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Texture/drive-download-20210610T021657Z-001/Fabric_Rug_006_COLOR.jpg
+map_Ns /Users/matthieu/Texture/drive-download-20210610T021657Z-001/Fabric_Rug_006_ROUGH.jpg
+
+newmtl Cusion
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Emmision
+Ns 324.000031
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Floor
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
+
+newmtl Jam
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Texture/png-clipart-black-analog-clock-at-11-55-clock-face-clocks-angle-text.png
+
+newmtl Kaca
+Ns 324.000031
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl KerangkaLemari
+Ns 224.999985
+Ka 0.800000 0.800000 0.800000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Lemari
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_BaseColor.png
+map_Ns /Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_Roughness.png
+
+newmtl Lemari.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_BaseColor.png
+map_Ns /Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_Roughness.png
+
+newmtl Lowpoly_Body
+Ns 96.078453
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_col.JPG
+map_refl /Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Ref.jpg
+map_Bump /Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_nor.JPG
+
+newmtl Lowpoly_Screen
+Ns 96.078453
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_nor_2.JPG
+map_refl /Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Ref.jpg
+map_Bump /Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_nor_2.JPG
+
+newmtl Roof
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl SideTegel
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Kd 0.711822 0.736521 0.787399
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Side_Wall
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Texture/Concrete_Wall/Concrete_Wall_009_basecolor.jpg
+map_Ns /Users/matthieu/Texture/Concrete_Wall/Concrete_Wall_009_roughness.jpg
+
+newmtl Sofa
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Wall
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns /Users/matthieu/Texture/WhiteStuccoWall01_MR_2K/WhiteStuccoWall01_2K_Roughness.png
+
+newmtl Wall_Down
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/matthieu/Texture/White Brick/WhiteBrickWall01_2K_BaseColor.png
+map_Ns /Users/matthieu/Texture/White Brick/WhiteBrickWall01_2K_Roughness.png

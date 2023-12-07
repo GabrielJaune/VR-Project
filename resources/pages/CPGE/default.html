@@ -1,10 +1,19 @@
-
 <a-entity environment="preset: starry; ground: flat; lighting: none; skyType: gradient; horizonColor: #4d4d4d; skyColor: #acebff;"></a-entity>
-
 
 <a-entity modelfix position="0 0 -1.6" rotation="0 0 0" scale=".1 .1 .1" obj-model="obj: ./resources/objects/table.obj" modify-materials></a-entity>
 <a-entity light="color: #cecece; intensity: .1; shadowRadius: 2" position="-1 2 0"></a-entity>
 
-<a-entity modelfix position="-.26 1.227 -1.153" rotation="0 -159 0" scale="0.05 0.05 0.05" obj-model="obj: ./resources/objects/phone.obj; mtl: ./resources/objects/phone.mtl" modify-materials>
-    <a-video src="./resources/videos/Films/CPGE/Casque.mp4" position="-.13 .73 -.072" class="raycastable" material="" geometry="" rotation="90 0 0" scale="4.32664 9.77062 1"></a-video>
+<a-entity modelfix position="-.33 1.22 -0.92" rotation="0 -159 0" scale=".021 .025 .025" obj-model="obj: ./resources/objects/phone.obj; mtl: ./resources/objects/phone.mtl" modify-materials class="raycastable">
+    <a-video src="./resources/videos/Films/CPGE/Casque.mp4" position="-.13 .78 -.072" material="" geometry="" rotation="90 0 0" scale="4.32664 9.77062 1"></a-video>
 </a-entity>
+
+
+<a-entity modelfix position=".4 1.22 -0.92" rotation="0 159 0" scale=".021 .025 .025" obj-model="obj: ./resources/objects/phone.obj; mtl: ./resources/objects/phone.mtl" modify-materials class="raycastable">
+    <a-video src="./resources/videos/Films/CPGE/Mona.mp4" position="-.13 .78 -.072" material="" geometry="" rotation="90 0 0" scale="4.32664 9.77062 1"></a-video>
+</a-entity>
+
+
+<a-entity modelfix="" obj-model="obj: ./resources/objects/game/bureau-test.obj; mtl: ./resources/objects/phone.mtl" modify-materials="" class="raycastable" position="0 0.0301 -3.04896" scale="5.5 5.5 5.5">
+</a-entity>
+
+<a-entity light="intensity: 0.1; type: spot" position="2.19725 2.82887 1.30026" rotation="-36.827435239828795 50.734839801039264 -36.250466740132055"></a-entity>
