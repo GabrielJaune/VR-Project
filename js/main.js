@@ -331,6 +331,17 @@ AFRAME.registerComponent('spotinfo', {
   }
 })
 
+AFRAME.registerComponent('collider', {
+  init: function() {
+    this.el.addEventListener('hit', (e) => {
+     console.log('hit')
+    })
+    this.el.addEventListener('hitend', (e) => {
+      console.log('hitend')
+    })
+  }
+})
+
 // FIX 3D MODEL \\
 
 function updateMaterial(Material, Side) {
