@@ -3,17 +3,17 @@
 <a-entity modelfix position="0 0 -1.6" rotation="0 0 0" scale=".1 .1 .1" obj-model="obj: ./resources/objects/table.obj" modify-materials></a-entity>
 <a-entity light="color: #cecece; intensity: .1; shadowRadius: 2" position="-1 2 0"></a-entity>
 
-<a-entity modelfix position="-.33 1.22 -0.92" rotation="0 -159 0" scale=".021 .025 .025" obj-model="obj: ./resources/objects/phone.obj; mtl: ./resources/objects/phone.mtl" modify-materials class="raycastable">
+<!-- <a-entity modelfix position="-.33 1.22 -0.92" rotation="0 -159 0" scale=".021 .025 .025" obj-model="obj: ./resources/objects/phone.obj; mtl: ./resources/objects/phone.mtl" modify-materials class="raycastable">
     <a-video src="./resources/videos/Films/CPGE/Casque.mp4" position="-.13 .78 -.072" material="" geometry="" rotation="90 0 0" scale="4.32664 9.77062 1"></a-video>
 </a-entity>
 
 
 <a-entity modelfix position=".4 1.22 -0.92" rotation="0 159 0" scale=".021 .025 .025" obj-model="obj: ./resources/objects/phone.obj; mtl: ./resources/objects/phone.mtl" modify-materials class="raycastable">
     <a-video src="./resources/videos/Films/CPGE/Mona.mp4" position="-.13 .78 -.072" material="" geometry="" rotation="90 0 0" scale="4.32664 9.77062 1"></a-video>
-</a-entity>
+</a-entity> -->
 
 
-<a-entity modelfix="" obj-model="obj: ./resources/objects/game/bureau-test.obj; mtl: ./resources/objects/phone.mtl" modify-materials="" class="raycastable" position="0 0.0301 -3.04896" scale="5.5 5.5 5.5">
-</a-entity>
+<a-entity modelfix obj-model="obj: ./resources/objects/game/bureau-test.obj" modify-material class="raycastable" position="0 0.0301 -3.04896" scale="5.5 5.5 5.5" />
+<a-entity modelfix nav-mesh gltf-model="./resources/objects/game/navmesh.gltf" modify-material class="raycastable" position="0.00598 -.04 0.54851" scale="0.18 0.18 0.18" visible="true">
 
 <a-entity light="intensity: 0.1; type: spot" position="2.19725 2.82887 1.30026" rotation="-36.827435239828795 50.734839801039264 -36.250466740132055"></a-entity>
