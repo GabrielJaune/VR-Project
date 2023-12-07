@@ -342,6 +342,24 @@ AFRAME.registerComponent('collider', {
   }
 })
 
+
+AFRAME.registerComponent('phone', {
+  init: async function() {
+    this.onClick   = this.onClick.bind(this)
+    this.Asset = document.querySelector(this.el.getAttribute("phone"))
+    this.el.addEventListener("click", this.onClick)
+  },
+
+  onClick: async function() {
+    if(this.Asset.paused) {
+        this.Asset.play()
+    } else {
+        this.Asset.pause()
+        this.Asset.currentTime = 0
+    }
+  }
+})
+
 // FIX 3D MODEL \\
 
 function updateMaterial(Material, Side) {
