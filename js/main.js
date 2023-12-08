@@ -32,9 +32,9 @@ const Infos = {
   }
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+function getRndInteger(min, max) { return Math.floor(Math.random() * (max - min) ) + min; }
 
 function LoadLang(Language) {
   // console.log("Loading " + Language + ".json")
@@ -378,17 +378,23 @@ AFRAME.registerComponent('projector', {
     this.onClick = this.onClick.bind(this)
     this.cooldown = false
     this.enabled = true
+
+    this.projector = document.querySelector(this.el.getAttribute("projector"))
+    this.light = this.projector.querySelector("#light")
+    this.source = this.projector.querySelector("#source")
+
     this.cover = this.el.querySelector("#cover")
     this.asset = this.el.querySelector("#asset")
     this.sound = this.el.querySelector("#sound")
 
     if(!this.cover || !this.asset) { console.log("end"); alert("No cover/asset Found"); return }
 
-    this.FileList  = (this.el.getAttribute("images") || "").split(",")
+    this.FileList  = (this.el.getAttribute("images") || "").split(", ")
     this.Directory = this.el.getAttribute("folder") || "./"
+    this.Current = 0
 
-    this.el.addEventListener('click', this.onClick)
-    this.el.addEventListener('newimage', this.switchPage)
+    this.projector.addEventListener('click', this.onClick)
+    this.projector.addEventListener('newimage', this.switchPage)
   },
 
   onClick: async function() {
@@ -402,7 +408,17 @@ AFRAME.registerComponent('projector', {
   },
 
   switchPage: async function() {
-    this.el.emit("hide")
+    this.cover.emit("hide")
+    this.light.setAttribute("visible", "false")
+    this.source.setAttribute("visible", "false")
+    if(this.Current == this.FileList.length) { this.Current = 0 }
+    await sleep(500)
+    this.asset.setAttribute('material', 'src', this.Directory + "/" + this.FileList[this.Current])
+    this.Current += 1
+    await sleep(500)
+    this.light.setAttribute("visible", "true") 
+    this.source.setAttribute("visible", "true") 
+    this.cover.emit("show")
   }
 })
 
