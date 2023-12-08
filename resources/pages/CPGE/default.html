@@ -1,4 +1,16 @@
-<a-sky src="./resources/images/CPGE.jpg" rotation="0 180 10"></a-sky>
+<a-sky src="./resources/images/CPGE.jpg" rotation="0 180 10"
+animation__1= "property: rotation; to: -5 180 10; dur: 2000; dir: alternate; easing: easeInOutCubic; loop: true;"></a-sky>
+
+
+<a-box projector folder="./resources/test/Photos atelier" images="img1, img2, img3" material="color: #ff151c" geometry="" position="-.06 1.8 -5.2" scale="2.99543 1.57034 1" class="raycastable">
+    <a-entity id="cover" material="color: black; alphaTest: 1" scale="0 .8 .8" position="0 0 .8" geometry="primitive: plane"
+    animation__1= "property: scale; to: .8 .8 .8; dur: 500; easing: easeInOutCubic; startEvents: hide"
+    animation__2= "property: scale; to: 0 .8 .8; dur: 500; easing: easeInOutCubic; startEvents: show"></a-entity>
+    <a-entity id="asset" material="src: ./resources/test/Photos atelier/20231116_155650.jpg; alphaTest: 1" scale=".8 .8 .8" position="0 0 .75" geometry="primitive: plane"></a-entity> -->
+    <a-sound id="sound" src="./resources/sounds/waa-lego.mp3"></a-sound>
+</a-box>
+
+
 <a-entity modelfix position="0 0.03 -1.6" rotation="0 0 0" scale=".1 .1 .1" obj-model="obj: ./resources/objects/table.obj" modify-materials></a-entity>
 <a-entity light="color: #cecece; intensity: .1; shadowRadius: 2" position="-1 2 0"></a-entity>
 

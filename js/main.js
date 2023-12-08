@@ -50,12 +50,12 @@ async function UpdateNavigator() {
   
   var fields = $('.field'), container = $('#navigation')
 
-  do {
-    fields = $('.field')
-    container = $('#navigation')    
-    await sleep(100)
-  } while (!fields[0] || !container[0])
-  await sleep(100)
+  // do {
+  //   fields = $('.field')
+  //   container = $('#navigation')    
+  //   await sleep(100)
+  // } while (!fields[0] || !container[0])
+  // await sleep(100)
 
   var angle = 0, step = 0, radius = container[0].getAttribute("radius-outer")
 
@@ -112,7 +112,7 @@ AFRAME.registerComponent("info-panel", {
         this.onOutsideClick = this.onOutsideClick.bind(this);
 
         // NOTE: Not Outside Since Loading Stuff
-        Buttons= document.querySelectorAll(".menu-button")
+        Buttons = document.querySelectorAll(".menu-button")
 
         this.OldSize = structuredClone(this.el.object3D.scale)
         
@@ -231,18 +231,25 @@ AFRAME.registerComponent('moai', {
   init: function () {
     this.onClick = this.onClick.bind(this)
     this.moai = document.querySelector("#moai_entity")
+    this.Clicked = false
 
     this.el.addEventListener("click", this.onClick)
   },
 
   onClick: async function() {
-    console.log("clickd")
-    this.moai.object3D.visible = true
-    this.moai.emit("in")
-    await sleep(1000)
+    if(this.Cooldown) return;
+    this.Cooldown = true
+    if(!this.Clicked) {
+      this.moai.object3D.visible = true
+      this.moai.emit("in")
+      await sleep(1000)
+    } else {
     this.moai.emit("out")
     await sleep(1000)
-    this.moai.object3D.visible = false
+    }
+
+    this.Clicked  = !this.Clicked
+    this.Cooldown = false
   }
 });
 
@@ -277,6 +284,10 @@ AFRAME.registerComponent('redirect', {
     this.el.addEventListener('click', this.onClick)
   },
   onClick: async function() {
+    var win = $("#cur_camera")[0]
+    var scene = $("#MainScene")[0]
+    if(scene) { scene.empty() };
+    if(win) { win.emit("start_trans"); await sleep(500) };
     window.location.href = this.redirect
   }
 })
@@ -360,7 +371,42 @@ AFRAME.registerComponent('phone', {
   }
 })
 
-// FIX 3D MODEL \\
+// PROJECTOR \\
+
+AFRAME.registerComponent('projector', {
+  init: function() {
+    this.onClick = this.onClick.bind(this)
+    this.cooldown = false
+    this.enabled = true
+    this.cover = this.el.querySelector("#cover")
+    this.asset = this.el.querySelector("#asset")
+    this.sound = this.el.querySelector("#sound")
+
+    if(!this.cover || !this.asset) { console.log("end"); alert("No cover/asset Found"); return }
+
+    this.FileList  = (this.el.getAttribute("images") || "").split(",")
+    this.Directory = this.el.getAttribute("folder") || "./"
+
+    this.el.addEventListener('click', this.onClick)
+    this.el.addEventListener('newimage', this.switchPage)
+  },
+
+  onClick: async function() {
+    if(this.cooldown) { return; }
+    this.cooldown = true
+    console.log("play")
+    this.sound.components.sound.playSound();
+    this.switchPage()
+    await sleep(1000)
+    this.cooldown = false
+  },
+
+  switchPage: async function() {
+    this.el.emit("hide")
+  }
+})
+
+// 3D MODEL \\
 
 function updateMaterial(Material, Side) {
   Material.side = Side
