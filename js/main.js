@@ -21,8 +21,8 @@ const Infos = {
     redirect: "sn.html"
   },
   3: {
-    title: "BTS Electrotechnique",
-    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
+    title: "Title", //"BTS Electrotechnique",
+    info: "Info", //"Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
     redirect: "index.html"
   },
   4: {
@@ -105,93 +105,69 @@ function OnVRChange() {
 
 AFRAME.registerComponent("info-panel", {
     init: function() {
-        this.el.sceneEl.renderer.sortObjects = true;
-        this.el.object3D.renderOrder = 100;
+      this.onHover  = this.onHover.bind(this);
+      this.onRelease  = this.onRelease.bind(this);
 
-        this.onInsideClick  = this.onInsideClick.bind(this);
-        this.onOutsideClick = this.onOutsideClick.bind(this);
+      this.onConfirm  = this.onConfirm.bind(this);
+      this.onButton = this.onButton.bind(this);
+      this.onCancel = this.onCancel.bind(this);
 
-        // NOTE: Not Outside Since Loading Stuff
-        Buttons = document.querySelectorAll(".menu-button")
+      // NOTE: Not Outside Since Loading Stuff
+      Buttons = document.querySelectorAll(".menu-button")
 
-        this.OldSize = structuredClone(this.el.object3D.scale)
-        
-        this.el.object3D.scale.set(0, 0, 0)
+      this.Clicked = false
+      this.el.object3D.scale.set(0, 0, 0)
 
-        this.Title       = document.querySelector("#Info_Title")
-        this.Description = document.querySelector("#Info_Description")
+      this.el.addEventListener("mouseenter", this.onHover)
+      this.el.addEventListener("mouseleave", this.onRelease)
 
-        this.Cancel  = document.querySelector("#Info_Cancel")
-        this.Confirm = document.querySelector("#Info_Confirm")
+      this.Title       = this.el.querySelector("#Info_Title")
+      this.Description = this.el.querySelector("#Info_Description")
 
-        this.Cancel.addEventListener("click", this.onOutsideClick)
-        this.Confirm.addEventListener("click", this.onEnter)
+      this.Cancel  = this.el.querySelector("#Info_Cancel")
+      this.Confirm = this.el.querySelector("#Info_Confirm")
 
-        for (var i = 0; i < Buttons.length; ++i) {
-            Buttons[i].addEventListener("click", this.onInsideClick)
-        }
+      this.Cancel.addEventListener("click", this.onCancel)
+      this.Confirm.addEventListener("click", this.onConfirm)
+
+      for (var i = 0; i < Buttons.length; ++i) {
+          Buttons[i].addEventListener("click", this.onButton)
+      }
     },
 
-    onEnter: function (evt) {
-        console.log("Enter Clicked")
+    onHover: function () {
+      // this.el.setAttribute("material", "topColor", "topColor: #FFFFFF")
+      this.el.emit("pause")
+      // this.el.emit("hover")
+      console.log("hover")
+    },
+
+    onRelease: function() {
+      this.el.emit("resume")
+      console.log("release")
+    },
+
+    onConfirm: function (evt) {
         if(!Selected) return;
         console.log("Found " + Selected.id)
         window.location.href = Selected.redirect
     },
 
-    onInsideClick: function (evt) {
+    onButton: function (evt) {
+      if(this.Clicked) { return }
+      this.Clicked = true
         Selected = Infos[evt.currentTarget.id]
-        this.el.object3D.visible = true
-        var obj = [this.OldSize["x"], this.OldSize["y"], this.OldSize["z"]]
-        let X, Y, Z;
-        [X, Y, Z] = obj
-        this.el.object3D.scale.set(X, Y, Z)
+        this.el.emit("enter")
         this.Title.setAttribute('text', 'value', Selected.title)
         this.Description.setAttribute('text', 'value', Selected.info)
     },
 
-    onOutsideClick: function (evt) {
-        console.log("Exit Clicked")
-        this.el.object3D.visible = false
-        this.el.object3D.scale.set(0, 0, 0)
+    onCancel: function (evt) {
+      if(!this.Clicked) { return }
+      this.Clicked = false
+      this.el.emit("cancel")
     },
 })
-
-AFRAME.registerComponent('highlight', {
-  init: function () {
-    var buttonEls = this.buttonEls = this.el.querySelectorAll('.menu-button');
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
-    this.reset = this.reset.bind(this);
-    for (var i = 0; i < buttonEls.length; ++i) {
-      buttonEls[i].addEventListener('mouseenter', this.onMouseEnter);
-      buttonEls[i].addEventListener('mouseleave', this.onMouseLeave);
-    }
-  },
-
-  onMouseEnter: function (evt) {
-    var buttonEls = this.buttonEls;
-    evt.target.setAttribute('material', 'color', '#046de7');
-    for (var i = 0; i < buttonEls.length; ++i) {
-      if (evt.target === buttonEls[i]) { continue; }
-      buttonEls[i].setAttribute('material', 'color', 'white');
-    }
-  },
-
-  onMouseLeave: function (evt) {
-    if (this.el.is('clicked')) { return; }
-    evt.target.setAttribute('material', 'color', 'white');
-  },
-
-  reset: function () {
-    var buttonEls = this.buttonEls;
-    for (var i = 0; i < buttonEls.length; ++i) {
-      this.el.removeState('clicked');
-      buttonEls[i].play();
-      buttonEls[i].emit('mouseleave');
-    }
-  }
-});
 
 
 AFRAME.registerComponent('test', {
@@ -203,8 +179,6 @@ AFRAME.registerComponent('test', {
   onClick: async function() {
     this.el.firstElementChild.setAttribute("particle-system", "enabled", "false")
     this.el.firstElementChild.setAttribute("particle-system", "enabled", "true")
-    // await sleep(1000)
-    // this.el.setAttribute("particle-system", "enabled", "false")
   }
 });
 

@@ -78,9 +78,14 @@
               <a-video src="#CART_SECRET" toggleclick position="2.8 0 -.5" visible="false" class="raycastable"></a-video>
         </a-entity>
 
-        <a-entity id="infoPanel" position="0 0 1" info-panel visible="false"
+        <a-entity id="infoPanel" position="0 0 1" info-panel
           geometry="primitive: plane; width: 1.5; height: 1"
-          material="color: #333333; shader: flat; transparent: false" class="raycastable">
+          animation__0="pauseEvents: pause; resumeEvents: resume; property: position; to: 0 .09 1; dir: alternate; loop: true; dur: 1000; autoplay: true; easing: easeInOutQuart"
+          animation__1="property: material.bottomColor; to: #FFFFFF; dur: 200; startEvents: resume"
+          animation__2="property: material.bottomColor; to: #2845ff; dur: 200; startEvents: pause"
+          animation__cancel="property: scale; to: 0 0 0; dur: 500; startEvents: cancel"
+          animation__enter="property: scale; to: 1 1 1; dur: 500; startEvents: enter"
+          material="shader: gradientshader; topColor: #000000; bottomColor: #2833ff" class="raycastable">
           <a-entity id="Info_Title" position="-0.68 0.25 0"
             text="shader: msdf; anchor: left; width: 2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json;  color: white; value: Lorem ipsum"></a-entity>
           <a-entity id="Info_Description" position="-.7 0.1 0" text="baseline: top; shader: msdf; anchor: left; width: 1.2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
