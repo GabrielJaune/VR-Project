@@ -156,8 +156,9 @@ AFRAME.registerComponent("info-panel", {
         if(this.Clicked) { return }
         this.Clicked = true
         Selected = Infos[evt.currentTarget.id]
-        $("#4K1080P")[0].setAttribute("visible", "true")
         this.Video.src = "./resources/videos/" + evt.currentTarget.id + ".mp4"
+        this.Video.play()
+        $("#4K1080P")[0].setAttribute("visible", "true")
         this.el.emit("enter")
         this.Title.setAttribute('text', 'value', Selected.title)
         this.Description.setAttribute('text', 'value', Selected.info)
