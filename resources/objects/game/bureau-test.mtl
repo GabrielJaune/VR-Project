@@ -61,7 +61,7 @@ d 1.000000
 illum 2
 map_Kd Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
 
-newmtl Jam
+newmtl Floor.001
 Ns 224.999985
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
@@ -69,7 +69,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Users/matthieu/Texture/png-clipart-black-analog-clock-at-11-55-clock-face-clocks-angle-text.png
+map_Kd Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
 
 newmtl Kaca
 Ns 324.000031
