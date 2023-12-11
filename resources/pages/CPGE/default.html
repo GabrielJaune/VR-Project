@@ -34,3 +34,8 @@ animation__1= "property: rotation; to: -5 180 10; dur: 2000; dir: alternate; eas
 <a-entity modelfix nav-mesh gltf-model="./resources/objects/game/navmesh.gltf" modify-material class="raycastable" position="0.00598 -.04 0.54851" scale="0.18 0.18 0.18" visible="true">
 
 <a-entity light="intensity: 0.1; type: spot" position="2.19725 2.82887 1.30026" rotation="-36.827435239828795 50.734839801039264 -36.250466740132055"></a-entity>
+
+<a-entity modelfix obj-model="obj: ./resources/objects/game/Background/helico.obj" modify-material class="raycastable" position="0.9 7.3 -3.04" scale=".3 .3 .3" rotation="0 180 0">
+    <a-entity modelfix obj-model="obj: ./resources/objects/game/Background/helico-pales.obj" modify-material class="raycastable" position="-0.48022 20.85625 -0.51256" 
+    animation__1="property: rotation; loop: true; dur: 100; to: 0 360 0; easing: linear"/>
+</a-entity>

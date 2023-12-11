@@ -15,7 +15,7 @@ console.log("LANG => " + userLang)
 const Infos = {
   1: {
     title: "Bac Pro MELEC",
-    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes\n`,
+    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes`,
     redirect: "melec.html"
   },
   2: {
@@ -24,8 +24,8 @@ const Infos = {
     redirect: "sn.html"
   },
   3: {
-    title: "Title", //"BTS Electrotechnique",
-    info: "Info", //"Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
+    title: "BTS Electrotechnique",
+    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
     redirect: "index.html"
   },
   4: {
@@ -210,6 +210,7 @@ AFRAME.registerComponent('moai', {
     this.onClick = this.onClick.bind(this)
     this.moai = document.querySelector("#moai_entity")
     this.Clicked = false
+    this.src = ["moai.png", "troll.png"]
 
     this.el.addEventListener("click", this.onClick)
   },
@@ -219,6 +220,10 @@ AFRAME.registerComponent('moai', {
     this.Cooldown = true
     if(!this.Clicked) {
       this.moai.object3D.visible = true
+      let rn = getRndInteger(0, this.src.length)
+      let cool = "./resources/images/memes/" + this.src[rn]
+      console.log(rn, this.src[rn])
+      $("#moai")[0].setAttribute("src", cool)
       this.moai.emit("in")
       await sleep(1000)
     } else {
