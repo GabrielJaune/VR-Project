@@ -30,6 +30,7 @@
         
      <a-assets>
       <video id="CART_SECRET" loop="true" preload src="./resources/videos/cart.mp4"></video>
+      <video id="BACKGROUND_VIDEO" loop="true" autoplay preload muted src="./resources/videos/ari.mp4"></video>
 
       <a-asset-item id="background" src="./resources/objects/fond.obj"></a-asset-item>
       
@@ -93,12 +94,10 @@
           <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTRER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black"> </a-entity>
           <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 .01" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: ANNULER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt;  color: black"> </a-entity>
         </a-entity>
-
       </a-entity>
-    </a-entity>
 
-    <!-- Markiplier -->
-    
+      <a-video id="4K1080P" src="#BACKGROUND_VIDEO" position="2.59 86.03 -73.4" class="raycastable" material="alphaTest: 1; fog: false" scale="489.9 200.7 1"></a-video>
+
     <a-entity anchor="center" scale=".5 .5 .01" position="0 2.6 -2.05" rotation="0 0 0" geometry="primitive: plane; width: 4.5; height: .5" material="color: #333333; shader: shadow; transparent: false" sound="src: ./resources/sounds/jack.mp3; on: click; poolSize: 100">
       <a-text value="LYCEE LOUIS DE CORMONTAIGNE" width="7" height="1" anchor="center" align="center" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt" ></a-text>
     </a-entity>
@@ -128,6 +127,8 @@
     <a-entity anchor="center" position="-3 14 -53" rotation="90 0 0" scale="100 20 100" color="#333333">
       <a-entity obj-model="obj: #background" modify-materials position="0 0 0"></a-entity>
     </a-entity>
+
+    <a-entity sound="src: url(./resources/sounds/do.mp3); autoplay: true; loop: true; volume: .1" position=".03 2.8 -2.2"></a-entity>
 
     </a-scene>
   </body>

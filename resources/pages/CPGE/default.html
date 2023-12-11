@@ -9,10 +9,10 @@ animation__1= "property: rotation; to: -5 180 10; dur: 2000; dir: alternate; eas
     animation__2= "property: scale; to: 0 .8 .8; dur: 500; easing: easeInOutCubic; startEvents: show"
     animation__4= "property: position; to: .3 0 .58; dur: 400; easing: linear; startEvents: show"></a-entity>
     <a-entity id="asset" material="src: ./resources/test/Photos atelier/20231116_155650.jpg; alphaTest: 1" scale=".8 .8 .8" position="0 0 .55" geometry="primitive: plane"></a-entity> 
-    <a-sound id="sound" src="./resources/sounds/projector.mp3" volume="10" sound="poolSize: 100"></a-sound>
 </a-box>
 
 <a-entity id="projector" modelfix position="0.00871 1.243 -1.77053" rotation="0 90 0" scale="0.02 0.02 0.02" obj-model="obj: ./resources/objects/game/projector.obj; mtl: ./resources/objects/game/projector.mtl" modify-materials class="raycastable">
+    <a-sound id="sound" src="./resources/sounds/projector.mp3" volume="10" sound="poolSize: 100"></a-sound>
     <a-entity id="light" light="angle: 17; type: spot; penumbra: 1; castShadow: true; shadowCameraFar: 500.92; shadowCameraFov: 88.28; shadowRadius: 1.27" position="5.40334 2.3648 -1.38399" rotation="5.46 -88.7 0"></a-entity>
     <a-entity id="source" light="decay: 0.41; distance: 0.05; intensity: 200; penumbra: 1; type: point; shadowBias: -0.14; shadowRadius: 0" position="8.16521 2.74485 0.03269" rotation="-13.643843975450293 -90.74792038179544 -116.45710960711061"></a-entity>
 </a-entity>

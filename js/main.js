@@ -6,6 +6,9 @@ var Selected = undefined
 var Buttons = {}, Langs = {}
 
 var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
+var MainScene = $("#MainScene")[0]
+
+if(MainScene) MainScene.addEventListener("templaterendered", UpdateNavigator);
 
 console.log("LANG => " + userLang)
 
@@ -46,16 +49,11 @@ function LoadLang(Language) {
 }
 
 async function UpdateNavigator() {
+  await sleep(100)
   console.log("navigation update")
   
   var fields = $('.field'), container = $('#navigation')
-
-  // do {
-  //   fields = $('.field')
-  //   container = $('#navigation')    
-  //   await sleep(100)
-  // } while (!fields[0] || !container[0])
-  // await sleep(100)
+  if(!fields || !container) { $("#cur_camera")[0].emit("end_trans"); return; }
 
   var angle = 0, step = 0, radius = container[0].getAttribute("radius-outer")
 
@@ -69,6 +67,8 @@ async function UpdateNavigator() {
     this.setAttribute("visible", "true")
     step += 1
   });
+
+  $("#cur_camera")[0].emit("end_trans")
 }
 
 let PathName = location.pathname.split("/")
@@ -82,10 +82,7 @@ async function SwitchArea(Name) {
   $("#cur_camera")[0].emit("start_trans")
   await sleep(500)
 
-  $("#MainScene")[0].attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".html"
-  await sleep(100)
-  await UpdateNavigator()
-  $("#cur_camera")[0].emit("end_trans")
+  MainScene.attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".html"
 }
 
 function OnVRChange() {
@@ -115,6 +112,8 @@ AFRAME.registerComponent("info-panel", {
       // NOTE: Not Outside Since Loading Stuff
       Buttons = document.querySelectorAll(".menu-button")
 
+      this.Video = $("#BACKGROUND_VIDEO")[0]
+      this.src = ["./resources/videos/ari.mp4", "./resources/videos/NoHit.mp4","./resources/videos/sans.mp4"]
       this.Clicked = false
       this.el.object3D.scale.set(0, 0, 0)
 
@@ -154,9 +153,10 @@ AFRAME.registerComponent("info-panel", {
     },
 
     onButton: function (evt) {
-      if(this.Clicked) { return }
-      this.Clicked = true
+        if(this.Clicked) { return }
+        this.Clicked = true
         Selected = Infos[evt.currentTarget.id]
+        this.Video.src = "./resources/videos/" + evt.currentTarget.id + ".mp4"
         this.el.emit("enter")
         this.Title.setAttribute('text', 'value', Selected.title)
         this.Description.setAttribute('text', 'value', Selected.info)
@@ -165,6 +165,7 @@ AFRAME.registerComponent("info-panel", {
     onCancel: function (evt) {
       if(!this.Clicked) { return }
       this.Clicked = false
+      this.Video.src = this.src[getRndInteger(0, this.src.length)]
       this.el.emit("cancel")
     },
 })
@@ -259,7 +260,6 @@ AFRAME.registerComponent('redirect', {
   },
   onClick: async function() {
     var win = $("#cur_camera")[0]
-    var scene = $("#MainScene")[0]
     if(scene) { scene.empty() };
     if(win) { win.emit("start_trans"); await sleep(500) };
     window.location.href = this.redirect
@@ -359,7 +359,7 @@ AFRAME.registerComponent('projector', {
 
     this.cover = this.el.querySelector("#cover")
     this.asset = this.el.querySelector("#asset")
-    this.sound = this.el.querySelector("#sound")
+    this.sound = this.projector.querySelector("#sound")
 
     if(!this.cover || !this.asset) { console.log("end"); alert("No cover/asset Found"); return }
 
