@@ -156,6 +156,7 @@ AFRAME.registerComponent("info-panel", {
         if(this.Clicked) { return }
         this.Clicked = true
         Selected = Infos[evt.currentTarget.id]
+        $("#4K1080P")[0].setAttribute("visible", "true")
         this.Video.src = "./resources/videos/" + evt.currentTarget.id + ".mp4"
         this.el.emit("enter")
         this.Title.setAttribute('text', 'value', Selected.title)
@@ -165,7 +166,8 @@ AFRAME.registerComponent("info-panel", {
     onCancel: function (evt) {
       if(!this.Clicked) { return }
       this.Clicked = false
-      this.Video.src = this.src[getRndInteger(0, this.src.length)]
+      $("#4K1080P")[0].setAttribute("visible", "false")
+      this.Video.src = "" //this.src[getRndInteger(0, this.src.length)]
       this.el.emit("cancel")
     },
 })
