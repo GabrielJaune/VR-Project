@@ -1,7 +1,9 @@
 // NOTE:
 // init = start function
 
-let IsVR = false
+var Used = undefined
+
+let IsVR = false, OldMenu = {["pos"]: undefined, ["parent"]: undefined}
 var Selected = undefined
 var Buttons = {}, Langs = {}
 
@@ -34,6 +36,24 @@ const Infos = {
     redirect: "cpge.html"
   }
 }
+
+AFRAME.registerComponent("controller", {
+  init: function() {
+    this.onDown = this.onDown.bind(this)
+    this.onUp = this.onUp.bind(this)
+
+    this.el.addEventListener("mousedown", this.onDown)
+    this.el.addEventListener("mouseup", this.onUp)
+  },
+
+  onDown: function(evt) {
+    Used = this.el
+  },
+
+  onUp: function(evt) {
+    if(Used == this.el) Used = undefined;
+  }
+})
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
@@ -85,15 +105,24 @@ async function SwitchArea(Name) {
   MainScene.attributes.template.nodeValue = "src: " + "./resources/pages/" + PathName + "/" + Name + ".html"
 }
 
-function OnVRChange() {
+async function OnVRChange() {
+  let Menu = $("#Menu")[0]
+
+  console.log(Menu.object3D.parent)
+  if(!OldMenu["pos"]) OldMenu["pos"] = AFRAME.utils.coordinates.stringify(Menu.getAttribute("position"));
+  if(!OldMenu["parent"]) OldMenu["parent"] = Menu.object3D.parent;
+
+  if(!Menu) return;
   switch(IsVR) {
     case true:
-
+      $('#leftController')[0].object3D.attach(Menu.object3D)
+      Menu.setAttribute('position', "0 0 -.12")
+      Menu.setAttribute('rotation', "0 -10 180")
       break;
     case false:
-      console.log("base false")
-      document.querySelector("#leftController").setAttribute("position", "0 -.25 0")
-      document.querySelector("#leftController").setAttribute("rotation", "20 0 0")
+      console.log(OldMenu["parent"], Menu.object3D)
+      OldMenu["parent"].attach(Menu.object3D)
+      Menu.setAttribute('position', OldMenu['pos'])
       break;
     default:
       alert("Unknown IsVR Value")
@@ -337,16 +366,50 @@ AFRAME.registerComponent('collider', {
 
 
 AFRAME.registerComponent('phone', {
+  shema: {default: ''},
+
   init: async function() {
     this.onClick   = this.onClick.bind(this)
-    this.Asset = document.querySelector(this.el.getAttribute("phone"))
+    this.Asset = document.querySelector(this.data)
+
+    this.LastParent = this.el.object3D.parent
+    this.OldPos = AFRAME.utils.coordinates.stringify(this.el.getAttribute("position"))
+    this.OldRot = AFRAME.utils.coordinates.stringify(this.el.getAttribute("rotation"))
+  console.log(this.OldPos)
+
+    this.Click = -1
     this.el.addEventListener("click", this.onClick)
   },
 
-  onClick: async function() {
-    if(this.Asset.paused) {
+  onClick: async function(evt) {
+    this.Click += 1
+    let Target = evt.currentTarget
+
+    if(this.Click == 0) {
+      switch (IsVR) {
+        case true:
+          console.log("control")
+          Used.object3D.attach(this.el.object3D)
+          this.el.setAttribute("position", "0 -.1 -.2")
+          this.el.setAttribute("rotation", "0 180 0")
+          break
+        case false:
+          console.log("no control")
+          break
+      }
+    }
+
+    if(this.Click == 1) {
         this.Asset.play()
-    } else {
+    }
+
+    if (this.Click == 2) {
+      this.Click = -1
+
+        this.LastParent.attach(this.el.object3D)
+        this.el.setAttribute("position", this.OldPos)
+        this.el.setAttribute("rotation", this.OldRot)
+
         this.Asset.pause()
         this.Asset.currentTime = 0
     }
@@ -442,8 +505,7 @@ AFRAME.registerComponent('modelfix', {
   }
 })
 
-var scene = document.querySelector("a-scene")
-console.log(scene)
+var scene = $("a-scene")[0]
 
 if(scene) {
   scene.addEventListener("enter-vr", function() {
@@ -459,6 +521,4 @@ if(scene) {
   scene.addEventListener("loaded", function() {
     OnVRChange()
   })
-
-  OnVRChange()
 }
