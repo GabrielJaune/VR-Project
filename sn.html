@@ -18,17 +18,10 @@
       </a-assets>
 
       <!-- VR -->
-      <a-entity id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable">
-        <a-box id="Menu" position="0 0 -.12" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="0 -10 180" opacity=".6">
-          <a-entity redirect="index.html" position=".3 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/home.obj" modify-materials class="raycastable"> </a-entity>
-          <a-entity redirect="index.html" position="0 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials class="raycastable"> </a-entity>
-        </a-entity>
-        </a-box>
-      </a-entity>
+      <a-entity id="leftController"   laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable"></a-entity>
 
-      <a-entity id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E">
-      </a-entity>
-      <a-entity id="leftHand" hand-tracking-controls="hand: left"></a-entity>
+      <a-entity id="leftHand"   hand-tracking-controls="hand: left"></a-entity>
       <a-entity id="rightHand" hand-tracking-controls="hand: right"></a-entity>
 
       <!-- Navigation -->
@@ -36,19 +29,23 @@
       <a-ring id="navigation" position="0 -1.5 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2" rotation="-90 0 0" visible="false"> </a-ring>
       
       <script id="NA" type="text/html"></script>
-      <a-entity id="cur_camera" camera="active: true" position="0 0 0" look-controls 
-      animation__1= "property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans"
-      animation__2= "property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans">
-        <a-entity spotinfo id="infoPanel" position="0 0 -1.5" visible="true"
-        geometry="primitive: plane; width: 1.5; height: 1"
-        material="color: #333333; shader: flat; transparent: false" class="raycastable">
-        <a-entity id="Info_Description" position="-0.68 0 .01" text="baseline: center; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: Hello World !"></a-entity>
+
+      <a-entity id="cur_camera" camera="active: true" position="0 0 0" look-controls animation__1= "property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans" animation__2= "property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans">
+        <a-entity spotinfo id="infoPanel" position="0 0 -1.5" visible="true" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: flat; transparent: false" class="raycastable">
+          <a-entity id="Info_Description" position="-0.68 0 .01" text="baseline: center; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: Hello World !"></a-entity>
+        </a-entity>
+
+        <a-box id="Menu" position="-.2 -.2 -.3" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="30 0 180" opacity=".6">
+          <a-entity redirect="index.html" position=".3 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/home.obj" modify-materials class="raycastable"></a-entity>
+          <a-entity redirect="index.html" position="0 -.53 .04"  rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials class="raycastable"></a-entity>
+        </a-box>
       </a-entity>
-    </a-entity>
+
       <a-entity id="MainScene" scene-init template="src: #NA" />
   
       <!-- Mics -->
       <a-entity sound="src: url(./resources/sounds/background.mp3); autoplay: true; loop: true" position="0 0 0"></a-entity>
+      
     </a-scene>
   </body>
 

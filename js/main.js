@@ -50,7 +50,8 @@ AFRAME.registerComponent("controller", {
     Used = this.el
   },
 
-  onUp: function(evt) {
+  onUp: async function(evt) {
+    await sleep(200)
     if(Used == this.el) Used = undefined;
   }
 })
@@ -120,7 +121,6 @@ async function OnVRChange() {
       Menu.setAttribute('rotation', "0 -10 180")
       break;
     case false:
-      console.log(OldMenu["parent"], Menu.object3D)
       OldMenu["parent"].attach(Menu.object3D)
       Menu.setAttribute('position', OldMenu['pos'])
       break;
@@ -388,13 +388,16 @@ AFRAME.registerComponent('phone', {
     if(this.Click == 0) {
       switch (IsVR) {
         case true:
-          console.log("control")
           Used.object3D.attach(this.el.object3D)
+
           this.el.setAttribute("position", "0 -.1 -.2")
           this.el.setAttribute("rotation", "0 180 0")
           break
         case false:
-          console.log("no control")
+          $("#cur_camera")[0].object3D.attach(this.el.object3D)
+
+          this.el.setAttribute("position", "0 -.02 -.3")
+          this.el.setAttribute("rotation", "-90 180 0")
           break
       }
     }
