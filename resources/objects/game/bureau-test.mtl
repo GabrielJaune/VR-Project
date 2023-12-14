@@ -1,7 +1,7 @@
-# Blender 3.5.1 MTL File: 'None'
+# Blender 3.6.2 MTL File: 'None'
 # www.blender.org
 
-newmtl 10107_Computer_Printer_v1
+newmtl 10107_Computer_Printer_v1.001
 Ns 10.000005
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -11,7 +11,7 @@ d 1.000000
 illum 1
 map_Kd Users/matthieu/Downloads/Computer_Printer_v3_L3.123cc81eeebb-4d57-4bf4-ac6e-1816040d11b9/10107_Computer Printer_v1_Diffuse.jpg
 
-newmtl Aluminium
+newmtl Aluminium.002
 Ns 729.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.233016 0.233016 0.233016
@@ -21,7 +21,7 @@ Ni 1.450000
 d 1.000000
 illum 3
 
-newmtl Carpet
+newmtl Carpet.001
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -31,7 +31,7 @@ illum 2
 map_Kd Users/matthieu/Texture/drive-download-20210610T021657Z-001/Fabric_Rug_006_COLOR.jpg
 map_Ns Users/matthieu/Texture/drive-download-20210610T021657Z-001/Fabric_Rug_006_ROUGH.jpg
 
-newmtl Cusion
+newmtl Cusion.001
 Ns 224.999985
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -41,7 +41,7 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl Emmision
+newmtl Emmision.002
 Ns 324.000031
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -50,26 +50,6 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-
-newmtl Floor
-Ns 224.999985
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
-
-newmtl Floor.001
-Ns 224.999985
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
 
 newmtl Floor.002
 Ns 224.999985
@@ -81,7 +61,27 @@ d 1.000000
 illum 2
 map_Kd Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
 
-newmtl Kaca
+newmtl Floor.003
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
+
+newmtl Floor.004
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Users/matthieu/Texture/ParquetFlooring05_MR_2K/ParquetFlooring05_2K_BaseColor.png
+
+newmtl Kaca.002
 Ns 324.000031
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -91,7 +91,7 @@ Ni 1.000000
 d 1.000000
 illum 2
 
-newmtl KerangkaLemari
+newmtl KerangkaLemari.001
 Ns 224.999985
 Ka 0.800000 0.800000 0.800000
 Kd 0.000000 0.000000 0.000000
@@ -101,7 +101,7 @@ Ni 1.450000
 d 1.000000
 illum 3
 
-newmtl Lemari
+newmtl Lemari.011
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -111,7 +111,7 @@ illum 2
 map_Kd Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_BaseColor.png
 map_Ns Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_Roughness.png
 
-newmtl Lemari.001
+newmtl Lemari.012
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -121,31 +121,7 @@ illum 2
 map_Kd Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_BaseColor.png
 map_Ns Users/matthieu/Texture/Wood09_MR_2K/Wood09_2K_Roughness.png
 
-newmtl Lowpoly_Body
-Ns 96.078453
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.000000
-d 1.000000
-illum 2
-map_Kd Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_col.JPG
-map_refl Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Ref.jpg
-map_Bump Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_nor.JPG
-
-newmtl Lowpoly_Screen
-Ns 96.078453
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.000000
-d 1.000000
-illum 2
-map_Kd Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_nor_2.JPG
-map_refl Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Ref.jpg
-map_Bump Users/matthieu/F:/Privat/001_Cgtrader/Lowpoly_Notebook/textures/Lowpolay_Laptop_nor_2.JPG
-
-newmtl Roof
+newmtl Roof.001
 Ns 224.999985
 Ka 1.000000 1.000000 1.000000
 Kd 1.000000 1.000000 1.000000
@@ -155,7 +131,7 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl SideTegel
+newmtl SideTegel.002
 Ns 224.999985
 Ka 1.000000 1.000000 1.000000
 Kd 0.711822 0.736521 0.787399
@@ -165,7 +141,7 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl Side_Wall
+newmtl Side_Wall.001
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -175,7 +151,7 @@ illum 2
 map_Kd Users/matthieu/Texture/Concrete_Wall/Concrete_Wall_009_basecolor.jpg
 map_Ns Users/matthieu/Texture/Concrete_Wall/Concrete_Wall_009_roughness.jpg
 
-newmtl Sofa
+newmtl Sofa.001
 Ns 224.999985
 Ka 1.000000 1.000000 1.000000
 Kd 1.000000 1.000000 1.000000
@@ -185,7 +161,7 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl Wall
+newmtl Wall.001
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
@@ -195,7 +171,7 @@ d 1.000000
 illum 2
 map_Ns Users/matthieu/Texture/WhiteStuccoWall01_MR_2K/WhiteStuccoWall01_2K_Roughness.png
 
-newmtl Wall_Down
+newmtl Wall_Down.001
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000

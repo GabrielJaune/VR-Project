@@ -8,6 +8,9 @@ var Selected = undefined
 var Buttons = {}, Langs = {}
 
 var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
+
+var SceneData = $("a-scene")
+var scene     = SceneData[0]
 var MainScene = $("#MainScene")[0]
 
 if(MainScene) MainScene.addEventListener("templaterendered", UpdateNavigator);
@@ -109,11 +112,11 @@ async function SwitchArea(Name) {
 async function OnVRChange() {
   let Menu = $("#Menu")[0]
 
-  console.log(Menu.object3D.parent)
+  if(!Menu) return;
+
   if(!OldMenu["pos"]) OldMenu["pos"] = AFRAME.utils.coordinates.stringify(Menu.getAttribute("position"));
   if(!OldMenu["parent"]) OldMenu["parent"] = Menu.object3D.parent;
 
-  if(!Menu) return;
   switch(IsVR) {
     case true:
       $('#leftController')[0].object3D.attach(Menu.object3D)
@@ -183,11 +186,13 @@ AFRAME.registerComponent("info-panel", {
 
     onButton: function (evt) {
         if(this.Clicked) { return }
+        let cool = $("#4K1080P")[0]
         this.Clicked = true
         Selected = Infos[evt.currentTarget.id]
         this.Video.src = "./resources/videos/" + evt.currentTarget.id + ".mp4"
         this.Video.play()
-        $("#4K1080P")[0].setAttribute("visible", "true")
+        cool.setAttribute("visible", "true")
+        cool.components.sound.playSound()
         this.el.emit("enter")
         this.Title.setAttribute('text', 'value', Selected.title)
         this.Description.setAttribute('text', 'value', Selected.info)
@@ -195,8 +200,10 @@ AFRAME.registerComponent("info-panel", {
 
     onCancel: function (evt) {
       if(!this.Clicked) { return }
+      let cool = $("#4K1080P")[0]
       this.Clicked = false
-      $("#4K1080P")[0].setAttribute("visible", "false")
+      cool.components.sound.stopSound()
+      cool.setAttribute("visible", "false")
       this.Video.src = "" //this.src[getRndInteger(0, this.src.length)]
       this.el.emit("cancel")
     },
@@ -297,7 +304,7 @@ AFRAME.registerComponent('redirect', {
   },
   onClick: async function() {
     var win = $("#cur_camera")[0]
-    if(scene) { scene.empty() };
+    if(SceneData) { SceneData.empty() };
     if(win) { win.emit("start_trans"); await sleep(500) };
     window.location.href = this.redirect
   }
@@ -350,6 +357,27 @@ AFRAME.registerComponent('spotinfo', {
   onClick: async function() {
     this.el.setAttribute("visible", "false")
     this.el.setAttribute("position", "0 0 20")
+  }
+})
+
+AFRAME.registerComponent('pc', {
+  init: async function() {
+    this.onClick   = this.onClick.bind(this)
+
+    this.Enabled = true
+    this.screen = this.el.querySelector("#SCREEN")
+    this.light  =  this.el.querySelector("#LIGHT")
+
+    this.el.addEventListener("click", this.onClick)
+
+    this.onClick()
+  },
+
+  onClick: async function() {
+    this.Enabled = !this.Enabled
+    if (this.Enabled) this.screen.emit("womp")
+    this.screen.setAttribute("material", "src", "./resources/images/PC_" + (this.Enabled && "ON" || "OFF") + ".png")
+    this.light.setAttribute("visible", this.Enabled && "true" || "false")
   }
 })
 
@@ -508,7 +536,32 @@ AFRAME.registerComponent('modelfix', {
   }
 })
 
-var scene = $("a-scene")[0]
+// InfoSec
+
+AFRAME.registerComponent('infosec', {
+  init: function() {
+    this.onClick = this.onClick.bind(this)
+
+    this.Found = 0
+    this.Time  = 60
+    this.sound = "src: ./resources/sounds/found.mp3; on: found"
+
+    this.ToFind = this.el.querySelectorAll("#find")
+
+    this.ToFind.forEach(function(element) {
+      console.log(this.sound)
+      let On = this.onClick
+      console.log(On)
+      element.addEventListener('click', function() { On(element) })
+      element.setAttribute("sound", this.sound)
+    }, this)
+  },
+
+  onClick: async function(Element) {
+    Element.querySelector("#light").setAttribute("visible", "true")
+    Element.emit("found")
+  }
+})
 
 if(scene) {
   scene.addEventListener("enter-vr", function() {
