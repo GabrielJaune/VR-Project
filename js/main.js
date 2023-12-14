@@ -273,9 +273,10 @@ AFRAME.registerComponent('moai', {
 });
 
 AFRAME.registerComponent('scene-changer', {
+  schema: {default: 'default'},
   init: async function() {
     this.onClick = this.onClick.bind(this)
-    this.SceneName = this.el.getAttribute("scene-name") || "default"
+    this.SceneName = this.data
 
     this.el.addEventListener("click", this.onClick)
   },
@@ -287,9 +288,11 @@ AFRAME.registerComponent('scene-changer', {
 })
 
 AFRAME.registerComponent('scene-init', {
+  schema: {type: 'string', default: 'default'},
   init: async function() {
     console.log("init")
-    this.SceneName = this.el.getAttribute("scene-name") || "default"
+    this.SceneName = this.data
+    console.log(this.SceneName)
 
     SwitchArea(this.SceneName)
   }
@@ -394,7 +397,7 @@ AFRAME.registerComponent('collider', {
 
 
 AFRAME.registerComponent('phone', {
-  shema: {default: ''},
+  schema: {default: ''},
 
   init: async function() {
     this.onClick   = this.onClick.bind(this)
