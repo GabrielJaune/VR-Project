@@ -76,21 +76,21 @@ async function UpdateNavigator() {
   await sleep(100)
   console.log("navigation update")
   
-  var fields = $('.field'), container = $('#navigation')
-  if(!fields || !container) { $("#cur_camera")[0].emit("end_trans"); return; }
+  // var fields = $('.field'), container = $('#navigation')
+  // if(!fields || !container) { $("#cur_camera")[0].emit("end_trans"); return; }
 
-  var angle = 0, step = 0, radius = container[0].getAttribute("radius-outer")
+  // var angle = 0, step = 0, radius = container[0].getAttribute("radius-outer")
 
-  fields.each(function() {
-    angle = (this.getAttribute("cam-angle") || 0) / (180 / Math.PI)
-    let x = ( radius ) * Math.cos(angle), z = ( radius ) * Math.sin(angle);
+  // fields.each(function() {
+  //   angle = (this.getAttribute("cam-angle") || 0) / (180 / Math.PI)
+  //   let x = ( radius ) * Math.cos(angle), z = ( radius ) * Math.sin(angle);
 
-    this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": z})
+  //   this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": z})
 
-    this.object3D.lookAt(container[0].getAttribute("position"))
-    this.setAttribute("visible", "true")
-    step += 1
-  });
+  //   this.object3D.lookAt(container[0].getAttribute("position"))
+  //   this.setAttribute("visible", "true")
+  //   step += 1
+  // });
 
   $("#cur_camera")[0].emit("end_trans")
 }
@@ -273,12 +273,33 @@ AFRAME.registerComponent('moai', {
 });
 
 AFRAME.registerComponent('scene-changer', {
-  schema: {default: 'default'},
+  schema: {
+    name : {type: 'string', default: 'default'},
+    angle: {type: 'int', default: 0}
+  },
+
   init: async function() {
     this.onClick = this.onClick.bind(this)
-    this.SceneName = this.data
+    this.update = this.update.bind(this)
 
+    this.SceneName = this.data["name"]
     this.el.addEventListener("click", this.onClick)
+  },
+
+  update: async function() {  
+    console.log("update")
+    // ------ \\
+    let newData = this.data
+    this.SceneName = newData["name"]
+    // ------ \\
+    let container = $("#navigation")[0]
+    let angle = newData["angle"] / (180 / Math.PI), radius = container.getAttribute("radius-outer")
+    let x = ( radius ) * Math.cos(angle), z = ( radius ) * Math.sin(angle);
+  
+    this.el.setAttribute("position", {"x": x, "y": container.getAttribute("position").y, "z": z})
+  
+    this.el.object3D.lookAt(container.getAttribute("position"))
+    this.el.setAttribute("visible", "true")
   },
 
   onClick: async function() {
