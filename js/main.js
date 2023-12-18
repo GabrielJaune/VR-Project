@@ -568,6 +568,7 @@ AFRAME.registerComponent('infosec', {
 
     this.Static = false
     this.Video = $("#infovid")[0]
+    this.tv = this.el.querySelector("#tv").querySelector("#video")
     this.Found = 0
     this.Time  = 60
     this.sound = "src: ./resources/sounds/found.mp3; on: found"
@@ -575,14 +576,13 @@ AFRAME.registerComponent('infosec', {
     this.ToFind = this.el.querySelectorAll("#find")
 
     this.ToFind.forEach(function(element) {
-      console.log(this.sound)
       let On = this.onClick
-      console.log(On)
       element.addEventListener('click', function() { On(element) })
       element.setAttribute("sound", this.sound)
     }, this)
 
     $("#infovid")[0].addEventListener('ended', function() {
+      this.Static = false
       this.Video.setAttribute('loop', 'true')
       this.Video.setAttribute('src', "./resources/videos/Finder/none.mp4")
     }.bind(this))
@@ -593,7 +593,9 @@ AFRAME.registerComponent('infosec', {
     var Finder = Element.getAttribute("Finder") || "none"
     console.log("Found " + Finder)
 
-    console.log(this.Video)
+    console.log(this.Static)
+    if(this.Static) { console.log("crit"); this.tv.emit("crit") }
+    this.Static = true
     this.Video.removeAttribute('loop')
     this.Video.setAttribute('src', "./resources/videos/Finder/" + Finder + ".mp4")
 
