@@ -566,6 +566,8 @@ AFRAME.registerComponent('infosec', {
   init: function() {
     this.onClick = this.onClick.bind(this)
 
+    this.Static = false
+    this.Video = $("#infovid")[0]
     this.Found = 0
     this.Time  = 60
     this.sound = "src: ./resources/sounds/found.mp3; on: found"
@@ -579,9 +581,22 @@ AFRAME.registerComponent('infosec', {
       element.addEventListener('click', function() { On(element) })
       element.setAttribute("sound", this.sound)
     }, this)
+
+    $("#infovid")[0].addEventListener('ended', function() {
+      this.Video.setAttribute('loop', 'true')
+      this.Video.setAttribute('src', "./resources/videos/Finder/none.mp4")
+    }.bind(this))
+
   },
 
   onClick: async function(Element) {
+    var Finder = Element.getAttribute("Finder") || "none"
+    console.log("Found " + Finder)
+
+    console.log(this.Video)
+    this.Video.removeAttribute('loop')
+    this.Video.setAttribute('src', "./resources/videos/Finder/" + Finder + ".mp4")
+
     Element.querySelector("#light").setAttribute("visible", "true")
     Element.emit("found")
   }
