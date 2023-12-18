@@ -577,7 +577,12 @@ AFRAME.registerComponent('infosec', {
 
     this.ToFind.forEach(function(element) {
       let On = this.onClick
-      element.addEventListener('click', function() { On(element) })
+      let Used = false
+      element.addEventListener('click', function() {
+        if(Used) return;
+        Used = true
+        On(element)
+      })
       element.setAttribute("sound", this.sound)
     }, this)
 
