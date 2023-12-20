@@ -16,7 +16,11 @@
       <a-entity position="0 2.25 -15" particle-system="preset: rain"></a-entity>
 
         <!-- Locks Mouse & Touch -->
-        <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: true; mouseEnabled: true" renderer="sortObjects: true"> </a-entity>
+        <a-entity position="0 1.6 0" camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: true; mouseEnabled: true" renderer="sortObjects: true">
+          <a-entity spotinfo id="NotifPanel" position="0 0 -1.5" visible="true" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: flat; transparent: false" class="raycastable">
+            <a-entity id="Info_Description" position="-0.51997 0.00006 0.01288" text="shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
+          </a-entity>
+        </a-entity>
 
       <!-- VR -->
       <a-entity id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
@@ -91,7 +95,10 @@
             text="shader: msdf; anchor: left; width: 2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json;  color: white; value: Lorem ipsum"></a-entity>
           <a-entity id="Info_Description" position="-.7 0.1 0" text="baseline: top; shader: msdf; anchor: left; width: 1.2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
 
-          <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTRER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black"> </a-entity>
+          <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTRER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black">
+            <a-entity visible="false" class="raycastable" id="Extra1" position="-0.27 0.0886 0.01" geometry="primitive: plane; width: 0.3; height: 0.18" material="color: #62ff62; shader: flat; transparent: true" text="value: ENTRER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black" scale="0.5 0.5 0.5"> </a-entity>
+            <a-entity visible="false" class="raycastable" id="Extra2" position="-0.27142 -0.1071 0.01" geometry="primitive: plane; width: 0.3; height: 0.18" material="color: #62ff62; shader: flat; transparent: true" text="value: ENTRER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black" scale="0.5 0.5 0.5"> </a-entity>
+          </a-entity>
           <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 .01" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: ANNULER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black"> </a-entity>
         </a-entity>
       </a-entity>

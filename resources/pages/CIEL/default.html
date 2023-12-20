@@ -1,0 +1,11 @@
+<a-sky id="sky" src="./resources/sky/SN/SN-Pano-1.jpg" rotation="0 60 0"> </a-sky>
+
+<a-plane position="-1.5 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
+<a-plane position="7 4 -20" scale="1 1 2" opacity="0" sound="src: ./resources/sounds/honk.mp3; on: click; poolSize: 100" class="raycastable"></a-plane>
+
+<a-entity scene-changer="name: second; angle: 90" scale="10 5 15" obj-model="obj: ./resources/objects/frises/Arrow.obj" modify-materials class="raycastable field" visible="false"></a-entity>
+
+<a-entity id="okbro" infospot="Information Slot" class="raycastable" position="-11 0 10" rotation="90 0 0" geometry="primitive: dodecahedron" material="color: #00FF28; shader: shadow; transparent: false" animation__1= "property: rotation; to: 90 0 200 ; dur: 500; easing: linear; startEvents: start_trans" animation__2= "property: rotation; to: 90 0 000 ; dur: 500; easing: linear; startEvents: end_trans" class="raycastable">
+    <a-entity position="0 0 0" rotation="0 0 0" scale="5 5 5" obj-model="obj: ./resources/objects/info.obj" modify-materials>
+    </a-entity>
+</a-entity>

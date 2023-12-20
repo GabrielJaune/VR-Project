@@ -1,6 +1,8 @@
 // NOTE:
 // init = start function
 
+var Epoch = Math.floor(new Date().getTime()/1000.0)
+
 var Used = undefined
 
 let IsVR = false, OldMenu = {["pos"]: undefined, ["parent"]: undefined}
@@ -26,7 +28,7 @@ const Infos = {
   2: {
     title: "Bac Pro CIEL",
     info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
-    redirect: "sn.html"
+    redirect: "ciel.html"
   },
   3: {
     title: "BTS Electrotechnique",
@@ -36,7 +38,10 @@ const Infos = {
   4: {
     title: "CPGE",
     info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques",
-    redirect: "cpge.html"
+    redirect: {
+      ["Navigation" ]: "cpge.html",
+      ["Exploration"]: "cpge3D.html"
+    }
   }
 }
 
@@ -96,7 +101,8 @@ async function UpdateNavigator() {
 }
 
 let PathName = location.pathname.split("/")
-PathName = PathName[PathName.length - 1].split(".")[0].toUpperCase()
+PathName = (PathName[PathName.length - 1].split(".")[0] || "index").toUpperCase()
+console.log(PathName)
 
 async function SwitchArea(Name) {
   let ok = document.querySelectorAll(".field")
@@ -134,10 +140,21 @@ async function OnVRChange() {
 
 AFRAME.registerComponent("info-panel", {
     init: function() {
-      this.onHover  = this.onHover.bind(this);
+      this.onHover    = this.onHover.bind(this);
       this.onRelease  = this.onRelease.bind(this);
 
+      this.onExtra1  = this.onExtra1.bind(this);
+      this.onExtra2  = this.onExtra2.bind(this);
+
+      this.Extra = {
+        1: null,
+        2: null,
+      }
+
       this.onConfirm  = this.onConfirm.bind(this);
+      this.onButton   = this.onButton.bind(this);
+      this.onCancel   = this.onCancel.bind(this);
+
       this.onButton = this.onButton.bind(this);
       this.onCancel = this.onCancel.bind(this);
 
@@ -146,6 +163,7 @@ AFRAME.registerComponent("info-panel", {
 
       this.Video = $("#BACKGROUND_VIDEO")[0]
       this.src = ["./resources/videos/ari.mp4", "./resources/videos/NoHit.mp4","./resources/videos/sans.mp4"]
+      
       this.Clicked = false
       this.el.object3D.scale.set(0, 0, 0)
 
@@ -158,6 +176,12 @@ AFRAME.registerComponent("info-panel", {
       this.Cancel  = this.el.querySelector("#Info_Cancel")
       this.Confirm = this.el.querySelector("#Info_Confirm")
 
+      this.Extra1 = this.Confirm.querySelector("#Extra1")
+      this.Extra2 = this.Confirm.querySelector("#Extra2")
+      
+      this.Extra1.addEventListener('click', this.onExtra1)
+      this.Extra2.addEventListener('click', this.onExtra2)
+
       this.Cancel.addEventListener("click", this.onCancel)
       this.Confirm.addEventListener("click", this.onConfirm)
 
@@ -167,21 +191,44 @@ AFRAME.registerComponent("info-panel", {
     },
 
     onHover: function () {
-      // this.el.setAttribute("material", "topColor", "topColor: #FFFFFF")
       this.el.emit("pause")
-      // this.el.emit("hover")
-      console.log("hover")
     },
 
     onRelease: function() {
       this.el.emit("resume")
-      console.log("release")
     },
 
     onConfirm: function (evt) {
         if(!Selected) return;
-        console.log("Found " + Selected.id)
-        window.location.href = Selected.redirect
+        if(typeof(Selected["redirect"]) == "string") {
+          console.log("Found " + Selected.id)
+          window.location.href = Selected.redirect
+        } else {
+          console.log("Multiple Selection Found")
+          this.Extra1.setAttribute('visible', 'true')
+          this.Extra2.setAttribute('visible', 'true')
+
+          Object.keys(Selected["redirect"]).forEach(function(value, index) {
+            index += 1
+            console.log(index)
+            this.Extra[index] = value
+            let x = "Extra" + index
+            console.log(x)
+            this["Extra" + index].setAttribute("text", "value", value)
+          }, this)
+        }
+    },
+
+    onExtra1: function (evt) {
+      if(!this.Extra[1]) return;
+      var cur = Selected["redirect"][this.Extra[1]]
+      window.location.href = cur
+    },
+
+    onExtra2: function (evt) {
+      if(!this.Extra[2]) return;
+      var cur = Selected["redirect"][this.Extra[2]]
+      window.location.href = cur
     },
 
     onButton: function (evt) {
@@ -246,7 +293,7 @@ AFRAME.registerComponent('moai', {
     this.onClick = this.onClick.bind(this)
     this.moai = document.querySelector("#moai_entity")
     this.Clicked = false
-    this.src = ["moai.png", "troll.png"]
+    this.src = ["moai.png"]
 
     this.el.addEventListener("click", this.onClick)
   },
@@ -342,7 +389,7 @@ AFRAME.registerComponent('infospot', {
 
     this.OldRotation = this.el.rotation
 
-    this.InfoPanel = document.querySelector("#infoPanel")
+    this.InfoPanel = document.querySelector("#NotifPanel")
     this.InfoDes   = this.InfoPanel.querySelector("#Info_Description")
     this.Info      = this.el.getAttribute("infospot") || "No Info Provided"
 
@@ -372,10 +419,39 @@ AFRAME.registerComponent('infospot', {
 AFRAME.registerComponent('spotinfo', {
   init: async function() {
     this.onClick   = this.onClick.bind(this)
+    this.InfoDes   = this.el.querySelector("#Info_Description")
+
 
     this.el.setAttribute("visible", "false")
     this.el.setAttribute("position", "0 0 20")
     this.el.addEventListener("click", this.onClick)
+
+    $.getJSON("./resources/Notification.json", function( data ) {
+      data.forEach(function(Obj) {
+        let canuse = false
+        let enabled = Obj["Until"] && (Obj["Until"] <= Epoch) || Obj["Enabled"]
+        if(!enabled) return;
+
+        if(Obj["Only"]) {
+          if(typeof(Obj["Only"]) == "string") {
+            if(Obj["Only"] == PathName.toLowerCase()) canuse = true;
+          } else {
+            Obj["Only"].forEach(function(asset) {
+              if(asset == PathName.toLowerCase()) canuse = true;
+            })
+          }
+        } else { canuse = true }
+
+        if(!canuse) return;
+
+        console.log("showing notification")
+
+        this.el.setAttribute("position", "0 0 -1.5")
+        this.el.setAttribute("visible", "true")
+        this.InfoDes.setAttribute('text', 'value', Obj["Content"])
+
+      }, this)
+    }.bind(this), this);
   },
 
   onClick: async function() {

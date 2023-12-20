@@ -31,8 +31,8 @@
       <script id="NA" type="text/html"></script>
 
       <a-entity id="cur_camera" camera="active: true" position="0 0 0" look-controls animation__1= "property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans" animation__2= "property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans">
-        <a-entity spotinfo id="infoPanel" position="0 0 -1.5" visible="true" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: flat; transparent: false" class="raycastable">
-          <a-entity id="Info_Description" position="-0.68 0 .01" text="baseline: center; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: Hello World !"></a-entity>
+        <a-entity spotinfo id="NotifPanel" position="0 0 -1.5" visible="true" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: flat; transparent: false" class="raycastable">
+          <a-entity id="Info_Description" position="-0.51997 0.00006 0.01288" text="shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
         </a-entity>
 
         <a-box id="Menu" position="-.2 -.2 -.3" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="30 0 180" opacity=".6">
