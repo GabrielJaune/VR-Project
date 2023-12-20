@@ -565,12 +565,15 @@ AFRAME.registerComponent('modelfix', {
 AFRAME.registerComponent('infosec', {
   init: function() {
     this.onClick = this.onClick.bind(this)
+    this.onTimer = this.onTimer.bind(this)
 
     this.Static = false
-    this.Video = $("#infovid")[0]
-    this.tv = this.el.querySelector("#tv").querySelector("#video")
     this.Found = 0
     this.Time  = 60
+
+    this.Video = $("#infovid")[0]
+    this.tv = this.el.querySelector("#tv")
+    this.tvideo = this.tv.querySelector("#video")
     this.sound = "src: ./resources/sounds/found.mp3; on: found"
 
     this.ToFind = this.el.querySelectorAll("#find")
@@ -586,26 +589,46 @@ AFRAME.registerComponent('infosec', {
       element.setAttribute("sound", this.sound)
     }, this)
 
-    $("#infovid")[0].addEventListener('ended', function() {
+    this.Video.addEventListener('ended', function() {
       this.Static = false
+      this.tvideo.components.sound.playSound()
+      this.Video.muted = true
       this.Video.setAttribute('loop', 'true')
       this.Video.setAttribute('src', "./resources/videos/Finder/none.mp4")
     }.bind(this))
 
+    this.onTimer()
   },
 
   onClick: async function(Element) {
+    this.Found += 1
+
     var Finder = Element.getAttribute("Finder") || "none"
     console.log("Found " + Finder)
 
-    console.log(this.Static)
-    if(this.Static) { console.log("crit"); this.tv.emit("crit") }
+    if(this.Static) { this.tv.emit("crit") }
     this.Static = true
+
+    this.tvideo.components.sound.stopSound()
+
+    this.Video.muted = false
     this.Video.removeAttribute('loop')
     this.Video.setAttribute('src', "./resources/videos/Finder/" + Finder + ".mp4")
 
     Element.querySelector("#light").setAttribute("visible", "true")
     Element.emit("found")
+
+    console.log(this.Found)
+  },
+
+  onTimer: async function() {
+    this.Time -= 1
+
+    this.tvideo.setAttribute('sound', 'volume', 60 - this.Time)
+
+    if(this.Time <= 0) { alert("TIMES OUT"); return; }
+
+    setTimeout(this.onTimer, 1000)
   }
 })
 

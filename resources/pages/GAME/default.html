@@ -5,8 +5,8 @@
 </a-entity>
 
 <a-entity infosec>
-    <a-entity id="tv" obj-model="obj: ./resources/objects/game/Assets/tv.obj" position="2.20418 0.891 -6.756" scale="0.3 0.3 0.3" rotation="0 -48.47 0">
-        <a-video id="video" src="#infovid" position="-0.29 1.19 0.93" scale="1.7 1.4 1" sound="src: url(./resources/sounds/crit.mp3); on: crit; volume: 10; poolSize: 100" animation__1="property: scale; from: 1.8 1.8 1.8; to: 1.7 1.4 1; dur: 500; startEvents: crit"></a-video>
+    <a-entity id="tv" obj-model="obj: ./resources/objects/game/Assets/tv.obj" position="2.20418 0.891 -6.756" scale="0.3 0.3 0.3" rotation="0 -48.47 0" sound="src: url(./resources/sounds/crit.mp3); on: crit; volume: 10; poolSize: 100">
+        <a-video id="video" src="#infovid" sound="src: ./resources/videos/Finder/none.mp3; loop: true; autoplay: true" position="-0.29 1.19 0.93" scale="1.7 1.4 1" animation__1="property: scale; from: 1.8 1.8 1.8; to: 1.7 1.4 1; dur: 500; startEvents: crit"></a-video>
     </a-entity>
 
     <a-entity finder="pc" id="find" modelfix obj-model="obj: ./resources/objects/game/Assets/compute.obj" scale="5.5 5.5 5.5" position="0 0 -2.99874" class="raycastable">
@@ -26,6 +26,10 @@
         <a-light id="light" light="color: #4dff2d; distance: 0.5; type: point" position="-0.35758 0.21307 -0.66313" visible="false"></a-light>
     </a-entity>
 
+    <a-entity id="test" finder="lamp" modelfix obj-model="obj: ./resources/objects/game/Assets/lamp.obj" scale="1 1 1" position="0 .012 -2.99874" class="raycastable">
+        <a-light id="light" light="color: #4dff2d; distance: 0.29; type: point" position="-0.35621 0.07579 0.03859" visible="false"></a-light>
+    </a-entity>
+    
     <a-entity finder="phone" id="find" modelfix obj-model="obj: ./resources/objects/game/Assets/phone.obj" scale="5.5 5.5 5.5" position="0 .012 -2.99874" class="raycastable">
         <a-light id="light" light="color: #4dff2d; distance: 0.29; type: point" position="-0.35621 0.07579 0.03859" visible="false"></a-light>
     </a-entity>
