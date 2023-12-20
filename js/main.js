@@ -31,7 +31,7 @@ const Infos = {
   3: {
     title: "BTS Electrotechnique",
     info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
-    redirect: "index.html"
+    redirect: "bts.html"
   },
   4: {
     title: "CPGE",
