@@ -652,6 +652,8 @@ AFRAME.registerComponent('infosec', {
     this.Found  = 0
     this.Time   = 60
 
+    this.Lamp = this.el.querySelector('#lamp')
+
     this.Video  = $("#infovid")[0]
     this.tv     = this.el.querySelector("#tv")
     this.tvideo = this.tv.querySelector("#video")
@@ -717,11 +719,19 @@ AFRAME.registerComponent('infosec', {
     console.log(this.Time)
     this.tvideo.setAttribute('sound', 'volume', 60 - this.Time)
 
-    if(this.Time == 55) console.log("alarm time");
+    if(this.Time == 20) {
+      console.log("ehbezfygrufezhuzefuefhusezfhorihoefhoehuirebjriezfgfezjbkhidbfezfv_hezfnklqcsgysvmcqshbsjopsqdfhiozefuçze_çy")
+      this.Lamp.querySelector('#alarm').setAttribute('visible', 'true')
+      this.Lamp.querySelector('#light').setAttribute('visible', 'false')
+      this.Lamp.emit("womp")
+    }
   },
 
   onSuccess: async function() {
     alert("SUCCESS")
+    this.Lamp.components.sound.stopSound()
+    this.Lamp.querySelector('#alarm').setAttribute('visible', 'false')
+
   },
 
   onFail: async function() {

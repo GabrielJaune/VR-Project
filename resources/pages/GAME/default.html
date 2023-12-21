@@ -26,8 +26,19 @@
         <a-light id="light" light="color: #4dff2d; distance: 0.5; type: point" position="-0.35758 0.21307 -0.66313" visible="false"></a-light>
     </a-entity>
 
-    <a-entity id="test" finder="lamp" modelfix obj-model="obj: ./resources/objects/game/Assets/lamp.obj" scale="1 1 1" position="0 .012 -2.99874" class="raycastable">
-        <a-light id="light" light="color: #4dff2d; distance: 0.29; type: point" position="-0.35621 0.07579 0.03859" visible="false"></a-light>
+    <a-entity id="lamp" modelfix obj-model="obj: ./resources/objects/game/Assets/lamp.obj" scale="0.005 0.005 0.005" position="0 2.70721 -4.221" animation__1= "property: rotation; to: 0 360 0; dur: 500; easing: linear; loop: true;" sound="src: ./resources/sounds/Alarm.mp3; on: womp; loop: true; volume: 10">
+        <a-entity id="light">
+            <a-light id="light" light="type: spot; intensity: 0.77; penumbra: 1" position="-0.35621 0.07579 0.03859" rotation="-90 0 0"></a-light>
+            <a-light id="light" light="distance: 0.29; type: point; intensity: 10" position="-0.35621 0.07579 0.03859"></a-light>
+        </a-entity>
+
+        <a-entity id="alarm" visible="false">
+            <a-light id="alarm"  light="type: spot; intensity: 20; penumbra: 1; color: #fd0006" position="-0.35621 0.07579 0.03859" rotation="0 0 90.00021045914971"></a-light>
+            <a-light id="alarm2" light="type: spot; intensity: 20; penumbra: 1; color: #000099" position="-0.35621 0.07579 0.03859" rotation="0 180 90.00021045914971"></a-light>
+    
+            <a-light light="type: point; intensity: 20; penumbra: 1; color: #fd0006; distance: 0.46" position="-43.99715 -41.69646 -86.95859" rotation="0 180 90.00021045914971"></a-light>
+            <a-light light="type: point; intensity: 20; penumbra: 1; color: #000099; distance: 0.33" position="32.27969 -27.90041 65.0975" rotation="0 180 90.00021045914971"></a-light>    
+        </a-entity>
     </a-entity>
     
     <a-entity finder="phone" id="find" modelfix obj-model="obj: ./resources/objects/game/Assets/phone.obj" scale="5.5 5.5 5.5" position="0 .012 -2.99874" class="raycastable">
