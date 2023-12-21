@@ -630,7 +630,7 @@ state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
     Cormon VR Experience - Virtual Reality on the Modern Web
-    Copyright (C) 2023  Yanis M., Matthieu Farcot
+    Copyright (C) 2023-2024  Yanis M., Matthieu Farcot
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published

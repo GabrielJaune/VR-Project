@@ -1,3 +1,19 @@
+/* Cormon VR Experience - Virtual Reality on the Modern Web
+    Copyright (C) 2023-2024  Yanis M., Matthieu Farcot
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>. */
+
 // NOTE:
 // init = start function
 
@@ -79,24 +95,8 @@ function LoadLang(Language) {
 
 async function UpdateNavigator() {
   await sleep(100)
+
   console.log("navigation update")
-  
-  // var fields = $('.field'), container = $('#navigation')
-  // if(!fields || !container) { $("#cur_camera")[0].emit("end_trans"); return; }
-
-  // var angle = 0, step = 0, radius = container[0].getAttribute("radius-outer")
-
-  // fields.each(function() {
-  //   angle = (this.getAttribute("cam-angle") || 0) / (180 / Math.PI)
-  //   let x = ( radius ) * Math.cos(angle), z = ( radius ) * Math.sin(angle);
-
-  //   this.setAttribute("position", {"x": x, "y": container[0].getAttribute("position").y, "z": z})
-
-  //   this.object3D.lookAt(container[0].getAttribute("position"))
-  //   this.setAttribute("visible", "true")
-  //   step += 1
-  // });
-
   $("#cur_camera")[0].emit("end_trans")
 }
 
@@ -641,16 +641,21 @@ AFRAME.registerComponent('modelfix', {
 AFRAME.registerComponent('infosec', {
   init: function() {
     this.onClick = this.onClick.bind(this)
-    this.onTimer = this.onTimer.bind(this)
+
+    this.onTimer    = this.onTimer.bind(this)
+    this.TimerCheck = this.TimerCheck.bind(this)
+
+    this.onSuccess = this.onSuccess.bind(this)
+    this.onFail    = this.onFail.bind(this)
 
     this.Static = false
-    this.Found = 0
-    this.Time  = 60
+    this.Found  = 0
+    this.Time   = 60
 
-    this.Video = $("#infovid")[0]
-    this.tv = this.el.querySelector("#tv")
+    this.Video  = $("#infovid")[0]
+    this.tv     = this.el.querySelector("#tv")
     this.tvideo = this.tv.querySelector("#video")
-    this.sound = "src: ./resources/sounds/found.mp3; on: found"
+    this.sound  = "src: ./resources/sounds/found.mp3; on: found"
 
     this.ToFind = this.el.querySelectorAll("#find")
 
@@ -698,13 +703,29 @@ AFRAME.registerComponent('infosec', {
   },
 
   onTimer: async function() {
+    if(this.Found >= this.ToFind.length) { this.onSuccess(); return }
     this.Time -= 1
 
-    this.tvideo.setAttribute('sound', 'volume', 60 - this.Time)
+    this.TimerCheck()
 
-    if(this.Time <= 0) { alert("TIMES OUT"); return; }
+    if(this.Time <= 0) { this.onFail(); return; }
 
     setTimeout(this.onTimer, 1000)
+  },
+
+  TimerCheck: async function() {
+    console.log(this.Time)
+    this.tvideo.setAttribute('sound', 'volume', 60 - this.Time)
+
+    if(this.Time == 55) console.log("alarm time");
+  },
+
+  onSuccess: async function() {
+    alert("SUCCESS")
+  },
+
+  onFail: async function() {
+    alert("FAILURE")
   }
 })
 
