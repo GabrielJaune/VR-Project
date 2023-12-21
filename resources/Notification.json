@@ -1,6 +1,6 @@
 [
     {
-        "Content" : "Bienvenue dans l experience VR du lycee Louis de Cormontaigne.\nCet environnement est concu dans une optique multi-plateforme.\nIl utilise aussi bien le gyroscope de votre smartphone que les capacites d un casque VR avec ses manettes pour attraper des objets.\nCet environnement est appelé à évoluer.\nL equipe de Cormontaigne a plein d idees, en cour de dévelopement. N hesitez-pas a revenir souvent pour suivre l evolution !\nSi vous avez une idee ou des remarques: atx@lycee-cormontaigne-metz.fr",
+        "Content" : "Bienvenue dans l’experience VR du lycée Louis de Cormontaigne.\nCet environnement est conçu dans une optique multi-plateforme.\nIl utilise aussi bien le gyroscope de votre smartphone que les capacités d’un casque VR avec ses manettes pour attraper des objets.\nCet environnement est appelé à évoluer.\nL’équipe de Cormontaigne a plein d’idées, en cour de développement. N’hésitez pas à revenir souvent pour suivre l’évolution !\nSi vous avez une idée ou des remarques: atx@lycee-cormontaigne-metz.fr\n\nPour continuer, cliquez sur cette fenêtre...",
         "Until"   : null,
         "Enabled" : true,
         "Only"    : ["index"]
