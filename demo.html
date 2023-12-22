@@ -41,7 +41,7 @@
       <a-ring id="navigation" position="0 -1.5 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2" rotation="-90 0 0" visible="false"> </a-ring>
       
       <script id="NA" type="text/html"></script>
-      <a-entity id="rig" position="18.13 0 -.6" movement-controls="controls: gamepad,keyboard,nipple" nipple-controls="mode: static">  
+      <a-entity id="rig" position="18.13 0 -.6" movement-controls="controls: gamepad,keyboard,nipple; constrainToNavMesh: true" nipple-controls="mode: static">  
         <!-- VR -->
         <a-entity controller id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
         <a-entity controller id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable"></a-entity>

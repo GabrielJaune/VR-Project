@@ -44,7 +44,10 @@ const Infos = {
   2: {
     title: "Bac Pro CIEL",
     info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
-    redirect: "ciel.html"
+    redirect: [
+      {"image": "./resources/images/map.png", "redirect": "ciel.html"},
+      {"image": "./resources/images/cube.png", "redirect": "demo.html"}
+    ]
   },
   3: {
     title: "BTS Electrotechnique",
@@ -54,10 +57,10 @@ const Infos = {
   4: {
     title: "CPGE",
     info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques",
-    redirect: {
-      ["Navigation" ]: "cpge.html",
-      ["Exploration"]: "cpge3D.html"
-    }
+    redirect: [
+      {"image": "./resources/images/map.png", "redirect": "cpge.html"},
+      {"image": "./resources/images/cube.png", "redirect": "cpge3D.html"}
+    ]
   }
 }
 
@@ -164,6 +167,8 @@ AFRAME.registerComponent("info-panel", {
       this.Video = $("#BACKGROUND_VIDEO")[0]
       this.src = ["./resources/videos/ari.mp4", "./resources/videos/NoHit.mp4","./resources/videos/sans.mp4"]
       
+      this.ConfirmMode = false
+
       this.Clicked = false
       this.el.object3D.scale.set(0, 0, 0)
 
@@ -200,34 +205,35 @@ AFRAME.registerComponent("info-panel", {
 
     onConfirm: function (evt) {
         if(!Selected) return;
+        this.ConfirmMode = !this.ConfirmMode
+
         if(typeof(Selected["redirect"]) == "string") {
-          console.log("Found " + Selected.id)
           window.location.href = Selected.redirect
         } else {
-          console.log("Multiple Selection Found")
-          this.Extra1.setAttribute('visible', 'true')
-          this.Extra2.setAttribute('visible', 'true')
+          this.Extra1.setAttribute('visible', this.ConfirmMode)
+          this.Extra2.setAttribute('visible', this.ConfirmMode)
 
-          Object.keys(Selected["redirect"]).forEach(function(value, index) {
+          if(!this.ConfirmMode) return;
+
+          Selected["redirect"].forEach(function(value, index) {
             index += 1
-            console.log(index)
+            console.log(value)
             this.Extra[index] = value
             let x = "Extra" + index
-            console.log(x)
-            this["Extra" + index].setAttribute("text", "value", value)
+            this["Extra" + index].setAttribute("material", "src", value["image"])
           }, this)
         }
     },
 
     onExtra1: function (evt) {
       if(!this.Extra[1]) return;
-      var cur = Selected["redirect"][this.Extra[1]]
+      var cur = this.Extra[1]["redirect"]
       window.location.href = cur
     },
 
     onExtra2: function (evt) {
       if(!this.Extra[2]) return;
-      var cur = Selected["redirect"][this.Extra[2]]
+      var cur = this.Extra[2]["redirect"]
       window.location.href = cur
     },
 
@@ -247,6 +253,10 @@ AFRAME.registerComponent("info-panel", {
 
     onCancel: function (evt) {
       if(!this.Clicked) { return }
+
+      this.Extra1.setAttribute('visible', "false")
+      this.Extra2.setAttribute('visible', "false")
+
       let cool = $("#4K1080P")[0]
       this.Clicked = false
       cool.components.sound.stopSound()
@@ -382,6 +392,7 @@ AFRAME.registerComponent('redirect', {
 })
 
 AFRAME.registerComponent('infospot', {
+  schema: {type: 'string', default: 'default'},
   init: async function() {
     this.onClick   = this.onClick.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this);
@@ -391,7 +402,7 @@ AFRAME.registerComponent('infospot', {
 
     this.InfoPanel = document.querySelector("#NotifPanel")
     this.InfoDes   = this.InfoPanel.querySelector("#Info_Description")
-    this.Info      = this.el.getAttribute("infospot") || "No Info Provided"
+    this.Info      = this.data || "No Info Provided"
 
     this.el.addEventListener('mouseenter', this.onMouseEnter);
     this.el.addEventListener('mouseleave', this.onMouseLeave)

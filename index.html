@@ -99,6 +99,39 @@
               <a-video src="#CART_SECRET" toggleclick position="2.8 0 -.5" visible="false" class="raycastable"></a-video>
         </a-entity>
 
+        <a-entity infospot="The Content of this website
+        Le contenu de ce site web
+        
+        has been created by
+        a été créé par
+        
+        Matthieu Farcot et Yanis Maafa
+        (c) 2023
+        
+        In the framework of an internship of Yanis Maafa under the supervision of Matthieu Farcot within Louis de Cormontaigne highschool in Metz.
+        Dans le cadre d'un stage réalisé par Yanis Maafa sous la direction de Matthiue Farcot au Lycée de Cormontaigne, Metz.
+        
+        The content developped and hosted on https///vr.lycee-cormontaigne-metz.fr is under the licence
+        Le contenu développé et mis à disposition sur le site https///vr.lycee-cormontaigne-metz.fr est sous licence
+        
+        AFERO GPL 3.0
+        
+        Merci à
+        Thanks to
+        
+        Rawane Ibrahim Fath (mise en conformité RGPD des ressources photographique 360° / ensuring GDPR regulation complience for 360° panoramas)
+        Ceni Berrached (oui / yes)
+        François Heckel (pour la trompette de noel / for the christmas trumpet)
+        
+        Source code for the platform access
+        Acces au code source de la plate forme
+        https://github.com/Error-Cezar/VR-Project/
+        
+        Ce projet de création a été développé en suivant le cadre de la méthodologie de programmation également connue sous le nom de PMF. Cette méthodologie est basée sur le manifeste écrit par Zed A. Shaw qui décrit une approche naturelle de l’ingénierie logicielle avec une forte concentration sur l’acte de programmation. La méthodologie PMF utilise une approche concensuelle pour etablir une référence non partisane aux documents d’ingénierie ou de projet officiels décrivant ce qui est l’une des méthodologies d’ingénierie logicielle les plus utilisées.
+        
+        This whole project has been developped following the Programming Methodology Framework also known under the PMF methodology. The methodology is based on the manifesto written by Zed A. Shaw which describes a natural approach to software engineering with a strong focus on the act of programming. The PM methodology uses a soft naming to allow for a non-partisan reference to official engineering or project documents describing what is one of the most used software engineering methodologies.
+        " geometry="width: 0.5; height: 0.5" position="-2.18312 0 0" material="alphaTest: 1; src: ./resources/images/info.png" mixin="poster" class="raycastable"></a-entity>
+
         <a-entity id="infoPanel" position="0 0 1" info-panel
           geometry="primitive: plane; width: 1.5; height: 1"
           animation__0="pauseEvents: pause; resumeEvents: resume; property: position; to: 0 .09 1; dir: alternate; loop: true; dur: 1000; autoplay: true; easing: easeInOutQuart"
@@ -112,8 +145,8 @@
           <a-entity id="Info_Description" position="-.7 0.1 0" text="baseline: top; shader: msdf; anchor: left; width: 1.2; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
 
           <a-entity class="raycastable" id="Info_Confirm" position=".55 .3 .01"  geometry="primitive: plane; width: .3; height: .18"  material="color: #00FF28; shader: flat; transparent: true" text="value: ENTRER ; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black">
-            <a-entity visible="false" class="raycastable" id="Extra1" position="-0.27 0.0886 0.01" geometry="primitive: plane; width: 0.3; height: 0.18" material="color: #62ff62; shader: flat; transparent: true" text="value: ENTRER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black" scale="0.5 0.5 0.5"> </a-entity>
-            <a-entity visible="false" class="raycastable" id="Extra2" position="-0.27142 -0.1071 0.01" geometry="primitive: plane; width: 0.3; height: 0.18" material="color: #62ff62; shader: flat; transparent: true" text="value: ENTRER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black" scale="0.5 0.5 0.5"> </a-entity>
+            <a-entity visible="false" class="raycastable" id="Extra1" position="-0.27 0.0886 0.01" geometry="primitive: plane; width: 0.3; height: 0.18" material="color: #ffffff; shader: flat; transparent: true;" scale="0.7 0.7 0.5"> </a-entity>
+            <a-entity visible="false" class="raycastable" id="Extra2" position="-0.27142 -0.1071 0.01" geometry="primitive: plane; width: 0.3; height: 0.18" material="color: #ffffff; shader: flat; transparent: true;" scale="0.7 0.7 0.5"> </a-entity>
           </a-entity>
           <a-entity class="raycastable" id="Info_Cancel"  position=".55 -.3 .01" geometry="primitive: plane; width: .3; height: .18"  material="color: #ff0004; shader: flat; transparent: true" text="value: ANNULER; align: center; width: 1.4; font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt; color: black"> </a-entity>
         </a-entity>
