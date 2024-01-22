@@ -64,6 +64,20 @@ const Infos = {
   }
 }
 
+AFRAME.registerComponent('collider-check', {
+  dependencies: ['raycaster'],
+
+  init: function () {
+    this.el.addEventListener('raycaster-intersection', function () {
+      console.log('Player hitting something!');
+    });
+
+    this.el.addEventListener('raycaster-intersection-cleared', function () {
+      console.log('Player is no longer hitting!');
+    });
+  }
+});
+
 AFRAME.registerComponent("controller", {
   init: function() {
     this.onDown = this.onDown.bind(this)

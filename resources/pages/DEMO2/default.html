@@ -2,4 +2,14 @@
     <a-entity nav-mesh gltf-model="./resources/objects/test/navmesh.gltf" modify-material class="raycastable" position="0.00598 -.04 0.54851" visible="true"> </a-entity>
 </a-entity>
 
-<!-- <a-box static-body material="color: #ff060d" position="17.26483 -2.0722 0" scale="53.28233 1 33.80996"></a-box> -->
+<a-box id="camera" material="color: #ff060d" position="1.779 0.481 -0.412" geometry="" rotation="">
+    <a-entity id="light" light="color: #ffffff; type: spot; angle: 20" rotation="0 -79.90698594012514 0">
+        <a-box id="hitbox" class="collidable" position="0 0 -7.31576" scale="4.60166 1 -12.08072"></a-box>
+    </a-entity>
+</a-box>
+
+<a-box id="camera" material="color: #ff060d" position="6.71196 0.481 3.18367" geometry="" rotation="0 -8.837873989892948 0">
+    <a-entity id="light" light="color: #ffffff; type: spot; angle: 20" rotation="0 -79.90698594012514 0">
+        <a-box id="hitbox" class="collidable" position="0 0 -7.31576" scale="4.60166 1 -12.08072" material="" geometry=""></a-box>
+    </a-entity>
+</a-box>
