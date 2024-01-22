@@ -52,7 +52,7 @@
           <a-entity id="cur_camera" camera="far: 1000000" position="0 1.6 0" rotation="0 90 0" look-controls 
             animation__1= "property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans"
             animation__2= "property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans">
-            <a-sphere position="0 -.5 0" radius=".3" scale="1 1.5 .7"></a-sphere>
+            <a-sphere position="0 -.5 0" radius=".3" scale="1 1.5 .7" raycaster="objects: .collidable; showLine: true;"></a-sphere>
             <a-entity spotinfo id="NotifPanel" position="0 0 -1.5" visible="true" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: flat; transparent: false" class="raycastable">
               <a-entity id="Info_Description" position="-0.51997 0.00006 0.01288" text="shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
             </a-entity>
