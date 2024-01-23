@@ -64,20 +64,6 @@ const Infos = {
   }
 }
 
-AFRAME.registerComponent('collider-check', {
-  dependencies: ['raycaster'],
-
-  init: function () {
-    this.el.addEventListener('raycaster-intersection', function () {
-      console.log('Player hitting something!');
-    });
-
-    this.el.addEventListener('raycaster-intersection-cleared', function () {
-      console.log('Player is no longer hitting!');
-    });
-  }
-});
-
 AFRAME.registerComponent("controller", {
   init: function() {
     this.onDown = this.onDown.bind(this)
@@ -658,6 +644,65 @@ AFRAME.registerComponent('modelfix', {
       var model = evt.detail.model;
       traverse(model);
   });
+  }
+})
+
+AFRAME.registerComponent('collider-check', {
+  dependencies: ['raycaster'],
+
+  init: function () {
+    this.OldCall = undefined
+
+    this.el.addEventListener('raycaster-intersection', function (e) {
+      this.OldCall = e.detail.els
+      console.log(this.OldCall)
+      e.detail.els.forEach(function(el) {
+        el.emit("detect")
+      })
+      console.log('Player enter collision !');
+      console.log(this.OldCall)
+
+    });
+
+    this.el.addEventListener('raycaster-intersection-cleared', function (e) {
+    //   console.log(this.OldCall)
+
+    //   this.OldCall.forEach(function(el) {
+    //     el.emit("clear-detect")
+    //   })
+    //   console.log('Player removed collision !');
+    });
+  }
+});
+
+AFRAME.registerComponent('security', {
+  init: function() {
+    this.onDetection = this.onDetection.bind(this)
+    this.onLeft = this.onLeft.bind(this)
+
+    this.Cam = this.el.querySelectorAll("#Camera")
+
+    this.Cam.forEach(function(element) {
+      let hitbox = element.querySelector("#light").querySelector("#hitbox")
+      hitbox.addEventListener("detect", (event) => {
+        this.onDetection(element)
+        console.log("detect called");
+      });
+
+      hitbox.addEventListener("clear-detect", (event) => {
+        console.log("cancel called");
+      });
+    }, this)
+
+  },
+
+  onDetection: function(el) {
+    console.log("DETECTION FROM ::", el)
+    el.querySelector("#sound").components.sound.playSound();
+  },
+
+  onLeft: function() {
+
   }
 })
 
