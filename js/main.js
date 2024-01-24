@@ -329,6 +329,13 @@ AFRAME.registerComponent('moai', {
   }
 });
 
+AFRAME.registerComponent('btn-mode', {
+  schema: {
+    mode : {type: 'string', default: 'input'},
+    input: {type: 'string', default: "1"}
+  },
+})
+
 AFRAME.registerComponent('scene-changer', {
   schema: {
     name : {type: 'string', default: 'default'},
@@ -675,12 +682,17 @@ AFRAME.registerComponent('collider-check', {
   }
 });
 
+// 0.19 X   |   0.22 Y
 AFRAME.registerComponent('security', {
   init: function() {
     this.onDetection = this.onDetection.bind(this)
     this.onLeft      = this.onLeft.bind(this)
     // is ticking a good idea?
     this.tick        = this.tick.bind(this)
+    this.onClick     = this.onClick.bind(this)
+
+    this.Code = "69420"
+    this.CurrentCode = ""
 
     this.Alarm    = false
     this.Detected = false
@@ -700,6 +712,66 @@ AFRAME.registerComponent('security', {
       });
     }, this)
 
+    this.Buttons = this.el.querySelector("#control").querySelector("#buttons")
+
+    let XPos = undefined
+    let CurX = undefined
+
+    let CurY = undefined
+
+    let CurRow  = 0
+    let MaxRowX = 3
+
+    let Xdiff = 0.2
+    let Ydiff = 0.3
+    // IT GOES IDC, Y, X
+    // 0.
+    console.log(this.Buttons)
+    for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
+      CurRow += 1
+      if(CurRow > MaxRowX) {
+        CurY -= Ydiff
+        CurX = XPos
+        CurRow = 1
+      }
+
+      let el = this.Buttons.querySelector(`#b${(x).toString()}`)
+      let Pos = el.getAttribute("position")
+      if (!CurY) CurY = Pos.y; 
+      if (!CurX) { CurX = Pos.z; XPos = CurX }
+      
+      el.setAttribute("position", {x: Pos.x, y: CurY, z: CurX})
+
+      el.addEventListener("click", this.onClick)
+
+      CurX -= Xdiff
+    }
+  },
+
+
+  onClick: function(element) {
+    let el = element.target
+    let Type  = el.getAttribute("btn-mode")
+
+    let Mode  = Type.mode
+    let Input = Type.input
+
+    switch(Mode) {
+      case "input":
+        console.log("you CLICK :", Input)
+        this.CurrentCode = this.CurrentCode + Input
+        console.log("NEW CODE :", this.CurrentCode)
+      break;
+      case "clear":
+        console.log("CLEARED")
+        this.CurrentCode = ""
+      break;
+
+      case "enter":
+        if(this.CurrentCode == this.Code) { console.log("CORRECT"); this.Armed = !this.Armed } else {console.log("WRONG")}
+        this.CurrentCode = ""
+      break;
+    }
   },
 
   tick: function() {
