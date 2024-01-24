@@ -679,6 +679,7 @@ AFRAME.registerComponent('security', {
   init: function() {
     this.onDetection = this.onDetection.bind(this)
     this.onLeft      = this.onLeft.bind(this)
+    // is ticking a good idea?
     this.tick        = this.tick.bind(this)
 
     this.Alarm    = false
@@ -703,12 +704,15 @@ AFRAME.registerComponent('security', {
 
   tick: function() {
     
+
+    if(false) return; // when you don't need tick anymore
+    setTimeout(this.onTimer, 1000)
   },
 
   onDetection: function(el) {
     if(this.Detected) {console.log("Already Detected"); return }
     if(!this.Armed)   {console.log("System Is Not Armed"); return }
-    el.querySelector("#sound").components.sound.playSound();
+    this.Detected = true
   },
 
   onLeft: function() {
@@ -781,7 +785,7 @@ AFRAME.registerComponent('infosec', {
     Element.querySelector("#light").setAttribute("visible", "true")
     Element.emit("found")
 
-    console.log(this.Found)
+    // console.log(this.Found)
   },
 
   onTimer: async function() {
@@ -796,10 +800,11 @@ AFRAME.registerComponent('infosec', {
   },
 
   TimerCheck: async function() {
-    console.log(this.Time)
+    // I love math
     this.tvideo.setAttribute('sound', 'volume', 60 - this.Time)
 
     if(this.Time == 20) {
+      // Why did I even do that print?
       console.log("ehbezfygrufezhuzefuefhusezfhorihoefhoehuirebjriezfgfezjbkhidbfezfv_hezfnklqcsgysvmcqshbsjopsqdfhiozefuçze_çy")
       this.Lamp.querySelector('#alarm').setAttribute('visible', 'true')
       this.Lamp.querySelector('#light').setAttribute('visible', 'false')
@@ -834,3 +839,6 @@ if(scene) {
     OnVRChange()
   })
 }
+
+// This code is toooooo long
+// oh my god
