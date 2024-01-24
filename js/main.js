@@ -678,7 +678,12 @@ AFRAME.registerComponent('collider-check', {
 AFRAME.registerComponent('security', {
   init: function() {
     this.onDetection = this.onDetection.bind(this)
-    this.onLeft = this.onLeft.bind(this)
+    this.onLeft      = this.onLeft.bind(this)
+    this.tick        = this.tick.bind(this)
+
+    this.Alarm    = false
+    this.Detected = false
+    this.Armed    = true
 
     this.Cam = this.el.querySelectorAll("#Camera")
 
@@ -696,8 +701,13 @@ AFRAME.registerComponent('security', {
 
   },
 
+  tick: function() {
+    
+  },
+
   onDetection: function(el) {
-    console.log("DETECTION FROM ::", el)
+    if(this.Detected) {console.log("Already Detected"); return }
+    if(!this.Armed)   {console.log("System Is Not Armed"); return }
     el.querySelector("#sound").components.sound.playSound();
   },
 
