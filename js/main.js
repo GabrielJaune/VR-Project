@@ -726,6 +726,7 @@ AFRAME.registerComponent('security', {
     let Ydiff = 0.3
     // IT GOES IDC, Y, X
     // 0.
+    // ^^ Why is there a 0
     console.log(this.Buttons)
     for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
       CurRow += 1
