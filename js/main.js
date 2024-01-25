@@ -686,9 +686,9 @@ AFRAME.registerComponent('collider-check', {
 AFRAME.registerComponent('security', {
   init: function() {
     this.onDetection = this.onDetection.bind(this)
-    this.onLeft      = this.onLeft.bind(this)
-    // is ticking a good idea?
-    this.tick        = this.tick.bind(this)
+    this.Trigger     = this.Trigger.bind(this)
+    // is ticking a good idea? EDIT: nvm im doing every seconds
+    this.stick       = this.stick.bind(this)
     this.onClick     = this.onClick.bind(this)
 
     this.Code = "69420"
@@ -697,6 +697,9 @@ AFRAME.registerComponent('security', {
     this.Alarm    = false
     this.Detected = false
     this.Armed    = true
+
+    this.Delay = 2 // in" seconds idiot, we are not using ms here
+    this.CurDelay = undefined
 
     this.Cam = this.el.querySelectorAll("#Camera")
 
@@ -727,7 +730,6 @@ AFRAME.registerComponent('security', {
     // IT GOES IDC, Y, X
     // 0.
     // ^^ Why is there a 0
-    console.log(this.Buttons)
     for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
       CurRow += 1
       if(CurRow > MaxRowX) {
@@ -740,6 +742,12 @@ AFRAME.registerComponent('security', {
       let Pos = el.getAttribute("position")
       if (!CurY) CurY = Pos.y; 
       if (!CurX) { CurX = Pos.z; XPos = CurX }
+
+      let Type  = el.getAttribute("btn-mode")
+      let Mode  = Type.mode
+      let Input = Type.input
+
+      el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
       
       el.setAttribute("position", {x: Pos.x, y: CurY, z: CurX})
 
@@ -747,6 +755,7 @@ AFRAME.registerComponent('security', {
 
       CurX -= Xdiff
     }
+    this.stick()
   },
 
 
@@ -763,33 +772,41 @@ AFRAME.registerComponent('security', {
         this.CurrentCode = this.CurrentCode + Input
         console.log("NEW CODE :", this.CurrentCode)
       break;
-      case "clear":
+
+      case "clr":
         console.log("CLEARED")
         this.CurrentCode = ""
       break;
 
-      case "enter":
+      case "ent":
         if(this.CurrentCode == this.Code) { console.log("CORRECT"); this.Armed = !this.Armed } else {console.log("WRONG")}
         this.CurrentCode = ""
       break;
     }
   },
 
-  tick: function() {
-    
+  stick: function() {
+    let Time = new Date().getTime() / 1000
+    if(!this.Armed) this.CurDelay = undefined;
+    if(this.CurDelay && Time > this.CurDelay && this.Detected) {
+      this.Trigger()
+      this.CurDelay = undefined
+    }
 
-    if(false) return; // when you don't need tick anymore
-    setTimeout(this.onTimer, 1000)
-  },
+    setTimeout(this.stick, 1000) // Hacky way since I don't want every tick
+    // kys im keeping it this way
+  }, 
 
   onDetection: function(el) {
     if(this.Detected) {console.log("Already Detected"); return }
     if(!this.Armed)   {console.log("System Is Not Armed"); return }
     this.Detected = true
+    let Time = new Date().getTime() / 1000
+    this.CurDelay = Time + this.Delay
   },
 
-  onLeft: function() {
-
+  Trigger: function() {
+    console.log("ALARM TIME womp womp")
   }
 })
 
