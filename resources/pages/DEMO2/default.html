@@ -4,6 +4,8 @@
 
 <a-entity security id="security">
     <!-- DIFF -0.19 X -->
+    <a-entity id="siren" sound="src: ./resources/sounds/tidal.mp3; loop: true; volume: 5" position="19.09155 2.79179 -1.74192"></a-entity>
+
     <a-box id="control" material="color: #0049d0" geometry="" position="17.00946 1.09757 -4.16835" scale="0.39686 0.22885 0.22581">
         <a-entity id="buttons">
             <a-box id="b1" btn-mode="mode: input; input: 1" material="color: #d0d000" scale="0.39686 0.12468 0.11429" geometry="" position="0.34 0.34 0.34" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
@@ -35,7 +37,7 @@
         </a-entity>
     </a-box>
 
-    <a-entity id="alarm">
+    <a-entity id="alarm" visible="false">
         <a-entity id="light" light="color: #fd0006; type: point; angle: 0.68; distance: 5; penumbra: 1" rotation="-90 0 0" position="20.81652 2.3007 -4.62748" visible=""></a-entity>
         <a-entity id="light" light="color: #fd0006; type: point; angle: 0.68; distance: 5; penumbra: 1" rotation="-90 0 0" position="24.63927 2.3007 -1.95844" visible=""></a-entity>
         <a-entity id="light" light="color: #fd0006; type: point; angle: 0.68; distance: 5; penumbra: 1" rotation="-90 0 0" position="20.81652 2.3007 0.1061" visible=""></a-entity>

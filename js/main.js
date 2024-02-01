@@ -694,14 +694,18 @@ AFRAME.registerComponent('security', {
     this.Code = "69420"
     this.CurrentCode = ""
 
-    this.Alarm    = false
+    this.Blast    = false
     this.Detected = false
     this.Armed    = true
+
+    this.VisibleLight = true
 
     this.Delay = 2 // in" seconds idiot, we are not using ms here
     this.CurDelay = undefined
 
     this.Cam = this.el.querySelectorAll("#Camera")
+    this.Alarm = this.el.querySelector("#alarm")
+    this.Siren = this.el.querySelector("#siren")
 
     this.Cam.forEach(function(element) {
       let hitbox = element.querySelector("#light").querySelector("#hitbox")
@@ -779,7 +783,15 @@ AFRAME.registerComponent('security', {
       break;
 
       case "ent":
-        if(this.CurrentCode == this.Code) { console.log("CORRECT"); this.Armed = !this.Armed } else {console.log("WRONG")}
+        if(this.CurrentCode == this.Code) { 
+          console.log("CORRECT");
+          this.Armed = !this.Armed;
+          this.Blast = false;
+          this.Detected = false
+          this.CurDelay = this.Armed && this.CurDelay || undefined
+          this.Alarm.setAttribute("visible", false)
+          this.Siren.components.sound.stopSound();
+        } else console.log("WRONG");
         this.CurrentCode = ""
       break;
     }
@@ -793,7 +805,13 @@ AFRAME.registerComponent('security', {
       this.CurDelay = undefined
     }
 
-    setTimeout(this.stick, 1000) // Hacky way since I don't want every tick
+    if(this.Blast) {
+      console.log("WOMP")
+      this.VisibleLight =  !this.VisibleLight
+      this.Alarm.setAttribute("visible", this.VisibleLight)
+    }
+
+    setTimeout(this.stick, 500) // Hacky way since I don't want every tick
     // kys im keeping it this way
   }, 
 
@@ -806,6 +824,8 @@ AFRAME.registerComponent('security', {
   },
 
   Trigger: function() {
+    if(this.Siren) this.Siren.components.sound.playSound();
+    this.Blast = true
     console.log("ALARM TIME womp womp")
   }
 })
