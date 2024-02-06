@@ -811,7 +811,7 @@ AFRAME.registerComponent('security', {
       this.Alarm.setAttribute("visible", this.VisibleLight)
     }
 
-    setTimeout(this.stick, 500) // Hacky way since I don't want every tick
+    setTimeout(this.stick, 300) // Hacky way since I don't want every tick
     // kys im keeping it this way
   }, 
 
