@@ -39,7 +39,10 @@ const Infos = {
   1: {
     title: "Bac Pro MELEC",
     info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes`,
-    redirect: "melec.html"
+    redirect: [
+      {"image": "./resources/images/map.png", "redirect": "melec.html"},
+      {"image": "./resources/images/cube.png", "redirect": "atelier.html"}
+    ]
   },
   2: {
     title: "Bac Pro CIEL",
