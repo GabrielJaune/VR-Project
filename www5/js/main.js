@@ -46,7 +46,7 @@ const Infos = {
     info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
     redirect: [
       {"image": "./resources/images/map.png", "redirect": "ciel.html"},
-      {"image": "./resources/images/cube.png", "redirect": "demo.html"}
+      {"image": "./resources/images/cube.png", "redirect": "demotest.html"}
     ]
   },
   3: {
