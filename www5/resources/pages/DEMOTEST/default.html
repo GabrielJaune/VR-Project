@@ -1,0 +1,33 @@
+<a-text text="width: 0.8; color: grey; value: Experience VR: Decouverte de la Salle 311.\n (C) lycee Louis de Cormontaigne 2024.\n \n \n \n \n \n \n \n A vous de naviguer dans cet environnement integralement en 3D afin de decouvrir un des labo de notre Bac PRO CIEL. Compatible avec tous navigateurs, le gyroscope de votre smartphone et bien sur votre casque VR.\n \n Projet realise dans le cadre du Cor`Lab.\n \n \n \n Idee, realisation, programmation M. Farcot, avec Y. Maafa (stagiaire TPRO  SN SSIHT) pour la programmation et N. Darboux (stagiaire 1ere PRO SN) pour la modelisation. Scan 3D du buste realise par C. Berrached. \n \n Framework A-frame sous licence MIT." position="17.09 1.373 -1.359" rotation="0 -16 0"></a-text>
+
+<a-entity id="S311-cables" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/ROOM-CABLES2.obj" material="color: #ff1c1c" scale="0.012 0.012 0.012" position="15.97095 1.32769 1.96046"></a-entity>
+<a-entity id="S311" modify-materials modelfix obj-model="obj: ./resources/objects/ROOM-FINAL.obj" material="wireframe: false" scale="0.012 0.012 0.012" position="1.98366 0 -10.18549">
+    
+    <a-entity id="NAV" nav-mesh="" gltf-model="./resources/objects/room-nav.gltf" modify-material="" class="raycastable" position="-33.09287 -0.04 0.54851" visible=""></a-entity>
+</a-entity>
+
+<!-- <a-entity id="LED" obj-model="./resources/objects/ROOMLOWLED.obj" modify-material class="raycastable" position="1.98366 0 -10.18549" visible="true"></a-entity> -->
+
+<a-sky id="sky" src="./resources/sky/SN/CIEL-Exterieur-bw.jpg" rotation="0 90 0">
+</a-sky>
+<a-entity id="Statue" modify-materials modelfix obj-model="obj: ./resources/objects/Nabot2.obj" material="color : red" scale="0.012 0.012 0.012" position="28.03 1.16 -2.71" rotation="0 -30 0" class="raycastable"></a-entity>
+<!-- <a-box static-body material="color: #ff060d" position="17.26483 -2.0722 0" scale="53.28233 1 33.80996"></a-box>
+<a-entity id="Nabot" modify-materials modelfix obj-model="obj: ./resources/objects/NabotLow.obj" material="color : red" scale="0.15 0.15 0.15" position="13.653 1.961 -3.444" rotation="0 20 0"></a-entity> --->
+<a-entity id="Temoin" modify-materials modelfix obj-model="obj: ./resources/objects/luigi.obj" material="color : red"scale="0.15 0.15 0.15" position="14.73 0.95647 4.34025"></a-entity>
+
+<!-- Soleil
+<a-entity ID="Soleil" light="color: #ffffff; type: spot" position="20.54 1.67 19.71" rotation="0 -33.229260286407225 0"></a-entity> -->
+
+<!-- Lampes plafond
+<a-entity light="color: #ffffff; type: spot" position="20.08064 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="23.33932 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="27.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="12.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="20.08064 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="23.33932 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="27.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="12.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="20.08064 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="23.33932 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="27.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
+<a-entity light="color: #ffffff; type: spot" position="12.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity> -->
