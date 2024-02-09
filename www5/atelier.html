@@ -41,7 +41,7 @@
       <a-ring id="navigation" position="0 -1.5 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2" rotation="-90 0 0" visible="false"> </a-ring>
       
       <script id="NA" type="text/html"></script>
-      <a-entity id="rig" position="18.13 0 -.6" movement-controls="controls: gamepad,keyboard,nipple; constrainToNavMesh: true" nipple-controls="mode: static">  
+      <a-entity id="rig" position="18.13 0 -.6">  
         <!-- VR -->
         <a-entity controller id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
         <a-entity controller id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable"></a-entity>
@@ -49,14 +49,13 @@
         <a-entity id="leftHand" hand-tracking-controls="hand: left"></a-entity>
         <a-entity id="rightHand" hand-tracking-controls="hand: right"></a-entity>
 
-          <a-entity id="cur_camera" camera="far: 1000000" position="0 1.6 0" rotation="0 90 0" look-controls 
-            animation__1= "property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans"
-            animation__2= "property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans">
-            <a-sphere position="0 -.5 0" radius=".3" scale="1 1.5 .7"></a-sphere>
-            <a-entity spotinfo id="NotifPanel" position="0 0 -1.5" visible="true" geometry="primitive: plane; width: 1.5; height: 1" material="color: #333333; shader: flat; transparent: false" class="raycastable">
-              <a-entity id="Info_Description" position="-0.51997 0.00006 0.01288" text="shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
-            </a-entity>
+        <a-entity id="cur_camera" camera="far: 1000" position="4.489 1.6 -3.48" rotation="-50 70 0" look-controls="" animation__1="property: camera.far; to: 100; dur: 500; easing: linear; startEvents: start_trans" animation__2="property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans" data-aframe-inspector-original-camera="">
+          <a-sphere position="0 -0.5 0" radius=".3" scale="1 1.5 0.7" material="" geometry=""></a-sphere>
+          <a-entity spotinfo="" id="NotifPanel" position="0 0 20" visible="false" geometry="primitive: plane; width: 1.5" material="color: #333333; shader: flat" class="raycastable">
+            <a-entity id="Info_Description" position="-0.51997 0.00006 0.01288" text="shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; align: center; color: white; value: N/A"></a-entity>
           </a-entity>
+        </a-entity>
+            
       </a-entity>
 
       <!-- Menu -->
