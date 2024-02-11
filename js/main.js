@@ -39,14 +39,17 @@ const Infos = {
   1: {
     title: "Bac Pro MELEC",
     info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes`,
-    redirect: "melec.html"
+    redirect: [
+      {"image": "./resources/images/map.png", "redirect": "melec.html"},
+      {"image": "./resources/images/cube.png", "redirect": "atelier.html"}
+    ]
   },
   2: {
     title: "Bac Pro CIEL",
     info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
     redirect: [
       {"image": "./resources/images/map.png", "redirect": "ciel.html"},
-      {"image": "./resources/images/cube.png", "redirect": "demo.html"}
+      {"image": "./resources/images/cube.png", "redirect": "demotest.html"}
     ]
   },
   3: {
@@ -654,6 +657,7 @@ AFRAME.registerComponent('modelfix', {
   }
 })
 
+
 AFRAME.registerComponent('collider-check', {
   dependencies: ['raycaster'],
 
@@ -949,6 +953,24 @@ if(scene) {
     OnVRChange()
   })
 }
+
+// Audio
+
+AFRAME.registerComponent('audiohandler', {
+  init:function() {
+     let playing = false;
+     let audio = document.querySelector("#audio");
+     this.el.addEventListener('click', () => {
+          if(!playing) {
+              audio.play();
+           } else {
+              audio.pause();
+              audio.currentTime = 0;
+           }
+           playing = !playing;
+     });
+  }
+})
 
 // This code is toooooo long
 // oh my god
