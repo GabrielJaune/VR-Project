@@ -957,18 +957,20 @@ if(scene) {
 // Audio
 
 AFRAME.registerComponent('audiohandler', {
-  init:function() {
-     let playing = false;
-     let audio = document.querySelector("#audio");
-     this.el.addEventListener('click', () => {
-          if(!playing) {
-              audio.play();
-           } else {
-              audio.pause();
-              audio.currentTime = 0;
-           }
-           playing = !playing;
-     });
+  init: async function() {
+    this.onClick = this.onClick.bind(this)
+    this.playing = false
+
+    this.el.addEventListener('click', this.onClick);
+  },
+
+  onClick: async function() {
+    this.playing = !this.playing
+    if(this.playing) {
+      this.el.components.sound.playSound()
+    } else {
+      this.el.components.sound.stopSound()
+    }
   }
 })
 
