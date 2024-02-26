@@ -14,6 +14,10 @@ To build this application:
 - **Host the cloned repository on a local / external server** - *[DIRECT EXECUTION WONT WORK]*
 - Open the server itself
 
+## Official website
+To see the website on our own infrastructure, check out [https://vr.lycee-cormontaigne-metz.fr/]
+For an explaination on the project, see this page [https://ressources.camexia.org/framework-opensource-pour-conception-site-vr-cormontaigne-metz/] (in french, sorry)
+
 
 ## Contributors
 [![](https://contrib.rocks/image?repo=Error-Cezar/VR-Project)](https://github.com/Error-Cezar/VR-Project/graphs/contributors)
