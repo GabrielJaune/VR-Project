@@ -1,9 +1,9 @@
 # VR-Project - Panoramas On The Modern Web
 
-This repository aims to be a Concept of integration of VR Panoramas into [A-FRAME](https://aframe.io/) *[https://aframe.io/]* - A web framework for building virtual reality experiences
+This repository aimed initially to be a Concept of integration of VR Panoramas into [A-FRAME](https://aframe.io/) *[https://aframe.io/]* - A web framework for building virtual reality experiences. Now it goes quite a bit further...
 
 > [!NOTE]  
-> This branch is a remake of the legacy version made with marzinano, a discontinued 360 web viewer for the modern web.
+> This branch is a remake of the legacy version made with marzinano, a discontinued 360 web viewer for the modern web. We dumped that idea fast. Lol.
 
 ## Showcase
 A POC (Proof Of Concept) is available on the repository's page. [click me](https://error-cezar.github.io/VR-Project/) *[https://error-cezar.github.io/VR-Project/]*
