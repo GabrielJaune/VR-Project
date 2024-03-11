@@ -23,25 +23,25 @@
              <!-- I love supermedium -->
              <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
              <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
-             <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-cursor-teleport@1.5.0/dist/aframe-cursor-teleport-component.min.js"></script>
+             <script src="./js/modules/cursor-teleport.js"></script>
 
              <script src="./js/modules/templace.js"></script>
         </head>
       
         <body>
-          <a-scene cursor="rayOrigin: mouse; fuse: false" stats raycaster="objects: .raycastable">
+          <a-scene environment cursor="rayOrigin: mouse; fuse: false" stats raycaster="objects: .raycastable">
             
             <a-assets>
                 <a-asset-item id="frise" src="./resources/objects/frises/CPGE.obj"></a-asset-item>
               </a-assets>
-              
+
             <!-- Navigation -->
             <a-entity obj-model="obj: #frise" position="0 -3.3 0" scale="10 1 10" modify-materials visible="false"></a-entity>
             <a-ring id="navigation" position="0 -1.5 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2" rotation="-90 0 0" visible="false"> </a-ring>
             
             <script id="NA" type="text/html"></script>
             <!-- Camera -->
-            <a-entity id="rig" position="0 0 -.6" cursor-teleport="cameraRig: #rig; cameraHead: #cur_camera; collisionEntities: .collision; ignoreEntities: .raycastable">  
+            <a-entity id="rig" position="0 0 -.6" character-controller cursor-teleport="cameraRig: #rig; cameraHead: #cur_camera; ignoreEntities: .raycastable">  
               <!-- VR -->
               <a-entity controller id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
               <a-entity controller id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable"></a-entity>
