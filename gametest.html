@@ -20,10 +20,13 @@
               <meta name="viewport" content="width=device-width,initial-scale=1">
               <!-- Modules Requiring -->
               <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+              <!-- <script src="./js/modules/cursor-teleport.js"></script> -->
              <!-- I love supermedium -->
              <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
-             <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
-             <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-cursor-teleport@1.5.0/dist/aframe-cursor-teleport-component.min.js"></script>
+
+             <script src="./js/modules/cursor-teleport.js"></script>
+             
+             <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
 
              <script src="./js/modules/templace.js"></script>
         </head>
@@ -34,22 +37,22 @@
             <a-assets>
                 <a-asset-item id="frise" src="./resources/objects/frises/CPGE.obj"></a-asset-item>
               </a-assets>
-              
+
             <!-- Navigation -->
             <a-entity obj-model="obj: #frise" position="0 -3.3 0" scale="10 1 10" modify-materials visible="false"></a-entity>
             <a-ring id="navigation" position="0 -1.5 0" wireframe="true" opacity="0.25" color="red" radius-inner="1" radius-outer="2" rotation="-90 0 0" visible="false"> </a-ring>
             
             <script id="NA" type="text/html"></script>
             <!-- Camera -->
-            <a-entity id="rig" position="0 0 -.6" cursor-teleport="cameraRig: #rig; cameraHead: #cur_camera; collisionEntities: .collision; ignoreEntities: .raycastable">  
+            <a-entity id="rig" position="0 0 -.6" character movement-controls nipple-controls="mode: static" cursor-teleport="cameraRig: #rig; cameraHead: #cur_camera">  
               <!-- VR -->
-              <a-entity controller id="leftController" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-              <a-entity controller id="rightController" laser-controls="hand: right" raycaster="objects: .raycastable"></a-entity>
+              <a-entity controller id="leftController" laser-controls="hand: left" blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera;" raycaster="objects: .raycastable"></a-entity>
+              <a-entity controller id="rightController" laser-controls="hand: right" blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera;" raycaster="objects: .raycastable"></a-entity>
       
               <a-entity id="leftHand" hand-tracking-controls="hand: left"></a-entity>
               <a-entity id="rightHand" hand-tracking-controls="hand: right"></a-entity>
       
-                <a-entity id="cur_camera" camera="far: 1000000" position="0 1.6 0" rotation="0 90 0" look-controls 
+                <a-entity id="cur_camera" camera="far: 1000000" position="0 1.6 0" rotation="0 90 0" look-controls
                   animation__1= "property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans"
                   animation__2= "property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans">
                   <a-sphere position="0 -.5 0" radius=".3" scale="1 1.5 .7"></a-sphere>
@@ -59,12 +62,12 @@
                 </a-entity>
             </a-entity>
       
-            <!-- Menu -->
-            <a-box id="Menu" position="0 1.25 -.7" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="0 0 180" opacity=".6">
-              <a-entity redirect="index.html" position=".3 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/home.obj" modify-materials class="raycastable"> </a-entity>
-              <a-entity redirect="index.html" position="0 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials class="raycastable"> </a-entity>
-            </a-entity>
-            </a-box>
+      <!-- Menu -->
+      <a-box id="Menu" position="15.55 0.897 0.708" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="0 180 180" opacity=".6">
+        <a-entity redirect="index.html" position=".3 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/home.obj" modify-materials class="raycastable"> </a-entity>
+        <a-box audiohandler sound="src: url(./resources/sounds/cool.mp3); volume: .5; loop: true" position="0 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials class="raycastable"> </a-box>
+      </a-entity>
+      </a-box>
       
           <!-- Main Scene -->
           <a-entity id="MainScene" scene-init template="src: #NA" />

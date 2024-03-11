@@ -67,6 +67,27 @@ const Infos = {
   }
 }
 
+AFRAME.registerComponent("character", {
+  init: function() {
+    console.log("got a char")
+    this.collide = this.collide.bind(this)
+    this.el.addEventListener("collidestart", this.collide)
+  },
+  collide: function(e) {
+    console.log("------------------------")
+    console.log(e)
+    var e = this.el.getAttribute("velocity") || {x: 0, y: 0, z: 0}
+    console.log(e)
+    this.el.setAttribute('velocity', AFRAME.utils.coordinates.stringify({x: e.x * -2, y: e.y * -2, z: e.z * -2}));
+    // console.log(e.detail.target.el);  // Original entity (playerEl).
+    // console.log(e.detail.body.el);    // Other entity, which playerEl touched.
+    // console.log(e.detail.contact);    // Stats about the collision (CANNON.ContactEquation).
+    // console.log(e.detail.contact.ni); // Normal (direction) of the collision (CANNON.Vec3).
+    console.log("------------------------")
+
+  }
+})
+
 AFRAME.registerComponent("character-controller", {
   events: {
     "navigation-start": function () {

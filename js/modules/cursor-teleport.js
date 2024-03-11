@@ -285,7 +285,9 @@ AFRAME.registerComponent('cursor-teleport', {
 
   mouseUp(e) {
     if (this.mouseX === this.mouseXOrig && this.mouseY === this.mouseYOrig && !this.transitioning) {
-      const pos = this.getTeleportPosition(this.mouseX, this.mouseY);
+      const pos  = this.getTeleportPosition(this.mouseX, this.mouseY);
+      var campos = document.querySelector('#rig').getAttribute('position');
+
       if (pos) {
         this.teleportIndicator.visible = true;
         this.teleportIndicator.position.copy(pos);
@@ -314,7 +316,7 @@ AFRAME.registerComponent('cursor-teleport', {
   },
 
   tick(time, delta) {
-    if (!this.transitioning && !this.mobile) {
+    if (!this.mobile) {
       const pos = this.getTeleportPosition(this.mouseX, this.mouseY);
       if (pos) {
         this.teleportIndicator.position.copy(pos);
