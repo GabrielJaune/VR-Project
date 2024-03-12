@@ -67,41 +67,56 @@ const Infos = {
   }
 }
 
-AFRAME.registerComponent("character", {
+AFRAME.registerComponent("door", {
+  schema: {
+    locked: { type: 'boolean', default: false },
+    opened: { type: 'boolean', default: false },
+    inversed: { type: 'boolean', default: false }
+  },
   init: function() {
     console.log("got a char")
-    this.collide = this.collide.bind(this)
-    this.el.addEventListener("collidestart", this.collide)
-  },
-  collide: function(e) {
-    console.log("------------------------")
-    console.log(e)
-    var e = this.el.getAttribute("velocity") || {x: 0, y: 0, z: 0}
-    console.log(e)
-    this.el.setAttribute('velocity', AFRAME.utils.coordinates.stringify({x: e.x * -2, y: e.y * -2, z: e.z * -2}));
-    // console.log(e.detail.target.el);  // Original entity (playerEl).
-    // console.log(e.detail.body.el);    // Other entity, which playerEl touched.
-    // console.log(e.detail.contact);    // Stats about the collision (CANNON.ContactEquation).
-    // console.log(e.detail.contact.ni); // Normal (direction) of the collision (CANNON.Vec3).
-    console.log("------------------------")
+    this.OP = this.el.getAttribute("rotation").y
+    this.Locked = this.data.locked
+    this.Opened = this.data.opened
 
+    if(this.Opened) this.open();
+
+    this.lock = this.lock.bind(this)
+    this.unlock = this.unlock.bind(this)
+    this.click   = this.click.bind(this)
+
+    this.el.addEventListener("unlock", this.unlock)
+    this.el.addEventListener("lock"  , this.lock)
+    this.el.addEventListener("click" , this.click)
+  },
+
+  unlock: function() {
+    console.log("unlocking")
+    this.Locked = false
+  },
+
+  lock: function() {
+    console.log("locking")
+    this.Locked = true
+  },
+
+  click: function() {
+    console.log("clicked")
+    if (this.Locked) return;
+    this.Opened = !this.Opened
+    if(this.Opened) this.open(); else this.close();
+  },
+
+  open: function() {
+    console.log("Opening")
+    this.el.setAttribute("animation__rot", `property: rotation; to: 0 ${this.OP + (this.data.inversed && -90 || 90)} 0; dur: 500; easing: linear;`)
+  },
+
+  close: function() {
+    console.log("Closing")
+    this.el.setAttribute("animation__rot", `property: rotation; to: 0 ${this.OP} 0; dur: 500; easing: linear;`)
   }
 })
-
-AFRAME.registerComponent("character-controller", {
-  events: {
-    "navigation-start": function () {
-      if (this.el.hasAttribute("simple-navmesh-constraint")) {
-        this.el.setAttribute("simple-navmesh-constraint", "enabled", false);
-      }
-    },
-    "navigation-end": function () {
-      if (this.el.hasAttribute("simple-navmesh-constraint")) {
-        this.el.setAttribute("simple-navmesh-constraint", "enabled", true);
-      }
-    },
-  },
-});
 
 AFRAME.registerComponent("controller", {
   init: function() {
