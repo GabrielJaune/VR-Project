@@ -33,7 +33,8 @@ AFRAME.registerComponent('cursor-teleport', {
     ignoreEntities: { type: 'string', default: '' },
     landingMaxAngle: { default: 45, min: 0, max: 360 },
     landingNormal: { type: 'vec3', default: { x: 0, y: 1, z: 0 } },
-    transitionSpeed: { type: 'number', default: 0.0006 }
+    transitionSpeed: { type: 'number', default: 0.0006 },
+    YLimit: { type: 'number', default: 1000 }
   },
 
   init() {
@@ -289,6 +290,7 @@ AFRAME.registerComponent('cursor-teleport', {
       var campos = document.querySelector('#rig').getAttribute('position');
 
       if (pos) {
+        if(pos.y > this.data.YLimit) return;
         this.teleportIndicator.visible = true;
         this.teleportIndicator.position.copy(pos);
         this.transition(pos);
@@ -318,6 +320,7 @@ AFRAME.registerComponent('cursor-teleport', {
   tick(time, delta) {
     if (!this.mobile) {
       const pos = this.getTeleportPosition(this.mouseX, this.mouseY);
+
       if (pos) {
         this.teleportIndicator.position.copy(pos);
       }
