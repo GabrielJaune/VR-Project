@@ -44,7 +44,7 @@
             
             <script id="NA" type="text/html"></script>
             <!-- Camera -->
-            <a-entity id="rig" position="0 0 -.6" character movement-controls nipple-controls="mode: static" cursor-teleport="cameraRig: #rig; cameraHead: #cur_camera">  
+            <a-entity id="rig" position="0 0 -.6" character movement-controls nipple-controls="mode: static" cursor-teleport="cameraRig: #rig; cameraHead: #cur_camera; collisionEntities: .boom">  
               <!-- VR -->
               <a-entity controller id="leftController" laser-controls="hand: left" blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera;" raycaster="objects: .raycastable"></a-entity>
               <a-entity controller id="rightController" laser-controls="hand: right" blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera;" raycaster="objects: .raycastable"></a-entity>
@@ -63,7 +63,7 @@
             </a-entity>
       
       <!-- Menu -->
-      <a-box id="Menu" position="15.55 0.897 0.708" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="0 180 180" opacity=".6">
+      <a-box id="Menu" position=".7 1.3 -1.8" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="90 180 90" opacity=".6">
         <a-entity redirect="index.html" position=".3 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/home.obj" modify-materials class="raycastable"> </a-entity>
         <a-box audiohandler sound="src: url(./resources/sounds/cool.mp3); volume: .5; loop: true" position="0 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials class="raycastable"> </a-box>
       </a-entity>
