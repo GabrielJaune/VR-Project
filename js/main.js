@@ -74,10 +74,12 @@ AFRAME.registerComponent("door", {
     inversed: { type: 'boolean', default: false }
   },
   init: function() {
-    console.log("got a char")
+    // console.log("got a char")
     this.OP = this.el.getAttribute("rotation").y
     this.Locked = this.data.locked
     this.Opened = this.data.opened
+
+    console.log(this.Opened)
 
     if(this.Opened) this.open();
 

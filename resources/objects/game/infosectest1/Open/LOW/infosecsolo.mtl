@@ -1,0 +1,10 @@
+# Exported from 3D Builder
+
+newmtl white_0_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl yellowbrt_0_0
+Kd 1.000000 0.783700 0.000000
+
+newmtl ground_1_0_0
+Kd 0.658824 0.658824 0.658824

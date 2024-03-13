@@ -1,8 +1,9 @@
 <a-sky id="sky" src="./resources/objects/game/infosectest1/ESO.jpg" rotation="0 90 0">
 </a-sky>
 
-<a-entity id="test" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/infosec.obj; mtl: ./resources/objects/game/infosectest1/Corridor/infosec.mtl" scale="0.01 0.01 0.01" position="-2.37931 -0.03461 -2.05864" class="boom" rotation="0 90 0"></a-entity>
-<a-entity id="test1" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Lift/lift.obj; mtl: ./resources/objects/game/infosectest1/Lift/lift.mtl" scale="0.6 0.6 0.6" position="-2.37931 -0.03461 -2.05864" class="boom" rotation="0 90 0"></a-entity>
+<a-entity id="Corridor" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/infosec.obj; mtl: ./resources/objects/game/infosectest1/Corridor/infosec.mtl" scale="0.01 0.01 0.01" position="-2.37931 -0.03461 -2.05864" class="boom" rotation="0 90 0"></a-entity>
+<a-entity id="Lift" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/Lift/lift.obj; mtl: ./resources/objects/game/infosectest1/Lift/lift.mtl" scale="0.01 0.01 0.01" position="-2.379 -0.01868 -2.02909" class="boom" rotation="0 90 0"></a-entity>
+<a-entity id="lightC" switch modelfix obj-model="obj: ./resources/objects/game/infosectest1/lumierec/lumiere-couloir.obj; mtl: ./resources/objects/game/infosectest1/lumierec/lumiere-couloir.mtl" scale="0.00001 0.00001 0.00001" position="-1.30703 0.37697 -20.69126" class="raycastable" rotation="0 90 0"></a-entity>
 
 <a-light id="spotcorner0" light="type: point; color: #7CFC00; decay: 2; intensity: 1.75; angle: 20; distance: 1.91" position="1.43253 2.0769 -2.32437" rotation="-31.590600992333066 -90.00021045914971 138.24898638711633"></a-light>
 <a-light id="spotcorner1" light="type: point; color: #7CFC00; decay: 2; intensity: 1.75; angle: 20; distance: 1.91" position="1.29339 2.07399 -9.78211" rotation="-31.590600992333066 -90.00021045914971 138.24898638711633"></a-light>
@@ -47,8 +48,14 @@
 </a-entity>
 
 <a-entity id="doors">
-    <a-entity id="door-main" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -40.94333" class="boom raycastable" rotation="0 -90 0" animation__rot="property: rotation; to: 0 -90 0; dur: 500; easing: linear"></a-entity>
-    <!-- <a-entity id="door-341A" door="inversed: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -40.94333" class="boom raycastable" rotation="0 -90 0" animation__rot="property: rotation; to: 0 -90 0; dur: 500; easing: linear"></a-entity> -->
+    <a-entity id="door-main" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -40.94333" class="boom raycastable" rotation="0 -90 0"></a-entity>
+    <a-entity id="door-1" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -36.11868" class="boom raycastable" rotation="0 -90 0"></a-entity>
+    <a-entity id="door-2" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -31.1061" class="boom raycastable" rotation="0 -90 0"></a-entity>
+    <a-entity id="door-3" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -25.94551" class="boom raycastable" rotation="0 -90 0"></a-entity>
+    <a-entity id="door-4" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32067 -0.07313 -16.05218" class="boom raycastable" rotation="0 -90 0"></a-entity>
+    <a-entity id="door-5" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -21.0745" class="boom raycastable" rotation="0 -90 0"></a-entity>
+    <a-entity id="door-6" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -6.09271" class="boom raycastable" rotation="0 -90 0"></a-entity>
+    <a-entity id="door-7" door="inversed: true; locked: true" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/open/infosecsolo-1.obj; mtl: ./resources/objects/game/infosectest1/open/infosecsolo-1.mtl" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -11.04291" class="boom raycastable" rotation="0 -90 0"></a-entity>
 
 </a-entity>
 
@@ -57,4 +64,60 @@
 <a-entity id="fan1" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="1.03445 2.39118 -16.95531"> </a-entity>
 <a-entity id="fan2" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="0.96278 2.36596 -26.90182"> </a-entity>
 
+<a-entity id="corridorlight">
+    <a-light id="cool1" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.12822 2.29242 -9.33855" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool2" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -14.3386" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool3" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -19.27791" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool4" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -24.35244" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool5" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -29.30588" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool6" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -34.45366" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool7" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -39.44527" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool8" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.0878 2.29242 -4.32904" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool9" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="2.26274 2.29242 -4.33096" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible="" rotation="-90 0 0"></a-light>
+    </a-light>
+</a-entity>
+
 <!-- <a-entity id="Soleil" light="color: #ffffff; intensity: 0.3" position="-0.36271 5.86595 -39.26972" rotation=""></a-entity> -->
+
+<!-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⢻⡇⠀⠀⢸⡟⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡿⠉⠀⠀⢸⡇⠀⠀⢸⡇⠀⠀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⢸⡇⠀⠀⢸⡇⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⢸⡇⠀⠀⢸⡇⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⡿⠿⠿⠶⠶⠶⠿⠟⠛⠛⠛⠛⠛⠛⠛⠛⠻⠿⠶⠶⠶⠿⠿⢿⣿⣿⣿
+⣿⣿⣿⠃⣠⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿
+⣿⣿⣿⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿
+⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿
+⣿⣿⣿⣧⣤⣤⣤⣴⡶⠶⠶⠶⠖⠒⠒⠒⠒⠲⠶⠶⠶⢶⣦⣤⣤⣤⣼⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠶⠶⠶⠶⠀⠀⠀⠀⠀⠀⢀⣿⣿⡇⢻⣿⣿
+⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⡇⢸⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠙⠛⠛⠛⠛⠛⠛⠋⠀⠀⣠⣿⣿⣿⣿⠇⣸⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣀⠀⠀⠀⠀⠀⠀⣀⣤⣾⣿⣿⣿⣿⡟⢠⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿
+-->
