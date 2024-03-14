@@ -26,7 +26,7 @@
 
     <script src="./js/modules/cursor-teleport.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
+    <script src="./js/modules/blink-controls.js"></script>
 
     <script src="./js/modules/templace.js"></script>
 
@@ -113,14 +113,14 @@
           controller
           id="leftController"
           laser-controls="hand: left"
-          blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera;"
-          raycaster="objects: .raycastable"
+          blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera; collisionEntities: .boom;"
+          raycaster="objects: .raycastable;"
         ></a-entity>
         <a-entity
           controller
           id="rightController"
           laser-controls="hand: right"
-          blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera;"
+          blink-controls="cameraRig: #rig; teleportOrigin: #cur_camera; collisionEntities: .boom;"
           raycaster="objects: .raycastable"
         ></a-entity>
 
