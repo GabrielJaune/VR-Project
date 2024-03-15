@@ -887,6 +887,113 @@ AFRAME.registerComponent('security', {
   }
 })
 
+AFRAME.registerComponent('digi', {
+  schema: {
+    code: { type: 'string', default: "1234" },
+    object: {type: 'selector'},
+    event: {type: 'string', default: "unlock"}
+  },
+
+  init: function() {
+    this.onClick     = this.onClick.bind(this)
+
+    this.Code = this.data.code
+    this.CurrentCode = ""
+
+    this.Buttons = this.el.querySelector("#buttons")
+    console.log(this.Buttons)
+
+    let XPos = undefined
+    let CurX = undefined
+
+    let CurY = undefined
+
+    let CurRow  = 0
+    let MaxRowX = 3
+
+    let Xdiff = 2.2
+    let Ydiff = 1.7
+    // IT GOES IDC, Y, X
+    // 0.
+    // ^^ Why is there a 0
+    for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
+      CurRow += 1
+      if(CurRow > MaxRowX) {
+        CurY -= Ydiff
+        CurX = XPos
+        CurRow = 1
+      }
+
+      let el = this.Buttons.querySelector(`#b${(x).toString()}`)
+      console.log("setup", el)
+      let Pos = el.getAttribute("position")
+      if (typeof(CurY) != "number") CurY = Pos.y; 
+      if (typeof(CurX) != "number") { CurX = Pos.x; XPos = CurX }
+
+      let Type  = el.getAttribute("btn-mode")
+      let Mode  = Type.mode
+      let Input = Type.input
+
+      el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
+      
+      console.log(CurX, Xdiff)
+      el.setAttribute("position", {x: CurX, y: CurY, z: Pos.z})
+
+      el.addEventListener("click", this.onClick)
+
+      CurX += Xdiff
+    }
+  },
+
+
+  onClick: function(element) {
+    let el = element.target
+    let Type  = el.getAttribute("btn-mode")
+
+    let Mode  = Type.mode
+    let Input = Type.input
+
+    switch(Mode) {
+      case "input":
+        console.log("you CLICK :", Input)
+        this.CurrentCode = this.CurrentCode + Input
+        console.log("NEW CODE :", this.CurrentCode)
+      break;
+
+      case "clr":
+        console.log("CLEARED")
+        this.CurrentCode = ""
+      break;
+
+      case "ent":
+        if(this.CurrentCode == this.Code) { 
+          console.log("CORRECT");
+          this.data.object.emit(this.data.event)
+        } else console.log("WRONG");
+        this.CurrentCode = ""
+      break;
+    }
+  },
+
+  stick: function() {
+    let Time = new Date().getTime() / 1000
+    if(!this.Armed) this.CurDelay = undefined;
+    if(this.CurDelay && Time > this.CurDelay && this.Detected) {
+      this.Trigger()
+      this.CurDelay = undefined
+    }
+
+    if(this.Blast) {
+      console.log("WOMP")
+      this.VisibleLight =  !this.VisibleLight
+      this.Alarm.setAttribute("visible", this.VisibleLight)
+    }
+
+    setTimeout(this.stick, 300) // Hacky way since I don't want every tick
+    // kys im keeping it this way
+  }, 
+})
+
 // InfoSec
 
 AFRAME.registerComponent('infosec', {

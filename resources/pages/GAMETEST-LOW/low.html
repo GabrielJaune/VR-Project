@@ -1,13 +1,16 @@
 <a-sky id="sky" src="./resources/objects/game/infosectest1/ESO.jpg" rotation="0 90 0">
 </a-sky>
 
-<a-entity id="Corridor" modelfix obj-model="obj: ./resources/objects/game/infosectest1/NewCorridor/LOW/infosec.obj; mtl: ./resources/objects/game/infosectest1/NewCorridor/LOW/infosec.mtl" scale="0.01 0.01 0.01" position="-7.42646 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>
-<a-entity id="Lift" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Lift/v2/infosecv2.obj; mtl: ./resources/objects/game/infosectest1/Lift/v2/infosecv2.mtl" scale="0.01 0.01 0.01" position="-2.379 -0.01868 -2.02909" class="boom" rotation="0 90 0"></a-entity>
+<a-entity id="Corridor_Walls" modelfix obj-model="obj: ./resources/objects/game/infosectest1/LOW/Murs/Murs.obj; mtl: ./resources/objects/game/infosectest1/LOW/Murs/Murs.mtl" scale="0.01 0.01 0.01" position="-7.42646 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>
+<a-entity id="Corridor_641A" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/HIGH/641A/641A.obj; mtl: ./resources/objects/game/infosectest1/HIGH/641A/641A.mtl" scale="0.01 0.01 0.01" position="-2.43255 -0.072 -2.059" class="boom" rotation="0 90 0"></a-entity>
+<a-entity id="Corridor_641" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/HIGH/642/642.obj; mtl: ./resources/objects/game/infosectest1/HIGH/642/642.mtl" scale="0.01 0.01 0.01" position="-2.30562 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>
+
+<a-entity id="Lift" modelfix="" obj-model="obj: ./resources/objects/game/infosectest1/HIGH/LIFT/lift2.obj" scale="0.01 0.01 0.01" position="-1.40574 -0.08022 -2.029" class="boom" rotation="0 90 0" material=""></a-entity>
 <a-entity id="lightC" modelfix obj-model="obj: ./resources/objects/game/infosectest1/lumierec/lumiere-couloir.obj; mtl: ./resources/objects/game/infosectest1/lumierec/lumiere-couloir.mtl" scale="0.00001 0.00001 0.00001" position="-1.30703 0.37697 -20.69126" class="raycastable" rotation="0 90 0"></a-entity>
 
 <a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101"></a-box>
 <a-box id="floor-2" class="boom" position="2.51463 -0.575 -4.34549" scale="2.8499 1 5.39266"></a-box>
-<a-box id="floor-3" class="boom" position="-4.44929 -0.575 -40.58592" scale="6.76745 1 12.86956"></a-box>
+<a-box id="floor-3" class="boom" position="-4.74835 -0.55402 -40.58592" scale="6.76745 1 12.86956" material="" geometry=""></a-box>
 
 <!-- <a-light id="spotcorner0" light="type: point; color: #7CFC00; decay: 2; intensity: 1.75; angle: 20; distance: 1.91" position="1.43253 2.0769 -2.32437" rotation="-31.590600992333066 -90.00021045914971 138.24898638711633"></a-light>
 <a-light id="spotcorner1" light="type: point; color: #7CFC00; decay: 2; intensity: 1.75; angle: 20; distance: 1.91" position="1.29339 2.07399 -9.78211" rotation="-31.590600992333066 -90.00021045914971 138.24898638711633"></a-light>
@@ -24,31 +27,25 @@
 <!-- <a-light id="notaspottrust" light="type: spot; color: #ffffff; intensity: 0; angle: 50; penumbra: 1" position="0.83949 34.72628 -11.59489" rotation="-90 0 138.67899"></a-light> -->
 
 <a-entity id="elevator-lights">
-    <!-- <a-light id="pointelevator1" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.26466 2.11242 -0.79179" rotation="-90 0 138.67899"></a-light>
-    <a-light id="pointelevator2" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.0384 2.11242 -0.78719" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator3" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.10206 2.11242 -1.03322" rotation="-90 0 138.67899"></a-light> -->
-    <a-light id="pointelevator4" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.44853 2.11242 -1.03322" rotation="-90 0 138.67899"></a-light>
-    <a-light id="pointelevator5" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.54342 2.11242 -1.03322" rotation="-90 0 138.67899"></a-light>
-    <!-- <a-light id="pointelevator6" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.38605 2.11242 -0.79917" rotation="-90 0 138.67899"></a-light> -->
     <a-light id="pointelevator7" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.20556 2.11242 -1.03036" rotation="-90 0 138.67899"></a-light>    
-
-    <a-light id="pointelevator8" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.4533 2.11242 -0.55215" rotation="-90 0 138.67899"></a-light>
-    <!-- <a-light id="pointelevator9" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.09857 2.11242 -0.55898" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator10" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.21021 2.11242 -0.56369" rotation="-90 0 138.67899"></a-light>
-    <a-light id="pointelevator11" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.5594 2.11242 -0.56219" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator12" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.38069 2.11242 -1.25579" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator13" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.2804 2.11242 -1.27665" rotation="-90 0 138.67899"></a-light> -->
     <a-light id="pointelevator14" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.043 2.11242 -1.27136" rotation="-90 0 138.67899"></a-light>    
+</a-entity>
 
-    <!-- <a-light id="pointelevator15" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.21562 2.11242 -1.51869" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator16" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.55669 2.11242 -1.52411" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator17" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.38069 2.11242 -1.25579" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator18" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.10694 2.11242 -1.52178" rotation="-90 0 138.67899"></a-light> -->
-    <a-light id="pointelevator19" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.43946 2.11242 -1.51517" rotation="-90 0 138.67899"></a-light>    
-
-    <!-- <a-light id="pointelevator20" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.38812 2.11242 -1.74711" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator21" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.04462 2.11242 -1.74581" rotation="-90 0 138.67899"></a-light> -->
-    <!-- <a-light id="pointelevator22" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="-0.27487 2.11242 -1.75376" rotation="-90 0 138.67899"></a-light>     -->
+<a-entity id="lmao" obj-model="obj: ./resources/objects/game/infosectest1/Digi/Digi.obj; mtl: ./resources/objects/game/infosectest1/Digi/Digi.mtl" scale="0.03 0.03 0.03" position="-1.30434 1.18847 -4.98564" rotation="0 90 0" digi="code: 100; object: #door-6; event: unlock">
+    <a-entity id="buttons">
+        <a-box id="b1" btn-mode="" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" class="raycastable" rotation="0 -90 0"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b2" btn-mode="mode: input; input: 2" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b3" btn-mode="mode: input; input: 3" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b4" btn-mode="mode: input; input: 4" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b5" btn-mode="mode: input; input: 5" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b6" btn-mode="mode: input; input: 6" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b7" btn-mode="mode: input; input: 7" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b8" btn-mode="mode: input; input: 8" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b9" btn-mode="mode: input; input: 9" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b10" btn-mode="mode: clr" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b11" btn-mode="mode: input; input: 0" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b12" btn-mode="mode: ent" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+    </a-entity>
 </a-entity>
 
 <a-entity id="doors">

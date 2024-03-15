@@ -1,0 +1,16 @@
+# Exported from 3D Builder
+
+newmtl metal_0_0
+Kd 0.592577 0.592577 0.592577
+
+newmtl ground_1_0_0
+Kd 0.658824 0.658824 0.658824
+
+newmtl wall_1_2_0_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl 30_0_0
+Kd 1.000000 0.896901 0.758641
+
+newmtl Green_0
+Kd 0.129412 0.733333 0.298039
