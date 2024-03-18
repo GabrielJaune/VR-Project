@@ -889,18 +889,31 @@ AFRAME.registerComponent('security', {
 })
 
 AFRAME.registerComponent('infoloader', {
-  schema: {
-    
-  },
+  schema: { default: "", type: "string" },
 
   init: function () {
-    console.log("INFOLOADER !!!!!!!!!!!!")
+    this.OnClick = this.OnClick.bind(this)
     this.rig = document.querySelector("#rig")
     this.cursorTeleport = this.rig.components["cursor-teleport"]
+    this.clicker = this.el.querySelector("#clicker")
 
-    let ok = this.el.querySelector("#Loader")
-    console.log(ok)
-    this.cursorTeleport.teleportTo(ok.object3D.position, ok.object3D.quaternion) 
+    this.ob = this.data.split(",")
+    this.Count = 1
+
+    this.clicker.setAttribute("text", "value", this.ob[0])
+
+    this.clicker.addEventListener("click", this.OnClick)
+
+    this.Entry = this.el.querySelector("#Entry")
+    this.Exit = this.el.querySelector("#Exit")
+    this.cursorTeleport.teleportTo(this.Entry.object3D.position, this.Entry.object3D.quaternion) 
+  },
+
+  OnClick: function() {
+    let test = this.ob[this.Count]
+    if(!test) { this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion); return }
+    this.clicker.setAttribute("text", "value", test)
+    this.Count += 1
   },
 
   update: function () {
