@@ -675,6 +675,7 @@ AFRAME.registerComponent('projector', {
 // 3D MODEL \\
 
 function updateMaterial(Material, Side) {
+  if(!Material) return;
   Material.side = Side
   Material.needsUpdate = true
 }
@@ -887,6 +888,35 @@ AFRAME.registerComponent('security', {
   }
 })
 
+AFRAME.registerComponent('infoloader', {
+  schema: {
+    
+  },
+
+  init: function () {
+    console.log("INFOLOADER !!!!!!!!!!!!")
+    this.rig = document.querySelector("#rig")
+    this.cursorTeleport = this.rig.components["cursor-teleport"]
+
+    let ok = this.el.querySelector("#Loader")
+    console.log(ok)
+    this.cursorTeleport.teleportTo(ok.object3D.position, ok.object3D.quaternion) 
+  },
+
+  update: function () {
+    // Do something when component's data is updated.
+  },
+
+  remove: function () {
+    // Do something the component or its entity is detached.
+  },
+
+  tick: function (time, timeDelta) {
+    // Do something on every scene tick or frame.
+  }
+});
+
+
 AFRAME.registerComponent('digi', {
   schema: {
     code: { type: 'string', default: "1234" },
@@ -925,7 +955,6 @@ AFRAME.registerComponent('digi', {
       }
 
       let el = this.Buttons.querySelector(`#b${(x).toString()}`)
-      console.log("setup", el)
       let Pos = el.getAttribute("position")
       if (typeof(CurY) != "number") CurY = Pos.y; 
       if (typeof(CurX) != "number") { CurX = Pos.x; XPos = CurX }
@@ -936,7 +965,6 @@ AFRAME.registerComponent('digi', {
 
       el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
       
-      console.log(CurX, Xdiff)
       el.setAttribute("position", {x: CurX, y: CurY, z: Pos.z})
 
       el.addEventListener("click", this.onClick)
