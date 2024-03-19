@@ -900,7 +900,7 @@ AFRAME.registerComponent('infoloader', {
     this.ob = this.data.split(",")
     this.Count = 1
 
-    this.clicker.setAttribute("text", "value", this.ob[0])
+    this.clicker.setAttribute("src", this.ob[0])
 
     this.clicker.addEventListener("click", this.OnClick)
 
@@ -912,7 +912,7 @@ AFRAME.registerComponent('infoloader', {
   OnClick: function() {
     let test = this.ob[this.Count]
     if(!test) { this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion); return }
-    this.clicker.setAttribute("text", "value", test)
+    this.clicker.setAttribute("src", test)
     this.Count += 1
   },
 
