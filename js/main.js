@@ -942,23 +942,16 @@ AFRAME.registerComponent('digi', {
 
     this.Code = this.data.code
     this.CurrentCode = ""
-
     this.Buttons = this.el.querySelector("#buttons")
-    console.log(this.Buttons)
 
-    let XPos = undefined
-    let CurX = undefined
+    this.ClickSound   = this.el.querySelector("#click")
+    this.DenySound    = this.el.querySelector("#deny")
+    this.AcceptSound  = this.el.querySelector("#accept")
 
-    let CurY = undefined
+    let [XPos, CurX, CurY] = [undefined, undefined, undefined]
+    let [CurRow, MaxRowX] = [0, 3]
+    let [Xdiff, Ydiff] = [2.2, 1.7]
 
-    let CurRow  = 0
-    let MaxRowX = 3
-
-    let Xdiff = 2.2
-    let Ydiff = 1.7
-    // IT GOES IDC, Y, X
-    // 0.
-    // ^^ Why is there a 0
     for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
       CurRow += 1
       if(CurRow > MaxRowX) {
@@ -973,13 +966,10 @@ AFRAME.registerComponent('digi', {
       if (typeof(CurX) != "number") { CurX = Pos.x; XPos = CurX }
 
       let Type  = el.getAttribute("btn-mode")
-      let Mode  = Type.mode
-      let Input = Type.input
+      let [Mode, Input] = [Type.mode, Type.input]
 
       el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
-      
       el.setAttribute("position", {x: CurX, y: CurY, z: Pos.z})
-
       el.addEventListener("click", this.onClick)
 
       CurX += Xdiff
@@ -991,26 +981,32 @@ AFRAME.registerComponent('digi', {
     let el = element.target
     let Type  = el.getAttribute("btn-mode")
 
-    let Mode  = Type.mode
-    let Input = Type.input
+    let [Mode, Input] = [Type.mode, Type.input]
+
+    if(this.ClickSound) {
+      this.ClickSound.components.sound.playSound()
+    }
 
     switch(Mode) {
       case "input":
-        console.log("you CLICK :", Input)
         this.CurrentCode = this.CurrentCode + Input
-        console.log("NEW CODE :", this.CurrentCode)
       break;
 
       case "clr":
-        console.log("CLEARED")
         this.CurrentCode = ""
       break;
 
       case "ent":
         if(this.CurrentCode == this.Code) { 
-          console.log("CORRECT");
           this.data.object.emit(this.data.event)
-        } else console.log("WRONG");
+          if(this.AcceptSound) {
+            this.AcceptSound.components.sound.playSound()
+          }
+        } else {
+          if(this.DenySound) {
+            this.DenySound.components.sound.playSound()
+          }
+        }
         this.CurrentCode = ""
       break;
     }
@@ -1177,3 +1173,20 @@ AFRAME.registerComponent('audiohandler', {
 
 // This code is toooooo long
 // oh my god
+// 1K LINES BOYS WOOOOOOOOO
+
+// ░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░
+// ░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░
+// ░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░
+// ░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░
+// ░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░
+// █░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█
+// █░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+// ░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░
+// ░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░
+// ░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░
+// ░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░
+// ░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░
+// ░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░
+// ░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░
+// ░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░ 
