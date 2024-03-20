@@ -940,7 +940,6 @@ AFRAME.registerComponent('digi', {
   init: function() {
     this.onClick     = this.onClick.bind(this)
 
-    this.Code = this.data.code
     this.CurrentCode = ""
     this.Buttons = this.el.querySelector("#buttons")
 
@@ -952,6 +951,7 @@ AFRAME.registerComponent('digi', {
     let [CurRow, MaxRowX] = [0, 3]
     let [Xdiff, Ydiff] = [2.2, 1.7]
 
+    console.log(this.el.getAttribute("id"))
     for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
       CurRow += 1
       if(CurRow > MaxRowX) {
@@ -969,6 +969,7 @@ AFRAME.registerComponent('digi', {
       let [Mode, Input] = [Type.mode, Type.input]
 
       el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
+      console.log(x, "=>", {x: CurX, y: CurY, z: Pos.z})
       el.setAttribute("position", {x: CurX, y: CurY, z: Pos.z})
       el.addEventListener("click", this.onClick)
 
@@ -997,7 +998,7 @@ AFRAME.registerComponent('digi', {
       break;
 
       case "ent":
-        if(this.CurrentCode == this.Code) { 
+        if(this.CurrentCode == this.data.code) { 
           this.data.object.emit(this.data.event)
           if(this.AcceptSound) {
             this.AcceptSound.components.sound.playSound()

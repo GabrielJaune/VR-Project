@@ -30,6 +30,18 @@
 
     <script src="./js/modules/templace.js"></script>
 
+    <style>
+      #content {
+          position: relative;
+      }
+      #content img {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+      }
+  </style>
+
     <script>
       function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
@@ -64,6 +76,10 @@
   </head>
 
   <body>
+    <div id="content">
+      <img id="phone" src="./resources/GameInfo/phone.png" width="60" height="100" onclick='HandlePhone()'/>
+    </div>
+
     <a-scene
       cursor="rayOrigin: mouse; fuse: false"
       stats
@@ -139,12 +155,7 @@
           animation__1="property: camera.far; to: 100 ; dur: 500; easing: linear; startEvents: start_trans"
           animation__2="property: camera.far; from: 100; to: 1000; dur: 500; easing: linear; startEvents: end_trans"
         >
-          <a-light
-            id="flash"
-            light="type: spot; angle: 10; decay: 10; penumbra: 1"
-            position="0.31713 -0.4947 0.0679"
-            visible="false"
-          ></a-light>
+    
           <a-sphere position="0 -.5 0" radius=".3" scale="1 1.5 .7"></a-sphere>
           <a-entity
             spotinfo
@@ -204,6 +215,7 @@
 
   <!-- Main Scripts -->
   <script src="./js/main.js"></script>
+  <script src="./js/infosec.js"></script>
 </html>
 
 <!-- 
