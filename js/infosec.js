@@ -59,7 +59,7 @@ AFRAME.registerComponent('limbo', {
         this.Handle = this.Handle.bind(this)
 
     this.limbod = false
-     this.rotations = 6
+     this.rotations = 10
      this.Buttons = this.el.querySelector("#buttons")
      this.Rows = [
         [1, 2, 3],
