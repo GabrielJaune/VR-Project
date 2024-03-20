@@ -951,7 +951,6 @@ AFRAME.registerComponent('digi', {
     let [CurRow, MaxRowX] = [0, 3]
     let [Xdiff, Ydiff] = [2.2, 1.7]
 
-    console.log(this.el.getAttribute("id"))
     for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
       CurRow += 1
       if(CurRow > MaxRowX) {
@@ -969,7 +968,6 @@ AFRAME.registerComponent('digi', {
       let [Mode, Input] = [Type.mode, Type.input]
 
       el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
-      console.log(x, "=>", {x: CurX, y: CurY, z: Pos.z})
       el.setAttribute("position", {x: CurX, y: CurY, z: Pos.z})
       el.addEventListener("click", this.onClick)
 

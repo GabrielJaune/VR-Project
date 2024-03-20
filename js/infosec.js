@@ -11,17 +11,35 @@ function shuffleArray(array) {
     return array;
 }
 
-var ActiveNotif = "./resources/GameInfo/Voices/mark.mp3"
+var ActiveNotif = ""
 var HasPhone = false
 
 var ActiveAudio = undefined
+var Call = undefined
 
 function Notify(Path) {
     //console.log(Path)
     ActiveNotif = undefined
+    if(Call) { Call.pause(); Call = undefined }
     if(ActiveAudio) { ActiveAudio.pause(); ActiveAudio = undefined }
     ActiveAudio = new Audio(Path);
     ActiveAudio.play();
+}
+
+function CreateNotif(Path) {
+    if(ActiveAudio) { ActiveAudio.pause(); ActiveAudio = undefined }
+    ActiveNotif = Path
+
+    if(Call && Call.ended) { Call = undefined }
+
+    if(!Call) {
+    Call = new Audio("./resources/GameInfo/Sounds/phone.mp3");
+    Call.play();
+}
+
+    setTimeout(function() {
+        ActiveNotif = undefined
+    }, 10000); // 10s
 }
 
 function HandlePhone() {
@@ -34,10 +52,6 @@ function HandlePhone() {
 }
 
 AFRAME.registerComponent('limbo', {
-    schema: {
-        
-    },
-
     init: function () {
         this.onLimbo = this.onLimbo.bind(this)
         this.regen = this.regen.bind(this)
@@ -66,9 +80,7 @@ AFRAME.registerComponent('limbo', {
      }
 
      this.OLDRows = this.Rows.slice()
-     
-     this.music = this.el.querySelector("#limbo")
-
+    
      this.el.addEventListener("limbo", this.onLimbo)
     },
 
@@ -88,41 +100,46 @@ AFRAME.registerComponent('limbo', {
         for (let i = 0; i < this.rotations; i++) {
             let times = 10
             for (let i = 0; i < times; i++) {
-                var mode = randrange(5)
-                if(mode == 0) mode = 1;
+                var mode = randrange(14)
                 // console.warn(mode)
                 var [ar1, ar2, Array2, Array1] = [undefined, undefined, undefined, undefined]
                 switch (mode) {
-                    case 1:
-                        await this.Handle(mode, choice(this.Rows))
+                    case 1 || 9 || 0:
+                        await this.Handle(1, choice(this.Rows))
                         break;
-                    case 2:
+                    case 2 || 10:
                         [ar1, ar2] = [randrange(this.Rows.length), randrange(this.Rows.length)]
                         if(ar2 == ar1) { ar2 = randrange(this.Rows.length) }
                         ar1 = this.Rows[ar1]
                         ar2 = this.Rows[ar2]
-                        await this.Handle(mode, ar1, ar2)
+                        await this.Handle(2, ar1, ar2)
                         break;
-                    case 3:
+                    case 3 || 11:
                         Array1 = choice(this.Rows)
                         [ar1, ar2] = [randrange(this.Rows.length), randrange(this.Rows.length)]
                         if(ar2 == ar1) { ar2 = randrange(this.Rows.length) }
                         ar1 = this.Rows[ar1]
                         ar2 = this.Rows[ar2]
-                        await this.Handle(mode, Array1, ar1, ar2)
+                        await this.Handle(3, Array1, ar1, ar2)
                         break;
-                    case 4:
+                    case 4 || 12:
                         Array1 = choice(this.Rows)
                         Array2 = choice(this.Rows)
     
                         ar1 = randrange(Array1.length)
                         ar2 = randrange(Array2.length)
     
-                        await this.Handle(mode, Array1, ar1, Array2, ar2)
+                        await this.Handle(4, Array1, ar1, Array2, ar2)
                         break;
-                    case 5:
-                        await this.Handle(mode, choice(this.Rows))
+                    case 5 || 13:
+                        await this.Handle(5, choice(this.Rows))
                         break;
+                    case 6 || 14: 
+                        await this.Handle(5, this.Rows)
+                    case 7 || 15:
+                        await this.Handle(6, this.Rows)
+                    case 8 || 16:
+                        await this.Handle(2, this.Rows[0], this.Rows[this.Rows.length - 1])
                 
                     default:
                         break;
@@ -135,7 +152,7 @@ AFRAME.registerComponent('limbo', {
     },
 
     Handle: async function(...args) {
-        var [Array2, Array1, ok1, ok2, Val1, Val2, Clone1, Clone2] = [undefined, undefined]
+        var [Array2, Array1, ok1, ok2, Val1, Val2, Clone1, Clone2, b] = [undefined, undefined]
         // console.log("mode ::", args[0])
         switch(args[0]) {
             case 1:
@@ -172,16 +189,28 @@ AFRAME.registerComponent('limbo', {
             case 5:
                 shuffleArray(args[1])
                 break;
+            case 6:
+                b = 0
+                args[1].forEach(el => {
+                    Clone1 = el[0]
+                    Clone2 = el[el.length - 1]
+                    args[1][b][el.length - 1] = Clone1
+                    args[1][b][0] = Clone2
+                    b += 1
+                });              
         }
     },
 
     onLimbo: async function () {
-        if(!this.limbod) return;
+       //CreateNotif("./resources/GameInfo/Voices/mark.mp3")
+        if(this.limbod) return;
+        let b = new Audio("./resources/GameInfo/Sounds/limbo.mp3");
+        b.play();
+        b.currentTime = 176
         this.limbod = true
         let button = randrange(9)
         if(button == 0) button = 1;
         console.log("code is", button)
-        this.music.components.sound.playSound();
         await sleep(4000)
         for (x = 1; x < 10 ; x++) {
             let el = this.Buttons.querySelector(`#b${(x).toString()}`)
