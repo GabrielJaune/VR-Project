@@ -145,9 +145,9 @@ AFRAME.registerComponent('limbo', {
                         break;
                 }
                 this.regen()
-                await sleep(100)
+                await sleep(50)
             }
-        await sleep(200)
+        await sleep(100)
         }
     },
 
