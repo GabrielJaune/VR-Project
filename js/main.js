@@ -888,48 +888,6 @@ AFRAME.registerComponent('security', {
   }
 })
 
-AFRAME.registerComponent('infoloader', {
-  schema: { default: "", type: "string" },
-
-  init: function () {
-    this.OnClick = this.OnClick.bind(this)
-    this.rig = document.querySelector("#rig")
-    this.cursorTeleport = this.rig.components["cursor-teleport"]
-    this.clicker = this.el.querySelector("#clicker")
-
-    this.ob = this.data.split(",")
-    this.Count = 1
-
-    this.clicker.setAttribute("src", this.ob[0])
-
-    this.clicker.addEventListener("click", this.OnClick)
-
-    this.Entry = this.el.querySelector("#Entry")
-    this.Exit = this.el.querySelector("#Exit")
-    this.cursorTeleport.teleportTo(this.Entry.object3D.position, this.Entry.object3D.quaternion) 
-  },
-
-  OnClick: function() {
-    let test = this.ob[this.Count]
-    if(!test) { this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion); return }
-    this.clicker.setAttribute("src", test)
-    this.Count += 1
-  },
-
-  update: function () {
-    // Do something when component's data is updated.
-  },
-
-  remove: function () {
-    // Do something the component or its entity is detached.
-  },
-
-  tick: function (time, timeDelta) {
-    // Do something on every scene tick or frame.
-  }
-});
-
-
 AFRAME.registerComponent('digi', {
   schema: {
     code: { type: 'string', default: "1234" },
