@@ -39,9 +39,10 @@ function CreateNotif(Path) {
 
     $("#PHONE_ASSET").addClass("shake")
 
-
     setTimeout(function() {
         ActiveNotif = undefined
+        if(Call) { Call.pause(); Call = undefined }
+        if(ActiveAudio) { ActiveAudio.pause(); ActiveAudio = undefined }
         $("#PHONE_ASSET").removeClass("shake")
     }, 10000); // 10s
 }
@@ -64,7 +65,7 @@ AFRAME.registerComponent('limbo', {
         this.Handle = this.Handle.bind(this)
 
     this.limbod = false
-     this.rotations = 1000 //10
+     this.rotations = 10
      this.Buttons = this.el.querySelector("#buttons")
      this.Rows = [
         [1, 2, 3],
@@ -105,7 +106,7 @@ AFRAME.registerComponent('limbo', {
         for (let i = 0; i < this.rotations; i++) {
             let times = 10
             for (let i = 0; i < times; i++) {
-                var mode = randrange(14)
+                var mode = randrange(16)
                 // console.warn(mode)
                 var [ar1, ar2, Array2, Array1] = [undefined, undefined, undefined, undefined]
                 switch (mode) {
@@ -208,11 +209,10 @@ AFRAME.registerComponent('limbo', {
 
     onLimbo: async function () {
        //CreateNotif("./resources/GameInfo/Voices/mark.mp3")
-        CreateNotif("./resources/GameInfo/Voices/mark.mp3")
-        if(!this.limbod) return;
+        if(this.limbod) return;
         let b = new Audio("./resources/GameInfo/Sounds/limbo.mp3");
         b.play();
-        b.currentTime = 4 // 176
+        b.currentTime = 176
         this.limbod = true
         let button = randrange(9)
         if(button == 0) button = 1;
