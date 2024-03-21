@@ -35,7 +35,10 @@ const encode = (/**@type {string}*/ text) => {
   
   
   var hi = encode("Did you know gamer luigi gamer luigibruh")
-  var ok = decode(hi)
+  var ok = decode(`hello luigi
+  
+󠁄󠁩󠁤󠀠󠁹󠁯󠁵󠀠󠁫󠁮󠁯󠁷󠀠󠁧󠁡󠁭󠁥󠁲󠀠󠁬󠁵󠁩󠁧󠁩󠀠󠁧󠁡󠁭󠁥󠁲󠀠󠁬󠁵󠁩󠁧󠁩󠁢󠁲󠁵󠁨
+`)
   console.log("ENCODED BELOW ::")
   console.log(hi)
   console.log("DECODED ::", ok)

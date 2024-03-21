@@ -29,55 +29,12 @@
     <script src="./js/modules/blink-controls.js"></script>
 
     <script src="./js/modules/templace.js"></script>
-
-    <style>
-      #content {
-          position: relative;
-      }
-      #content img {
-          position: absolute;
-          top: 0px;
-          right: 0px;
-          z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-      }
-  </style>
-
-    <script>
-      function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
-
-      AFRAME.registerComponent("switch", {
-
-        init: function () {
-          console.log("int")
-          this.on = true
-
-          this.click = this.click.bind(this)
-
-          this.el.addEventListener('click', this.click)
-        },
-
-        click: async function () {
-          console.log("clicked")
-          let ins = document.querySelector("#corridorlight")
-          this.on = !this.on
-
-          for (let index = 1; index < 10; index++) {
-            let num = (this.on) && 10 - (index - 1) || index
-            console.log(num)
-            let ok = ins.querySelector(`#cool${num}`)
-            if (!ok) continue;
-            ok.setAttribute("visible", this.on)
-            console.log(ok)
-            await sleep(200)
-          }
-        }
-      });
-    </script>
+    <link rel="stylesheet" href="./css/infosec.css">
   </head>
 
   <body>
     <div id="content">
-      <img id="phone" src="./resources/GameInfo/phone.png" width="60" height="100" onclick='HandlePhone()'/>
+      <img id="PHONE_ASSET" src="./resources/GameInfo/phone.png" width="60" height="100" onclick='HandlePhone()'/>
     </div>
 
     <a-scene

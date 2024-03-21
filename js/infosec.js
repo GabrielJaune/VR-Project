@@ -18,10 +18,10 @@ var ActiveAudio = undefined
 var Call = undefined
 
 function Notify(Path) {
-    //console.log(Path)
     ActiveNotif = undefined
     if(Call) { Call.pause(); Call = undefined }
     if(ActiveAudio) { ActiveAudio.pause(); ActiveAudio = undefined }
+    $("#PHONE_ASSET").removeClass("shake")
     ActiveAudio = new Audio(Path);
     ActiveAudio.play();
 }
@@ -33,12 +33,16 @@ function CreateNotif(Path) {
     if(Call && Call.ended) { Call = undefined }
 
     if(!Call) {
-    Call = new Audio("./resources/GameInfo/Sounds/phone.mp3");
-    Call.play();
-}
+        Call = new Audio("./resources/GameInfo/Sounds/phone.mp3");
+        Call.play();
+    }
+
+    $("#PHONE_ASSET").addClass("shake")
+
 
     setTimeout(function() {
         ActiveNotif = undefined
+        $("#PHONE_ASSET").removeClass("shake")
     }, 10000); // 10s
 }
 
@@ -51,6 +55,7 @@ function HandlePhone() {
     Notify(ActiveNotif)
 }
 
+
 AFRAME.registerComponent('limbo', {
     init: function () {
         this.onLimbo = this.onLimbo.bind(this)
@@ -59,7 +64,7 @@ AFRAME.registerComponent('limbo', {
         this.Handle = this.Handle.bind(this)
 
     this.limbod = false
-     this.rotations = 10
+     this.rotations = 1000 //10
      this.Buttons = this.el.querySelector("#buttons")
      this.Rows = [
         [1, 2, 3],
@@ -203,10 +208,11 @@ AFRAME.registerComponent('limbo', {
 
     onLimbo: async function () {
        //CreateNotif("./resources/GameInfo/Voices/mark.mp3")
-        if(this.limbod) return;
+        CreateNotif("./resources/GameInfo/Voices/mark.mp3")
+        if(!this.limbod) return;
         let b = new Audio("./resources/GameInfo/Sounds/limbo.mp3");
         b.play();
-        b.currentTime = 176
+        b.currentTime = 4 // 176
         this.limbod = true
         let button = randrange(9)
         if(button == 0) button = 1;
