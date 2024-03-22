@@ -1,3 +1,14 @@
+// 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
+
+const Call = document.querySelector("#PHONE_CALL")
+const Ring = document.querySelector("#PHONE_RING")
+let obj = $("#PHONE_ASSET")
+
+Call.addEventListener('ended', function() {
+    console.warn("audio over")
+    obj.attr('src', "./resources/GameInfo/phone.png")
+})
+
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 function randrange(num) { return Math.floor(Math.random() * num) }
@@ -11,47 +22,66 @@ function shuffleArray(array) {
     return array;
 }
 
-var ActiveNotif = ""
-var HasPhone = false
-
-var ActiveAudio = undefined
-var Call = undefined
-
-function Notify(Path) {
-    ActiveNotif = undefined
-    if(Call) { Call.pause(); Call = undefined }
-    if(ActiveAudio) { ActiveAudio.pause(); ActiveAudio = undefined }
-    $("#PHONE_ASSET").removeClass("shake")
-    ActiveAudio = new Audio(Path);
-    ActiveAudio.play();
+function StopAudio(audio) {
+    audio.pause()
+    audio.currentTime = audio.duration || 0
+    console.log(audio)
 }
 
-function CreateNotif(Path) {
-    if(ActiveAudio) { ActiveAudio.pause(); ActiveAudio = undefined }
-    ActiveNotif = Path
+var ActiveNotif = ""
 
-    if(Call && Call.ended) { Call = undefined }
+var Data = {
+    GameLang: "EN",
+    Badges: [],
+    Calls : 0,
+    Found : 0
+}
 
-    if(!Call) {
-        Call = new Audio("./resources/GameInfo/Sounds/phone.mp3");
-        Call.play();
-    }
+var NotifID = 0
+var ActiveAudio = undefined
+
+function Notify(Path) {
+    NotifID = NotifID + 1
+    ActiveNotif = undefined
+
+    StopAudio(Call)
+    StopAudio(Ring)
+
+    obj.removeClass("shake")
+    obj.attr('src', "./resources/GameInfo/phone_call.png")
+
+    Call.src = Path
+    Call.currentTime = 0
+    Call.play()
+}
+
+async function CreateNotif(FileName, NoLang, extension) {
+    var curnotif = NotifID
+    let File = `./resources/GameInfo/Voices/${FileName}${ NoLang && "" || ("-" + Data["GameLang"]) }.${extension || "mp3"}`
+    ActiveNotif = File
+
+    StopAudio(Ring)
+    StopAudio(Call)
+
+    Ring.src = "./resources/GameInfo/Sounds/phone.mp3"
+
+    Ring.play();
 
     $("#PHONE_ASSET").addClass("shake")
 
     setTimeout(function() {
+        if(NotifID != curnotif) return;
         ActiveNotif = undefined
-        if(Call) { Call.pause(); Call = undefined }
-        if(ActiveAudio) { ActiveAudio.pause(); ActiveAudio = undefined }
+        StopAudio(Ring)
         $("#PHONE_ASSET").removeClass("shake")
-    }, 10000); // 10s
+    }, 5000); // 5s
 }
 
 function HandlePhone() {
     console.log("hzdsfihgzeiruir")
     if(!ActiveNotif) return;
     console.log("Got A Notif")
-    HasPhone = true
+    Data["Calls"] += 1
     console.log(ActiveNotif)
     Notify(ActiveNotif)
 }
@@ -80,23 +110,37 @@ AFRAME.registerComponent('infoloader', {
   
     OnClick: function() {
       let test = this.ob[this.Count]
-      if(!test) { this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion); document.querySelector("#audiobox").emit("click");       $("#PHONE_ASSET").show(); return }
+      if(!test) {
+        this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion);
+        document.querySelector("#audiobox").emit("click");
+        $("#PHONE_ASSET").show();
+        CreateNotif("Intro")
+        return
+      }
       this.clicker.setAttribute("src", test)
       this.Count += 1
     },
-  
-    update: function () {
-      // Do something when component's data is updated.
+});
+
+AFRAME.registerComponent('object', {
+    schema: {
+        soundname: {default: 'mark', type: "string"},
+        selected : {default: false, type: "boolean"}
     },
-  
-    remove: function () {
-      // Do something the component or its entity is detached.
+
+    init: function () {
+      this.onClick = this.onClick.bind(this)
+
+      this.el.addEventListener('click', this.onClick)
     },
-  
-    tick: function (time, timeDelta) {
-      // Do something on every scene tick or frame.
+
+    onClick: function() {
+        if(this.data.selected) { return; }
+        this.data.selected = true
+        CreateNotif(this.data.soundname)
     }
 });
+
 
 AFRAME.registerComponent('limbo', {
     init: function () {
@@ -106,7 +150,7 @@ AFRAME.registerComponent('limbo', {
         this.Handle = this.Handle.bind(this)
 
     this.limbod = false
-     this.rotations = 10
+     this.rotations = 7
      this.Buttons = this.el.querySelector("#buttons")
      this.Rows = [
         [1, 2, 3],
@@ -192,7 +236,7 @@ AFRAME.registerComponent('limbo', {
                         break;
                 }
                 this.regen()
-                await sleep(50)
+                await sleep(100)
             }
         await sleep(100)
         }
@@ -252,6 +296,7 @@ AFRAME.registerComponent('limbo', {
        //CreateNotif("./resources/GameInfo/Voices/mark.mp3")
         if(this.limbod) return;
         let b = new Audio("./resources/GameInfo/Sounds/limbo.mp3");
+        b.volume = 1
         b.play();
         b.currentTime = 176
         this.limbod = true
