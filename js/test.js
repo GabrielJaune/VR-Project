@@ -34,8 +34,10 @@ const encode = (/**@type {string}*/ text) => {
   };
   
   
-  var hi = encode(`// 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
-  `)
+  var hi = encode(`
+  
+  // 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
+`)
   var ok = decode(`
   
   󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳`)

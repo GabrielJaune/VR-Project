@@ -1,5 +1,7 @@
 // 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
 
+// let IsVR = false, Used = undefined
+
 const Call = document.querySelector("#PHONE_CALL")
 const Ring = document.querySelector("#PHONE_RING")
 let obj = $("#PHONE_ASSET")
@@ -31,11 +33,26 @@ function StopAudio(audio) {
 var ActiveNotif = ""
 
 var Data = {
-    GameLang: "EN",
+    GameLang: undefined,
     Badges: [],
     Calls : 0,
     Found : 0
 }
+
+let ALang = ["fr", "en"]
+let trans = [] // gender
+
+let langData = {}
+async function LangInt() { 
+    let baseFR = await fetch('./languages/fr.json')
+    langData["fr"] = await baseFR.json()
+
+    let baseEN = await fetch('./languages/en.json')
+    langData["en"] = await baseEN.json()
+
+    console.log(langData)
+}
+LangInt()
 
 var NotifID = 0
 var ActiveAudio = undefined
@@ -92,13 +109,16 @@ AFRAME.registerComponent('infoloader', {
     init: function () {
       $("#PHONE_ASSET").hide()
       this.OnClick = this.OnClick.bind(this)
+      this.OnLang = this.OnLang.bind(this)
       this.rig = document.querySelector("#rig")
       this.cursorTeleport = this.rig.components["cursor-teleport"]
       this.clicker = this.el.querySelector("#clicker")
   
       this.ob = this.data.split(",")
-      this.Count = 1
+      this.Count = 0
   
+      this.langs = this.el.querySelector("#langs")
+
       this.clicker.setAttribute("src", this.ob[0])
   
       this.clicker.addEventListener("click", this.OnClick)
@@ -106,9 +126,28 @@ AFRAME.registerComponent('infoloader', {
       this.Entry = this.el.querySelector("#Entry")
       this.Exit = this.el.querySelector("#Exit")
       this.cursorTeleport.teleportTo(this.Entry.object3D.position, this.Entry.object3D.quaternion) 
+
+      ALang.forEach(element => {
+        this.langs.querySelector(`#${element}`).addEventListener('click', this.OnLang)
+      }, this);
+
+      this.el.addEventListener('int', this.OnClick)
     },
   
+    OnLang: function(lang) {
+        if(Data.GameLang) { return }
+        console.log(lang.target.id)
+        Data.GameLang = lang.target.id
+        this.langs.setAttribute('visible', false)
+        this.clicker.setAttribute('visible', true)
+        trans.forEach(element => {
+            element.emit("int")
+        });
+        this.langs.setAttribute("position", "0 0 50")
+        },
+
     OnClick: function() {
+      if(!Data.GameLang) { return }
       let test = this.ob[this.Count]
       if(!test) {
         this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion);
@@ -117,10 +156,129 @@ AFRAME.registerComponent('infoloader', {
         CreateNotif("Intro")
         return
       }
-      this.clicker.setAttribute("src", test)
+      this.clicker.setAttribute("src", `./resources/GameInfo/Slides/${Data.GameLang}/${test}.jpeg`)
       this.Count += 1
-    },
+    }
 });
+
+AFRAME.registerComponent('translate', {
+    schema: {type: "string", default: "image"},
+
+    init: async function () {
+        this.run = this.run.bind(this)
+
+        trans.push(this.el)
+
+        if(Data.GameLang) { this.run(); }
+
+        this.el.addEventListener('int', this.run)
+    },
+
+    run: async function() {
+        console.log("running", this.el.id, "on case", this.data)
+        let val = langData[Data.GameLang][this.el.id]
+        if(!val) { return }
+        let ok = this.data
+        console.log(ok)
+        switch(ok) {
+            case "text":
+                console.log("ni")
+                this.el.setAttribute("text", "value", val)
+                break;
+            case "image":
+                console.log("on")
+                this.el.setAttribute("material", "src", val)
+                break;
+            default:
+                break;
+        }
+    },
+
+    update: function () {
+      // Do something when component's data is updated.
+    },
+
+    remove: function () {
+      // Do something the component or its entity is detached.
+    },
+
+    tick: function (time, timeDelta) {
+      // Do something on every scene tick or frame.
+    }
+});
+
+
+AFRAME.registerComponent('interactive', {
+    schema: {
+        vrposition: {type: "vec3", default: {x: 0, y: -.1, z: -.2}},
+        position: {type: "vec3", default: {x: 0, y: -.02, z: -.3}},
+        rotation: {type: "vec3", default: {x: 0, y: 180, z: 0}},
+        vrrotation: {type: "vec3", default: {x: 90, y: 180, z: 0}}
+    },
+
+    init: function () {
+        this.onClick   = this.onClick.bind(this)
+    
+        this.grabbed = false
+        this.LastParent = this.el.object3D.parent
+        this.OldPos = AFRAME.utils.coordinates.stringify(this.el.getAttribute("position"))
+        this.OldRot = AFRAME.utils.coordinates.stringify(this.el.getAttribute("rotation"))
+    
+        this.Click = 0
+        this.el.addEventListener("click", this.onClick)
+    },
+
+    onClick: function() {   
+        if(this.Click == 0) {
+            this.grabbed = true
+            switch (IsVR) {
+                case true:
+                  Used.object3D.attach(this.el.object3D)
+        
+                  this.el.setAttribute("position", this.data.vrposition)
+                  this.el.setAttribute("rotation", this.data.vrrotation)
+                  break
+                case false:
+                  $("#cur_camera")[0].object3D.attach(this.el.object3D)
+        
+                  this.el.setAttribute("position", this.data.position)
+                  this.el.setAttribute("rotation", this.data.rotation)
+                  break
+              }
+        }
+
+        if(this.Click == 1) {
+            this.grabbed = false
+            this.LastParent.attach(this.el.object3D)
+            this.el.setAttribute("position", this.OldPos)
+            this.el.setAttribute("rotation", this.OldRot)
+
+            this.Click = -1
+        }
+        
+        this.Click += 1
+    },
+
+    update: function() {
+        if(this.grabbed) {
+            switch (IsVR) {
+                case true:
+                  Used.object3D.attach(this.el.object3D)
+        
+                  this.el.setAttribute("position", this.data.vrposition)
+                  this.el.setAttribute("rotation", this.data.vrrotation)
+                  break
+                case false:
+                  $("#cur_camera")[0].object3D.attach(this.el.object3D)
+        
+                  this.el.setAttribute("position", this.data.position)
+                  this.el.setAttribute("rotation", this.data.rotation)
+                  break
+              }
+        }
+    }
+});
+
 
 AFRAME.registerComponent('object', {
     schema: {
@@ -317,3 +475,15 @@ AFRAME.registerComponent('limbo', {
 
     },
 });
+
+if(scene) {
+    scene.addEventListener("enter-vr", function() {
+      IsVR = true
+      OnVRChange()
+    })
+  
+    scene.addEventListener("exit-vr", function() {
+      IsVR = false
+      OnVRChange()
+    })
+}
