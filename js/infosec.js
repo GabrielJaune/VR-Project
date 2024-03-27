@@ -228,7 +228,7 @@ AFRAME.registerComponent('interactive', {
         this.el.addEventListener("click", this.onClick)
     },
 
-    onClick: function() {   
+    onClick: function() {  
         if(this.Click == 0) {
             this.grabbed = true
             switch (IsVR) {

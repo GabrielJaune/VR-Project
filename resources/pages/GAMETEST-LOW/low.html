@@ -5,7 +5,12 @@
 <a-entity id="Corridor_641A" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/641A/641A.obj; mtl: ./resources/objects/game/infosectest1/HIGH/641A/641A.mtl" scale="0.01 0.01 0.01" position="-2.43255 -0.072 -2.059" class="boom" rotation="0 90 0"></a-entity>
 <a-entity id="Corridor_641" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/642/642.obj; mtl: ./resources/objects/game/infosectest1/HIGH/642/642.mtl" scale="0.01 0.01 0.01" position="-2.30562 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>
 
-<a-entity id="printer" interactive object="soundname: mark" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/Printer.obj" scale="0.007 0.007 0.007" position="1.42065 -0.0622 -38.91808" class="boom raycastable" rotation="0 -90 0"></a-entity>
+
+<a-entity id="printer" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/Printer.obj" scale="0.007 0.007 0.007" position="1.42065 -0.0622 -38.91808" class="boom" rotation="0 -90 0">
+    <a-box material="emissive: #ffffff" position="48.93 121.5 42.1" scale="56.36355 0.00001 35.58259" interactive="position: 0 0 -.3; rotation: 0 90 90;" object="soundname: mark" class="raycastable">
+        <a-entity id="printer_text" text="baseline: top; value: French; align: center; color: #000000; side: double; width: 0.05" translate="text" position=".47 59352.842 .002" scale="20 20 0.00001" rotation="270 -90 0"></a-entity>
+    </a-box>
+</a-entity>
 
 <a-entity id="Lift" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/LIFT/lift2.obj" scale="0.01 0.01 0.01" position="-1.40574 -0.08022 -2.029" class="boom raycastable" rotation="0 90 0" material></a-entity>
 <a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101" material geometry></a-box>
