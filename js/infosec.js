@@ -55,16 +55,16 @@ var Data = {
     Found : 0
 }
 
-let ALang = ["fr", "en"]
+let ALang = ["FR", "EN"]
 let trans = [] // gender
 
 let langData = {}
 async function LangInt() { 
     let baseFR = await fetch('./languages/fr.json')
-    langData["fr"] = await baseFR.json()
+    langData["FR"] = await baseFR.json()
 
     let baseEN = await fetch('./languages/en.json')
-    langData["en"] = await baseEN.json()
+    langData["EN"] = await baseEN.json()
 
     console.log(langData)
 }
