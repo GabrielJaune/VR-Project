@@ -55,16 +55,16 @@ var Data = {
     Found : 0
 }
 
-let ALang = ["FR", "EN"]
+let ALang = ["fr", "en"]
 let trans = [] // gender
 
 let langData = {}
 async function LangInt() { 
     let baseFR = await fetch('./languages/fr.json')
-    langData["FR"] = await baseFR.json()
+    langData["fr"] = await baseFR.json()
 
     let baseEN = await fetch('./languages/en.json')
-    langData["EN"] = await baseEN.json()
+    langData["en"] = await baseEN.json()
 
     console.log(langData)
 }
@@ -90,7 +90,7 @@ function Notify(Path) {
 
 async function CreateNotif(FileName, NoLang, extension) {
     var curnotif = NotifID
-    let File = `./resources/GameInfo/Voices/${FileName}${ NoLang && "" || ("-" + Data["GameLang"]) }.${extension || "mp3"}`
+    let File = `./resources/GameInfo/Voices/${FileName}${ NoLang && "" || ("-" + Data["GameLang"].toUpperCase()) }.${extension || "mp3"}`
     ActiveNotif = File
 
     StopAudio(Ring)
