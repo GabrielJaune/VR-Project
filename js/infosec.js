@@ -1,6 +1,22 @@
-// 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
+/*
+    Cormon VR Experience - Virtual Reality on the Modern Web
+    Copyright (C) 2023-2024  Yanis M., Matthieu Farcot
 
-// let IsVR = false, Used = undefined
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+// 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
 
 const Call = document.querySelector("#PHONE_CALL")
 const Ring = document.querySelector("#PHONE_RING")
@@ -102,6 +118,14 @@ function HandlePhone() {
     console.log(ActiveNotif)
     Notify(ActiveNotif)
 }
+
+AFRAME.registerComponent("phoneanswer", {
+    init: function() {
+        this.el.addEventListener("click", function() {
+            HandlePhone()
+        })
+    }
+})
 
 AFRAME.registerComponent('infoloader', {
     schema: { default: "", type: "string" },

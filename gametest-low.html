@@ -145,29 +145,21 @@
         rotation="90 180 90"
         opacity=".6"
       >
-        <a-entity
-          redirect="index.html"
-          position=".3 -.53 .04"
-          rotation="0 0 180"
-          scale="1 1 2.5"
-          obj-model="obj: ./resources/objects/menu/home.obj"
-          modify-materials
-          class="raycastable"
-        >
-        </a-entity>
-        <a-box
-        id="audiobox"
-          audiohandler
-          sound="src: url(./resources/sounds/cool.mp3); volume: .2; loop: true"
-          position="0 -.53 .04"
-          rotation="0 0 180"
-          scale="1 1 2.5"
-          obj-model="obj: ./resources/objects/menu/mute.obj"
-          modify-materials
-          class="raycastable"
-        >
-        </a-box>
-      </a-box>
+      <a-entity
+      redirect="index.html"
+      position=".3 -.53 .04"
+      rotation="0 0 180"
+      scale="1 1 2.5"
+      obj-model="obj: ./resources/objects/menu/home.obj"
+      modify-materials
+      class="raycastable"
+    >
+    </a-entity>
+
+    <a-entity redirect="index.html" position=".3 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/home.obj" modify-materials class="raycastable"> </a-entity>
+    <a-box id="audiobox" audiohandler sound="src: url(./resources/sounds/cool.mp3); volume: .2; loop: true" position="0 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials class="raycastable"></a-box>
+    <a-box id="phonenaswer" phoneanswer position="-0.28621 -0.53 0.04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials="" class="raycastable" material="" geometry=""></a-box>
+  </a-box>
 
       <!-- Main Scene -->
       <a-entity id="MainScene" scene-init="low" template="src: #NA" />
