@@ -55,6 +55,17 @@ var Data = {
     Found : 0
 }
 
+var Badges = {
+    1: "Employee Of The Month", // Find All Objects
+    2: "Love Letter", // find paper, thing in trash, phone
+    3: "InfoSec Guru", // Find guru
+    4: "Really?", // Fail code
+    5: "Mobiphobe", // Don't Answer Phone
+    6: "...And A Legend Was Born", // All Achivements
+    7: "Like A Boss", // Fail (incorrect code) and end the game (before auto ending)
+    8: "Any%", // Pick Up All Interactible At The Same Time
+}
+
 let ALang = ["fr", "en"]
 let trans = [] // gender
 
@@ -65,8 +76,6 @@ async function LangInt() {
 
     let baseEN = await fetch('./languages/en.json')
     langData["en"] = await baseEN.json()
-
-    console.log(langData)
 }
 LangInt()
 
@@ -108,6 +117,11 @@ async function CreateNotif(FileName, NoLang, extension) {
         StopAudio(Ring)
         $("#PHONE_ASSET").removeClass("shake")
     }, 5000); // 5s
+}
+
+function GiveBadge(BadgeID) {
+    console.log("giving badge")
+    Data.Badges.push(BadgeID)
 }
 
 function HandlePhone() {
@@ -306,7 +320,8 @@ AFRAME.registerComponent('interactive', {
 
 AFRAME.registerComponent('object', {
     schema: {
-        soundname: {default: 'mark', type: "string"},
+        soundname: {default: 'null', type: "string"},
+        badge: {default: 0, type: "number"},
         selected : {default: false, type: "boolean"}
     },
 
@@ -319,7 +334,20 @@ AFRAME.registerComponent('object', {
     onClick: function() {
         if(this.data.selected) { return; }
         this.data.selected = true
-        CreateNotif(this.data.soundname)
+        Data.Found += 1
+        let mylight = this.el.querySelector("#light")
+        if(mylight) {
+            mylight.setAttribute("visible", true)
+        }
+        if(this.data.soundname != "null") {
+            CreateNotif(this.data.soundname)
+        }
+        if(this.data.badge != 0) {
+            let achiv = this.el.querySelector("#achiv")
+            if(achiv) { achiv.components['particle-system'].startParticles(); }
+            new Audio('./resources/GameInfo/Sounds/unlock.mp3').play();
+            GiveBadge(this.data.badge)
+        }
     }
 });
 
