@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="45 47 245.00012 245.00012" width="245.00012" height="245.00012">
+  <defs/>
+  <g id="Canevas_1" stroke="none" stroke-opacity="1" fill-opacity="1" fill="none" stroke-dasharray="none">
+    <title>Canevas 1</title>
+    <rect fill="white" x="45" y="47" width="245.00012" height="245.00012"/>
+    <g id="Canevas_1_Calque_1">
+      <title>Calque 1</title>
+      <g id="Graphic_6">
+        <path d="M 254.12055 82.87958 C 206.28136 35.04014 128.71877 35.04014 80.87958 82.87958 C 33.04014 130.71877 33.04014 208.28136 80.87958 256.12055 C 128.71877 303.95998 206.28136 303.95998 254.12055 256.12055 C 301.95998 208.28136 301.95998 130.71877 254.12055 82.87958 M 167.50006 199.12615 L 125.07702 230.00006 L 141.3144 180.1444 L 98.89136 149.95658 L 150.91963 149.95658 L 167.50006 98.50006 L 184.0805 149.95658 L 236.10876 149.95658 L 193.68571 180.1444 L 209.9231 230.00006 Z" fill="black"/>
+      </g>
+    </g>
+  </g>
+</svg>
