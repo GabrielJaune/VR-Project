@@ -1,40 +1,136 @@
 <a-sky id="sky" color="black" rotation="0 90 0">
 </a-sky>
 
-<a-entity id="Corridor_Walls" modelfix obj-model="obj: ./resources/objects/game/infosectest1/LOW/Murs/Murs.obj; mtl: ./resources/objects/game/infosectest1/LOW/Murs/Murs.mtl" scale="0.01 0.01 0.01" position="-7.42646 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>
-<a-entity id="Corridor_641A" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/641A/641A.obj; mtl: ./resources/objects/game/infosectest1/HIGH/641A/641A.mtl" scale="0.01 0.01 0.01" position="-2.43255 -0.072 -2.059" class="boom" rotation="0 90 0"></a-entity>
-<a-entity id="Corridor_641" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/642/642.obj; mtl: ./resources/objects/game/infosectest1/HIGH/642/642.mtl" scale="0.01 0.01 0.01" position="-2.30562 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>
+<a-entity id="env">
+    <a-entity id="Corridor_Walls" modelfix obj-model="obj: ./resources/objects/game/infosectest1/LOW/Murs/Murs.obj; mtl: ./resources/objects/game/infosectest1/LOW/Murs/Murs.mtl" scale="0.01 0.01 0.01" position="-7.42646 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>
+    <a-entity id="Corridor_641A" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/641A/641A.obj; mtl: ./resources/objects/game/infosectest1/HIGH/641A/641A.mtl" scale="0.01 0.01 0.01" position="-2.43255 -0.072 -2.059" class="boom" rotation="0 90 0"></a-entity>
+    <a-entity id="Corridor_641" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/642/642.obj; mtl: ./resources/objects/game/infosectest1/HIGH/642/642.mtl" scale="0.01 0.01 0.01" position="-2.30562 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>    
 
+    <a-entity id="Lift" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/LIFT/lift2.obj" scale="0.01 0.01 0.01" position="-1.40574 -0.08022 -2.029" class="boom raycastable" rotation="0 90 0" material></a-entity>
+    <a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101" material geometry></a-box>
+    <a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101"></a-box>
+    <a-box id="floor-2" class="boom" position="2.51463 -0.575 -4.34549" scale="2.8499 1 5.39266"></a-box>
+    <a-box id="floor-3" class="boom" position="-4.74835 -0.55402 -40.58592" scale="6.76745 1 12.86956" material geometry></a-box>
 
-<a-entity id="printer" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/Printer.obj" scale="0.007 0.007 0.007" position="1.42065 -0.0622 -38.91808" class="boom" rotation="0 -90 0">
-    <a-box material="emissive: #ffffff" position="48.93 121.5 42.1" scale="56.36355 0.00001 35.58259" interactive="position: 0 0 -.3; rotation: 0 90 90;" object="soundname: mark" class="raycastable">
-        <a-entity id="printer_text" text="baseline: top; value: French; align: center; color: #000000; side: double; width: 0.05" translate="text" position=".47 59352.842 .002" scale="20 20 0.00001" rotation="270 -90 0"></a-entity>
-    </a-box>
 </a-entity>
 
-<a-entity id="Lift" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/LIFT/lift2.obj" scale="0.01 0.01 0.01" position="-1.40574 -0.08022 -2.029" class="boom raycastable" rotation="0 90 0" material></a-entity>
-<a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101" material geometry></a-box>
-<a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101"></a-box>
-<a-box id="floor-2" class="boom" position="2.51463 -0.575 -4.34549" scale="2.8499 1 5.39266"></a-box>
-<a-box id="floor-3" class="boom" position="-4.74835 -0.55402 -40.58592" scale="6.76745 1 12.86956" material geometry></a-box>
+<a-entity id="decoration">
+    <a-image id="Map" src="./resources/objects/game/evacuationTBO.png" position="1.40638 1.37543 -22.81387" material geometry rotation="0 270 0" scale="0.8 0.8 0.8"></a-image>
+    <a-image id="PostIt" src="./resources/objects/game/infosectest1/Post-It-War.png" position="-1.29304 0.80699 -15.61215" material geometry rotation="0 -90.00021045914971 4.255357544436624" scale="0.8 0.8 0.8"></a-image>
+
+    <a-entity id="fan1" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="1.03445 2.39118 -16.95531"> </a-entity>
+    <a-entity id="fan2" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="0.96278 2.36596 -26.90182"> </a-entity>    
+</a-entity>
+
+<a-entity id=="assets">
+    <a-entity id="fridge" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-ouvert.obj" scale=".017 .017 .017" position="-3.5 .88 -34.48" class="boom" rotation="0 180 0">
+        <a-entity id="Statue" modify-materials modelfix obj-model="obj: ./resources/objects/Nabot2.obj" material="color: red" scale="" position="0 -26.30906 36.59847" rotation="0 -29.999999999999996 0" class="raycastable"></a-entity>
+            <a-entity id="porte-fridge" object="badge: 2" door="inversed: true" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-porte.obj" scale="1 1 1" position="-30.4 54.7 56.2" class="boom raycastable" rotation="0 0 0"> 
+            <a-entity id="achiv" position="12.3 -41 -34.8" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false"></a-entity>
+        </a-entity>
+    </a-entity>
+
+    <a-entity id="printer" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/Printer.obj" scale="0.007 0.007 0.007" position="1.42065 -0.0622 -38.91808" class="boom" rotation="0 -90 0">
+        <a-box object="soundname: mark" material="emissive: #ffffff" position="48.93 121.5 42.1" scale="56.36355 0.00001 35.58259" interactive="position: 0 0 -.3; rotation: 0 90 90;" class="raycastable">
+            <a-entity id="printer_text" text="baseline: top; value: French; align: center; color: #000000; side: double; width: 0.05" translate="text" position=".47 59352.842 .002" scale="20 20 0.00001" rotation="270 -90 0"></a-entity>
+        </a-box>
+    </a-entity>
+
+    <a-entity obj-model="obj: ./resources/GameInfo/Models/book.obj">
+
+    </a-entity>
+</a-entity>
 
 <a-entity id="elevator-lights">
     <a-light id="pointelevator7" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.20556 2.11242 -1.03036" rotation="-90 0 138.67899"></a-light>    
     <a-light id="pointelevator14" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.043 2.11242 -1.27136" rotation="-90 0 138.67899"></a-light>    
 </a-entity>
 
-<a-entity id="fridge" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-ouvert.obj" scale=".01 .01 .01" position="1 2.5 -5" class="boom" rotation="0 -90 0">
-    <a-entity id="porte-fridge" object="badge: 2" door="inversed: true" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-porte.obj" scale="1 1 1" position="-30.4 54.7 56.2" class="boom raycastable" rotation="0 0 0"> 
+<a-entity id="doors">
+    <a-entity id="door-main" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -40.94333" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 642; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity>
+    <a-box id="postit" interactive="rotation: -6 -90 0;" object="badge: 2" material="color: #ffff00; emissive: #ffff00" geometry="" position=".6 2.1 -.03" rotation="5 90 0" scale="0.008 0.24 0.215" class="raycastable">
         <a-entity id="achiv" position="0 0 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false"></a-entity>
-    </a-entity>
+        <a-text translate="text" id="postit_text" text="anchor: center; color: black; width: 2.5; align: center; font: mozillavr; value: Isabelle,\nI didn't have time\nto give you the\ncode\nbut it's 1234.\nI'll be thinking about you.\nJean. XXXO; baseline: top" rotation="0 90 0" position="0.58903 0.53762 0"></a-text>
+    </a-box>
+</a-entity>
+    <a-entity id="door-A" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -36.11868" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641-A; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-1" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -31.1061" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-2" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -25.94551" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 640; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-3" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -21.0745" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 639; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-4" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32067 -0.07313 -16.05218" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 638; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-5" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -11.04291" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 637; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-6" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -6.09271" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 636; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-Exit" door="inversed: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="1.93372 -0.06961 -2.0586" class="boom raycastable"></a-entity>
+</a-entity>
+
+<a-entity id="corridorlight">
+    <a-light id="cool1" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.12822 2.29242 -9.33855" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool2" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -14.3386" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool3" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -19.27791" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool4" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -24.35244" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool5" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -29.30588" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool6" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -34.45366" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool7" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -39.44527" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool8" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.0878 2.29242 -4.32904" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool9" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="2.26274 2.29242 -4.33096" >
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+
+    <a-light id="cool7-2" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-4.49165 3.83821 -42.40136">
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
+    <a-light id="cool7-3" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-6.89711 3.83821 -35.68367">
+        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    </a-light>
 </a-entity>
 
 
-<a-image id="Map" src="./resources/objects/game/evacuationTBO.png" position="1.40638 1.37543 -22.81387" material geometry rotation="0 270 0" scale="0.8 0.8 0.8"></a-image>
+<a-entity id="LIMBO-DIGI" limbo obj-model="obj: ./resources/objects/game/infosectest1/Digi/Digi.obj; mtl: ./resources/objects/game/infosectest1/Digi/Digi.mtl" scale="0.03 0.03 0.03" position="-1.29 1.4 -14.7" rotation="0 90 0" digi="code: 1; object: #LIMBO-DIGI; event: limbo" class="boom">
+    <a-entity id="buttons">
+        <a-box id="b1" btn-mode material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" class="raycastable" rotation="0 -90 0"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b2" btn-mode="mode: input; input: 2" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b3" btn-mode="mode: input; input: 3" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b4" btn-mode="mode: input; input: 4" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b5" btn-mode="mode: input; input: 5" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b6" btn-mode="mode: input; input: 6" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b7" btn-mode="mode: input; input: 7" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b8" btn-mode="mode: input; input: 8" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b9" btn-mode="mode: input; input: 9" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b10" btn-mode="mode: clr" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b11" btn-mode="mode: input; input: 0" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+        <a-box id="b12" btn-mode="mode: ent" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
+    </a-entity>
 
-<a-image id="Mario" src="./resources/objects/game/infosectest1/Post-It-War.png" position="-1.29304 0.80699 -15.61215" material geometry rotation="0 -90.00021045914971 4.255357544436624" scale="0.8 0.8 0.8"></a-image>
+    <a-entity id="limbo" sound="src: url(./resources/GameInfo/Sounds/limbo.mp3);"></a-entity>
 
-<a-box id="floor-3" class="boom" position="-4.74835 -0.55402 -40.58592" scale="6.76745 1 12.86956" material="blending: additive" geometry></a-box>
+    <a-entity id="click" sound="src: url(./resources/GameInfo/Sounds/click.mp3);"></a-entity>
+    <a-entity id="deny" sound="src: url(./resources/GameInfo/Sounds/wrong.mp3);"></a-entity>
+    <a-entity id="accept" sound="src: url(./resources/GameInfo/Sounds/good.mp3);"></a-entity>
+</a-entity>
 
 <a-entity id="main-digi" obj-model="obj: ./resources/objects/game/infosectest1/Digi/Digi.obj; mtl: ./resources/objects/game/infosectest1/Digi/Digi.mtl" scale="0.03 0.03 0.03" position="-1.30 1.4 -39.8" rotation="0 90 0" digi="code: 1234; object: #door-main; event: unlock">
     <a-entity id="buttons">
@@ -78,96 +174,8 @@
     <a-entity id="accept" sound="src: url(./resources/GameInfo/Sounds/good.mp3);"></a-entity>
 </a-entity>
 
-<a-entity id="doors">
-    <a-entity id="door-main" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -40.94333" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 642; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity>
-    <a-box id="postit" interactive="rotation: -6 -90 0;" object="badge: 2" material="color: #ffff00; emissive: #ffff00" geometry="" position=".6 2.1 -.03" rotation="5 90 0" scale="0.008 0.24 0.215" class="raycastable">
-        <a-entity id="achiv" position="0 0 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false"></a-entity>
-        <a-text translate="text" id="postit_text" text="anchor: center; color: black; width: 2.5; align: center; font: mozillavr; value: Isabelle,\nI didn't have time\nto give you the\ncode\nbut it's 1234.\nI'll be thinking about you.\nJean. XXXO; baseline: top" rotation="0 90 0" position="0.58903 0.53762 0"></a-text>
-    </a-box>
-</a-entity>
-    <a-entity id="door-A" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -36.11868" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641-A; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-1" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -31.1061" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-2" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -25.94551" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 640; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-3" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -21.0745" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 639; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-4" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32067 -0.07313 -16.05218" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 638; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-5" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -11.04291" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 637; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-6" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -6.09271" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 636; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-Exit" door="inversed: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="1.93372 -0.06961 -2.0586" class="boom raycastable"></a-entity>
-</a-entity>
 
-<a-entity id="fan1" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="1.03445 2.39118 -16.95531"> </a-entity>
-<a-entity id="fan2" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="0.96278 2.36596 -26.90182"> </a-entity>
-
-<a-entity id="corridorlight">
-    <a-light id="cool1" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.12822 2.29242 -9.33855" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool2" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -14.3386" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool3" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -19.27791" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool4" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -24.35244" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool5" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -29.30588" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool6" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -34.45366" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool7" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -39.44527" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool8" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.0878 2.29242 -4.32904" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-
-    <a-light id="cool9" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="2.26274 2.29242 -4.33096" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-    </a-light>
-</a-entity>
-
-<a-light id="cool7-2" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-4.49165 3.83821 -42.40136">
-    <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-</a-light>
-<a-light id="cool7-3" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-6.89711 3.83821 -35.68367">
-    <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
-</a-light>
-
-
-<a-entity id="LIMBO-DIGI" limbo obj-model="obj: ./resources/objects/game/infosectest1/Digi/Digi.obj; mtl: ./resources/objects/game/infosectest1/Digi/Digi.mtl" scale="0.03 0.03 0.03" position="-1.29 1.4 -14.7" rotation="0 90 0" digi="code: 1; object: #LIMBO-DIGI; event: limbo" class="boom">
-    <a-entity id="buttons">
-        <a-box id="b1" btn-mode material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" class="raycastable" rotation="0 -90 0"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b2" btn-mode="mode: input; input: 2" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b3" btn-mode="mode: input; input: 3" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b4" btn-mode="mode: input; input: 4" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b5" btn-mode="mode: input; input: 5" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b6" btn-mode="mode: input; input: 6" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b7" btn-mode="mode: input; input: 7" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b8" btn-mode="mode: input; input: 8" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b9" btn-mode="mode: input; input: 9" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b10" btn-mode="mode: clr" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b11" btn-mode="mode: input; input: 0" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-        <a-box id="b12" btn-mode="mode: ent" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
-    </a-entity>
-
-    <a-entity id="limbo" sound="src: url(./resources/GameInfo/Sounds/limbo.mp3);"></a-entity>
-
-    <a-entity id="click" sound="src: url(./resources/GameInfo/Sounds/click.mp3);"></a-entity>
-    <a-entity id="deny" sound="src: url(./resources/GameInfo/Sounds/wrong.mp3);"></a-entity>
-    <a-entity id="accept" sound="src: url(./resources/GameInfo/Sounds/good.mp3);"></a-entity>
-</a-entity>
-
-<!-- <a-entity infoloader="1,2,3,4,5,6,7,8">
+<a-entity infoloader="1,2,3,4,5,6,7,8">
     <a-box id="Entry" position="-11.41011 0.49994 4.22897" scale="0.47001 0.44301 0.41831" material="side: back"></a-box>
     <a-box id="Exit" position="0 0 -.93" scale="0.1 0.1 0.1" visible="false"></a-box>
     <a-box id="Loader-Area" position="-9.585 0.9 2.141" scale="8.253 5.93461 7.699" material="side: back" geometry></a-box>
@@ -179,7 +187,7 @@
     </a-entity>
 
     <a-image id="clicker" translate src="./resources/objects/game/Diapositive1.jpeg" position="-11.53424 2.23284 2.55092" scale="4sp 2 0.8" class="raycastable" visible="false"></a-image>
-</a-entity> -->
+</a-entity>
 
 <!-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
