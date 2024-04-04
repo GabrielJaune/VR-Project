@@ -64,6 +64,8 @@ var Badges = {
     6: "...And A Legend Was Born", // All Achivements
     7: "Like A Boss", // Fail (incorrect code) and end the game (before auto ending)
     8: "Any%", // Pick Up All Interactible At The Same Time
+    9: "OMG IT`S BLUE" // complete the hidden easter egg game
+    // or add "I VERIFIED THE GOLDEN" idk
 }
 
 let ALang = ["fr", "en"]
