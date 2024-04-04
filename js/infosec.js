@@ -61,7 +61,7 @@ var Badges = {
     3: "InfoSec Guru", // Find guru
     4: "Really?", // Fail code
     5: "Mobiphobe", // Don't Answer Phone
-    6: "...And A Legend Was Born", // All Achivements
+    6: "I Am Legend", // All Achivements
     7: "Like A Boss", // Fail (incorrect code) and end the game (before auto ending)
     8: "Any%", // Pick Up All Interactible At The Same Time
     9: "OMG IT`S BLUE" // complete the hidden easter egg game
@@ -156,6 +156,7 @@ AFRAME.registerComponent('infoloader', {
   
       this.ob = this.data.split(",")
       this.Count = 0
+      this.Used = false
   
       this.langs = this.el.querySelector("#langs")
 
@@ -190,6 +191,8 @@ AFRAME.registerComponent('infoloader', {
       if(!Data.GameLang) { return }
       let test = this.ob[this.Count]
       if(!test) {
+        if(this.Used) { return }
+        this.Used = true
         this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion);
         document.querySelector("#audiobox").emit("click");
         $("#PHONE_ASSET").show();
@@ -345,9 +348,9 @@ AFRAME.registerComponent('object', {
             CreateNotif(this.data.soundname)
         }
         if(this.data.badge != 0) {
-            let achiv = this.el.querySelector("#achiv")
-            if(achiv) { achiv.components['particle-system'].startParticles(); }
-            new Audio('./resources/GameInfo/Sounds/unlock.mp3').play();
+            // let achiv = this.el.querySelector("#achiv")
+            // if(achiv) { achiv.components['particle-system'].startParticles(); }
+            // new Audio('./resources/GameInfo/Sounds/unlock.mp3').play();
             GiveBadge(this.data.badge)
         }
     }
