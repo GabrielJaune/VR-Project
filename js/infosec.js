@@ -143,6 +143,65 @@ AFRAME.registerComponent("phoneanswer", {
     }
 })
 
+AFRAME.registerComponent('ender', { // dragon
+    init: function () {
+      this.onClick = this.onClick.bind(this)
+      this.Success = this.Success.bind(this)
+      this.Failure = this.Failure.bind(this)
+      this.Enable  = this.Enable.bind(this)
+
+      this.Used = false
+
+      this.Action = this.el.querySelector("#action")
+      this.Text   = this.el.querySelector("#text")
+      this.Badge  = this.el.querySelector("#badge")
+      this.part   = this.el.querySelector("#part")
+
+      this.Action.addEventListener('click', this.onClick)
+      this.el.addEventListener("fail", this.Failure)
+      this.el.addEventListener("win", this.Failure)
+
+      // this.Text.setAttribute("visible", false)é
+      // this.Badge.setAttribute("visible", false)
+    },
+
+    onClick: function () {
+        if(this.Used) { return }
+        this.Used = true
+
+        this.Success()
+    },
+
+    Enable: function () {
+
+    },
+
+    Success: function () {
+        new Audio('./resources/GameInfo/Sounds/epicwin.mp3').play();
+        // this.part.components['particle-system'].startParticles()
+        // HideView()
+        this.Enable()
+    },
+
+    Failure: function () {
+        new Audio('./resources/GameInfo/Sounds/buzzer.mp3').play(); 
+        this.Enable()
+    },
+
+    update: function () {
+      // Do something when component's data is updated.
+    },
+
+    remove: function () {
+      // Do something the component or its entity is detached.
+    },
+
+    tick: function (time, timeDelta) {
+      // Do something on every scene tick or frame.
+    }
+});
+
+
 AFRAME.registerComponent('infoloader', {
     schema: { default: "", type: "string" },
   

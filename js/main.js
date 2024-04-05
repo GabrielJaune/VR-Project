@@ -163,6 +163,14 @@ let PathName = location.pathname.split("/")
 PathName = (PathName[PathName.length - 1].split(".")[0] || "index").toUpperCase()
 console.log(PathName)
 
+async function HideView() {
+  $("#cur_camera")[0].emit("start_trans")
+}
+
+async function ShowView() {
+  $("#cur_camera")[0].emit("end_trans")
+}
+
 async function SwitchArea(Name) {
   let ok = document.querySelectorAll(".field")
   ok.forEach(function(val) { $(val).remove() })
@@ -650,7 +658,7 @@ AFRAME.registerComponent('projector', {
   onClick: async function() {
     if(this.cooldown) { return; }
     this.cooldown = true
-    console.log("play")
+    // console.log("play")
     this.sound.components.sound.playSound();
     this.switchPage()
     await sleep(1000)
@@ -725,17 +733,7 @@ AFRAME.registerComponent('collider-check', {
         el.emit("detect")
       })
       console.log('Player enter collision !');
-      console.log(this.OldCall)
 
-    });
-
-    this.el.addEventListener('raycaster-intersection-cleared', function (e) {
-    //   console.log(this.OldCall)
-
-    //   this.OldCall.forEach(function(el) {
-    //     el.emit("clear-detect")
-    //   })
-    //   console.log('Player removed collision !');
     });
   }
 });
@@ -769,11 +767,11 @@ AFRAME.registerComponent('security', {
       let hitbox = element.querySelector("#light").querySelector("#hitbox")
       hitbox.addEventListener("detect", (event) => {
         this.onDetection(element)
-        console.log("detect called");
+        // console.log("detect called");
       });
 
       hitbox.addEventListener("clear-detect", (event) => {
-        console.log("cancel called");
+        // console.log("cancel called");
       });
     }, this)
 
@@ -830,26 +828,22 @@ AFRAME.registerComponent('security', {
 
     switch(Mode) {
       case "input":
-        console.log("you CLICK :", Input)
         this.CurrentCode = this.CurrentCode + Input
-        console.log("NEW CODE :", this.CurrentCode)
       break;
 
       case "clr":
-        console.log("CLEARED")
         this.CurrentCode = ""
       break;
 
       case "ent":
         if(this.CurrentCode == this.Code) { 
-          console.log("CORRECT");
           this.Armed = !this.Armed;
           this.Blast = false;
           this.Detected = false
           this.CurDelay = this.Armed && this.CurDelay || undefined
           this.Alarm.setAttribute("visible", false)
           this.Siren.components.sound.stopSound();
-        } else console.log("WRONG");
+        } else
         this.CurrentCode = ""
       break;
     }
@@ -864,7 +858,7 @@ AFRAME.registerComponent('security', {
     }
 
     if(this.Blast) {
-      console.log("WOMP")
+      // console.log("WOMP")
       this.VisibleLight =  !this.VisibleLight
       this.Alarm.setAttribute("visible", this.VisibleLight)
     }
@@ -874,8 +868,8 @@ AFRAME.registerComponent('security', {
   }, 
 
   onDetection: function(el) {
-    if(this.Detected) {console.log("Already Detected"); return }
-    if(!this.Armed)   {console.log("System Is Not Armed"); return }
+    if(this.Detected) { return }
+    if(!this.Armed)   { return }
     this.Detected = true
     let Time = new Date().getTime() / 1000
     this.CurDelay = Time + this.Delay

@@ -199,6 +199,19 @@
     <a-entity id="accept" sound="src: url(./resources/GameInfo/Sounds/good.mp3);"></a-entity>
 </a-entity>
 
+<a-entity ender id="ender">
+    <a-box id="action" position="0 .7 -5" class="boom raycastable"></a-box>
+    
+    <a-entity id="part" position=".06 .7 -2" particle-system="color: #EF0000, #44CC00; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; accelerationValue: 0 0 0; velocityValue: 0 2 0; velocitySpread: 1 1 1; randomise: true; maxParticleCount: 10000"></a-entity>
+
+    <a-entity id="text">
+
+    </a-entity>
+
+    <a-entity id="badge">
+
+    </a-entity>
+</a-entity>
 
 <a-entity infoloader="1,2,3,4,5,6,7,8">
     <a-box id="Entry" position="-11.41011 0.49994 4.22897" scale="0.47001 0.44301 0.41831" material="side: back"></a-box>
