@@ -18,15 +18,6 @@
 
 // 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
 
-const Call = document.querySelector("#PHONE_CALL")
-const Ring = document.querySelector("#PHONE_RING")
-let obj = $("#PHONE_ASSET")
-
-Call.addEventListener('ended', function() {
-    console.warn("audio over")
-    obj.attr('src', "./resources/GameInfo/phone.png")
-})
-
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 function randrange(num) { return Math.floor(Math.random() * num) }
@@ -43,14 +34,24 @@ function shuffleArray(array) {
 function StopAudio(audio) {
     audio.pause()
     audio.currentTime = audio.duration || 0
-    console.log(audio)
 }
 
+let obj = $("#PHONE_ASSET")
+const Ring = document.querySelector("#PHONE_RING")
+const Call = document.querySelector("#PHONE_CALL")
+
+Call.addEventListener('ended', function() {
+    obj.attr('src', "./resources/GameInfo/phone.png")
+})
+
+let UsedAlarm = false
+let AlarmAudio = undefined
 var ActiveNotif = ""
 
 var Data = {
     GameLang: undefined,
     Badges: [],
+    Objects: [],
     Calls : 0,
     Found : 0
 }
@@ -135,6 +136,26 @@ function HandlePhone() {
     Notify(ActiveNotif)
 }
 
+function EndAlarm() {
+    if(AlarmAudio == undefined) return false;
+    AlarmAudio.pause();
+    AlarmAudio = undefined
+    let lights = document.querySelector("#corridorlight")
+
+    for (x = 1; x < lights.children.length + 1; x++) {     
+        let el = lights.querySelector(`#cool${(x).toString()}`)
+        el.setAttribute('light', 'intensity', '50')
+        el.querySelector('#shadow').setAttribute('light', 'intensity', '1')
+    }
+
+    document.querySelector("#liftdoor1").emit('animopen')
+    document.querySelector("#liftdoor2").emit('animopen')
+
+    document.querySelector("#ender").emit("fail")
+
+    return true
+}
+
 AFRAME.registerComponent("phoneanswer", {
     init: function() {
         this.el.addEventListener("click", function() {
@@ -142,6 +163,63 @@ AFRAME.registerComponent("phoneanswer", {
         })
     }
 })
+
+AFRAME.registerComponent('handler', {
+    init: function() {
+        this.CodeFail = this.CodeFail.bind(this)
+
+        this.el.addEventListener("digi_deny", this.CodeFail)
+    },
+
+    CodeFail: async function() {
+        if(UsedAlarm) return;
+        UsedAlarm = true
+        await sleep(1200)
+        AlarmAudio = new Audio('./resources/sounds/Alarm.mp3');
+        AlarmAudio.play();
+
+        let lights = document.querySelector("#corridorlight")
+
+        for (x = 1; x < lights.children.length + 1; x++) {     
+            let el = lights.querySelector(`#cool${(x).toString()}`)
+            el.setAttribute('light', 'intensity', '20')
+            el.querySelector('#shadow').setAttribute('light', 'intensity', '.1')
+        }
+
+        setTimeout(function() {
+            document.querySelector("#liftdoor1").emit('animclose')
+            document.querySelector("#liftdoor2").emit('animclose')
+        }, 500);
+
+        setTimeout(function() {
+            if(AlarmAudio == undefined) return;
+            console.log("ended")
+            EndAlarm()
+        }, 5000);
+    }
+});
+
+AFRAME.registerComponent('maindoor', {
+    init: function() {
+        this.digi = this.digi.bind(this)
+        this.used = false
+        this.el.addEventListener('unlock', this.digi)
+    },
+
+    digi: function() {
+        console.log("aceepted")
+        if(this.used) return;
+        this.used = true
+        Data.Found += 1
+        Data.Objects.push(3)
+        CreateNotif("3")
+        let mylight = document.querySelector("#assetlight").querySelector(`#L3`)
+        if(mylight) {
+            mylight.setAttribute("light", "intensity", '5')
+        }
+    }
+})
+
 
 AFRAME.registerComponent('ender', { // dragon
     init: function () {
@@ -156,6 +234,11 @@ AFRAME.registerComponent('ender', { // dragon
       this.Text   = this.el.querySelector("#text")
       this.Badge  = this.el.querySelector("#badge")
       this.part   = this.el.querySelector("#part")
+
+      this.rig = document.querySelector("#rig")
+      this.cursorTeleport = this.rig.components["cursor-teleport"]
+
+      this.Exit =  document.querySelector("#Exit")
 
       this.Action.addEventListener('click', this.onClick)
       this.el.addEventListener("fail", this.Failure)
@@ -172,35 +255,55 @@ AFRAME.registerComponent('ender', { // dragon
         this.Success()
     },
 
-    Enable: function () {
+    Enable: async function (win) {
+        UsedAlarm = true
+        var s = new SamJs({ debug: 1, pitch: 64, speed: 72, mouth: 128, throat: 128 });
+        document.querySelector("#door-main").setAttribute("door", "locked", "false")
+        document.querySelector("#door-A").setAttribute("door", "locked", "false")
 
+        setTimeout(function(){
+            s.speak(`You have ${win && "finished" || "failed"} the experiment`);
+        }, 2000)
+
+        this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion) 
+
+        document.querySelector("#liftdoor1").emit('animclose')
+        document.querySelector("#liftdoor2").emit('animclose')
+
+        document.querySelector("#text-asset").setAttribute('visible', 'true')
+
+        let lights = document.querySelector("#assetlight")
+
+        for (x = 1; x < 11 + 1; x++) {     
+            let el = lights.querySelector(`#L${(x).toString()}`)
+            if(!el) { continue }
+            if(!Data.Objects.includes((x).toString())) {
+                el.setAttribute('light', 'intensity', '5')
+                el.setAttribute('light', 'color', '#ff0000')
+            }
+        }
+
+        await sleep(1500)
+
+        document.querySelector("#liftdoor1").emit('animopen')
+        document.querySelector("#liftdoor2").emit('animopen')
     },
 
-    Success: function () {
-        new Audio('./resources/GameInfo/Sounds/epicwin.mp3').play();
+    Success: async function () {
+        let b = new Audio('./resources/GameInfo/Sounds/buzzer.mp3')
+        b.volume = .5
+        b.play(); 
+        // new Audio('./resources/GameInfo/Sounds/epicwin.mp3').play();
         // this.part.components['particle-system'].startParticles()
         // HideView()
-        this.Enable()
+        this.Enable(true)
     },
 
-    Failure: function () {
+    Failure: async function () {
         new Audio('./resources/GameInfo/Sounds/buzzer.mp3').play(); 
-        this.Enable()
-    },
-
-    update: function () {
-      // Do something when component's data is updated.
-    },
-
-    remove: function () {
-      // Do something the component or its entity is detached.
-    },
-
-    tick: function (time, timeDelta) {
-      // Do something on every scene tick or frame.
+        this.Enable(false)
     }
 });
-
 
 AFRAME.registerComponent('infoloader', {
     schema: { default: "", type: "string" },
@@ -231,6 +334,14 @@ AFRAME.registerComponent('infoloader', {
         this.langs.querySelector(`#${element}`).addEventListener('click', this.OnLang)
       }, this);
 
+      let lights = document.querySelector("#assetlight")
+
+      for (x = 1; x < 11 + 1; x++) {     
+          let el = lights.querySelector(`#L${(x).toString()}`)
+          if(!el) { continue }
+          el.setAttribute('light', 'intensity', '0')
+      }
+
       this.el.addEventListener('int', this.OnClick)
     },
   
@@ -256,6 +367,12 @@ AFRAME.registerComponent('infoloader', {
         document.querySelector("#audiobox").emit("click");
         $("#PHONE_ASSET").show();
         CreateNotif("Intro")
+        document.querySelector("#liftdoor1").emit('animclose')
+        document.querySelector("#liftdoor2").emit('animclose')
+        setTimeout(function() {
+            document.querySelector("#liftdoor1").emit('animopen')
+            document.querySelector("#liftdoor2").emit('animopen')
+        }, 3000);
         return
       }
       this.clicker.setAttribute("src", `./resources/GameInfo/Slides/${Data.GameLang}/${test}.jpeg`)
@@ -294,123 +411,43 @@ AFRAME.registerComponent('translate', {
             default:
                 break;
         }
-    },
-
-    update: function () {
-      // Do something when component's data is updated.
-    },
-
-    remove: function () {
-      // Do something the component or its entity is detached.
-    },
-
-    tick: function (time, timeDelta) {
-      // Do something on every scene tick or frame.
     }
 });
-
-
-AFRAME.registerComponent('interactive', {
-    schema: {
-        vrposition: {type: "vec3", default: {x: 0, y: -.1, z: -.2}},
-        position: {type: "vec3", default: {x: 0, y: -.02, z: -.3}},
-        rotation: {type: "vec3", default: {x: 0, y: 180, z: 0}},
-        vrrotation: {type: "vec3", default: {x: 90, y: 180, z: 0}}
-    },
-
-    init: function () {
-        this.onClick   = this.onClick.bind(this)
-    
-        this.grabbed = false
-        this.LastParent = this.el.object3D.parent
-        this.OldPos = AFRAME.utils.coordinates.stringify(this.el.getAttribute("position"))
-        this.OldRot = AFRAME.utils.coordinates.stringify(this.el.getAttribute("rotation"))
-    
-        this.Click = 0
-        this.el.addEventListener("click", this.onClick)
-    },
-
-    onClick: function() {  
-        if(this.Click == 0) {
-            this.grabbed = true
-            switch (IsVR) {
-                case true:
-                  Used.object3D.attach(this.el.object3D)
-        
-                  this.el.setAttribute("position", this.data.vrposition)
-                  this.el.setAttribute("rotation", this.data.vrrotation)
-                  break
-                case false:
-                  $("#cur_camera")[0].object3D.attach(this.el.object3D)
-        
-                  this.el.setAttribute("position", this.data.position)
-                  this.el.setAttribute("rotation", this.data.rotation)
-                  break
-              }
-        }
-
-        if(this.Click == 1) {
-            this.grabbed = false
-            this.LastParent.attach(this.el.object3D)
-            this.el.setAttribute("position", this.OldPos)
-            this.el.setAttribute("rotation", this.OldRot)
-
-            this.Click = -1
-        }
-        
-        this.Click += 1
-    },
-
-    update: function() {
-        if(this.grabbed) {
-            switch (IsVR) {
-                case true:
-                  Used.object3D.attach(this.el.object3D)
-        
-                  this.el.setAttribute("position", this.data.vrposition)
-                  this.el.setAttribute("rotation", this.data.vrrotation)
-                  break
-                case false:
-                  $("#cur_camera")[0].object3D.attach(this.el.object3D)
-        
-                  this.el.setAttribute("position", this.data.position)
-                  this.el.setAttribute("rotation", this.data.rotation)
-                  break
-              }
-        }
-    }
-});
-
 
 AFRAME.registerComponent('object', {
     schema: {
         soundname: {default: 'null', type: "string"},
+        id: {default: 0, type: "number"},
+        click: {default: 1, type: "number"},
         badge: {default: 0, type: "number"},
-        selected : {default: false, type: "boolean"}
+        locked : {default: false, type: "boolean"}
     },
 
     init: function () {
       this.onClick = this.onClick.bind(this)
+      this.CurClick = 0
 
       this.el.addEventListener('click', this.onClick)
     },
 
     onClick: function() {
-        if(this.data.selected) { return; }
-        this.data.selected = true
-        Data.Found += 1
-        let mylight = this.el.querySelector("#light")
-        if(mylight) {
-            mylight.setAttribute("visible", true)
-        }
-        if(this.data.soundname != "null") {
-            CreateNotif(this.data.soundname)
-        }
-        if(this.data.badge != 0) {
-            // let achiv = this.el.querySelector("#achiv")
-            // if(achiv) { achiv.components['particle-system'].startParticles(); }
-            // new Audio('./resources/GameInfo/Sounds/unlock.mp3').play();
-            GiveBadge(this.data.badge)
+        if(this.data.locked || UsedAlarm) { return }
+        this.CurClick += 1
+        if(this.CurClick == this.data.click) {
+            this.data.locked = true
+            Data.Found += 1
+            Data.Objects.push(this.data.id)
+            let mylight = document.querySelector("#assetlight").querySelector(`#L${this.data.id}`)
+            if(mylight) {
+                mylight.setAttribute("light", "intensity", '5')
+            }
+            if(this.data.soundname != "null") {
+                CreateNotif(this.data.soundname)
+            }
+            if(this.data.badge != 0) {
+                new Audio('./resources/GameInfo/Sounds/unlock.mp3').play();
+                GiveBadge(this.data.badge)
+            }
         }
     }
 });
@@ -591,15 +628,3 @@ AFRAME.registerComponent('limbo', {
 
     },
 });
-
-if(scene) {
-    scene.addEventListener("enter-vr", function() {
-      IsVR = true
-      OnVRChange()
-    })
-  
-    scene.addEventListener("exit-vr", function() {
-      IsVR = false
-      OnVRChange()
-    })
-}

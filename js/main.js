@@ -26,6 +26,7 @@ var Selected = undefined
 var Buttons = {}, Langs = {}
 
 var userLang = (navigator.language || navigator.userLanguage || "fr").split("-")[0]; 
+// console.log("LANG => " + userLang)
 
 var SceneData = $("a-scene")
 var scene     = SceneData[0]
@@ -33,124 +34,41 @@ var MainScene = $("#MainScene")[0]
 
 if(MainScene) MainScene.addEventListener("templaterendered", UpdateNavigator);
 
-console.log("LANG => " + userLang)
+// 3D MODEL \\
+function updateMaterial(Material, Side) {
+  if(!Material) return;
+  Material.side = Side
+  Material.needsUpdate = true
+}
 
-const Infos = {
-  1: {
-    title: "Bac Pro MELEC",
-    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes`,
-    redirect: [
-      {"image": "./resources/images/map.png", "redirect": "melec.html"},
-      {"image": "./resources/images/cube.png", "redirect": "atelier.html"}
-    ]
-  },
-  2: {
-    title: "Bac Pro CIEL",
-    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
-    redirect: [
-      {"image": "./resources/images/map.png", "redirect": "ciel.html"},
-      {"image": "./resources/images/cube.png", "redirect": "demotest.html"}
-    ]
-  },
-  3: {
-    title: "BTS Electrotechnique",
-    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
-    redirect: "bts.html"
-  },
-  4: {
-    title: "CPGE",
-    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques",
-    redirect: [
-      {"image": "./resources/images/map.png", "redirect": "cpge.html"},
-      {"image": "./resources/images/cube.png", "redirect": "cpge3D.html"}
-    ]
+function updateMaterialSide(material, side) {
+  if (!material) return;
+
+  if (material instanceof window.THREE.Material) {
+    updateMaterial(material, side)
+  } else if (material instanceof window.THREE.MultiMaterial) {
+    material.materials.forEach(function(childMaterial) {
+      updateMaterial(childMaterial, side);
+    });
   }
 }
 
-AFRAME.registerComponent("door", {
-  schema: {
-    locked: { type: 'boolean', default: false },
-    opened: { type: 'boolean', default: false },
-    inversed: { type: 'boolean', default: false }
-  },
-  init: function() {
-    // console.log("got a char")
-    this.OP = this.el.getAttribute("rotation").y
-    this.Locked = this.data.locked
-    this.Opened = this.data.opened
+function traverse(node) {
+  if(!node) return;
 
-    console.log(this.Opened)
-
-    if(this.Opened) this.open();
-
-    this.lock = this.lock.bind(this)
-    this.unlock = this.unlock.bind(this)
-    this.click   = this.click.bind(this)
-
-    this.el.addEventListener("unlock", this.unlock)
-    this.el.addEventListener("lock"  , this.lock)
-    this.el.addEventListener("click" , this.click)
-  },
-
-  unlock: function() {
-    console.log("unlocking")
-    this.Locked = false
-  },
-
-  lock: function() {
-    console.log("locking")
-    this.Locked = true
-  },
-
-  click: function() {
-    console.log("clicked")
-    if (this.Locked) return;
-    this.Opened = !this.Opened
-    if(this.Opened) this.open(); else this.close();
-  },
-
-  open: function() {
-    console.log("Opening")
-    this.el.setAttribute("animation__rot", `property: rotation; to: 0 ${this.OP + (this.data.inversed && -90 || 90)} 0; dur: 500; easing: linear;`)
-  },
-
-  close: function() {
-    console.log("Closing")
-    this.el.setAttribute("animation__rot", `property: rotation; to: 0 ${this.OP} 0; dur: 500; easing: linear;`)
-  }
-})
-
-AFRAME.registerComponent("controller", {
-  init: function() {
-    this.onDown = this.onDown.bind(this)
-    this.onUp = this.onUp.bind(this)
-
-    this.el.addEventListener("mousedown", this.onDown)
-    this.el.addEventListener("mouseup", this.onUp)
-  },
-
-  onDown: function(evt) {
-    Used = this.el
-  },
-
-  onUp: async function(evt) {
-    await sleep(200)
-    if(Used == this.el) Used = undefined;
-  }
-})
+  node.children.forEach(function(child) {
+    if (child.children) { traverse(child) }
+    updateMaterial(child['material'], window.THREE.DoubleSide);
+  });
+}
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 function getRndInteger(min, max) { return Math.floor(Math.random() * (max - min) ) + min; }
 
-function LoadLang(Language) {
-  // console.log("Loading " + Language + ".json")
-  // $.ajax("./languages/" + Language + ".json").done(function(data){
-  //   Langs[Language] = i18n.create(data)
-  // }).fail(function() {
-  //   alert("Failed To Load " + Language + ".json")
-  // })
-}
+let PathName = location.pathname.split("/")
+PathName = (PathName[PathName.length - 1].split(".")[0] || "index").toUpperCase()
+console.log(PathName)
 
 async function UpdateNavigator() {
   await sleep(100)
@@ -158,10 +76,6 @@ async function UpdateNavigator() {
   console.log("navigation update")
   $("#cur_camera")[0].emit("end_trans")
 }
-
-let PathName = location.pathname.split("/")
-PathName = (PathName[PathName.length - 1].split(".")[0] || "index").toUpperCase()
-console.log(PathName)
 
 async function HideView() {
   $("#cur_camera")[0].emit("start_trans")
@@ -201,147 +115,24 @@ async function OnVRChange() {
       Menu.setAttribute('position', OldMenu['pos'])
       break;
     default:
-      alert("Unknown IsVR Value")
+      console.error("Unknown IsVR Got", IsVR);
+      alert("An Error Occured")
   }
 }
 
-AFRAME.registerComponent("info-panel", {
-    init: function() {
-      this.onHover    = this.onHover.bind(this);
-      this.onRelease  = this.onRelease.bind(this);
+AFRAME.registerComponent("controller", {
+  init: function() {
+    this.onDown = this.onDown.bind(this)
+    this.onUp = this.onUp.bind(this)
 
-      this.onExtra1  = this.onExtra1.bind(this);
-      this.onExtra2  = this.onExtra2.bind(this);
-
-      this.Extra = {
-        1: null,
-        2: null,
-      }
-
-      this.onConfirm  = this.onConfirm.bind(this);
-      this.onButton   = this.onButton.bind(this);
-      this.onCancel   = this.onCancel.bind(this);
-
-      this.onButton = this.onButton.bind(this);
-      this.onCancel = this.onCancel.bind(this);
-
-      // NOTE: Not Outside Since Loading Stuff
-      Buttons = document.querySelectorAll(".menu-button")
-
-      this.Video = $("#BACKGROUND_VIDEO")[0]
-      this.src = ["./resources/videos/ari.mp4", "./resources/videos/NoHit.mp4","./resources/videos/sans.mp4"]
-      
-      this.ConfirmMode = false
-
-      this.Clicked = false
-      this.el.object3D.scale.set(0, 0, 0)
-
-      this.el.addEventListener("mouseenter", this.onHover)
-      this.el.addEventListener("mouseleave", this.onRelease)
-
-      this.Title       = this.el.querySelector("#Info_Title")
-      this.Description = this.el.querySelector("#Info_Description")
-
-      this.Cancel  = this.el.querySelector("#Info_Cancel")
-      this.Confirm = this.el.querySelector("#Info_Confirm")
-
-      this.Extra1 = this.Confirm.querySelector("#Extra1")
-      this.Extra2 = this.Confirm.querySelector("#Extra2")
-      
-      this.Extra1.addEventListener('click', this.onExtra1)
-      this.Extra2.addEventListener('click', this.onExtra2)
-
-      this.Cancel.addEventListener("click", this.onCancel)
-      this.Confirm.addEventListener("click", this.onConfirm)
-
-      for (var i = 0; i < Buttons.length; ++i) {
-          Buttons[i].addEventListener("click", this.onButton)
-      }
-    },
-
-    onHover: function () {
-      this.el.emit("pause")
-    },
-
-    onRelease: function() {
-      this.el.emit("resume")
-    },
-
-    onConfirm: function (evt) {
-        if(!Selected) return;
-        this.ConfirmMode = !this.ConfirmMode
-
-        if(typeof(Selected["redirect"]) == "string") {
-          window.location.href = Selected.redirect
-        } else {
-          this.Extra1.setAttribute('visible', this.ConfirmMode)
-          this.Extra2.setAttribute('visible', this.ConfirmMode)
-
-          if(!this.ConfirmMode) return;
-
-          Selected["redirect"].forEach(function(value, index) {
-            index += 1
-            console.log(value)
-            this.Extra[index] = value
-            let x = "Extra" + index
-            this["Extra" + index].setAttribute("material", "src", value["image"])
-          }, this)
-        }
-    },
-
-    onExtra1: function (evt) {
-      if(!this.Extra[1]) return;
-      var cur = this.Extra[1]["redirect"]
-      window.location.href = cur
-    },
-
-    onExtra2: function (evt) {
-      if(!this.Extra[2]) return;
-      var cur = this.Extra[2]["redirect"]
-      window.location.href = cur
-    },
-
-    onButton: function (evt) {
-        if(this.Clicked) { return }
-        let cool = $("#4K1080P")[0]
-        this.Clicked = true
-        Selected = Infos[evt.currentTarget.id]
-        this.Video.src = "./resources/videos/" + evt.currentTarget.id + ".mp4"
-        this.Video.play()
-        cool.setAttribute("visible", "true")
-        cool.components.sound.playSound()
-        this.el.emit("enter")
-        this.Title.setAttribute('text', 'value', Selected.title)
-        this.Description.setAttribute('text', 'value', Selected.info)
-    },
-
-    onCancel: function (evt) {
-      if(!this.Clicked) { return }
-
-      this.Extra1.setAttribute('visible', "false")
-      this.Extra2.setAttribute('visible', "false")
-
-      let cool = $("#4K1080P")[0]
-      this.Clicked = false
-      cool.components.sound.stopSound()
-      cool.setAttribute("visible", "false")
-      this.Video.src = "" //this.src[getRndInteger(0, this.src.length)]
-      this.el.emit("cancel")
-    },
-})
-
-
-AFRAME.registerComponent('test', {
-  init: function () {
-    this.onClick = this.onClick.bind(this)
-    this.el.addEventListener("click", this.onClick)
+    this.el.addEventListener("mousedown", this.onDown)
+    this.el.addEventListener("mouseup", this.onUp)
   },
 
-  onClick: async function() {
-    this.el.firstElementChild.setAttribute("particle-system", "enabled", "false")
-    this.el.firstElementChild.setAttribute("particle-system", "enabled", "true")
-  }
-});
+  onDown: function() { Used = this.el },
+
+  onUp: async function() { await sleep(200); Used = (Used == this.el && undefined) || Used; }
+})
 
 AFRAME.registerComponent('toggleclick', {
   init: function () {
@@ -361,43 +152,10 @@ AFRAME.registerComponent('toggleclick', {
   }
 });
 
-
-AFRAME.registerComponent('moai', {
-  init: function () {
-    this.onClick = this.onClick.bind(this)
-    this.moai = document.querySelector("#moai_entity")
-    this.Clicked = false
-    this.src = ["moai.png"]
-
-    this.el.addEventListener("click", this.onClick)
-  },
-
-  onClick: async function() {
-    if(this.Cooldown) return;
-    this.Cooldown = true
-    if(!this.Clicked) {
-      this.moai.object3D.visible = true
-      let rn = getRndInteger(0, this.src.length)
-      let cool = "./resources/images/memes/" + this.src[rn]
-      console.log(rn, this.src[rn])
-      $("#moai")[0].setAttribute("src", cool)
-      this.moai.emit("in")
-      await sleep(1000)
-    } else {
-    this.moai.emit("out")
-    await sleep(1000)
-    }
-
-    this.Clicked  = !this.Clicked
-    this.Cooldown = false
-  }
-});
-
 AFRAME.registerComponent('btn-mode', {
   schema: {
-    mode : {type: 'string', default: 'input'},
-    input: {type: 'string', default: "1"}
-  },
+    mode : {type: 'string', default: 'input'}, input: {type: 'string', default: "1"}
+  }
 })
 
 AFRAME.registerComponent('scene-changer', {
@@ -415,7 +173,7 @@ AFRAME.registerComponent('scene-changer', {
   },
 
   update: async function() {  
-    console.log("update")
+    // console.log("update")
     // ------ \\
     let newData = this.data
     this.SceneName = newData["name"]
@@ -431,7 +189,7 @@ AFRAME.registerComponent('scene-changer', {
   },
 
   onClick: async function() {
-    console.log("area")
+    // console.log("area")
     SwitchArea(this.SceneName)
   }
 })
@@ -439,10 +197,8 @@ AFRAME.registerComponent('scene-changer', {
 AFRAME.registerComponent('scene-init', {
   schema: {type: 'string', default: 'default'},
   init: async function() {
-    console.log("init")
     this.SceneName = this.data
-    console.log(this.SceneName)
-
+    // console.log(this.SceneName)
     SwitchArea(this.SceneName)
   }
 })
@@ -563,17 +319,6 @@ AFRAME.registerComponent('pc', {
   }
 })
 
-AFRAME.registerComponent('collider', {
-  init: function() {
-    this.el.addEventListener('hit', (e) => {
-     console.log('hit')
-    })
-    this.el.addEventListener('hitend', (e) => {
-      console.log('hitend')
-    })
-  }
-})
-
 
 AFRAME.registerComponent('phone', {
   schema: {default: ''},
@@ -680,36 +425,6 @@ AFRAME.registerComponent('projector', {
   }
 })
 
-// 3D MODEL \\
-
-function updateMaterial(Material, Side) {
-  if(!Material) return;
-  Material.side = Side
-  Material.needsUpdate = true
-}
-
-function updateMaterialSide(material, side) {
-  if (!material) return;
-
-  if (material instanceof window.THREE.Material) {
-    updateMaterial(material, side)
-  } else if (material instanceof window.THREE.MultiMaterial) {
-    material.materials.forEach(function(childMaterial) {
-      updateMaterial(childMaterial, side);
-    });
-  }
-}
-
-function traverse(node) {
-  node.children.forEach(function(child) {
-    if (child.children) {
-      traverse(child);
-    }
-
-    updateMaterial(child['material'], window.THREE.DoubleSide);
-  });
-}
-
 AFRAME.registerComponent('modelfix', {
   init: function() {
     this.el.addEventListener('model-loaded', function(evt) {
@@ -718,7 +433,6 @@ AFRAME.registerComponent('modelfix', {
   });
   }
 })
-
 
 AFRAME.registerComponent('collider-check', {
   dependencies: ['raycaster'],
@@ -737,370 +451,6 @@ AFRAME.registerComponent('collider-check', {
     });
   }
 });
-
-// 0.19 X   |   0.22 Y
-AFRAME.registerComponent('security', {
-  init: function() {
-    this.onDetection = this.onDetection.bind(this)
-    this.Trigger     = this.Trigger.bind(this)
-    // is ticking a good idea? EDIT: nvm im doing every seconds
-    this.stick       = this.stick.bind(this)
-    this.onClick     = this.onClick.bind(this)
-
-    this.Code = "69420"
-    this.CurrentCode = ""
-
-    this.Blast    = false
-    this.Detected = false
-    this.Armed    = true
-
-    this.VisibleLight = true
-
-    this.Delay = 2 // in" seconds idiot, we are not using ms here
-    this.CurDelay = undefined
-
-    this.Cam = this.el.querySelectorAll("#Camera")
-    this.Alarm = this.el.querySelector("#alarm")
-    this.Siren = this.el.querySelector("#siren")
-
-    this.Cam.forEach(function(element) {
-      let hitbox = element.querySelector("#light").querySelector("#hitbox")
-      hitbox.addEventListener("detect", (event) => {
-        this.onDetection(element)
-        // console.log("detect called");
-      });
-
-      hitbox.addEventListener("clear-detect", (event) => {
-        // console.log("cancel called");
-      });
-    }, this)
-
-    this.Buttons = this.el.querySelector("#control").querySelector("#buttons")
-
-    let XPos = undefined
-    let CurX = undefined
-
-    let CurY = undefined
-
-    let CurRow  = 0
-    let MaxRowX = 3
-
-    let Xdiff = 0.2
-    let Ydiff = 0.3
-    // IT GOES IDC, Y, X
-    // 0.
-    // ^^ Why is there a 0
-    for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
-      CurRow += 1
-      if(CurRow > MaxRowX) {
-        CurY -= Ydiff
-        CurX = XPos
-        CurRow = 1
-      }
-
-      let el = this.Buttons.querySelector(`#b${(x).toString()}`)
-      let Pos = el.getAttribute("position")
-      if (!CurY) CurY = Pos.y; 
-      if (!CurX) { CurX = Pos.z; XPos = CurX }
-
-      let Type  = el.getAttribute("btn-mode")
-      let Mode  = Type.mode
-      let Input = Type.input
-
-      el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
-      
-      el.setAttribute("position", {x: Pos.x, y: CurY, z: CurX})
-
-      el.addEventListener("click", this.onClick)
-
-      CurX -= Xdiff
-    }
-    this.stick()
-  },
-
-
-  onClick: function(element) {
-    let el = element.target
-    let Type  = el.getAttribute("btn-mode")
-
-    let Mode  = Type.mode
-    let Input = Type.input
-
-    switch(Mode) {
-      case "input":
-        this.CurrentCode = this.CurrentCode + Input
-      break;
-
-      case "clr":
-        this.CurrentCode = ""
-      break;
-
-      case "ent":
-        if(this.CurrentCode == this.Code) { 
-          this.Armed = !this.Armed;
-          this.Blast = false;
-          this.Detected = false
-          this.CurDelay = this.Armed && this.CurDelay || undefined
-          this.Alarm.setAttribute("visible", false)
-          this.Siren.components.sound.stopSound();
-        } else
-        this.CurrentCode = ""
-      break;
-    }
-  },
-
-  stick: function() {
-    let Time = new Date().getTime() / 1000
-    if(!this.Armed) this.CurDelay = undefined;
-    if(this.CurDelay && Time > this.CurDelay && this.Detected) {
-      this.Trigger()
-      this.CurDelay = undefined
-    }
-
-    if(this.Blast) {
-      // console.log("WOMP")
-      this.VisibleLight =  !this.VisibleLight
-      this.Alarm.setAttribute("visible", this.VisibleLight)
-    }
-
-    setTimeout(this.stick, 300) // Hacky way since I don't want every tick
-    // kys im keeping it this way
-  }, 
-
-  onDetection: function(el) {
-    if(this.Detected) { return }
-    if(!this.Armed)   { return }
-    this.Detected = true
-    let Time = new Date().getTime() / 1000
-    this.CurDelay = Time + this.Delay
-  },
-
-  Trigger: function() {
-    if(this.Siren) this.Siren.components.sound.playSound();
-    this.Blast = true
-    console.log("ALARM TIME womp womp")
-  }
-})
-
-AFRAME.registerComponent('digi', {
-  schema: {
-    code: { type: 'string', default: "1234" },
-    object: {type: 'selector'},
-    event: {type: 'string', default: "unlock"}
-  },
-
-  init: function() {
-    this.onClick     = this.onClick.bind(this)
-
-    this.CurrentCode = ""
-    this.Buttons = this.el.querySelector("#buttons")
-
-    this.ClickSound   = this.el.querySelector("#click")
-    this.DenySound    = this.el.querySelector("#deny")
-    this.AcceptSound  = this.el.querySelector("#accept")
-
-    let [XPos, CurX, CurY] = [undefined, undefined, undefined]
-    let [CurRow, MaxRowX] = [0, 3]
-    let [Xdiff, Ydiff] = [2.2, 1.7]
-
-    for (x = 1; x < this.Buttons.children.length + 1 ; x++) {
-      CurRow += 1
-      if(CurRow > MaxRowX) {
-        CurY -= Ydiff
-        CurX = XPos
-        CurRow = 1
-      }
-
-      let el = this.Buttons.querySelector(`#b${(x).toString()}`)
-      let Pos = el.getAttribute("position")
-      if (typeof(CurY) != "number") CurY = Pos.y; 
-      if (typeof(CurX) != "number") { CurX = Pos.x; XPos = CurX }
-
-      let Type  = el.getAttribute("btn-mode")
-      let [Mode, Input] = [Type.mode, Type.input]
-
-      el.querySelector("#text").setAttribute("text", "value", (Mode == "input" && Input) || Mode.toUpperCase())
-      el.setAttribute("position", {x: CurX, y: CurY, z: Pos.z})
-      el.addEventListener("click", this.onClick)
-
-      CurX += Xdiff
-    }
-  },
-
-
-  onClick: function(element) {
-    let el = element.target
-    let Type  = el.getAttribute("btn-mode")
-
-    let [Mode, Input] = [Type.mode, Type.input]
-
-    if(this.ClickSound) {
-      this.ClickSound.components.sound.playSound()
-    }
-
-    switch(Mode) {
-      case "input":
-        this.CurrentCode = this.CurrentCode + Input
-      break;
-
-      case "clr":
-        this.CurrentCode = ""
-      break;
-
-      case "ent":
-        if(this.CurrentCode == this.data.code) { 
-          this.data.object.emit(this.data.event)
-          if(this.AcceptSound) {
-            this.AcceptSound.components.sound.playSound()
-          }
-        } else {
-          if(this.DenySound) {
-            this.DenySound.components.sound.playSound()
-          }
-        }
-        this.CurrentCode = ""
-      break;
-    }
-  },
-
-  stick: function() {
-    let Time = new Date().getTime() / 1000
-    if(!this.Armed) this.CurDelay = undefined;
-    if(this.CurDelay && Time > this.CurDelay && this.Detected) {
-      this.Trigger()
-      this.CurDelay = undefined
-    }
-
-    if(this.Blast) {
-      console.log("WOMP")
-      this.VisibleLight =  !this.VisibleLight
-      this.Alarm.setAttribute("visible", this.VisibleLight)
-    }
-
-    setTimeout(this.stick, 300) // Hacky way since I don't want every tick
-    // kys im keeping it this way
-  }, 
-})
-
-// InfoSec
-
-AFRAME.registerComponent('infosec', {
-  init: function() {
-    this.onClick = this.onClick.bind(this)
-
-    this.onTimer    = this.onTimer.bind(this)
-    this.TimerCheck = this.TimerCheck.bind(this)
-
-    this.onSuccess = this.onSuccess.bind(this)
-    this.onFail    = this.onFail.bind(this)
-
-    this.Static = false
-    this.Found  = 0
-    this.Time   = 60
-
-    this.Lamp = this.el.querySelector('#lamp')
-
-    this.Video  = $("#infovid")[0]
-    this.tv     = this.el.querySelector("#tv")
-    this.tvideo = this.tv.querySelector("#video")
-    this.sound  = "src: ./resources/sounds/found.mp3; on: found"
-
-    this.ToFind = this.el.querySelectorAll("#find")
-
-    this.ToFind.forEach(function(element) {
-      let On = this.onClick
-      let Used = false
-      element.addEventListener('click', function() {
-        if(Used) return;
-        Used = true
-        On(element)
-      })
-      element.setAttribute("sound", this.sound)
-    }, this)
-
-    this.Video.addEventListener('ended', function() {
-      this.Static = false
-      this.tvideo.components.sound.playSound()
-      this.Video.muted = true
-      this.Video.setAttribute('loop', 'true')
-      this.Video.setAttribute('src', "./resources/videos/Finder/none.mp4")
-    }.bind(this))
-
-    this.onTimer()
-  },
-
-  onClick: async function(Element) {
-    this.Found += 1
-
-    var Finder = Element.getAttribute("Finder") || "none"
-    console.log("Found " + Finder)
-
-    if(this.Static) { this.tv.emit("crit") }
-    this.Static = true
-
-    this.tvideo.components.sound.stopSound()
-
-    this.Video.muted = false
-    this.Video.removeAttribute('loop')
-    this.Video.setAttribute('src', "./resources/videos/Finder/" + Finder + ".mp4")
-
-    Element.querySelector("#light").setAttribute("visible", "true")
-    Element.emit("found")
-
-    // console.log(this.Found)
-  },
-
-  onTimer: async function() {
-    if(this.Found >= this.ToFind.length) { this.onSuccess(); return }
-    this.Time -= 1
-
-    this.TimerCheck()
-
-    if(this.Time <= 0) { this.onFail(); return; }
-
-    setTimeout(this.onTimer, 1000)
-  },
-
-  TimerCheck: async function() {
-    // I love math
-    this.tvideo.setAttribute('sound', 'volume', 60 - this.Time)
-
-    if(this.Time == 20) {
-      // Why did I even do that print?
-      console.log("ehbezfygrufezhuzefuefhusezfhorihoefhoehuirebjriezfgfezjbkhidbfezfv_hezfnklqcsgysvmcqshbsjopsqdfhiozefuçze_çy")
-      this.Lamp.querySelector('#alarm').setAttribute('visible', 'true')
-      this.Lamp.querySelector('#light').setAttribute('visible', 'false')
-      this.Lamp.emit("womp")
-    }
-  },
-
-  onSuccess: async function() {
-    alert("SUCCESS")
-    this.Lamp.components.sound.stopSound()
-    this.Lamp.querySelector('#alarm').setAttribute('visible', 'false')
-
-  },
-
-  onFail: async function() {
-    alert("FAILURE")
-  }
-})
-
-if(scene) {
-  scene.addEventListener("enter-vr", function() {
-    IsVR = true
-    OnVRChange()
-  })
-
-  scene.addEventListener("exit-vr", function() {
-    IsVR = false
-    OnVRChange()
-  })
-
-  scene.addEventListener("loaded", function() {
-    OnVRChange()
-  })
-}
 
 // Audio
 
@@ -1121,6 +471,22 @@ AFRAME.registerComponent('audiohandler', {
     }
   }
 })
+
+if(scene) {
+  scene.addEventListener("enter-vr", function() {
+    IsVR = true
+    OnVRChange()
+  })
+
+  scene.addEventListener("exit-vr", function() {
+    IsVR = false
+    OnVRChange()
+  })
+
+  scene.addEventListener("loaded", function() {
+    OnVRChange()
+  })
+}
 
 // This code is toooooo long
 // oh my god

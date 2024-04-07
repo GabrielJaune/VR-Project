@@ -7,134 +7,172 @@
     <a-entity id="Corridor_641" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/642/642.obj; mtl: ./resources/objects/game/infosectest1/HIGH/642/642.mtl" scale="0.01 0.01 0.01" position="-2.30562 -0.07208 -2.059" class="boom" rotation="0 90 0"></a-entity>    
 
     <a-entity id="Lift" modelfix obj-model="obj: ./resources/objects/game/infosectest1/HIGH/LIFT/lift2.obj" scale="0.01 0.01 0.01" position="-1.40574 -0.08022 -2.029" class="boom raycastable" rotation="0 90 0" material></a-entity>
-    <a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101" material geometry></a-box>
     <a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101"></a-box>
-    <a-box id="floor-2" class="boom" position="2.51463 -0.575 -4.34549" scale="2.8499 1 5.39266"></a-box>
-    <a-box id="floor-3" class="boom" position="-4.74835 -0.55402 -40.58592" scale="6.76745 1 12.86956" material geometry></a-box>
+    <a-box id="floor" class="boom" position="0.00687 -0.575 -21.81331" scale="2.8499 1 40.30101"></a-box>
+    <a-box id="floor-2" class="boom" position="2.51463 -0.575 -4.72577" scale="2.8499 1 5.39266"></a-box>
+    <a-box id="floor-3" class="boom" position="-4.74835 -0.55402 -40.58592" scale="6.76745 1 12.86956"></a-box>
 
+    <a-box id="liftdoor1" class="boom" mixin="liftdoor1a" position="1.28 .9 -1.93" scale="1 2.3 0.2"></a-box>
+    <a-box id="liftdoor2" class="boom" mixin="liftdoor2a" position="-1.12 .9 -1.93" scale="1 2.3 0.2"></a-box>
 </a-entity>
 
 <a-entity id="decoration">
+    <a-box id="limbo-postit" interactive="rotation: 0 -90 0; vrrotation: 90 -90 0" material="color: #ffff00; emissive: #ffff00" position="-1.29681 1.61454 -14.81476" rotation="5 0 0" scale="0.008 0.1 0.1" class="boom raycastable" geometry="">
+        <a-text text="anchor: center; width: 6; color: black; align: center; font: mozillavr; value: Code:\n1; baseline: top" rotation="0 90 0" position="0.58903 0.53762 0"></a-text>
+    </a-box>
+
     <a-image id="Map" src="./resources/objects/game/evacuationTBO.png" position="1.40638 1.37543 -22.81387" material geometry rotation="0 270 0" scale="0.8 0.8 0.8"></a-image>
     <a-image id="PostIt" src="./resources/objects/game/infosectest1/Post-It-War.png" position="-1.29304 0.80699 -15.61215" material geometry rotation="0 -90.00021045914971 4.255357544436624" scale="0.8 0.8 0.8"></a-image>
 
-    <a-entity id="fan1" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="1.03445 2.39118 -16.95531"> </a-entity>
+    <a-image id="silly" src="./resources/GameInfo/whary.png" position="2.22443 0.80699 -1.09333" rotation="0 179.9998479605043 0" scale="3 3 0.00001" class="boom"></a-image>
+
+    <a-entity id="fan1" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: 0.7" position="-2.99085 2.39118 -15.94901"> </a-entity>
+    <a-entity id="fan3" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: 0.7" position="-2.99085 2.39118 -15.94901"> </a-entity>
     <a-entity id="fan2" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="0.96278 2.36596 -26.90182"> </a-entity>    
 </a-entity>
 
 <a-entity id="assets">
-    <a-entity id="door-main" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -40.94333" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 642; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity>
-        <a-box id="postit" interactive="rotation: -6 -90 0;" object="badge: 2" material="color: #ffff00; emissive: #ffff00" geometry="" position=".6 2.1 -.03" rotation="5 90 0" scale="0.008 0.24 0.215" class="boom raycastable">
-            <a-entity id="achiv" position="0 0 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false"></a-entity>
+    <a-entity id="door-main" maindoor door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -40.94333" class="boom raycastable" rotation="0 -90 0">
+        <a-entity text="value: 642; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity>
+
+        <a-box id="postit" object="soundname: 2; id: 2;" interactive="rotation: -6 -90 0;" material="color: #ffff00; emissive: #ffff00" position=".6 2.1 -.03" rotation="5 90 0" scale="0.008 0.24 0.215" class="boom raycastable">
             <a-text translate="text" id="postit_text" text="anchor: center; color: black; width: 2.5; align: center; font: mozillavr; value: Isabelle,\nI didn't have time\nto give you the\ncode\nbut it's 1234.\nI'll be thinking about you.\nJean. XXXO; baseline: top" rotation="0 90 0" position="0.58903 0.53762 0"></a-text>
         </a-box>
+
+        <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity>
     </a-entity>
 
+    <a-entity id="door-A" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -36.11868" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641-A; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity> </a-entity>
+
+
     <a-entity id="fridge" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-ouvert.obj" scale=".017 .017 .017" position="-3.5 .88 -34.48" class="boom" rotation="0 180 0">
-        <a-entity id="Statue" modify-materials modelfix obj-model="obj: ./resources/objects/Nabot2.obj" material="color: red" scale="" position="0 -26.30906 36.59847" rotation="0 -29.999999999999996 0" class="raycastable"></a-entity>
-            <a-entity id="porte-fridge" object="badge: 2" door="inversed: true" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-porte.obj" scale="1 1 1" position="-30.4 54.7 56.2" class="boom raycastable" rotation="0 0 0"> 
-                <a-light type="point" light="color: #00ff00; distance: 1.76" position="29.77081 -31.30178 38.59498"></a-light>
-                <a-entity id="achiv" position="12.3 -41 -34.8" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false"></a-entity>
-            </a-entity>
+        <a-entity id="Statue" modify-materials modelfix obj-model="obj: ./resources/objects/Nabot2.obj" material="color: red" scale="" position="0 -26.30906 36.59847" rotation="0 -29.999999999999996 0" class="raycastable"> </a-entity>
+            <a-entity id="porte-fridge" sound="src: ./resources/sounds/trolled.mp3; on: click" object="soundname: 12" door="inversed: true" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-porte.obj" scale="1 1 1" position="-30.4 54.7 56.2" class="boom raycastable" rotation="0 0 0"> </a-entity>
     </a-entity>
 
     <a-entity id="printer" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/Printer.obj" scale="0.007 0.007 0.007" position="1.42065 -0.0622 -38.91808" class="boom" rotation="0 -90 0">
-        <a-box object="soundname: mark" material="emissive: #ffffff" position="48.93 121.5 42.1" scale="56.36355 0.00001 35.58259" interactive="position: 0 0 -.3; rotation: 0 90 90;" class="raycastable">
+        <a-box object="soundname: 1; id: 1;" material="emissive: #ffffff" position="48.93 121.5 42.1" scale="56.36355 0.00001 35.58259" interactive="position: 0 0 -.3; rotation: 0 90 90;" class="raycastable">
             <a-entity id="printer_text" text="baseline: top; value: French; align: center; color: #000000; side: double; width: 0.05" translate="text" position=".47 59352.842 .002" scale="20 20 0.00001" rotation="270 -90 0"></a-entity>
         </a-box>
     </a-entity>
 
-    <a-box id="notetrash"  interactive="rotation: -6 -90 0;" object="badge: 2" material="color: #ffff00; emissive: #ffff00" position="-6.55 .50 -43.26" rotation="0 44.4 90" scale="0.008 0.40 0.215" class="raycastable">
-        <a-entity id="achiv" position="0 0 0" particle-system="color: #EF0000,#44CC00; particleCount: 10000; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; enabled: false"></a-entity>
+    <a-box id="notebook" interactive="rotation: -6 -90 0;" material="color: #ffff00; emissive: #ffff00" position="-6.55 .50 -43.26" rotation="0 44.4 90" scale="0.008 0.40 0.215" class="raycastable">
         <a-text translate="text" id="book_text" text="anchor: center; color: black; width: 2.5; align: center; font: mozillavr; value: Isabelle,\nI didn't have time\nto give you the\ncode\nbut it's 1234.\nI'll be thinking about you.\nJean. XXXO; baseline: top; width: 1.6" rotation="0 90 0" position="0.58903 0.53762 0"></a-text>
     </a-box>
 
-    <a-entity id="usb" modelfix obj-model="obj: ./resources/objects/game/Assets/usb.obj" scale="5.5 5.5 5.5" position="-7.0413 -0.25936 -40.71988" class="raycastable" sound="src: ./resources/sounds/found.mp3; on: found" rotation="0 0.025 0.02"></a-entity>
+    <a-box id="notetrash" object="soundname: 6; id: 6;" interactive="rotation: -6 -90 0;" object="locked: true" material="color: #ffffff; emissive: #ffffff" position="-4.86379 0.13836 -44.88803" rotation="0 -179.9998479605043 15.652061047383828" scale="0.008 0.4 0.215" class="raycastable" geometry="">
+        <a-text translate="text" id="love_letter" text="anchor: center; width: 1.3; color: black; align: center; font: mozillavr; value: Isabelle,\nI didn't have time\nto give you the\ncode\nbut it's 1234.\nI'll be thinking about you.\nJean. XXXO; baseline: top" rotation="0 90 0" position="0.58903 0.53762 0"></a-text>
+    </a-box>
 
-    <a-entity id="phone" modelfix obj-model="obj: ./resources/objects/game/Assets/phone.obj" scale="5.5 5.5 5.5" position="-1.54 .012 -37.8" class="raycastable">
-        <a-light id="light" light="color: #4dff2d; distance: 0.5; type: point" position="-0.43085 0.20784 -0.46069" visible="false"></a-light>
-        <a-entity material="src: ./resources/images/PC_UNLOCK.png" geometry="primitive: plane" scale="0.09 0.05715 0.09" position="-0.48048 0.21517 -0.46541" rotation="0 86.2 0"></a-entity>
+    <a-entity id="usb" object="soundname: 5; id: 5;" modelfix obj-model="obj: ./resources/objects/game/Assets/usb.obj" scale="5.5 5.5 5.5" position="-7.0413 -0.25936 -40.71988" class="raycastable" sound="src: ./resources/sounds/found.mp3; on: found" rotation="0 0.025 0.02"></a-entity>
+
+    <a-entity id="phone" object="soundname: 7; id: 7;" modelfix obj-model="obj: ./resources/objects/game/Assets/phone.obj" scale="5.5 5.5 5.5" position="-1.54 .012 -37.8" class="raycastable">
+        <a-light id="light" light="color: #ffffff; distance: 0.5; type: point; intensity: 0.4" position="-0.35728 0.07557 0.04485" visible=""></a-light>
+        <a-entity material="src: ./resources/GameInfo/ioshome.png" geometry="primitive: plane" scale="0.017 0.037 0.01" position="-0.35586 0.06758 0.04187" rotation="-90 0 -116.25"></a-entity>
     </a-entity>
-    <a-entity id="pc" modelfix obj-model="obj: ./resources/objects/game/Assets/compute.obj" scale="5.5 5.5 5.5" position="-5.3 -.29 -47.22" rotation="0 140 0" class="boom raycastable">
-        <a-light id="light" light="color: #4dff2d; distance: 0.5; type: point" position="-0.43085 0.20784 -0.46069" visible="false"></a-light>
-        <a-entity material="src: ./resources/images/PC_UNLOCK.png" geometry="primitive: plane" scale="0.09 0.05715 0.09" position="-0.48048 0.21517 -0.46541" rotation="0 86.2 0"></a-entity>
+
+    <a-entity id="pc" object="soundname: 10; id: 10;" modelfix obj-model="obj: ./resources/objects/game/Assets/compute.obj" scale="5.5 5.5 5.5" position="-5.3 -.29 -47.22" rotation="0 140 0" class="boom raycastable">
+        <a-light id="light" light="color: #FFFFFF; distance: 0.5; type: point" position="-0.43085 0.20784 -0.46069"></a-light>
+        <a-entity material="src: ./resources/images/PC_ON.png; emissive: #000000" geometry="primitive: plane" scale="0.09 0.05715 0.09" position="-0.48056 0.21517 -0.46551" rotation="0 86.2 0" visible=""></a-entity>
     </a-entity>
 
     <a-entity id="book" interactive obj-model="obj: ./resources/GameInfo/Models/book.obj; mtl: ./resources/GameInfo/Models/book.mtl" scale="0.02 0.01383 0.02" position="-6.53703 0.4805 -43.1507" rotation="0 37.90688772585526 0">
         <a-text value="---"></a-text>
     </a-entity>
 
-    <a-entity id="monitor" obj-model="obj: ./resources/GameInfo/Models/monitorLCD.obj; mtl: ./resources/GameInfo/Models/monitorLCD.mtl" scale="" position="-6.25306 1.26613 -43.96332" rotation="0 180 0"></a-entity>
+    <a-entity id="monitor" object="soundname: 4; id: 4;" obj-model="obj: ./resources/GameInfo/Models/monitorLCD.obj; mtl: ./resources/GameInfo/Models/monitorLCD.mtl" position="-6.25306 1.26613 -43.96332" rotation="0 180 0" class="raycastable boom">
+        <a-light id="light" light="color: #FFFFFF; distance: 0.5; type: point" position="0.00015 -0.17393 -0.72852" visible=""></a-light>
+        <a-entity material="src: ./resources/images/PC_UNLOCK.png; emissive: #000000" geometry="primitive: plane" scale="0.6 0.39715 0.09" position="-0.00397 -0.2346 -0.88522" rotation="" visible=""></a-entity>
+    </a-entity>
     <a-entity id="tour" obj-model="obj: ./resources/GameInfo/Models/tourPC.obj" scale="0.2 0.2 0.2" position="-6.88284 0.95823 -43.24754" rotation="0 156.24444481658523 0"></a-entity>
 </a-entity>
 
-<a-entity id="text-asset">
-    <a-text></a-text>
+<a-entity id="assetlight">
+    <a-light id="L1" mixin="llight" position="1.12651 0.78811 -38.70969"></a-light>
+    <a-light id="L3" mixin="llight" position="-0.88654 1.16576 -40.56364"></a-light> 
+    <a-light id="L4" mixin="llight" position="-6.27057 0.96741 -43.25503"></a-light>
+    <a-light id="L5" mixin="llight" position="-4.47815 0.71695 -43.96733"></a-light>
+    <a-light id="L6" mixin="llight" position="-4.85625 0.34069 -44.84927"></a-light>
+    <a-light id="L7" mixin="llight" position="-3.46923 0.46205 -37.64691"></a-light>
+    <!-- <a-light id="L8" mixin="llight" position="-3.12171 0 -41.05685"></a-light> -->
+    <a-light id="L10" mixin="llight" position="-5.09204 0.88868 -43.6288"></a-light>
+    <a-light id="B11" mixin="llight" visible="false"></a-light>
 </a-entity>
 
+<a-entity id="text-asset" visible="false">
+    <a-entity id="pedago_object01" mixin="infotext" position="1.41174 1.53403 -38.30979" rotation="0 -90 0"></a-entity>
+    <a-entity id="pedago_object03" mixin="infotext" position="-1.28029 1.19693 -38.81688" rotation="0 90 0"></a-entity>
+    <a-entity id="pedago_object04" mixin="infotext" position="-6.16641 1.5752 -43.40788" rotation="0 27.523746562494484 0"></a-entity>
+    <a-entity id="pedago_object05" mixin="infotext" position="-3.86104 1.00469 -44.48025" rotation="0 0.9195972611849712 0"></a-entity>
+    <a-entity id="pedago_object06" mixin="infotext" position="-4.96523 0.42651 -45.20894" rotation="0 36.98156088671898 0"></a-entity>
+    <a-entity id="pedago_object07" mixin="infotext" position="-3.52704 0.83193 -37.48643" rotation="-4.855244355938596 -177.81344101428508 -2.7891585466968474"></a-entity>
+    <a-entity id="pedago_object10" mixin="infotext" position="-4.70407 0.35218 -43.37592" rotation="0 33.234416906563396 0"></a-entity>
+    <!-- <a-entity id="pedago_object11" mixin="infotext" position="1.41174 1.53403 -38.30979" rotation="0 -90 0"></a-entity> -->
+
+</a-entity>
+ 
 <a-entity id="elevator-lights">
     <a-light id="pointelevator7" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.20556 2.11242 -1.03036" rotation="-90 0 138.67899"></a-light>    
     <a-light id="pointelevator14" light="type: point; color: #ffffff; intensity: 1000; angle: 20; penumbra: 1; decay: 7.6; distance: 0.34" position="0.043 2.11242 -1.27136" rotation="-90 0 138.67899"></a-light>    
 </a-entity>
 
 <a-entity id="doors">
-    <a-entity id="door-A" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -36.11868" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641-A; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-1" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -31.1061" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-2" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -25.94551" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 640; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-3" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -21.0745" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 639; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-4" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32067 -0.07313 -16.05218" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 638; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-5" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -11.04291" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 637; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
-    <a-entity id="door-6" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -6.09271" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 636; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> </a-entity>
+    <a-entity id="door-1" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -31.1061" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 641; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity> </a-entity>
+    <a-entity id="door-2" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -25.94551" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 640; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity> </a-entity>
+    <a-entity id="door-3" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -21.0745" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 639; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity> </a-entity>
+    <a-entity id="door-4" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32067 -0.07313 -16.05218" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 638; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity> </a-entity>
+    <a-entity id="door-5" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -11.04291" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 637; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity> </a-entity>
+    <a-entity id="door-6" door="inversed: true; locked: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="-1.32065 -0.06961 -6.09271" class="boom raycastable" rotation="0 -90 0"> <a-entity text="value: 636; align: center; side: double; width: 5" position="0.69576 2.54384 -0.03254" rotation="0 180 0" scale="1 1 0.00001"></a-entity> <a-entity id="open" mixin="open_sound"></a-entity> <a-entity id="close" mixin="close_sound"></a-entity> <a-entity id="lock" mixin="lock_sound"></a-entity> </a-entity>
     <a-entity id="door-Exit" door="inversed: true" modelfix gltf-model="#door" scale="0.6 0.6 0.61" position="1.93372 -0.06961 -2.0586" class="boom raycastable"></a-entity>
 </a-entity>
 
 <a-entity id="corridorlight">
     <a-light id="cool1" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.12822 2.29242 -9.33855" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool2" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -14.3386" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool3" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -19.27791" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool4" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -24.35244" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool5" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -29.30588" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool6" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -34.45366" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool7" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.17218 2.29242 -39.44527" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool8" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="0.0878 2.29242 -4.32904" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
     <a-light id="cool9" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="2.26274 2.29242 -4.33096" >
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 
-    <a-light id="cool7-2" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-4.49165 3.83821 -42.40136">
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    <a-light id="cool10" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-4.49165 3.83821 -42.40136">
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
-    <a-light id="cool7-3" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-6.89711 3.83821 -35.68367">
-        <a-light light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
+    <a-light id="cool11" light="type: point; decay: 2.46; distance: 0.37; intensity: 50; penumbra: 1" position="-6.89711 3.83821 -35.68367">
+        <a-light id="shadow" light="type: point; decay: 3; penumbra: 1; angle: 0; distance: 7.48" position="0 -1.19708 0" visible rotation="-90 0 0"></a-light>
     </a-light>
 </a-entity>
 
 
-<a-entity id="LIMBO-DIGI" limbo obj-model="obj: ./resources/objects/game/infosectest1/Digi/Digi.obj; mtl: ./resources/objects/game/infosectest1/Digi/Digi.mtl" scale="0.03 0.03 0.03" position="-1.29 1.4 -14.7" rotation="0 90 0" digi="code: 1; object: #LIMBO-DIGI; event: limbo" class="boom">
+<a-entity id="LIMBO-DIGI" mixin="digicode" limbo position="-1.29 1.4 -14.7" digi="code: 1; object: #LIMBO-DIGI; event: limbo" class="boom">
     <a-entity id="buttons">
         <a-box id="b1" btn-mode material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" class="raycastable" rotation="0 -90 0"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
         <a-box id="b2" btn-mode="mode: input; input: 2" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
@@ -157,7 +195,7 @@
     <a-entity id="accept" sound="src: url(./resources/GameInfo/Sounds/good.mp3);"></a-entity>
 </a-entity>
 
-<a-entity id="main-digi" obj-model="obj: ./resources/objects/game/infosectest1/Digi/Digi.obj; mtl: ./resources/objects/game/infosectest1/Digi/Digi.mtl" scale="0.03 0.03 0.03" position="-1.30 1.4 -39.8" rotation="0 90 0" digi="code: 1234; object: #door-main; event: unlock">
+<a-entity id="main-digi" mixin="digicode" position="-1.30 1.4 -39.8" digi="code: 1234; object: #door-main; event: unlock">
     <a-entity id="buttons">
         <a-box id="b1" btn-mode material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" class="raycastable" rotation="0 -90 0"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
         <a-box id="b2" btn-mode="mode: input; input: 2" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
@@ -178,7 +216,7 @@
     <a-entity id="accept" sound="src: url(./resources/GameInfo/Sounds/good.mp3);"></a-entity>
 </a-entity>
 
-<a-entity id="A-DIGI" obj-model="obj: ./resources/objects/game/infosectest1/Digi/Digi.obj; mtl: ./resources/objects/game/infosectest1/Digi/Digi.mtl" scale="0.03 0.03 0.03" position="-1.30 1.4 -34.9" rotation="0 90 0" digi="code: 1634; object: #door-A; event: unlock">
+<a-entity id="A-DIGI" mixin="digicode" position="-1.30 1.4 -34.9" digi="code: 1634; object: #door-A; event: unlock">
     <a-entity id="buttons">
         <a-box id="b1" btn-mode material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" class="raycastable" rotation="0 -90 0"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
         <a-box id="b2" btn-mode="mode: input; input: 2" material="color: #d0d000" scale="0.5 1.3001 1.75" position="-2.2 2.6 0.12424" rotation="0 -90 0" class="raycastable"> <a-entity id="text" text="value: ?; align: center; side: double; width: 15" position="0.50491 0 0" rotation="0 90 0"></a-entity> </a-box>
@@ -199,18 +237,11 @@
     <a-entity id="accept" sound="src: url(./resources/GameInfo/Sounds/good.mp3);"></a-entity>
 </a-entity>
 
-<a-entity ender id="ender">
-    <a-box id="action" position="0 .7 -5" class="boom raycastable"></a-box>
-    
-    <a-entity id="part" position=".06 .7 -2" particle-system="color: #EF0000, #44CC00; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; accelerationValue: 0 0 0; velocityValue: 0 2 0; velocitySpread: 1 1 1; randomise: true; maxParticleCount: 10000"></a-entity>
+<a-entity ender id="ender" position="-.02 .3 .04">
+    <a-box id="action" position="0 0.7 -0.25918" class="boom raycastable" material="blending: multiply; color: #00ff40; emissive: #00ff00" geometry="" scale="0.31746 0.1713 0.86"></a-box>
 
-    <a-entity id="text">
-
-    </a-entity>
-
-    <a-entity id="badge">
-
-    </a-entity>
+    <a-entity id="part" position=".06 .7 -2" particle-system="color: #EF0000, #44CC00; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; accelerationValue: 0 0 0; velocityValue: 0 2 0; velocitySpread: 1 1 1; randomise: true; maxParticleCount: 10000"> </a-entity>
+    <a-entity id="text" text="align: center; value: END GAME; color: #ff0000; width: 1.2" position="0 0.70455 -0.69602" rotation="0 180 0"> </a-entity>
 </a-entity>
 
 <a-entity infoloader="1,2,3,4,5,6,7,8">
