@@ -272,8 +272,9 @@ AFRAME.registerComponent('ender', { // dragon
 
         document.querySelector("#text-asset").setAttribute('visible', 'true')
 
-        let lights = document.querySelector("#assetlight")
+        document.querySelector("#Corridor_Walls").setAttribute('material', 'wireframe', true)
 
+        let lights = document.querySelector("#assetlight")
         for (x = 1; x < 11 + 1; x++) {     
             let el = lights.querySelector(`#L${(x).toString()}`)
             if(!el) { continue }
