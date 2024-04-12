@@ -1,33 +1,46 @@
-<a-text text="width: 0.8; color: grey; value: Experience VR: Decouverte de la Salle 311.\n (C) lycee Louis de Cormontaigne 2024.\n \n \n \n \n \n \n \n A vous de naviguer dans cet environnement integralement en 3D afin de decouvrir un des labo de notre Bac PRO CIEL. Compatible avec tous navigateurs, le gyroscope de votre smartphone et bien sur votre casque VR.\n \n Projet realise dans le cadre du Cor`Lab.\n \n \n \n Idee, realisation, programmation M. Farcot, avec Y. Maafa (stagiaire TPRO  SN SSIHT) pour la programmation et N. Darboux (stagiaire 1ere PRO SN) pour la modelisation. Scan 3D du buste realise par C. Berrached. \n \n Framework A-frame sous licence MIT." position="17.09 1.373 -1.359" rotation="0 -16 0"></a-text>
+<a-text text="width: 0.8; color: grey; value: Experience VR: Decouverte de la Salle 311.\n (C) lycee Louis de Cormontaigne 2024.\n \n \n \n \n \n \n A vous de naviguer dans cet environnement integralement en 3D afin de decouvrir un des labo de notre Bac PRO CIEL. Compatible avec tous navigateurs, le gyroscope de votre smartphone et bien sur votre casque VR.\n \n Projet realise dans le cadre du Cor`Lab.\n \n \n \n Idee, realisation, programmation M. Farcot, avec Y. Maafa (stagiaire TPRO  SN SSIHT) pour la programmation dont le script RickRoll et N. Darboux (stagiaire 1ere PRO SN) pour la modelisation. Scan 3D du buste realise par C. Berrached. \n \n Framework A-frame sous licence MIT." position="17.09 1.373 -1.359" rotation="0 -16 0"></a-text>
+<a-text id="1" text="width: 0.8; color: grey; value: (1) Point de Terminaison Optique (PTO)" position="13.90871 1.35308 5.21279" rotation="0 90 0"></a-text>
+<a-text id="2" text="width: 0.8; color: grey; value: (2) Modem Internet (Box)" position="21.3429 3.45709 -2.69429" rotation=""></a-text>
+<a-text id="3" text="width: 0.8; color: grey; value: (3) Switch" position="21.47751 3.40747 -2.7072" rotation=""></a-text>
+<a-text id="4" text="width: 0.8; color: grey; value: (4) Baie de brassage" position="14.98355 0.80795 -1.63333" rotation="0 90 0"></a-text>
+<a-text id="5" text="width: 0.8; color: grey; value: (5) Baie de brassage (2)" position="16.34774 0.48874 3.5077" rotation="0 180 0"></a-text>
+
+<a-entity id="maxwel"class="raycastable" modify-materials modelfix obj-model="obj: ./resources/objects/maxwel.obj" material="color: #ff1c1c" scale="0.002 0.002 0.002" position="28.18472 0.88783 5.73453" rotation="-90 40 180" sound="src:  ./resources/sounds/MIAOU.mp3; on: click"> </a-entity>
+
 
 <a-entity id="S311-cables" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/ROOM-CABLES2.obj" material="color: #ff1c1c" scale="0.012 0.012 0.012" position="15.97095 1.32769 1.96046"></a-entity>
 <a-entity id="S311" modify-materials modelfix obj-model="obj: ./resources/objects/ROOM-FINAL.obj" material="wireframe: false" scale="0.012 0.012 0.012" position="1.98366 0 -10.18549">
-    
-    <a-entity id="NAV" nav-mesh="" gltf-model="./resources/objects/room-nav.gltf" modify-material="" class="raycastable" position="-33.09287 -0.04 0.54851" visible=""></a-entity>
-</a-entity>
+    <a-entity id="NAV" nav-mesh="" gltf-model="./resources/objects/room-nav.gltf" modify-material="" class="raycastable" position="-33.09287 -0.04 0.54851" visible=""></a-entity></a-entity>
+
+
+    <a-entity id="SCREEN" sound="src: ./resources/sounds/womp.mp3; on: womp" material="src: ./resources/images/PC_ON.png" geometry="primitive: plane" scale="0.8 0.45 2" position="15.42 1.173 4.421" rotation="0 270 0"> </a-entity>
+
+<a-entity rickbutton class="raycastable" modify-materials modelfix obj-model="obj: ./resources/objects/Boutonrouge.obj" material="color: #ff1c1c" scale="0.004 0.004 0.004" position="24.82 0.563 3.718" rotation="1.731b94.13 91.6667" sound="on: click; src: ./resources/sounds/Clicmario.mp3"> </a-entity>
 
 <!-- <a-entity id="LED" obj-model="./resources/objects/ROOMLOWLED.obj" modify-material class="raycastable" position="1.98366 0 -10.18549" visible="true"></a-entity> -->
 
 <a-sky id="sky" src="./resources/sky/SN/CIEL-Exterieur-bw.jpg" rotation="0 90 0">
 </a-sky>
-<a-entity id="Statue" modify-materials modelfix obj-model="obj: ./resources/objects/Nabot2.obj" material="color : red" scale="0.012 0.012 0.012" position="28.03 1.16 -2.71" rotation="0 -30 0" class="raycastable"></a-entity>
+
+<a-entity phone="Statue" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: red" scale="0.001 0.0010000000000000002 0.001" position="28.066 1.11957 -2.737" rotation="-90 0 0" class="raycastable"></a-entity>
 <!-- <a-box static-body material="color: #ff060d" position="17.26483 -2.0722 0" scale="53.28233 1 33.80996"></a-box>
 <a-entity id="Nabot" modify-materials modelfix obj-model="obj: ./resources/objects/NabotLow.obj" material="color : red" scale="0.15 0.15 0.15" position="13.653 1.961 -3.444" rotation="0 20 0"></a-entity> --->
-<a-entity id="Temoin" modify-materials modelfix obj-model="obj: ./resources/objects/luigi.obj" material="color : red"scale="0.15 0.15 0.15" position="14.73 0.95647 4.34025"></a-entity>
+<a-entity id="Temoin" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/mario.obj" material="color: red" scale="0.001 0.001 0.00091" position="14.9578 0.17654 4.34025" rotation="270 0 90"></a-entity>
+<!--<a-light id="spotcorner1" light="type: spot; intensity: 1" position="28.55 3.685 -3.191" rotation="-50.7 153.2 43.262"></a-light>
+<a-light id="spotcorner2" light="type: spot; intensity: 1" position="19.66 3.979 5.459" rotation="-80 55 -55"></a-light>90
+<a-entity ID="Soleil" light="color: #ffffff; type: directional" position="20.54 1.67 19.71" rotation="0 0 0"></a-entity>-->
 
-<!-- Soleil
-<a-entity ID="Soleil" light="color: #ffffff; type: spot" position="20.54 1.67 19.71" rotation="0 -33.229260286407225 0"></a-entity> -->
-
-<!-- Lampes plafond
-<a-entity light="color: #ffffff; type: spot" position="20.08064 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="23.33932 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="27.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="12.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="20.08064 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="23.33932 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="27.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="12.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="20.08064 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="23.33932 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="27.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity>
-<a-entity light="color: #ffffff; type: spot" position="12.14625 1.67419 8.52651" rotation="0 -33.229260286407225 0"></a-entity> -->
+<a-entity id="RickHeader" visible="false">
+    <a-video id="rick" src="#rickvideo" position="25.13 1.172 4.315" scale="0.759 0.432 1" rotation="0 90 0" sound="distanceModel: linear; maxDistance: 5.5"></a-video>
+    <a-video id="rick-b" src="#rickvideo" position="21.12 1.172 4.315" scale="0.759 0.432 1" rotation="0 90 0"></a-video>
+    <a-video id="rick-c" src="#rickvideo" position="16.8 1.16 4.424" scale="0.759 0.432 1" rotation="0 90 0"></a-video>
+    <a-video id="rick-d" src="#rickvideo" position="19.74 1.16 4.314" scale="0.759 0.432 1" rotation="0 -90 0"></a-video>
+    <a-video id="rick-e" src="#rickvideo" position="23.74 1.16 4.319" scale="0.759 0.432 1" rotation="0 -90 0"></a-video>
+    <a-video id="rick-f" src="#rickvideo" position="24.51 1.495 0.867" scale="0.759 0.432 1" rotation="0 0 0"></a-video>
+    <a-video id="rick-g" src="#rickvideo" position="20.48 1.174 1.006" scale="0.759 0.432 1" rotation="0 0 0"></a-video>
+    <a-video id="rick-h" src="#rickvideo" position="18.99 1.174 1.006" scale="0.759 0.432 1" rotation="0 0 0"></a-video>
+    <a-video id="rick-i" src="#rickvideo" position="19.09 1.166 0.332" scale="0.759 0.432 1" rotation="0 -180 0"></a-video>
+    <a-video id="rick-j" src="#rickvideo" position="20.37 1.169 0.303" scale="0.759 0.432 1" rotation="0 -180 0"></a-video>
+    <a-video id="rick-k" src="#rickvideo" position="24.20 1.5 0.187" scale="0.759 0.432 1" rotation="0 -180 0"></a-video>
+    <a-video id="rick-l" src="#rickvideo" position="15.42 1.018 1.407" scale="0.347 0.226 1" rotation="-33.9 -89.8 -0.053"></a-video>
+</a-entity>

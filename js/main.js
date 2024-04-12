@@ -218,6 +218,27 @@ AFRAME.registerComponent('redirect', {
   }
 })
 
+AFRAME.registerComponent("rickbutton", {
+  init: function () {
+    this.onClick = this.onClick.bind(this)
+    this.playing = false
+    this.Video = document.querySelector("#rickvideo")
+    this.Header = document.querySelector("#RickHeader")
+    this.el.addEventListener("click", this.onClick)
+  },
+  
+  onClick: async function() {
+    this.playing = !this.playing
+    this.Header.setAttribute("visible", this.playing)
+      if(this.playing) {
+          this.Video.play()
+      } else {
+          this.Video.pause()
+          this.Video.currentTime = 0
+      }
+  }
+  })
+
 AFRAME.registerComponent('infospot', {
   schema: {type: 'string', default: 'default'},
   init: async function() {
