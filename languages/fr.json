@@ -6,14 +6,14 @@
     "confidential_file": "Confidentiel - Fiches de paie",
     "blackmail_text": "Jules. Je me fiche eperdument que notre politique de securite nous empeche d`executer tout ce que nous voulons au niveau informatique. En particulier, je t`ordonne par la presente d`ouvrir les ports 445 et 3389 de notre pare-feu pour permettre a mon equipe de faire son travail. Tu es prevenu. Si tu ne le fais pas, l`affaire remontera jusqu`au conseil d`administration. J`ai assez de cadavres dans le placard pour te faire virer, toi et ton equipe d`incompetents.",
 
-    "pedago_object-intro": "MODE PEDAGOGIQUE\nACTIVE\nExplore le niveau\npour decouvrir des conseils\nen securite de l`information",
+    "pedago_object-intro": "MODE PEDAGOGIQUE\nACTIVE\nExplorez le niveau\npour decouvrir des conseils\nen securite de l`information",
     "pedago_object01": "FUITE DE DONNEES\nRisque : Perte de confidentialite et d`integrite d`un document en raison d`une negligence sur une imprimante partagee\nRemediation : Controle d`acces sur l`imprimante et formation du personnel",
     "pedago_object02": "FUITE DE DONNEES et VIOLATION DE SECURITE\nRisque : Affichage public d`un mot de passe\nRemediation : Formation du personnel",
     "pedago_object03": "VIOLATION DE SECURITE\nRisque : Mot de passe non securise\n\nRemediation : N`autoriser que des mots de passe complexes et formation du personnel",
     "pedago_object04": "VIOLATION DE SECURITE\nRisque : Ordinateur personnel deverrouille sans mises a jour de securite effectuees\nRemediation : Forcer le verrouillage de l`ordinateur en cas d`inactivite et les mises a jour de securite",
     "pedago_object05": "FUITE DE DONNEES et VIOLATION DE SECURITE\nRisque : Cle USB laissee sans surveillance\nRemediation : Formation du personnel",
     "pedago_object06": "FUITE DE DONNEES\nRisque : Informations sensibles accessibles publiquement\nRemediation : Formation du personnel",
-    "pedago_object07": "FUITE DE DONNEES et VIOLATION DE SECURITE\nRisque : Smartphone dEverrouille laisse sans surveillance\nRemediation : Formation du personnel",
+    "pedago_object07": "FUITE DE DONNEES et VIOLATION DE SECURITE\nRisque : Smartphone deverrouille laisse sans surveillance\nRemediation : Formation du personnel",
     "pedago_object08": "FUITE DE DONNEES\nRisque : Fichiers confidentiels laisses dans un stockage deverrouille\nRemediation : Formation du personnel",
     "pedago_object10": "FUITE DE DONNEES et VIOLATION DE SECURITE\nRisque : BYOD - Bring Your Own Disaster (Equipement de communication personnel non securise)\nRemediation : Formation du personnel",
     "pedago_object11": "VIOLATION DE SECURITE\nRisque : Non-respect des politiques de securite\nRemediation : Formation du personnel"
