@@ -29,9 +29,9 @@
     <a-video id="Wireshark" autoplay="" loop="true" src="./resources/GameInfo/Wireshark.mp4" material="" geometry="" position="-7.29201 1.73743 -36.08536" rotation="0 90 0" scale="0.95 0.5 1"></a-video>
     <a-image id="silly" src="./resources/GameInfo/whary.png" position="2.22443 0.80699 -1.09333" rotation="0 179.9998479605043 0" scale="3 3 0.00001" class="boom"></a-image>
     <a-image id="babar" src="./resources/GameInfo/babar.jpg" scale="0.5 0.5 0.5" position="-3.06566 1.74335 -37.02314" material="blending: none" geometry="" rotation=""></a-image>
-    <a-entity id="fan1" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: 0.7" position="-2.99085 2.39118 -15.94901"> </a-entity>
-    <a-entity id="fan3" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: 0.7" position="-2.99085 2.39118 -15.94901"> </a-entity>
-    <a-entity id="fan2" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: .7" position="0.96278 2.36596 -26.90182"> </a-entity>    
+    <a-entity id="fan1" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: 2" position="-2.99085 2.39118 -15.94901"> </a-entity>
+    <a-entity id="fan3" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: 2" position="-2.99085 2.39118 -15.94901"> </a-entity>
+    <a-entity id="fan2" sound="src: ./resources/sounds/fan.mp3; autoplay: true; loop: true; distanceModel: linear; maxDistance: 5.5; volume: 2" position="0.96278 2.36596 -26.90182"> </a-entity>    
 </a-entity>
 
 <a-entity id="assets">
@@ -52,6 +52,10 @@
         <a-entity id="Statue" modify-materials modelfix obj-model="obj: ./resources/objects/Nabot2.obj" material="color: red" scale="" position="0 -26.30906 36.59847" rotation="0 -29.999999999999996 0" class="raycastable"> </a-entity>
             <a-entity id="porte-fridge" sound="src: ./resources/sounds/trolled.mp3; on: click; loop: true" object="soundname: 12" door="inversed: true" modelfix obj-model="obj: ./resources/GameInfo/Models/frigo-porte.obj" scale="1 1 1" position="-30.4 54.7 56.2" class="boom raycastable" rotation="0 0 0"> </a-entity>
     </a-entity>
+
+    <a-box id="classeur" object="soundname: 8;  id: 8," position="-6.9286 2.05817 -38.84025" scale="0.2 0.3 0.1" class="boom raycastable" material="color: #4f7a28">
+        <a-text translate="text" id="confidential_file" position="0.51815 -0.48601 0.13074" scale="0.5 1 0.1" rotation="0 90 90"></a-text>
+    </a-box>
 
     <a-entity id="printer" modelfix obj-model="obj: ./resources/objects/game/infosectest1/Corridor/Printer.obj" scale="0.007 0.007 0.007" position="1.42065 -0.0622 -38.91808" class="boom" rotation="0 -90 0">
         <a-box object="soundname: 1; id: 1;" material="emissive: #ffffff" position="48.93 121.5 42.1" scale="56.36355 0.00001 35.58259" interactive="position: 0 0 -.3; rotation: 0 90 90;" class="raycastable">
@@ -97,7 +101,7 @@
     <a-light id="L5" mixin="llight" position="-4.47815 0.71695 -43.96733"></a-light>
     <a-light id="L6" mixin="llight" position="-4.85625 0.34069 -44.84927"></a-light>
     <a-light id="L7" mixin="llight" position="-3.46923 0.46205 -37.64691"></a-light>
-    <!-- <a-light id="L8" mixin="llight" position="-3.12171 0 -41.05685"></a-light> -->
+    <a-light id="L8" mixin="llight" position="-6.71829 2.11996 -38.7842"></a-light>
     <a-light id="L10" mixin="llight" position="-5.09204 0.88868 -43.6288"></a-light>
     <a-light id="B11" mixin="llight" visible="false"></a-light>
 </a-entity>
@@ -110,7 +114,13 @@
     <a-entity id="pedago_object05" mixin="infotext" position="-3.86104 1.00469 -44.48025" rotation="0 0.9195972611849712 0"></a-entity>
     <a-entity id="pedago_object06" mixin="infotext" position="-4.96523 0.42651 -45.20894" rotation="0 36.98156088671898 0"></a-entity>
     <a-entity id="pedago_object07" mixin="infotext" position="-3.52704 0.83193 -37.48643" rotation="-4.855244355938596 -177.81344101428508 -2.7891585466968474"></a-entity>
+    <a-entity id="pedago_object08" mixin="infotext" position="-6.82199 1.65644 -38.10788" rotation="0 90 0"></a-entity>
     <a-entity id="pedago_object10" mixin="infotext" position="-4.70407 0.35218 -43.37592" rotation="0 33.234416906563396 0"></a-entity>
+    <a-entity id="pedago_object12" mixin="infotext" position="-7.79146 0.88888 -35.93245" rotation="0 90 0"></a-entity>
+    <a-entity id="pedago_object13" mixin="infotext" position="-5.21805 -0.04126 -37.00623" rotation="-90 0 0"></a-entity>
+    <a-entity id="pedago_object14" mixin="infotext" position="-6.27757 -0.04354 -35.26634" rotation="-90 180 0"></a-entity>
+    <a-entity id="pedago_object15" mixin="infotext" position="-1.28684 2.27681 -35.59192" rotation="0 90 0"></a-entity>
+    <a-entity id="pedago_object16" mixin="infotext" position="-3.04297 -0.0484 -37.02852" rotation="-90 0 0"></a-entity>
     <!-- <a-entity id="pedago_object11" mixin="infotext" position="1.41174 1.53403 -38.30979" rotation="0 -90 0"></a-entity> -->
 
 </a-entity>
@@ -244,7 +254,7 @@
 <a-entity ender id="ender" position="-.02 .3 .04">
     <a-box id="action" position="0 0.7 -0.25918" class="boom raycastable" material="blending: multiply; color: #00ff40; emissive: #00ff00" geometry="" scale="0.31746 0.1713 0.86"></a-box>
 
-    <a-entity id="part" position=".06 .7 -2" particle-system="color: #EF0000, #44CC00; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; accelerationValue: 0 0 0; velocityValue: 0 2 0; velocitySpread: 1 1 1; randomise: true; maxParticleCount: 10000"> </a-entity>
+    <!--<a-entity id="part" position=".06 .7 -2" particle-system="color: #EF0000, #44CC00; size: 0.1; duration: 1; positionSpread: 1 1 1; rotationAngleSpread: 2; accelerationValue: 0 0 0; velocityValue: 0 2 0; velocitySpread: 1 1 1; randomise: true; maxParticleCount: 10000"> </a-entity>-->
     <a-entity id="text" text="align: center; value: END GAME; color: #ff0000; width: 1.2" position="0 0.70455 -0.69602" rotation="0 180 0"> </a-entity>
 </a-entity>
 
@@ -256,7 +266,7 @@
     <a-entity id="langs" position="0 -.48 0">
         <a-entity text="value: Choose a language\nChoisissez une langue; align: center" scale="10 10 1" position="-11.51918 3.41847 2.39623" rotation="20 0 0"></a-entity>
         <a-image id="fr" src="./resources/GameInfo/fr.png" position="-12.4 2.233 2.551" scale="1 0.7 0.7" class="raycastable" material geometry></a-image>
-        <a-image id="en" src="./resources/GameInfo/en.png" position="-10.6 2.233 2.551" scale="1 0.7 0.7" class="raycastable" material geometry></a-image>
+        <a-image id="en" src="./resources/GameInfo/en.png" position="-10.6 2.233 2.551" scale="1 0.7 0.7" class="raycastable" material geometry></a-image>>
     </a-entity>
 
     <a-image id="clicker" translate src="./resources/objects/game/Diapositive1.jpeg" position="-11.53424 2.23284 2.55092" scale="4sp 2 0.8" class="raycastable" visible="false"></a-image>
