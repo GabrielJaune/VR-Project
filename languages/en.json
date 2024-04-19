@@ -15,7 +15,7 @@
     "pedago_object06": "DATA LEAK\nRisk: Publicly accessible sensitive information\nRemediation: Staff training",
     "pedago_object07": "DATA LEAK and SECURITY BREACH\nRisk: Unlocked smartphone left unattended\nRemediation: Force lock and staff training",
     "pedago_object08": "DATA LEAK\nRisk: Confidential files left\noutside locked storage\nRemediation: Staff training",
-    "pedago_object10": "DATA LEAK and SECURITY BREACH\nRisk: BYOD - Bring your own disaster (unsecured personnal communication equipment)\nRemediation: Ban use of personnal materiaé for work purposes and staff training",
+    "pedago_object10": "DATA LEAK and SECURITY BREACH\nRisk: BYOD - Bring your own disaster (unsecured personnal communication equipment)\nRemediation: Ban use of personnal material for work purposes and staff training",
     "pedago_object11": "SECURITY BREACK\nRisk: Disrespect of security policies\nRemediation: Staff training",
     "pedago_object12": "Wireshark\nIP Traffic and deep packet\nanalysis software",
     "pedago_object13": "Edward Snowden\nComputer scientist and whistleblower\non U.S. mass surveillance programs",
