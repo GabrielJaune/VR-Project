@@ -43,6 +43,11 @@ const Infos = {
       {"image": "./resources/images/map.png", "redirect": "cpge.html"},
       {"image": "./resources/images/cube.png", "redirect": "cpge3D.html"}
     ]
+  },
+  5: {
+    title: "INFOSEC GAME",
+    info: "Une introduction ludique\na la securite de l'information",
+    redirect: "gametest-low.html"
   }
 }
 
