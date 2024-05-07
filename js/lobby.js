@@ -17,38 +17,44 @@
 const Infos = {
   1: {
     title: "Bac Pro MELEC",
-    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes`,
-    redirect: [
-      {"image": "./resources/images/map.png", "redirect": "melec.html"},
-      {"image": "./resources/images/cube.png", "redirect": "melec3D.html"}
-    ]
+    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes\n\nBienvenue a Melec Plage!`,
+    redirect: "melec3D.html",
   },
   2: {
-    title: "Bac Pro CIEL",
-    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
-    redirect: [
-      {"image": "./resources/images/map.png", "redirect": "ciel.html"},
-      {"image": "./resources/images/cube.png", "redirect": "ciel3D.html"}
-    ]
+    title: "Bac Pro MELEC",
+    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes\n\nExploration 360 des plateaux`,
+    redirect: "melec.html",
   },
   3: {
-    title: "BTS Electrotechnique",
-    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
-    redirect: "bts.html"
+    title: "Bac Pro CIEL",
+    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Electronique\n\nExploration VR Labo RISC",
+    redirect: "ciel3D.html",
   },
   4: {
-    title: "CPGE",
-    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques",
-    redirect: [
-      {"image": "./resources/images/map.png", "redirect": "cpge.html"},
-      {"image": "./resources/images/cube.png", "redirect": "cpge3D.html"}
-    ]
+    title: "Bac Pro CIEL",
+    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Electronique\n\nExploration 360 Labo RISC",
+    redirect: "ciel.html",
   },
   5: {
+    title: "BTS Electrotechnique",
+    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi\n\nDecouverte des plateaux BTS",
+    redirect: "bts.html",
+  },
+  6: {
+    title: "CPGE",
+    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques\n\nDecouverte VR CPGE",
+    redirect: "cpge3D.html",
+  },
+  7: {
+    title: "CPGE",
+    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques\n\nExploration ateliers CPGE",
+    redirect: "cpge.html",
+  },
+  8: {
     title: "INFOSEC GAME",
     info: "Une introduction ludique\na la securite de l'information",
-    redirect: "infosec.html"
-  }
+    redirect: "infosec.html",
+  },
 }
 
 AFRAME.registerComponent("info-panel", {
