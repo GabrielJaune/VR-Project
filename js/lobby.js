@@ -20,7 +20,7 @@ const Infos = {
     info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes`,
     redirect: [
       {"image": "./resources/images/map.png", "redirect": "melec.html"},
-      {"image": "./resources/images/cube.png", "redirect": "atelier.html"}
+      {"image": "./resources/images/cube.png", "redirect": "melec3D.html"}
     ]
   },
   2: {
@@ -28,7 +28,7 @@ const Infos = {
     info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
     redirect: [
       {"image": "./resources/images/map.png", "redirect": "ciel.html"},
-      {"image": "./resources/images/cube.png", "redirect": "demotest.html"}
+      {"image": "./resources/images/cube.png", "redirect": "ciel3D.html"}
     ]
   },
   3: {
@@ -47,7 +47,7 @@ const Infos = {
   5: {
     title: "INFOSEC GAME",
     info: "Une introduction ludique\na la securite de l'information",
-    redirect: "gametest-low.html"
+    redirect: "infosec.html"
   }
 }
 
