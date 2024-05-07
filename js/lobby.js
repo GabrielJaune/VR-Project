@@ -17,43 +17,37 @@
 const Infos = {
   1: {
     title: "Bac Pro MELEC",
-    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes.\n\nBienvenue a MELEC Plage`,
-    redirect: "atelier.html"
+    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes`,
+    redirect: [
+      {"image": "./resources/images/map.png", "redirect": "melec.html"},
+      {"image": "./resources/images/cube.png", "redirect": "melec3D.html"}
+    ]
   },
   2: {
-    title: "Bac Pro MELEC",
-    info: `La clef pour allumer ta carriere!\n\nMetiers de l'ELectricite et\n de ses Environnements Connectes.\n\nExploration des ateliers`,
-    redirect: "melec.html"
+    title: "Bac Pro CIEL",
+    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Eectronique",
+    redirect: [
+      {"image": "./resources/images/map.png", "redirect": "ciel.html"},
+      {"image": "./resources/images/cube.png", "redirect": "ciel3D.html"}
+    ]
   },
   3: {
-    title: "Bac Pro CIEL",
-    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Electronique\n\nExploration en VR",
-    redirect: "demotest.html"
-  },
-  4: {
-    title: "Bac Pro CIEL",
-    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Electronique\n\nExploration en VR",
-    redirect: "ciel.html"
-  },
-  5: {
     title: "BTS Electrotechnique",
-    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi\n\nExploration des plateaux",
+    info: "Supercharge ta carriere!\n\n Le Bac+2 pour l'emploi",
     redirect: "bts.html"
   },
-  6: {
+  4: {
     title: "CPGE",
-    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques\n\nExploration des ateliers",
-    redirect: "cpge.html"
+    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques",
+    redirect: [
+      {"image": "./resources/images/map.png", "redirect": "cpge.html"},
+      {"image": "./resources/images/cube.png", "redirect": "cpge3D.html"}
+    ]
   },
-  7: {
-    title: "CPGE",
-    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques\nPresentation VR",
-    redirect: "cpge3D.html"
-  },
-  8: {
+  5: {
     title: "INFOSEC GAME",
     info: "Une introduction ludique\na la securite de l'information",
-    redirect: "gametest-low.html"
+    redirect: "infosec.html"
   }
 }
 
