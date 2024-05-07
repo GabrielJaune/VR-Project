@@ -27,7 +27,7 @@ const Infos = {
   },
   3: {
     title: "Bac Pro CIEL",
-    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Electronique\n\nExploration VR Labo RISC",
+    info: "La connexion vers ton avenir!\n\nCybersecurite, Informatique et\nReseaux Electronique\n\nExploration VR Labo RISC\nUtilisez les touches\n'WASD' pour naviguer",
     redirect: "ciel3D.html",
   },
   4: {
@@ -42,7 +42,7 @@ const Infos = {
   },
   6: {
     title: "CPGE",
-    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques\n\nDecouverte VR CPGE",
+    info: "Classe Preparatoire\n aux Grandes Ecoles\n\n Informatique, Sciences de l'Ingenieur,\n Mathematiques, Physiques\n\nDecouverte VR CPGE\nUtilisez les touches\n'WASD' pour naviguer",
     redirect: "cpge3D.html",
   },
   7: {
@@ -52,7 +52,7 @@ const Infos = {
   },
   8: {
     title: "INFOSEC GAME",
-    info: "Une introduction ludique\na la securite de l'information",
+    info: "NOUVEAUTE\n\nUne introduction ludique\na la securite de l'information",
     redirect: "infosec.html",
   },
 }
