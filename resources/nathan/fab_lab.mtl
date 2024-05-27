@@ -1,0 +1,82 @@
+# Exported from 3D Builder
+
+newmtl Turquoise_0
+Kd 0.000000 0.627451 0.909804
+
+newmtl Green_1
+Kd 0.129412 0.733333 0.298039
+
+newmtl Orange_0
+Kd 1.000000 0.498039 0.145098
+
+newmtl ground_1_0
+Kd 0.658824 0.658824 0.658824
+
+newmtl wall_1_3_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl black_0
+Kd 0.002000 0.002000 0.002000
+
+newmtl default_0
+Kd 0.710200 0.702000 0.653100
+
+newmtl wall_2_8_0
+Kd 0.501961 0.501961 0.501961
+
+newmtl room_20_116_0
+Kd 0.454902 0.454902 0.454902
+
+newmtl wall_1_2_0
+Kd 0.117647 0.576471 1.000000
+
+newmtl default_1_252_0
+Kd 0.423529 0.321569 0.235294
+
+newmtl room_21_117_0
+Kd 0.109804 1.000000 0.933333
+
+newmtl 1_1_575_0
+Kd 0.639216 0.639216 0.639216
+
+newmtl wall_6_32_0
+Kd 0.007843 0.592157 1.000000
+
+newmtl yellowbrt_0
+Kd 1.000000 0.783700 0.000000
+
+newmtl flltgrey_0
+Kd 0.824500 0.824500 0.824500
+
+newmtl Picture_0
+Kd 0.900000 0.900000 0.900000
+
+newmtl Green_0_0
+Kd 0.968627 1.000000 0.913725
+
+newmtl lighttannew_0
+Kd 0.787800 0.607000 0.321600
+
+newmtl bottom_0_0
+Kd 0.011765 0.000000 0.000000
+
+newmtl iris_0_0
+Kd 0.000000 0.057200 0.318400
+
+newmtl dkgrey_0
+Kd 0.049000 0.049000 0.049000
+
+newmtl amber_0
+Kd 0.575500 0.267800 0.000000
+
+newmtl default_1_315_0
+Kd 0.223529 0.223529 0.223529
+
+newmtl 1_0
+Kd 0.800204 0.002997 0.000000
+
+newmtl jaune_0_0
+Kd 0.000000 0.000000 0.000000
+
+newmtl 3_0
+Kd 0.800133 0.000000 0.002655
