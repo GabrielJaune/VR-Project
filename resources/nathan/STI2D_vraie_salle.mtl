@@ -1,0 +1,40 @@
+# Exported from 3D Builder
+
+newmtl Turquoise_0
+Kd 0.000000 0.627451 0.909804
+
+newmtl Green_0
+Kd 0.129412 0.733333 0.298039
+
+newmtl Orange_0
+Kd 1.000000 0.498039 0.145098
+
+newmtl ground_1_0
+Kd 0.658824 0.658824 0.658824
+
+newmtl white_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl yellowbrt_0
+Kd 1.000000 0.783700 0.000000
+
+newmtl wall_3_14_0
+Kd 0.501961 0.501961 0.501961
+
+newmtl wall_1_2_0
+Kd 0.007843 0.592157 1.000000
+
+newmtl 1_0
+Kd 0.639216 0.639216 0.639216
+
+newmtl lighttannew_0
+Kd 0.787800 0.607000 0.321600
+
+newmtl wall_9_50_0
+Kd 0.117647 0.576471 1.000000
+
+newmtl default_0
+Kd 0.710200 0.702000 0.653100
+
+newmtl black_0
+Kd 0.002000 0.002000 0.002000
