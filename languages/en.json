@@ -5,7 +5,6 @@
     "love_letter": "\n\n\nYou had told me that\nwe would go\non holiday together.\n\nYou`re nothing but a coward.\nYou had said you would leave your wife.\nI`m tired of your lies.\n\nIsa",
     "confidential_file": "Confidential\nPay slips",
     "blackmail_text": "Jules. I don`t give a damn that our security policy prevents us from running everything we want at the IT level. Specifically, I hereby order you to open ports 445 and 3389 of our firewall to allow my team to do their job. You have been warned. If you don`t do it, it will go up to the board of directors. I have enough skeletons in the closet to get you and your team of incompetent fools fired.",
-
     "pedago_object-intro": "PEDAGOGICAL MODE\nACTIVATED\nExplore the level\nto find information security advice.",
     "pedago_object01": "DATA LEAK\nRisk: Loss of document confidentiality due to an oversight on a shared printer\nRemediation: Access control on printer and staff training",
     "pedago_object02": "DATA LEAK and SECURITY BREACH\nRisk: Public display of a password\nRemediation: Staff training",
