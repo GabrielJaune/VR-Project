@@ -158,6 +158,8 @@ AFRAME.registerComponent('btn-mode', {
   }
 })
 
+
+
 AFRAME.registerComponent('scene-changer', {
   schema: {
     name : {type: 'string', default: 'default'},
