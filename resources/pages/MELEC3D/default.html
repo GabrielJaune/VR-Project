@@ -1,6 +1,10 @@
 <a-sky src="./resources/sky/MELEC/MELEC_2.jpg" rotation="0 -130 0"></a-sky>
 
-<a-entity id="Atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true" scale="0.08 0.1 0.05" position="77.30929 -0.85083 -13.18014" rotation="0.51508905782261 -130.83204772914783 0.41768623265037014"></a-entity>
-<!--scene-changer="name: plage; angle: -130"-->
+<a-entity id="Cliquez moi" text="value: Cliquez la statuette\npour que MELEC devienne voyage; align: center; width: 20; color: #ffffff" position="42.24277 -6.23285 -17.96177" visible="" rotation="10.360795809350677 -45.37481962759041 0.21715100435458204" scale="0.5 0.5 0.5">
+</a-entity>
 
-<a-entity id="melec-boy" scene-changer="name: plage" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/MELEC-BOY.obj" material="color: green" scale="0.02 0.02 0.02" position="27.75465 0 -7.31995" rotation="-90.00021045914971 -76.15468533981337 0" class="raycastable"> </a-entity>
+<a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257">
+    <a-animation attribute="material.opacity" from="1" to="0" loop="true" dur="100" direction="alternate"></a-animation>
+  </a-entity>
+
+<a-entity id="melec-boy" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/MELEC-BOY.obj" material="color: green" scale="0.012 0.012 0.012" position="27.35986 0 -7.40832" rotation="-90.00021045914971 -12.971764481761838 0" class="raycastable" sound="src: ./resources/sounds/cool.mp3; autoplay: true; loop: true"></a-entity>
