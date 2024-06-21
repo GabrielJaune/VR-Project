@@ -1,14 +1,20 @@
-<a-sky src="./resources/objects/cantin/0.jpg" rotation="0 -130 0"></a-sky>
+<a-sky src="./resources/objects/cantin/0.jpg" rotation="0 -130 0" sound="src: ./resources/objects/cantin/soncombatrobot.mp3; autoplay: true; loop: true"></a-sky>
 <!--
 <a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257"></a-entity>
 
 <a-sky src="./resources/objects/cantin/3.jpg" rotation="0 -130 0"></a-sky>
 
-<a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257"></a-entity>-->
+<a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257"></a-entity>
 
-<a-entity id="robot" obj-model="obj: ./resources/objects/ROBOT2/BODY.obj; mtl: ./resources/objects/ROBOT2/BODY.mtl" scale="0.05 0.05 0.05" class="raycastable" position="17.64406 1.281 -28.386" rotation="-79.14953573496219 90 -82.523" class="raycastable" animation="property: position; to: 36.32316 2.17727 -41.59733; dur: 2000; dir: alternate; loop: true" animation__2="property: rotation; to: -76.53054565341918 -117.63912153846549 97.47673672781183; dur: 2000; dir: alternate; loop: true" sound="src: ./resources/objects/cantin/soncombatrobot.mp3; autoplay: true; loop: true">
-    <a-entity id="Flammes" modelfix="" obj-model="obj: ./resources/objects/ROBOT2/FIRE.obj; mtl: ./resources/objects/ROBOT2/FIRE.mtl" scale="" position="-14.45455 26.7455 -101.41084" rotation="0 0 0" class="raycastable" animation="property: rotation; to: 0 0 359; dur: 2000; loop: true"></a-entity>
-    <a-entity id="Flammes2" modelfix="" obj-model="obj: ./resources/objects/ROBOT2/FIRE.obj; mtl: ./resources/objects/ROBOT2/FIRE.mtl" scale="" position="16.62736 33.06789 -106.55254" rotation="0 0 0" class="raycastable" animation="property: rotation; to: 0 0 -359; dur: 2000; loop: true"></a-entity>
+animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 44.21171530347484 -10.253652701661213; dur: 4000; dir: alternate; loop: true"
+
+
+-->
+
+<a-entity id="robot" gltf-model="./resources/objects/ROBOT2/BODY.gltf" scale="10 10 10" class="raycastable" position="16.0315 0.97301 -1.81854" rotation="-5.916362192520881 112.33066756657841 9.634285325124793" animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 44.21171530347484 -10.253652701661213; dur: 4000; dir: alternate; loop: true" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10">
+    <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="-0.01442 -0.01326 -0.02612" rotation="0 0 0" class="raycastable" animation="property: rotation; to: 0 359 0; dur: 4000; loop: true"></a-entity>
+    <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.01596 -0.01263 -0.02953" rotation="0 0 0" class="raycastable" animation="property: rotation; to: 0 -359 0; dur: 4000; loop: true"></a-entity>
 </a-entity>
 
+<a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="21.99565 4.76599 -4.98857"></a-entity>
 <a-entity id="melec-boy" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/MELEC-BOY.obj" material="color: green" scale="0.012 0.012 0.012" position="20.70436 -1.63852 -8.66887" rotation="-90.00021045914971 -12.971764481761838 0" class="raycastable"></a-entity>
