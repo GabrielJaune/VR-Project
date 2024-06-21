@@ -1,0 +1,31 @@
+# Exported from 3D Builder
+
+newmtl wall_1_2_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl ground_1_0
+Kd 0.658824 0.658824 0.658824
+
+newmtl flblonde_0
+Kd 0.571400 0.328300 0.044300
+
+newmtl black_0
+Kd 0.002000 0.002000 0.002000
+
+newmtl yellowbrt_0
+Kd 1.000000 0.783700 0.000000
+
+newmtl silver_0
+Kd 0.616300 0.616300 0.616300
+
+newmtl dkdkgrey_0
+Kd 0.012200 0.012200 0.012200
+
+newmtl fldkgrey_0
+Kd 0.093900 0.093900 0.093900
+
+newmtl red_0
+Kd 0.771400 0.000000 0.000000
+
+newmtl Green_0
+Kd 0.129412 0.733333 0.298039
