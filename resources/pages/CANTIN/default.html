@@ -12,7 +12,7 @@ animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: al
 
 -->
 
-<a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="10 10 10" class="raycastable" position="16.0315 0.97301 -1.81854" rotation="-5.916362192520881 112.33066756657841 9.634285325124793" animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 44.21171530347484 -10.253652701661213; dur: 4000; dir: alternate; loop: true" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10">
+<a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="10 10 10" class="raycastable" position="-5 0 0" rotation="-5.916362192520881 112.33066756657841 9.634285325124793" animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 44.21171530347484 -10.253652701661213; dur: 4000; dir: alternate; loop: true" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10">
     <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="-0.0257 -0.06192 -0.00419" rotation="" class="raycastable" animation="property: rotation; to: 0 359 0; dur: 200; loop: true"></a-entity>
     <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.00136 -0.06228 -0.00456" rotation="0 -3.2100374348184224 0" class="raycastable" animation="property: rotation; to: 0 -359 0; dur: 200; loop: true"></a-entity>
     <a-entity id="tete" gltf-model="./resources/objects/cantin/Robot/tete.gltf" scale="" class="raycastable" position="-0.00808 0.08942 0.00191" rotation="-7.165983143701205 -2.7301438937983726 -3.1569974511708363" animation="property: rotation; to: -7.165983143701205 2.7301438937983726 -3.1569974511708363; dur: 2000; dir: alternate; loop: true"></a-entity>
@@ -40,6 +40,7 @@ animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: al
 
 
 <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="21.99565 4.76599 -4.98857"></a-entity>
-<a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="20.70436 -1.63852 -6.25125" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
-<a-text id="follow" text="width: 0.8; color: #ffffff; value: Click on the\nred dwarf; align: center" position="21.27045 -1.61401 -6.37608" rotation="-89.99963750135457 12.802168974403115 0" scale="4 4 4"></a-text>
-
+<a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="-0.20848 -3.10148 -2.57372" rotation="-90 12.971764481761838 0" class="raycastable">
+    <a-entity id="LIGHT-Nabot" light="distance: 12.04; intensity: 7.09; type: point" position="-31.71335 -159.76372 642.19447"></a-entity>
+</a-entity>
+<a-text id="follow" text="width: 0.8; color: #ffffff; value: Cliquez-moi\nClick me; align: center" position="-0.92228 -3.10148 -2.38287" rotation="-89.99963750135457 12.802168974403115 0" scale="4 4 4"></a-text>
