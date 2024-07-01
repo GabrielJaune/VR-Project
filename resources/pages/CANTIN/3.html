@@ -1,4 +1,10 @@
-<a-scene>
-<a-entity id="TV"class="raycastable" modify-materials modelfix obj-model="obj: ./resources/objects/cantin/TV.obj" material="color: black" scale="0.002 0.002 0.002" position="28.18472 0.88783 5.73453" rotation="-90 40 180"> </a-entity>
-<a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="20.70436 -1.63852 -6.25125" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
-</a-scene>
+<a-sky id="Panorama" src="./resources/objects/cantin/4.jpg" rotation="0 -130 0"></a-sky>
+<a-entity id="CORPSCOMBAT" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/corpscombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="23.35904 0.81004 -6.79025" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable">
+    <a-entity id="BRASCOMBAT" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/brascombat.obj" material="color: blue" scale="" position="5.492441723962294 1.0009375687648625 34.66811" rotation="-69.6900025373523 -2.3645968205049077 10.60716766125693" class="raycastable" animation__2="dir: alternate; dur: 2000; loop: true; property: position; to: 6.19736 0.83856 34.66811"></a-entity>
+    <a-entity id="LIGHT" light="distance: 12.04; intensity: 10.55; type: point" position="7.8411 -16.88533 41.42668"></a-entity>
+</a-entity>
+
+<!--<a-entity id="BRASCOMBAT" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/brascombat.obj" material="color: blue" scale="" position="6.19736 0.83856 34.66811" rotation="-61.858815393504194 -3.309977182470766 9.661787299291072" class="raycastable"> 
+    <a-entity id="LIGHT" light="distance: 12.04; intensity: 10.55; type: point" position="49.19571 -146.48194 -39.94144" rotation="-32.80297968682989 135.0364120298178 -105.88431941356153"></a-entity>
+    
+</a-entity>-->
