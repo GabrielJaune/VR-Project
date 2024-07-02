@@ -15,7 +15,7 @@ animation="property: rotation; to: 0 0 180; dur: 2000; dir: alternate; loop: tru
 <a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257"></a-entity>
 
 <a-sky src="./resources/objects/cantin/3.jpg" rotation="0 -130 0"></a-sky>
-
+scene-switch="name: 3"
 <a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257"></a-entity>-->
 
 <a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="" class="raycastable" position="0.88512 0.16958 -0.69938" rotation="8.298147746879712 -28.895980481832805 -10.253652701661213"></a-entity animation="property: position; to: 25.03405 0.09555 -10.26388; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 -28.895980481832805 -10.253652701661213; dur: 4000; dir: alternate; loop: NaN" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10"></a-entity>
@@ -29,14 +29,15 @@ animation="property: rotation; to: 0 0 180; dur: 2000; dir: alternate; loop: tru
     <a-image id="1L" src="./resources/objects/cantin/Affiche/1L-3B.jpg" position="-8.13363 0.21 -8.85123" rotation="-0.52196455136418 110.21759921813593 0.48987891483685386" material="" geometry="" scale="16 2 1"></a-image>
 
     <a-entity id="TV" scene-switch="name: 2" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/tv.obj" material="color: black" scale="0.5 0.5 0.5" position="8.67026 -3.24071 4.2833" rotation="0 -117.1263243118234 0" class="raycastable"></a-entity>
-    <a-text id="text" value="Cliquez moi\nClick me" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.5 0.5 1" position="1.20833 -0.83015 -1.19273" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
+    <a-text id="text" value="Cliquez moi\nClick me" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="" position="8.56916 -2.39667 4.24372" text="anchor: center; align: center; color: #ffffff" rotation="0 -115.98441942612767 0"></a-text>
 
     <a-entity id="NaBot" scene-switch="name: default" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="1.86656 -2.51449 -3.97655" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable">
  <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="-0.09685 0.207 0.32695"></a-entity></a-entity>
-<a-entity id="NaBot" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: green" scale="0.002 0.002 0.002" position="0.69539 -1.35101 -4.45623" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
 
-
-
+ <a-entity id="Robot" position="0.299 -2.52 -7.478">
+    <a-entity id="CORPSCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/corpscombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="" rotation="-90 12.971764481761838 0" class="raycastable"></a-entity>
+    <a-entity id="BRASCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/brascombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="0.12777 0.57068 0.02354" rotation="-69.69 -2.3645968205049077 10.60716766125693" class="raycastable"></a-entity>
+</a-entity>
 
 
 <!--
