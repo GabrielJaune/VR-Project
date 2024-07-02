@@ -8,7 +8,7 @@ animation="property: rotation; to: 0 0 180; dur: 2000; dir: alternate; loop: tru
 <a-entity id="robot" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/ROBOT2/BODY.obj; mtl: ./resources/objects/ROBOT2/FIRE.mtl" material="" scale="0.05 0.05 0.05" position="36.32316 2.17727 -41.59733" rotation="-76.53054565341918 -117.63912153846549 97.47673672781183" class="raycastable" sound="src: ./resources/objects/cantin/soncombatrobot.mp3; autoplay: true">
     <a-entity id="Flammes" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/ROBOT2/FIRE.obj; mtl: ./resources/objects/ROBOT2/FIRE.mtl" material="" scale="" position="-14.45455 26.7455 -101.41084" rotation="" class="raycastable"></a-entity>
     <a-entity id="Flammes2" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/ROBOT2/FIRE.obj; mtl: ./resources/objects/ROBOT2/FIRE.mtl" material="" scale="" position="16.62736 33.06789 -106.55254" rotation="" class="raycastable"></a-entity>
-</a-entity>
+</a-entity> animation="property: position; to: 25.03405 0.09555 -10.26388; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 -28.895980481832805 -10.253652701661213; dur: 4000; dir: alternate; loop: NaN" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10">
 
 <a-sky src="./resources/objects/cantin/0.jpg" rotation="0 -130 0"></a-sky>
 
@@ -17,23 +17,20 @@ animation="property: rotation; to: 0 0 180; dur: 2000; dir: alternate; loop: tru
 <a-sky src="./resources/objects/cantin/3.jpg" rotation="0 -130 0"></a-sky>
 
 <a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257"></a-entity>-->
-<a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="10 10 10" class="raycastable" position="27.487712538155673 -0.21369628458741274 -7.201158741190678" rotation="8.298147746879712 -28.895980481832805 -10.253652701661213" animation="property: position; to: 25.03405 0.09555 -10.26388; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 -28.895980481832805 -10.253652701661213; dur: 4000; dir: alternate; loop: NaN" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10">
-    <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="-0.0267 -0.06707 0.00075" rotation="0 130.1084202879503 0" class="raycastable" animation="property: rotation; to: 0 359 0; dur: 200; loop: true"></a-entity>
-     <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.00585 -0.0665 0.00219" rotation="0 -132.15507917204616 0" class="raycastable" animation="property: rotation; to: 0 -359 0; dur: 200; loop: true"></a-entity> 
-     <a-entity id="tete" gltf-model="./resources/objects/cantin/Robot/tete.gltf" scale="" class="raycastable" position="-0.00808 0.08942 0.00191" rotation="-7.165983143701205 -0.2490147782221503 -3.1569974511708363" animation="property: rotation; to: -7.165983143701205 2.7301438937983726 -3.1569974511708363; dur: 2000; dir: alternate; loop: true"></a-entity>
-     <a-entity id="bras" gltf-model="./resources/objects/cantin/Robot/bras.gltf" scale="" class="raycastable" position="-0.05908 0.02936 0.00752" rotation="-16.024580756332032 -18.32838085403819 -0.6323989798722622" animation="property: rotation; to: -33.11524168517619 -21.213762364718733 3.3422514664948055; dur: 4000; dir: alternate; loop: true"></a-entity>
-     <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="-0.09685 0.207 0.32695"></a-entity></a-entity>
-</a-entity>
+<a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="" class="raycastable" position="0.88512 0.16958 -0.69938" rotation="8.298147746879712 -28.895980481832805 -10.253652701661213"></a-entity animation="property: position; to: 25.03405 0.09555 -10.26388; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 -28.895980481832805 -10.253652701661213; dur: 4000; dir: alternate; loop: NaN" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10"></a-entity>
+    <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.86388 0.11277 -0.72581" rotation="0 338.17262071515233 0" class="raycastable" animation="property: rotation; to: 0 359 0; dur: 200; loop: true"></a-entity>
+     <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.88503 0.10159 -0.6977" rotation="0 -338.3588509858307 0" class="raycastable" animation="property: rotation; to: 0 -359 0; dur: 200; loop: true"></a-entity>
+     <a-entity id="tete" gltf-model="./resources/objects/cantin/Robot/tete.gltf" scale="" class="raycastable" position="0.8851 0.25736 -0.69435" rotation="-7.165983143701205 1.8924656676866316 -3.1569974511708363" animation="property: rotation; to: -7.165983143701205 2.7301438937983726 -3.1569974511708363; dur: 2000; dir: alternate; loop: true"></a-entity>
+     <a-entity id="bras" gltf-model="./resources/objects/cantin/Robot/bras.gltf" scale="" class="raycastable" position="0.83871 0.1839 -0.72161" rotation="-18.947299692409768 -18.82181754523378 0.04731646075654589" animation="property: rotation; to: -33.11524168517619 -21.213762364718733 3.3422514664948055; dur: 4000; dir: alternate; loop: true"></a-entity>
+     <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="-0.09685 0.207 0.32695"></a-entity>
+    </a-entity>
 
-<a-image id="1L" src="./resources/objects/cantin/Affiche/1L-3B.jpg" position="13.74208 1.907 -13.11978" rotation="-0.52196455136418 111.65515032611917 0.4904518726319847" material="" geometry="" scale="16 2 1"></a-image>
-<a-image id="1L" src="./resources/objects/cantin/Affiche/1L-3B.jpg" position="13.74208 1.907 -13.11978" rotation="-0.52196455136418 111.65515032611917 0.4904518726319847" material="" geometry="" scale="16 2 1"></a-image>
+<a-image id="1L" src="./resources/objects/cantin/Affiche/1L-3B.jpg" position="-5.20139 1.50403 11.12783" rotation="-0.52196455136418 111.65515032611917 0.4904518726319847" material="" geometry="" scale="16 2 1"></a-image>
 
-
-
-<a-entity id="TV" scene-switch="name: 2" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/tv.obj" material="color: black" scale="0.5 0.5 0.5" position="17.76172 -3.24071 2.82985" rotation="0 -32.768602219122045 0" class="raycastable"></a-entity>
-<a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="25.163 -2.51449 -10.30056" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
-<a-entity id="NaBot" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: green" scale="0.002 0.002 0.002" position="24.163 0 -10.30056" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
-
+<a-entity id="TV" scene-switch="name: 2" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/tv.obj" material="color: black" scale="0.5 0.5 0.5" position="8.67026 -3.24071 4.35013" rotation="0 -117.1263243118234 0" class="raycastable"></a-entity>
+<a-entity id="NaBot" scene-switch="name: default" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="1.86656 -2.51449 -3.97655" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable">
+ <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="-0.09685 0.207 0.32695"></a-entity></a-entity>
+<a-entity id="NaBot" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: green" scale="0.002 0.002 0.002" position="0.69539 -1.35101 -4.45623" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
 <!--
 <a-entity id="LIGHT-TV" light="distance: 12.04; intensity: 7.09; type: point" position="18.06237 -2.49063 2.76391" animation=""></a-entity>
 <a-image id="1L" src="./resources/objects/cantin/Affiche/1L-3B.jpg" position="13.74208 1.907 -13.11978" rotation="-0.52196455136418 111.65515032611917 0.4904518726319847" material="" geometry="" scale="16 2 1"></a-image>
