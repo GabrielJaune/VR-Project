@@ -1,31 +1,35 @@
 <!---- <a-entity id="TV"class="raycastable" modify-materials modelfix obj-model="obj: ./resources/objects/cantin/TV.obj" material="color: black" scale="0.002 0.002 0.002" position="28.18472 0.88783 5.73453" rotation="-90 40 180"> </a-entity>
     <a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="20.70436 -1.63852 -6.25125" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity> -->
-    <a-entity id="level" class="raycastable" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/level/level.obj" material="color: black" scale="0.005 0.005 0.005" position="22.06243 0.7143 -3.994" rotation="-90 0 180"> </a-entity>
+    <a-entity id="level" class="raycastable" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/level/level.obj" material="color: black" scale="0.005 0.005 0.005" position="-0.47535 -0.92 0.037" rotation="-90 0 180"> </a-entity>
+
+<a-entity id="Truc">
     <a-entity light="color: #cecece; intensity: 10; shadowRadius: 2; type: point" position="24.70317 3.01668 -3.9013" rotation="27.77183728778613 77.09834682839384 -24.59192152481006"></a-entity>
     <a-entity id="TV" class="raycastable" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/tv.obj" material="color: black" scale="0.8 0.8 0.8" position="20.09713 0.7814 -3.98974" rotation="180 -90 180"> </a-entity>
-    </a-entity>
     <a-entity rickbutton="" class="raycastable" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Boutonrouge.obj" material="color: #ff1c1c" scale="0.006 0.006 0.002" position="21.70557 0.77752 -4.01686" rotation="270 180 0" sound="on: click; src: ./resources/sounds/Clicmario.mp3"> </a-entity>
-    <a-entity id="tete" gltf-model="./resources/objects/cantin/Robot/tete.gltf" material="color: black" scale="10 10 10" class="raycastable" position="20.03863 3.31407 -3.99853" rotation="17.742211084021072 90.00021045914971 0"></a-entity>
+    <a-entity id="tete" gltf-model="./resources/objects/cantin/Robot/tete.gltf" material="color: black" scale="10 10 10" class="raycastable" position="20.03863 3.31407 -3.99853" rotation="17.742211084021072 90.00021045914971 0">
     <a-entity id="brasg" gltf-model="./resources/objects/cantin/Robot/bras.gltf" material="color: black" scale="9 9 9" class="raycastable" position="19.97226 2.83631 -3.53767" rotation="-29.621918008263563 63.83781161788606 40.48233301496832"></a-entity>
     <a-entity id="brasd" gltf-model="./resources/objects/cantin/Robot/bras.gltf" material="color: black" scale="9 9 9" class="raycastable" position="19.96024 2.84033 -4.47294" rotation="-27.15705357361076 112.59021744777269 -41.254107165009536" ></a-entity>
     <a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="24.11561 0.77386 -4.02199" rotation="270 270 0" class="raycastable"></a-entity>
+</a-entity>
     
-    <a-entity id="StatueR" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="23.08792 2.21191 -5.23528" rotation="270 90 0" class="raycastable">
-        <a-entity geometry="" material="color: #000000" position="-9.53634 -3.65489 -268.57763" rotation="270 90 0" scale="100 66.93993 140.36048"></a-entity>
-        <a-entity id="EyeR1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.80134 17.93064 102.80609" rotation="-3.8961130068895984 -12.272183013907103 85.64630417395058" class="raycastable" animation="property: rotation; to: -15.798165285142188 -33.88300513065149 63.98678064462008; dur: 4000; dir: alternate; loop: true"></a-entity>
-        <a-entity id="EyeR2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-33.13877 -14.86874 101.8829" rotation="-6.534010695671908 -13.854119486263304 89.19749658817142" class="raycastable" animation="property: rotation; to: -16.232467293851354 -45.507745836060764 70.10024031866595; dur: 4000; dir: alternate; loop: true"></a-entity>
+    
+        <a-entity id="StatueR" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="0.597 0.6547 -1.22263" rotation="270 90 0" class="raycastable">
+            <a-entity geometry="" material="color: #000000" position="-9.53634 -3.65489 -267.86922" rotation="270 90 0" scale="100 66.93993 140.36048"></a-entity>
+            <a-entity id="EyeR1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.80134 17.93064 102.80609" rotation="-9.469187783120512 -22.391339342308278 75.50434365953971" class="raycastable" animation="property: rotation; to: -15.798165285142188 -33.88300513065149 63.98678064462008; dur: 4000; dir: alternate; loop: true"></a-entity>
+            <a-entity id="EyeR2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-33.13877 -14.86874 101.8829" rotation="-11.075263126098937 -28.675767254407194 80.25530454241239" class="raycastable" animation="property: rotation; to: -16.232467293851354 -45.507745836060764 70.10024031866595; dur: 4000; dir: alternate; loop: true"></a-entity>
         </a-entity>
 
 
-        <a-entity id="StatueL" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="23.08792 2.21191 -2.73657" rotation="270 270 0" class="raycastable">
+        <a-entity id="StatueL" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="0.597 0.65316 1.25689" rotation="270 270 0" class="raycastable">
             <a-entity geometry="" material="color: #000000" position="-9.53634 -3.65489 -268.57763" rotation="270 90 0" scale="100 66.93993 140.36048"></a-entity>
-            <a-entity id="EyeL1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.943 21.16039 102.76261" rotation="-4.167122043986478 -10.010145638730613 82.50649545663367" class="raycastable"  animation="property: rotation; to: 23.046654351342234 -51.488852259431425 108.1308869282695; dur: 4000; dir: alternate; loop: true"></a-entity>
-            <a-entity id="EyeL2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-34.54766 -11.62314 102.73097" rotation="-5.584619629140134 -20.571476676377078 80.65183107379521" class="raycastable" animation="property: rotation; to: 11.66542070886356 -43.57114848851858 98.30122299500509; dur: 4000; dir: alternate; loop: true"></a-entity>
+            <a-entity id="EyeL1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.943 21.16039 102.76261" rotation="8.57558881369608 -29.43233672092677 94.50498499677595" class="raycastable" animation="property: rotation; to: 23.046654351342234 -51.488852259431425 108.1308869282695; dur: 4000; dir: alternate; loop: true"></a-entity>
+            <a-entity id="EyeL2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-34.54766 -11.62314 102.73097" rotation="2.4926230554978166 -31.340954732866816 88.91606808371276" class="raycastable" animation="property: rotation; to: 11.66542070886356 -43.57114848851858 98.30122299500509; dur: 4000; dir: alternate; loop: true"></a-entity>
         </a-entity>
 
     <a-entity id="RickHeader" visible="false">
     <a-video src="#rickvideo" position="20.15734 2.08175 -3.98761" rotation="0 90 0" scale="2.35 1.4 1" sound="distanceModel: linear; maxDistance: 5.5"></a-video>
     </a-entity>
+
     <!--
         <a-entity id="StatueL" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="23.08792 2.21191 -2.73657" rotation="270 270 0" class="raycastable">
             <a-entity geometry="" material="color: #000000" position="-9.53634 -3.65489 -268.57763" rotation="270 90 0" scale="100 66.93993 140.36048"></a-entity>
