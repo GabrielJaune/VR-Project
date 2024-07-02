@@ -12,9 +12,7 @@ animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: al
 scene-switch="name: 4" 
 -->
 
-<a-entity id="test" scene-switch="name: 4" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/supermushroom.obj" scale="0.02 0.02 0.02" position="-1.59716 -3.1 -2.29632" rotation="-90 119.619 0"></a-entity>
 
-<a-entity id="LIGHT-Nabot3 light="distance: 12.04; intensity: 7.09; type: point" position="0.19667 0.06691 0.1118" scale=""></a-entity>
 
 <a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="10 10 10" class="raycastable" position="-5 0 0" rotation="-5.916362192520881 112.33066756657841 9.634285325124793" animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 44.21171530347484 -10.253652701661213; dur: 4000; dir: alternate; loop: true" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10">
     <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="-0.0257 -0.06192 -0.00419" rotation="" class="raycastable" animation="property: rotation; to: 0 359 0; dur: 200; loop: true"></a-entity>
@@ -47,4 +45,7 @@ scene-switch="name: 4"
 <a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="-0.20848 -3.10148 -2.57372" rotation="-90 12.971764481761838 0" class="raycastable">
     <a-entity id="LIGHT-Nabot" light="distance: 12.04; intensity: 7.09; type: point" position="-31.71335 -159.76372 642.19447"></a-entity>
 </a-entity>
+
+<a-entity id="MUSHROOM" scene-switch="name: 4" gltf-model="./resources/objects/cantin/supermushroom/supermushroom.gltf" scale="15 15 15" position="-1.55727 -3.09594 -2.29774" rotation="0 119.619 0" class="raycastable"></a-entity>
+
 <a-text id="follow" text="width: 0.8; color: #ffffff; value: Cliquez-moi\nClick me; align: center" position="-0.92228 -3.10148 -2.38287" rotation="-89.99963750135457 12.802168974403115 0" scale="4 4 4"></a-text>

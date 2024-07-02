@@ -1,3 +1,5 @@
 <a-sky id="Panorama" src="./resources/objects/cantin/5.jpg" rotation="0 -130 0"></a-sky>
-<a-entity id="supermushroom" scene-switch="name: default" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/supermushroom.obj; mtl: ./resources/objects/cantin/supermushroom.mtl"  scale="0.002 0.002 0.002" position="25.163 -2.51449 -10.30056" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
-
+<a-entity id="MUSHROOM" scene-switch="" gltf-model="./resources/objects/cantin/supermushroom/supermushroom.gltf" scale="15 15 15" position="-2.50861 -3.09594 -2.77928" rotation="0 119.619 0" class="raycastable">
+    <a-entity id="LIGHT-Nabot" light="distance: 12.04; intensity: 7.09; type: point" position="-0.06206 0.03594 -0.03528"></a-entity>
+</a-entity>
+<a-text id="follow" text="width: 0.8; color: #ffffff; value: I have never let my schooling interfere wiith my education\n\nJe n'ai jamais laisse ma scolarite impacter mon education\n\nMark Twain; align: center" position="-6.92989 -0.34134 -4.35074" animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true" rotation="2.6785776922365985 75.63272078844919 1.1716986910425335" scale="15 15 15"></a-text>
