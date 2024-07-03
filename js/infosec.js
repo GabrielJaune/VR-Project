@@ -18,6 +18,7 @@
 
 // 󠁭󠁹󠀠󠁢󠁡󠁬󠁬󠁳
 
+var Sam = new SamJs({ debug: 1, pitch: 64, speed: 72, mouth: 128, throat: 128 });
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 function randrange(num) { return Math.floor(Math.random() * num) }
@@ -257,12 +258,13 @@ AFRAME.registerComponent('ender', { // dragon
 
     Enable: async function (win) {
         UsedAlarm = true
-        var s = new SamJs({ debug: 1, pitch: 64, speed: 72, mouth: 128, throat: 128 });
         document.querySelector("#door-main").setAttribute("door", "locked", "false")
         document.querySelector("#door-A").setAttribute("door", "locked", "false")
 
-        setTimeout(function(){
-            s.speak(`You have ${win && "finished" || "failed"} the experiment`);
+        setTimeout(async function(){
+            Sam.speak(`You have ${win && "finished" || "failed"} the experiment`);
+            await sleep(3000)
+            Sam.speak(`Educational mode activated`)
         }, 2000)
 
         this.cursorTeleport.teleportTo(this.Exit.object3D.position, this.Exit.object3D.quaternion) 
