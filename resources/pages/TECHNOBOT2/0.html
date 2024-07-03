@@ -1,0 +1,40 @@
+<!-- Cormon VR Experience - Virtual Reality on the Modern Web - Technobot 2024
+    Copyright (C) 2024 Benhaboucha Kahys [Stagiaire 1ere PRO SN/CIEL], Quentel Cantin [Stagiaire 2nde PRO SN/CIEL], Matthieu Farcot [Encadrement]
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>. -->
+
+
+<a-sky src="./resources/objects/cantin/0.jpg" rotation="0 -130 0" sound="src: ./resources/objects/cantin/soncombatrobot.mp3; autoplay: true; loop: true"></a-sky>
+
+<a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="10 10 10" class="raycastable" position="-5 0 0" rotation="-5.916362192520881 112.33066756657841 9.634285325124793" animation="property: position; to: 18.07196 0.97301 -9.60631; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 44.21171530347484 -10.253652701661213; dur: 4000; dir: alternate; loop: true" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10">
+    <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="-0.0257 -0.06192 -0.00419" rotation="" class="raycastable" animation="property: rotation; to: 0 359 0; dur: 200; loop: true"></a-entity>
+    <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.00136 -0.06228 -0.00456" rotation="0 -3.2100374348184224 0" class="raycastable" animation="property: rotation; to: 0 -359 0; dur: 200; loop: true"></a-entity>
+    <a-entity id="tete" gltf-model="./resources/objects/cantin/Robot/tete.gltf" scale="" class="raycastable" position="-0.00808 0.08942 0.00191" rotation="-7.165983143701205 -2.7301438937983726 -3.1569974511708363" animation="property: rotation; to: -7.165983143701205 2.7301438937983726 -3.1569974511708363; dur: 2000; dir: alternate; loop: true"></a-entity>
+    <a-entity id="bras" gltf-model="./resources/objects/cantin/Robot/bras.gltf" scale="" class="raycastable" position="-0.05908 0.02936 0.00752" rotation="-0.5964490647311871 -15.723680771775182 -4.220407118933644" animation="property: rotation; to: -33.11524168517619 -21.213762364718733 3.3422514664948055; dur: 4000;  dir: alternate; loop: true"></a-entity>
+</a-entity>
+
+<a-image id="1L" src="./resources/objects/cantin/Affiche/1L-3.jpg" position="-0.17122 0.63829 5.63561" rotation="-0.07333859777674538 -168.3630751413973 -1.0966412198803956" material="" geometry="" scale="16 2 1"></a-image>
+<a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="21.99565 4.76599 -4.98857"></a-entity>
+
+
+<a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="21.99565 4.76599 -4.98857"></a-entity>
+<a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="-0.20848 -3.10148 -2.57372" rotation="-90 12.971764481761838 0" class="raycastable">
+    <a-entity id="LIGHT-Nabot" light="distance: 12.04; intensity: 7.09; type: point" position="-31.71335 -159.76372 642.19447"></a-entity>
+</a-entity>
+
+<a-entity id="MUSHROOM" scene-switch="name: 4" gltf-model="./resources/objects/cantin/supermushroom/supermushroom.gltf" scale="15 15 15" position="-1.55727 -3.09594 -2.29774" rotation="0 119.619 0" class="raycastable"></a-entity>
+
+<a-text id="follow" text="width: 0.8; color: #ffffff; value: Cliquez-moi\nClick me; align: center" position="-0.92228 -3.10148 -2.38287" rotation="-89.99963750135457 12.802168974403115 0" scale="4 4 4"></a-text>
+
+<a-text id="text" value="TechnoBot Experience (c) 2024\nLycée Louis de Cormontaigne\nBenhaboucha Kahys\n[Stagiaire 1ere PRO SN/CIEL]\nQuentel Cantin\n[Stagiaire 2nde PRO TNE]\n Matthieu Farcot [Encadrement]" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="" position="0.31845 -5.7478 8.50719" text="anchor: center; color: #ffffff" rotation="0 -170.83080436502573 0"></a-text>
