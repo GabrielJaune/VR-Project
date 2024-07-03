@@ -47,13 +47,29 @@ animation="property: position; to: -3.5623 1.62786 0.34166; dur: 4000; dir: alte
             <a-entity id="EyeL2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-34.54766 -11.62314 102.73097" rotation="2.4926230554978166 -31.340954732866816 88.91606808371276" class="raycastable" animation="property: rotation; to: 11.66542070886356 -43.57114848851858 98.30122299500509; dur: 4000; dir: alternate; loop: true"></a-entity>
         </a-entity>
         
-        <a-entity id="MUSHROOM" scene-switch="name: 4" gltf-model="./resources/objects/cantin/supermushroom/supermushroom.gltf" scale="15 15 15" position="0.08174 -0.87743 0.02712" rotation="0 119.619 0" class="raycastable"></a-entity>
-        <a-entity id="Support" geometry="" material="color: #000000" position="1.67922 -0.64744 0.03616" rotation="270 90 0" scale="2.77697 0.5808 0.07877"></a-entity>
+        <a-entity id="MUSHROOM" scene-switch="name: 4" gltf-model="./resources/objects/cantin/supermushroom/supermushroom.gltf" scale="10 10 10" position="1.57246 -0.61658 -0.26043" rotation="0 -20.827015853005424 0" class="raycastable"></a-entity>
+                <a-entity id="Support" geometry="" material="color: #000000" position="1.67922 -0.64744 0.03616" rotation="270 90 0" scale="2.77697 0.5808 0.07877"></a-entity>
 
         <a-video id="video" autoplay loop="true" src=".\resources\objects\cantin\Clip-Technobot-2024-1.mp4#t=0.001" position="-2.35727 0.39665 0.01895" rotation="0 90 0" scale="2.4 1.4 2" material="" geometry="" muted="">
         </a-video>
 
-        <a-text id="text" value="Cliquez moi pour sortir\nClick me to exit" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.5 0.5 1" position="1.20833 -0.83015 -1.19273" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
+
+        <a-entity id="Robot" position="1.53335 -0.61085 0.09008" scale="0.5 0.5 0.5" rotation="0 -83.02273043004655 0">
+            <a-entity id="CORPSCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/corpscombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="0.14836 0 0.07045" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
+            <a-entity id="BRASCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/brascombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="0.34246 0.55401 0.15028" rotation="-69.6900025373523 -2.3645968205049077 10.60716766125693" class="raycastable"></a-entity>
+        </a-entity>
+
+        <a-entity id="car" scene-switch="name: 0" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/renaultKangoo/renaultKangoo.obj; mtl: ./resources/objects/cantin/renaultKangoo/renaultKangoo.mtl" scale="0.001 0.001 0.001" rotation="0 -110.58429220701967 0" position="1.54362 -0.50866 0.55579" class="raycastable"></a-entity>
+        <!--
+            <a-entity id="StatueL" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="23.08792 2.21191 -2.73657" rotation="270 270 0" class="raycastable">
+                <a-entity geometry="" material="color: #000000" position="-9.53634 -3.65489 -268.57763" rotation="270 90 0" scale="100 66.93993 140.36048"></a-entity>
+                <a-entity id="EyeL1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.943 21.16039 102.76261" rotation="23.046654351342234 -51.488852259431425 108.1308869282695" class="raycastable"></a-entity>
+                <a-entity id="EyeL2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-34.54766 -11.62314 102.73097" rotation="11.66542070886356 -43.57114848851858 98.30122299500509" class="raycastable"></a-entity>
+            </a-entity>
+            scene-switch="name: 4"
+             
+        -->
+        <a-text id="text" value="Cliquez moi pour explorer\nClick me to explore" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.5 0.5 1" position="1.20833 -0.83015 -1.19273" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
 
     <!--
         <a-entity id="StatueL" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="23.08792 2.21191 -2.73657" rotation="270 270 0" class="raycastable">
@@ -61,4 +77,6 @@ animation="property: position; to: -3.5623 1.62786 0.34166; dur: 4000; dir: alte
             <a-entity id="EyeL1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.943 21.16039 102.76261" rotation="23.046654351342234 -51.488852259431425 108.1308869282695" class="raycastable"></a-entity>
             <a-entity id="EyeL2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-34.54766 -11.62314 102.73097" rotation="11.66542070886356 -43.57114848851858 98.30122299500509" class="raycastable"></a-entity>
         </a-entity>
+        
+         
     -->

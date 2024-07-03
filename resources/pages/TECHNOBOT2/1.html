@@ -34,26 +34,20 @@ animation="property: rotation; to: 0 0 180; dur: 2000; dir: alternate; loop: tru
 scene-switch="name: 3"
 <a-entity id="fading-atelier" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/atelier2.obj" material="wireframe: true; color: #7a7a7a; wireframeLinewidth: 1" scale="0.1 0.1 0.1" position="89.9624 0.34524 -15.52455" rotation="-0.6428586461367837 -133.23331384854112 -0.7626068253191257"></a-entity>-->
 
-<a-entity id="robot" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="" class="raycastable" position="0.88512 0.16958 -0.69938" rotation="8.298147746879712 -28.895980481832805 -10.253652701661213"></a-entity animation="property: position; to: 25.03405 0.09555 -10.26388; dur: 4000; dir: alternate; loop: true" animation__2="property: rotation; to: 8.298147746879712 -28.895980481832805 -10.253652701661213; dur: 4000; dir: alternate; loop: NaN" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10"></a-entity>
-    <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.86388 0.11277 -0.72581" rotation="0 338.17262071515233 0" class="raycastable" animation="property: rotation; to: 0 359 0; dur: 200; loop: true"></a-entity>
-     <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.88503 0.10159 -0.6977" rotation="0 -338.3588509858307 0" class="raycastable" animation="property: rotation; to: 0 -359 0; dur: 200; loop: true"></a-entity>
-     <a-entity id="tete" gltf-model="./resources/objects/cantin/Robot/tete.gltf" scale="" class="raycastable" position="0.8851 0.25736 -0.69435" rotation="-7.165983143701205 1.8924656676866316 -3.1569974511708363" animation="property: rotation; to: -7.165983143701205 2.7301438937983726 -3.1569974511708363; dur: 2000; dir: alternate; loop: true"></a-entity>
-     <a-entity id="bras" gltf-model="./resources/objects/cantin/Robot/bras.gltf" scale="" class="raycastable" position="0.83871 0.1839 -0.72161" rotation="-18.947299692409768 -18.82181754523378 0.04731646075654589" animation="property: rotation; to: -33.11524168517619 -21.213762364718733 3.3422514664948055; dur: 4000; dir: alternate; loop: true"></a-entity>
-     <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="-0.09685 0.207 0.32695"></a-entity>
-    </a-entity>
+<a-entity id="Bot" position="-0.86606 -0.21501 0" animation="property: position; to: -0.86606 -0.22501 0; dur: 1000; dir: alternate; loop: true">
+    <a-entity id="robot" scene-switch="name: 2" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="" class="raycastable" position="0.88512 0.16958 -0.69938" rotation="" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10"></a-entity>
+    <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.86388 0.10287 -0.69877" rotation="0 -73.342405975714 0" class="raycastable" animation="property: rotation; to: 0 -132.87349635319896 0; dur: 200; loop: true"></a-entity>
+    <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.89387 0.10159 -0.6977" rotation="0 -160.24142210066813 0" class="raycastable" animation="property: rotation; to: 0 -132.87349635319896 0; dur: 200; loop: true"></a-entity>
+    <a-entity id="tete" scene-switch="name: 2" gltf-model="./resources/objects/cantin/Robot/tete.gltf" scale="" class="raycastable" position="0.87776 0.25736 -0.69435" rotation="-7.165983143701205 2.578696560204502 -3.1569974511708363"></a-entity>
+    <a-entity id="bras" gltf-model="./resources/objects/cantin/Robot/bras.gltf" scale="" class="raycastable" position="0.83871 0.1839 -0.72161" rotation="-32.71558055096257 -21.146288388609864 3.2493051894542986" animation="property: rotation; to: -33.11524168517619 -21.213762364718733 3.3422514664948055; dur: 10000; dir: alternate; loop: true"></a-entity>
+    <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="-0.09685 0.207 0.32695"></a-entity>
+</a-entity>
 
     <a-image id="1L" src="./resources/objects/cantin/Affiche/1L-3B.jpg" position="-8.13363 0.21 -8.85123" rotation="-0.52196455136418 110.21759921813593 0.48987891483685386" material="" geometry="" scale="16 2 1"></a-image>
 
-    <a-entity id="TV" scene-switch="name: 2" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/tv.obj" material="color: black" scale="0.5 0.5 0.5" position="8.67026 -3.24071 4.2833" rotation="0 -117.1263243118234 0" class="raycastable"></a-entity>
-    <a-text id="text" value="Cliquez moi\nClick me" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="" position="8.56916 -2.39667 4.24372" text="anchor: center; align: center; color: #ffffff" rotation="0 -115.98441942612767 0"></a-text>
-
-    <a-entity id="NaBot" scene-switch="name: default" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="1.86656 -2.51449 -3.97655" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable">
+    <a-entity id="NaBot" scene-switch="name: 2" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.002 0.002 0.002" position="1.86656 -2.51449 -3.97655" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable">
  <a-entity id="LIGHT" light="distance: 12.04; intensity: 7.09; type: point" position="-0.09685 0.207 0.32695"></a-entity></a-entity>
 
- <a-entity id="Robot" position="0.299 -2.52 -7.478">
-    <a-entity id="CORPSCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/corpscombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="" rotation="-90 12.971764481761838 0" class="raycastable"></a-entity>
-    <a-entity id="BRASCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/brascombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="0.12777 0.57068 0.02354" rotation="-69.69 -2.3645968205049077 10.60716766125693" class="raycastable"></a-entity>
-</a-entity>
 
 
 <!--

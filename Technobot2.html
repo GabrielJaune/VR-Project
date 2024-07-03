@@ -14,7 +14,7 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>. -->
 
-    
+
     <html>
         <head>
           <meta charset="UTF-8">
@@ -61,13 +61,7 @@
                   
             </a-entity>
       
-            <!-- Menu -->
-            <a-box id="Menu" position="22.61 0.8 -4.407" anchor="center" color="#4CC3D9" scale=".25 .04 .1" rotation="0 15 180" opacity=".6">
-              <a-entity redirect="index.html" position=".3 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/home.obj" modify-materials class="raycastable"> </a-entity>
-              <a-box audiohandler sound="src: url(./resources/sounds/cool.mp3); on: click; volume: .5; loop: true" position="0 -.53 .04" rotation="0 0 180" scale="1 1 2.5" obj-model="obj: ./resources/objects/menu/mute.obj" modify-materials class="raycastable"> </a-box>
-            </a-entity>
-            </a-box>
-      
+
           <!-- Main Scene -->
           <a-entity id="MainScene" scene-init template="src: #NA" />
           <video id="rickvideo" src=".\resources\objects\cantin\Clip-Technobot-2024-1.mp4#t=0.001" loop></video>
