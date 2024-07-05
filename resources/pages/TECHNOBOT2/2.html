@@ -21,7 +21,7 @@ animation="property: position; to: -3.5623 1.62786 0.34166; dur: 4000; dir: alte
 -->
 <a-sky src="./resources/sky/360-game.jpg" rotation="0 0 0" animation="property: rotation; to: 0 359 0; dur: 80000; loop: true"></a-sky>
   
-<a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.001 0.001 0.001" position="1.65214 -0.62322 -0.53967" rotation="-90 -90 0" class="raycastable"></a-entity>    <a-entity id="Global-Light" light="color: #cecece; intensity: 10; shadowRadius: 2; type: point" position="2.66792 -1.75639 -0.17452" rotation="27.77183728778613 77.09834682839384 -24.59192152481006"></a-entity>
+<a-entity id="NaBot" scene-switch="name: 1" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/Nabot3.obj" material="color: red" scale="0.001 0.001 0.001" position="1.43133 -0.62322 -0.53967" rotation="-90 -90 0" class="raycastable"></a-entity>  <a-entity id="Global-Light" light="color: #cecece; intensity: 10; shadowRadius: 2; type: point" position="2.66792 -1.75639 -0.17452" rotation="27.77183728778613 77.09834682839384 -24.59192152481006"></a-entity>
 
   <a-entity id="LightRobot" light="color: #cecece; shadowRadius: 2; type: spot; intensity: 0.5" position="-3.5623 1.62786 -0.11581492851784761" rotation="27.77183728778613 -103.08885833111823 -24.59192152481006" animation="property: position; to: -3.5623 1.62786 0.34166; dur: 4000; dir: alternate; loop: true"></a-entity>
 
@@ -46,21 +46,27 @@ animation="property: position; to: -3.5623 1.62786 0.34166; dur: 4000; dir: alte
             <a-entity id="EyeL1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.943 21.16039 102.76261" rotation="8.57558881369608 -29.43233672092677 94.50498499677595" class="raycastable" animation="property: rotation; to: 23.046654351342234 -51.488852259431425 108.1308869282695; dur: 4000; dir: alternate; loop: true"></a-entity>
             <a-entity id="EyeL2" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-34.54766 -11.62314 102.73097" rotation="2.4926230554978166 -31.340954732866816 88.91606808371276" class="raycastable" animation="property: rotation; to: 11.66542070886356 -43.57114848851858 98.30122299500509; dur: 4000; dir: alternate; loop: true"></a-entity>
         </a-entity>
+
+        <a-entity id="MUSHROOM" scene-switch="name: 4" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/level/mushroom.obj" material="color: red" scale="0.01 0.01 0.01" position="1.49369 -0.62449 -0.26043" rotation="-87.93584352329336 -35.118302136953545 -51.7764770725871" class="raycastable"></a-entity>
         
-        <a-entity id="MUSHROOM" scene-switch="name: 4" gltf-model="./resources/objects/cantin/supermushroom/supermushroom.gltf" scale="10 10 10" position="1.57246 -0.61658 -0.26043" rotation="0 -20.827015853005424 0" class="raycastable"></a-entity>
-                <a-entity id="Support" geometry="" material="color: #000000" position="1.67922 -0.64744 0.03616" rotation="270 90 0" scale="2.77697 0.5808 0.07877"></a-entity>
 
         <a-video id="video" autoplay loop="true" src=".\resources\objects\cantin\Clip-Technobot-2024-1.mp4#t=0.001" position="-2.35727 0.39665 0.01895" rotation="0 90 0" scale="2.4 1.4 2" material="" geometry="" muted="">
         </a-video>
 
 
-        <a-entity id="Robot" position="1.53335 -0.61085 0.09008" scale="0.5 0.5 0.5" rotation="0 -83.02273043004655 0">
-            <a-entity id="CORPSCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/corpscombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="0.14836 0 0.07045" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
-            <a-entity id="BRASCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/brascombat.obj" material="color: blue" scale="0.02 0.02 0.02" position="0.34246 0.55401 0.15028" rotation="-69.6900025373523 -2.3645968205049077 10.60716766125693" class="raycastable"></a-entity>
+        <a-entity id="Robot" position="1.45839 -0.61085 0.09008" scale="0.5 0.5 0.5" rotation="0 -83.02273043004655 0">
+            <a-entity id="CORPSCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/corpscombat.obj" material="color: red" scale="0.02 0.02 0.02" position="0.14836 0 0.07045" rotation="-90.00021045914971 12.971764481761838 0" class="raycastable"></a-entity>
+            <a-entity id="BRASCOMBAT" scene-switch="name: 3" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/Robot/brascombat.obj" material="color: red" scale="0.02 0.02 0.02" position="0.34246 0.55401 0.15028" rotation="-69.6900025373523 -2.3645968205049077 10.60716766125693" class="raycastable"></a-entity>
         </a-entity>
 
-        <a-entity id="car" scene-switch="name: 0" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/renaultKangoo/renaultKangoo.obj; mtl: ./resources/objects/cantin/renaultKangoo/renaultKangoo.mtl" scale="0.001 0.001 0.001" rotation="0 -110.58429220701967 0" position="1.54362 -0.50866 0.55579" class="raycastable"></a-entity>
-        <!--
+<a-entity id="car" scene-switch="name: 0" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/renaultKangoo/renaultKangoo.obj" material="color: red" scale="0.001 0.001 0.001" rotation="0 -144.5681379096142 0" position="1.49984 -0.50866 0.58754" class="raycastable"></a-entity>
+
+<a-entity id="TABLE" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/table.obj" material="color: gray" scale="0.08739 0.02268 0.05" rotation="0 -92.59800110227286 0" position="1.56465 -0.88843 0.06794" class="raycastable"></a-entity>
+
+<a-entity id="PHOTO" scene-switch="name: 5" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/level/photo.obj" material="color: red" scale="0.0015 0.0015 0.0015" rotation="-85.92189687340851 -93.12225748481757 39.523201665919316" position="1.15065 -0.60749 -0.03702" class="raycastable"></a-entity>
+
+
+<!--
             <a-entity id="StatueL" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="23.08792 2.21191 -2.73657" rotation="270 270 0" class="raycastable">
                 <a-entity geometry="" material="color: #000000" position="-9.53634 -3.65489 -268.57763" rotation="270 90 0" scale="100 66.93993 140.36048"></a-entity>
                 <a-entity id="EyeL1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.943 21.16039 102.76261" rotation="23.046654351342234 -51.488852259431425 108.1308869282695" class="raycastable"></a-entity>
@@ -71,7 +77,18 @@ animation="property: position; to: -3.5623 1.62786 0.34166; dur: 4000; dir: alte
         -->
         <a-text id="text" value="Cliquez moi pour explorer\nClick me to explore" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.5 0.5 1" position="1.20833 -0.83015 -1.19273" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
 
-    <!--
+        <a-text id="text" value="Combat\nFight" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.31 0.23 0.2" position="1.20729 -0.55118 -0.63115" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
+
+        <a-text id="text" value="Course\nRace" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.31 0.23 0.2" position="1.20729 -0.55118 -0.28125" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
+
+        <a-text id="text" value="Vue générale\nGlobal view" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.17 0.23 0.2" position="1.20729 -0.55118 -0.87894" text="anchor: left; align: center; color:#919191" rotation="-90 -90 0"></a-text>
+
+        <a-text id="text" value="Atelier\nWorkshop" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.17 0.23 0.2" position="1.20729 -0.55118 -0.65104" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
+
+        <a-text id="text" value="Photos" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.31 0.23 0.2" position="1.08354 -0.60567 -0.64772" text="anchor: left; align: center; color: #919191" rotation="-90 -90 0"></a-text>
+
+        
+        <!--
         <a-entity id="StatueL" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/STATUE43.obj" material="color: black" scale="0.005 0.005 0.005" position="23.08792 2.21191 -2.73657" rotation="270 270 0" class="raycastable">
             <a-entity geometry="" material="color: #000000" position="-9.53634 -3.65489 -268.57763" rotation="270 90 0" scale="100 66.93993 140.36048"></a-entity>
             <a-entity id="EyeL1" modify-materials="" modelfix="" gltf-model="./resources/objects/cantin/level/Eye.gltf" scale="200 200 200" position="-30.943 21.16039 102.76261" rotation="23.046654351342234 -51.488852259431425 108.1308869282695" class="raycastable"></a-entity>
