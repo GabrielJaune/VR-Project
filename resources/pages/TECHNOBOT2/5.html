@@ -1,0 +1,35 @@
+<a-sky id="melec" autoplay="" loop="true" src="./resources/videos/melecPlage.mp4" rotation="0 -20 0"></a-sky>
+
+<a-entity id="bars sans alcool"></a-entity>
+<a-entity id="batiment" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/5/Bar.obj; mtl: ./resources/objects/cantin/5/Bar.mtl" scale="0.01 0.01 0.01" position="0 -1.73432 0" rotation="" class="raycastable"></a-entity>
+    <a-entity id="LightRobot" light="color: #cecece; shadowRadius: 2; type: spot; intensity: 3.65" position="3.26471 1.62786 8.51963" rotation="27.77183728778613 32.918717161446324 -24.59192152481006"></a-entity>
+    <a-entity id="Light" light="color: #cecece; shadowRadius: 2; type: spot; intensity: 0.99" position="-1.87054 -1.04782 -7.51825" rotation="46.56256113689661 -159.27424563723704 146.05267155679815"></a-entity>
+
+    <!--<a-video id="video" autoplay="" loop="true" src=".\resources\objects\cantin\Clip-Technobot-2024-1.mp4#t=0.001" position="0.14142 0.31758 -2.81742" rotation="" scale="0.95114 0.53426 2" material="" geometry="" sound="autoplay: true; volume: -100">
+    </a-video>-->
+
+    <a-entity id="Bot" position="2.12443 -1.75414 5.04778" scale="6 6 6" rotation="0 90.45685782186898 0" animation="property: position; to: 2.12443 -1.65414 5.04778; dur: 4000; dir: alternate; loop: true">
+        <a-entity id="robot" scene-switch="name: 2" gltf-model="./resources/objects/cantin/Robot/corps.gltf" scale="" class="raycastable" position="0.88512 0.16958 -0.69938" rotation="" sound="src: ./resources/sounds/Robot.mp3; on: click; volume: 10"></a-entity>
+        <a-entity id="Flammes" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.86388 0.10287 -0.69877" rotation="0 -84.18081691111473 0" class="raycastable" animation="property: rotation; to: 0 -132.87349635319896 0; dur: 200; loop: true"></a-entity>
+        <a-entity id="Flammes2" gltf-model="./resources/objects/ROBOT2/FIRE.gltf" scale="" position="0.89387 0.10159 -0.6977" rotation="0 -155.25873450298235 0" class="raycastable" animation="property: rotation; to: 0 -132.87349635319896 0; dur: 200; loop: true"></a-entity>
+        <a-entity id="tete" scene-switch="name: 2" gltf-model="./resources/objects/cantin/Robot/tete.gltf" scale="" class="raycastable" position="0.87776 0.25736 -0.69435" rotation="-7.165983143701205 2.578696560204502 -3.1569974511708363"></a-entity>
+        <a-entity id="bras" gltf-model="./resources/objects/cantin/Robot/bras.gltf" scale="" class="raycastable" position="0.83871 0.1839 -0.72161" rotation="-32.760232806100575 -21.153826937991997 3.259689638982287" animation="property: rotation; to: -33.11524168517619 -21.213762364718733 3.3422514664948055; dur: 1000; dir: alternate; loop: true"></a-entity>
+    </a-entity>
+
+    <a-text id="text" value="Bonnes Vacances\nHappy Holidays" font="./resources/objects/cantin/custom-msdf.json" font-image="./resources/objects/cantin/custom.png" negate="false" scale="0.5 0.5 0.2" position="1.14955 0.65446 1.00212" text="anchor: left; align: center; color: #919191" rotation="180 0 180" ></a-text>
+
+    <a-image id="1L" src="./resources/objects/cantin/level/1.jpg" position="0.32884 -0.4654 0.60149" rotation="-41.72507847260708 -162.75840198942754 5.593786953862227" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+
+    <a-image id="2L" src="./resources/objects/cantin/level/2.jpg" position="0 -0.46141 0.44411" rotation="-18.007490543166643 -175.80121323778562 0.8021409131831525" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+    <a-image id="3L" src="./resources/objects/cantin/level\3.jpg" position="0.57877 -0.45994 0.79905" rotation="25.725805001373963 14.81726153987822 -4.8942054860074915" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+
+    <a-image id="4L" src="./resources/objects/cantin/level/4.jpg" position="0.92968 -0.45804 0.51014" rotation="21.713954519867936 48.60973933889905 1.0427831871380984" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+    <a-image id="5L" src="./resources/objects/cantin/level/5.jpg" position="0.4166 -0.46349 0.42944" rotation="20.21165918103492 8.622441858923759 0" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+    <a-image id="6L" src="./resources/objects/cantin/level/6.jpg" position="0.82691 -0.45971 0.7946" rotation="-0.059014652898474795 29.22371234064764 0.9121488098482706" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+    <a-image id="7L" src="./resources/objects/cantin/level/7.jpg" position="0.65766 -0.46314 0.47192" rotation="16.612338312023088 23.013995757019778 -1.063409667762808" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+    <a-image id="8L" src="./resources/objects/cantin/level/8.jpg" position="1.12383 -0.45758 0.73445" rotation="2.0763990495541034 38.23748437364575 2.695766426090523" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+    <a-image id="9L" src="./resources/objects/cantin/level/9.jpg" position="0.13735 0.32054 -2.81372" rotation="" material="" geometry="" scale="0.93942 0.53721 0.2"></a-image>
+    <a-image id="10L" src="./resources/objects/cantin/level/9.jpg" position="0.09364 -0.46387 0.7341" rotation="26.184171237478623 0 0" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+    <a-image id="11L" src="./resources/objects/cantin/level/11.jpg" position="-0.14956 -0.44812 0.71758" rotation="12.785553198344319 0 0" material="" geometry="" scale="0.2 0.12 0.2"></a-image>
+
+    <a-entity id="sigma" modify-materials="" modelfix="" obj-model="obj: ./resources/objects/cantin/level/moai_support_lunette_.obj" material="color: black" scale="0.01 0.01 0.01" class="raycastable" position="-0.70392 -1.39479 -3.92499" rotation="-90 0 0" sound="src: ./resources/objects/cantin/level/erm-what-the-sigma_su7GnzC.mp3; on: click; volume: 15"></a-entity>
