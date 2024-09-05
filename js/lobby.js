@@ -55,6 +55,11 @@ const Infos = {
     info: "NOUVEAUTE\n\nUne introduction ludique\na la securite de l'information",
     redirect: "infosec.html",
   },
+  9: {
+    title: "TECHNOBOT 2024",
+    info: "Pour revivre\nle Technobot 2024\n\nLe meilleur evenement\nrobotique du Grand Est\n\nCherchez les objets\net cliquez pour decouvrir",
+    redirect: "Technobot2.html",
+  },
 }
 
 AFRAME.registerComponent("info-panel", {
